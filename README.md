@@ -5,7 +5,7 @@
 **A decision-focused analytics case by Nguyen Tuan Khoi**
 
 [![Power BI](https://img.shields.io/badge/Power%20BI-Analytics-F2C811?style=for-the-badge&logo=powerbi&logoColor=141414)](./CP1_Nguyen%20Tuan%20Khoi_Redesign1.pbix)
-[![Portfolio](https://img.shields.io/badge/Personal-Portfolio-141414?style=for-the-badge)](https://tuan-khoi-portfolio.roninoah155a2.chatgpt.site)
+[![Finance Case Studies](https://img.shields.io/badge/Finance-Case_Studies-141414?style=for-the-badge)](https://github.com/TuanKhoi2411/finance-analytics-case-studies)
 
 </div>
 
@@ -83,5 +83,5 @@ This repository publishes the finished dashboard file for portfolio review. Busi
 **Nguyen Tuan Khoi**  
 Finance & Data Analytics · Power BI · Process Automation
 
-[GitHub Profile](https://github.com/TuanKhoi2411) · [Personal Portfolio](https://tuan-khoi-portfolio.roninoah155a2.chatgpt.site) · [LinkedIn](https://www.linkedin.com/in/tuan-khoi-nguyen)
+[GitHub Profile](https://github.com/TuanKhoi2411) · [Finance Case Studies](https://github.com/TuanKhoi2411/finance-analytics-case-studies) · [LinkedIn](https://www.linkedin.com/in/tuan-khoi-nguyen)
   
