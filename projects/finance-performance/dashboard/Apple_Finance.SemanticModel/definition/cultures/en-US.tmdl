@@ -1,0 +1,1740 @@
+cultureInfo en-US
+
+	linguisticMetadata =
+			{
+			  "Version": "2.0.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "factsales.country": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "Country"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.net_sales": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "Net Sales"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.description": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "Description"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.transactiontype": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "TransactionType"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.gross_sales": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "Gross Sales"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.return_amount": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "Return Amount"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.orders": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "Orders"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.customers": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "Customers"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.return_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "Return Rate"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.units_sold": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "Units Sold"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "dimdate.yearmonth": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DimDate",
+			          "ConceptualProperty": "YearMonth"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "dimdate.date": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DimDate",
+			          "ConceptualProperty": "Date"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Date": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.displaymetric": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "DisplayMetric"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Metric": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "DisplayMetric": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.latest_metric_value": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Latest Metric Value"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Latest Value": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.enddate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "EndDate"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Quarter": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Reporting Date": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.quarterly_revenue": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Quarterly Revenue"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Revenue": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.quarterly_net_income": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Quarterly Net Income"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Net Income": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.assets": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Assets"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Assets": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Total Assets": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.liabilities": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Liabilities"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Liabilities": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Total Liabilities": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.cash": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Cash"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Cash": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Cash & Equivalents": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.gross_margin": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Gross Margin"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Gross Margin": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.operating_margin": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Operating Margin"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Operating Margin": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.net_margin": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Net Margin"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Net Margin": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.quarterly_gross_profit": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Quarterly Gross Profit"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Gross Profit": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.quarterly_operating_income": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Quarterly Operating Income"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Operating Income": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.periodtype": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "PeriodType"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "PeriodType": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Period type": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.form": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Form"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Form": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "SEC form": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.latest_revenue": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Latest Revenue"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Revenue": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.latest_gross_profit": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Latest Gross Profit"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Gross Profit": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.latest_operating_income": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Latest Operating Income"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Operating Income": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.latest_net_income": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Latest Net Income"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Net Income": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.latest_gross_margin": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Latest Gross Margin"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Gross Margin": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factmarketing.job": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "Job"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.conversion_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "Conversion Rate"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.campaignmonth": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "CampaignMonth"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.contacts": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "Contacts"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.conversions": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "Conversions"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.contactchannel": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "ContactChannel"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.average_contact_duration": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "Average Contact Duration"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.ageband": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "AgeBand"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.prioroutcome": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "PriorOutcome"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.average_campaign_contacts": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "Average Campaign Contacts"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.top_5_country_net_sales": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "Top 5 Country Net Sales"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.top_5_product_net_sales": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "Top 5 Product Net Sales"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.net_sales_previous_year": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "Net Sales Previous Year"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.net_sales_yoy": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "Net Sales YoY"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.gross_to_net_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "Gross to Net Rate"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.net_sales_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "Net Sales MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.gross_sales_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "Gross Sales MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.orders_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "Orders MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.units_sold_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "Units Sold MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.return_rate_variance_pp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "Return Rate Variance pp"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.kpi_net_sales_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "KPI Net Sales Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.kpi_gross_sales_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "KPI Gross Sales Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.kpi_orders_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "KPI Orders Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.kpi_units_sold_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "KPI Units Sold Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.kpi_return_rate_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "KPI Return Rate Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factfinance.revenue_previous_year": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Revenue Previous Year"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Prior Year": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.revenue_yoy": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Revenue YoY"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Revenue YoY": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.latest_revenue_yoy": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Latest Revenue YoY"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "YoY": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "vs prior period": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.latest_gross_profit_yoy": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Latest Gross Profit YoY"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "YoY": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.latest_operating_income_yoy": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Latest Operating Income YoY"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "YoY": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.latest_net_income_yoy": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Latest Net Income YoY"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "YoY": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.latest_gross_margin_variance_pp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Latest Gross Margin Variance pp"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Δ pp": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "vs prior period": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.kpi_revenue_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "KPI Revenue Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Revenue": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.kpi_gross_profit_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "KPI Gross Profit Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Gross Profit": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.kpi_operating_income_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "KPI Operating Income Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Op. Income": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.kpi_net_income_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "KPI Net Income Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Net Income": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.kpi_gross_margin_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "KPI Gross Margin Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Gross Mgn.": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Gross Margin": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factmarketing.conversion_rate_previous_month": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "Conversion Rate Previous Month"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.contacts_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "Contacts MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.conversion_rate_variance_pp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "Conversion Rate Variance pp"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.conversions_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "Conversions MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.average_duration_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "Average Duration MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.average_campaign_contacts_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "Average Campaign Contacts MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.kpi_contacts_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "KPI Contacts Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.kpi_conversions_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "KPI Conversions Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.kpi_conversion_rate_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "KPI Conversion Rate Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.kpi_average_duration_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "KPI Average Duration Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.kpi_average_contacts_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "KPI Average Contacts Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.campaigndate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "CampaignDate"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factfinance.cost_of_sales": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Cost of Sales"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Cost of Sales": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.operating_expenses": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Operating Expenses"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Operating Expenses": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.latest_operating_margin_variance_pp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Latest Operating Margin Variance pp"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "vs prior period": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.latest_net_margin_variance_pp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Latest Net Margin Variance pp"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "vs prior period": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.latest_opex_ratio_variance_pp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Latest Opex Ratio Variance pp"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "vs prior period": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.fiscalyear": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "FiscalYear"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Fiscal year": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.kpi_operating_margin_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "KPI Operating Margin Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Operating Margin": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.kpi_net_margin_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "KPI Net Margin Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Net Margin": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.kpi_opex_ratio_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "KPI Opex Ratio Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Operating Expense Ratio": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.operating_expense_ratio": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Operating Expense Ratio"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Operating Expense Ratio": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.net_asset_position": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Net Asset Position"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Net Assets": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.liabilities_to_assets": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Liabilities to Assets"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Liabilities / Assets": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.cash_coverage_of_liabilities": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Cash Coverage of Liabilities"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Cash Coverage": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.latest_assets_yoy": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Latest Assets YoY"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "vs prior period": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.latest_liabilities_yoy": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Latest Liabilities YoY"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "vs prior period": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.latest_cash_yoy": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Latest Cash YoY"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "vs prior period": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.latest_liabilities_to_assets_variance_pp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Latest Liabilities to Assets Variance pp"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "vs prior period": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.latest_cash_coverage_variance_pp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Latest Cash Coverage Variance pp"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "vs prior period": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.fiscalperiod": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "FiscalPeriod"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Fiscal period": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.kpi_assets_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "KPI Assets Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Total Assets": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.kpi_liabilities_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "KPI Liabilities Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Total Liabilities": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.kpi_cash_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "KPI Cash Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Cash & Equivalents": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.kpi_liabilities_to_assets_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "KPI Liabilities to Assets Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Liabilities / Assets": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.kpi_cash_coverage_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "KPI Cash Coverage Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Cash Coverage": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    }
+			  }
+			}
+		contentType: json
+

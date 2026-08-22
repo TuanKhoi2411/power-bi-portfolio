@@ -1,87 +1,39 @@
 <div align="center">
 
-# Power BI Business Performance Dashboard
+# Power BI Portfolio
 
-**A decision-focused analytics case by Nguyen Tuan Khoi**
+**Three decision-focused dashboards for Sales, Marketing, and Finance**
 
-[![Power BI](https://img.shields.io/badge/Power%20BI-Analytics-F2C811?style=for-the-badge&logo=powerbi&logoColor=141414)](./CP1_Nguyen%20Tuan%20Khoi_Redesign1.pbix)
-[![Finance Case Studies](https://img.shields.io/badge/Finance-Case_Studies-141414?style=for-the-badge)](https://github.com/TuanKhoi2411/finance-analytics-case-studies)
+[![Portfolio](https://img.shields.io/badge/PORTFOLIO-D8FF4F?style=for-the-badge)](https://tuankhoi2411.github.io/)
+[![LinkedIn](https://img.shields.io/badge/LINKEDIN-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/tuan-khoi-nguyen-324139316/)
 
 </div>
 
-## Executive summary
+## Projects
 
-This Power BI report is designed to help management move from a high-level P&L view to the drivers behind performance, segment contribution, and break-even dynamics. It combines executive KPIs, trend analysis, detailed breakdowns, and interactive filtering in one four-page decision flow.
+| Domain | Dashboard | Decision supported | Deliverables |
+|---|---|---|---|
+| Sales | [UK Online Retail Sales](./projects/sales-performance/README.md) | Where is growth coming from, which customers and products matter, and how do returns affect quality? | PBIX + PBIP + data + HTML deck |
+| Marketing | [Portuguese Bank Marketing](./projects/marketing-performance/README.md) | Which audiences, channels, and campaign conditions improve subscription conversion? | PBIP + data + HTML deck |
+| Finance | [Apple Financial Performance](./projects/finance-performance/README.md) | Are growth, margins, liquidity, and cost structure moving sustainably? | PBIP + data + HTML deck |
 
-## Business questions supported
+Each project folder keeps the working dashboard, source data, standalone interactive presentation, and project-specific README together.
 
-- How are revenue and net profit changing over time?
-- Which components are driving the P&L result?
-- How does performance differ across business segments?
-- Where is the break-even point and how does it change?
-- What relationship exists between operating expenditure and EBIT across weeks and business lines?
+## Shared quality standard
 
-## Project at a glance
+- Separate semantic model and report definitions for each domain
+- Three 16:9 report pages per project
+- Source-backed public data with an explicit source record
+- Decision-oriented KPI, trend, composition, and deep-dive views
+- Standalone 11-slide HTML presentation with embedded visuals
+- Transparent refresh-path instructions and known limitations
 
-| Scope | Verified project detail |
-|---|---|
-| Report pages | 4: Overview, Breakdown, Segments, Breakeven |
-| Visual containers | 73 across the complete report |
-| Analytical lenses | P&L, revenue, net profit, segments, break-even, Opex and EBIT |
-| Interaction | KPI cards, slicers, navigation, charts, and detailed tables |
-| Deliverable | Interactive Power BI Desktop report (.pbix) |
+## Legacy dashboard
 
-## Decision flow
-
-### 1. Overview
-
-Provides the management starting point through KPI cards, interactive slicers, a P&L funnel, monthly revenue and net-profit trends, supporting charts, and a detailed matrix.
-
-### 2. Breakdown
-
-Moves from the top-line view into performance drivers using cards, slicers, area and line charts, a treemap, a column chart, a donut chart, and a detailed matrix.
-
-### 3. Segments
-
-Compares business segments through KPI cards and multiple visual lenses, including bar, column, line, and pie charts with interactive filtering.
-
-### 4. Breakeven
-
-Supports profitability and threshold analysis with KPI cards, slicers, trend and combination charts, plus a scatter analysis of Opex and EBIT by week and business line.
-
-## Management value
-
-The report is structured to help a reviewer:
-
-1. Identify the direction of overall performance.
-2. Drill into the drivers behind the headline result.
-3. Compare contributions across segments.
-4. Assess profitability and break-even behavior.
-5. Translate the analysis into areas for deeper management review.
-
-## Skills demonstrated
-
-- Finance-focused KPI and P&L analysis
-- Business performance and profitability reporting
-- Segmentation and break-even analysis
-- Power BI dashboard design and navigation
-- Interactive filtering and management storytelling
-- Data modeling, transformation, and visualization
-
-## Download the report
-
-[**Download CP1_Nguyen Tuan Khoi_Redesign1.pbix**](./CP1_Nguyen%20Tuan%20Khoi_Redesign1.pbix)
-
-> Microsoft Power BI Desktop is required to open and explore the interactive report.
-
-## Data and confidentiality
-
-This repository publishes the finished dashboard file for portfolio review. Business interpretation is limited to what can be verified from the report structure; confidential source details and unsupported claims are intentionally excluded.
+The original four-page business performance case remains available as [CP1_Nguyen Tuan Khoi_Redesign1.pbix](./CP1_Nguyen%20Tuan%20Khoi_Redesign1.pbix).
 
 ## Author
 
-**Nguyen Tuan Khoi**  
-Finance & Data Analytics · Power BI · Process Automation
+**Nguyen Tuan Khoi** — Finance & Data Analytics · Power BI · Process Automation
 
-[GitHub Profile](https://github.com/TuanKhoi2411) · [Finance Case Studies](https://github.com/TuanKhoi2411/finance-analytics-case-studies) · [LinkedIn](https://www.linkedin.com/in/tuan-khoi-nguyen-324139316/)
-  
+[GitHub Profile](https://github.com/TuanKhoi2411) · [Finance Case Studies](https://github.com/TuanKhoi2411/finance-analytics-case-studies) · [Email](mailto:tuankhoi24112003@gmail.com)

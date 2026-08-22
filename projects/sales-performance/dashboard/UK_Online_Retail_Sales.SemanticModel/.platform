@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "UK Online Retail Sales"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "1e2514e0-a4dd-4329-aadc-9ce8606d4e47"
+  }
+}

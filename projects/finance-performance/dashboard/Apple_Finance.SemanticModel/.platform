@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Apple Finance"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "f931fcb9-cde7-4806-8a1c-5dcab818f7df"
+  }
+}

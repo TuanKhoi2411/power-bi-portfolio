@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Apple Finance"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "ea9cd1bb-13cb-4119-9242-6bfe5c454bbf"
+  }
+}

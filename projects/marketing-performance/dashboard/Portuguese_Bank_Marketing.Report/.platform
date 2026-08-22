@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Portuguese Bank Marketing"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "d5fb72d8-6ab3-4d63-a208-4ae1089ca01b"
+  }
+}
