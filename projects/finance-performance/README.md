@@ -1,4 +1,4 @@
-# Apple Financial Performance
+# Apple Inc. — Financial Performance
 
 ## Management question
 
@@ -8,7 +8,7 @@ Are revenue growth, margin expansion, balance-sheet resilience, and operating co
 
 | Item | Detail |
 |---|---|
-| Power BI project | [`dashboard/Apple_Finance.pbip`](./dashboard/Apple_Finance.pbip) |
+| Power BI project | [`dashboard/Apple_Inc_Financial_Performance_Dashboard.pbip`](./dashboard/Apple_Inc_Financial_Performance_Dashboard.pbip) |
 | Pages | Apple Finance · Profitability & Growth · Balance & Liquidity |
 | Canvas | 1280 × 720 on every page |
 | Semantic model | FactFinance + DimDate, 90 authored measures |
@@ -18,7 +18,7 @@ The report moves from headline financial performance into profitability, growth 
 
 ## Interactive presentation
 
-[`Finance_Performance_Interactive.html`](./Finance_Performance_Interactive.html) is the accompanying 12-slide decision story. Download it and open locally in Chrome or Edge; all ten chart images are embedded.
+[`Apple_Inc_Financial_Performance_Interactive.html`](./Apple_Inc_Financial_Performance_Interactive.html) is the accompanying 12-slide decision story. Download it and open locally in Chrome or Edge; all ten chart images are embedded.
 
 Controls: `←` / `→` or `Space` to navigate, `F` for fullscreen, and `O` for overview.
 

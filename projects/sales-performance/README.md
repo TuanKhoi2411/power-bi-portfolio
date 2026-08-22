@@ -1,4 +1,4 @@
-# UK Online Retail Sales
+# UK Online Retail — Sales Performance
 
 ## Management question
 
@@ -8,7 +8,7 @@ Where is commercial growth coming from, which customers and products drive the r
 
 | Item | Detail |
 |---|---|
-| Power BI files | [`UK_Online_Retail_Sales.pbix`](./UK_Online_Retail_Sales.pbix) and [`dashboard/UK_Online_Retail_Sales.pbip`](./dashboard/UK_Online_Retail_Sales.pbip) |
+| Power BI files | [`UK_Online_Retail_Sales_Performance_Dashboard.pbix`](./UK_Online_Retail_Sales_Performance_Dashboard.pbix) and [`dashboard/UK_Online_Retail_Sales_Performance_Dashboard.pbip`](./dashboard/UK_Online_Retail_Sales_Performance_Dashboard.pbip) |
 | Pages | UK Retail Sales · Customer Insights · Product & Returns |
 | Canvas | 1280 × 720 on every page |
 | Semantic model | FactSales + DimDate, 74 authored measures |
@@ -18,7 +18,7 @@ The report moves from overall sales direction into customer concentration, produ
 
 ## Interactive presentation
 
-[`Sales_Performance_Interactive.html`](./Sales_Performance_Interactive.html) is the accompanying 12-slide decision story. Download the file and open it in Chrome or Edge; all ten chart images are embedded for offline viewing.
+[`UK_Online_Retail_Sales_Performance_Interactive.html`](./UK_Online_Retail_Sales_Performance_Interactive.html) is the accompanying 12-slide decision story. Download the file and open it in Chrome or Edge; all ten chart images are embedded for offline viewing.
 
 Controls: `←` / `→` or `Space` to navigate, `F` for fullscreen, and `O` for overview.
 

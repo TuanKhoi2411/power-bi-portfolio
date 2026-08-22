@@ -1,4 +1,4 @@
-# Financial Performance Dashboard
+# Sports & Health Enterprise — Financial Performance
 
 ## Management question
 
@@ -8,7 +8,7 @@ How can management move from a high-level P&L view to the drivers behind perform
 
 | Item | Detail |
 |---|---|
-| Power BI report | [`Financial_Performance_Dashboard.pbix`](./Financial_Performance_Dashboard.pbix) |
+| Power BI report | [`Sports_Health_Enterprise_Financial_Performance_Dashboard.pbix`](./Sports_Health_Enterprise_Financial_Performance_Dashboard.pbix) |
 | Pages | Overview · Breakdown · Segments · Breakeven |
 | Visual inventory | 73 visual containers across four report pages |
 | Analytical lenses | P&L · revenue · net profit · segment contribution · break-even · Opex and EBIT |
@@ -17,7 +17,7 @@ The decision flow starts with executive KPIs, then moves into operating drivers,
 
 ## Interactive presentation
 
-[`Financial_Performance_Interactive.html`](./Financial_Performance_Interactive.html) is the matching 12-slide browser presentation. Download it and open locally in Chrome or Edge.
+[`Sports_Health_Enterprise_Financial_Performance_Interactive.html`](./Sports_Health_Enterprise_Financial_Performance_Interactive.html) is the matching 12-slide browser presentation. Download it and open locally in Chrome or Edge.
 
 Controls: `←` / `→` or `Space` to navigate, `F` for fullscreen, and `O` for overview.
 

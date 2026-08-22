@@ -13,10 +13,10 @@
 
 | Domain | Dashboard | Decision supported | Deliverables |
 |---|---|---|---|
-| Sales | [UK Online Retail Sales](./projects/sales-performance/README.md) | Where is growth coming from, which customers and products matter, and how do returns affect quality? | PBIX + PBIP + data + HTML deck |
-| Marketing | [Portuguese Bank Marketing](./projects/marketing-performance/README.md) | Which audiences, channels, and campaign conditions improve subscription conversion? | PBIP + data + HTML deck |
-| Finance | [Apple Financial Performance](./projects/finance-performance/README.md) | Are growth, margins, liquidity, and cost structure moving sustainably? | PBIP + data + HTML deck |
-| Finance / BI | [Financial Performance Dashboard](./projects/financial-performance-dashboard/README.md) | How can management move from a high-level P&L view into performance, segment, and break-even drivers? | PBIX + HTML deck |
+| Sales | [UK Online Retail — Sales Performance](./projects/sales-performance/README.md) | Where is growth coming from, which customers and products matter, and how do returns affect quality? | PBIX + PBIP + data + HTML deck |
+| Marketing | [Portuguese Bank — Marketing Performance](./projects/marketing-performance/README.md) | Which audiences, channels, and campaign conditions improve subscription conversion? | PBIP + data + HTML deck |
+| Finance | [Apple Inc. — Financial Performance](./projects/finance-performance/README.md) | Are growth, margins, liquidity, and cost structure moving sustainably? | PBIP + data + HTML deck |
+| Finance / BI | [Sports & Health Enterprise — Financial Performance](./projects/financial-performance-dashboard/README.md) | How can management move from a high-level P&L view into performance, segment, and break-even drivers? | PBIX + HTML deck |
 
 Each project folder keeps its dashboard, matching standalone interactive presentation, and project-specific README together. The three source-backed domain projects also include their raw data.
 

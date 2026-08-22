@@ -1,4 +1,4 @@
-# Portuguese Bank Marketing
+# Portuguese Bank — Marketing Performance
 
 ## Management question
 
@@ -8,7 +8,7 @@ Which audiences, channels, and campaign conditions are associated with stronger 
 
 | Item | Detail |
 |---|---|
-| Power BI project | [`dashboard/Portuguese_Bank_Marketing.pbip`](./dashboard/Portuguese_Bank_Marketing.pbip) |
+| Power BI project | [`dashboard/Portuguese_Bank_Marketing_Performance_Dashboard.pbip`](./dashboard/Portuguese_Bank_Marketing_Performance_Dashboard.pbip) |
 | Pages | Bank Marketing · Audience Segmentation · Campaign Effectiveness |
 | Canvas | 1280 × 720 on every page |
 | Semantic model | FactMarketing, 34 authored measures |
@@ -18,7 +18,7 @@ The report starts with campaign performance, then isolates audience and campaign
 
 ## Interactive presentation
 
-[`Marketing_Performance_Interactive.html`](./Marketing_Performance_Interactive.html) is the accompanying 12-slide decision story. Download it and open locally in Chrome or Edge; all ten chart images are embedded.
+[`Portuguese_Bank_Marketing_Performance_Interactive.html`](./Portuguese_Bank_Marketing_Performance_Interactive.html) is the accompanying 12-slide decision story. Download it and open locally in Chrome or Edge; all ten chart images are embedded.
 
 Controls: `←` / `→` or `Space` to navigate, `F` for fullscreen, and `O` for overview.
 
