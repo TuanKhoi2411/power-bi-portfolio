@@ -83,5 +83,5 @@ This repository publishes the finished dashboard file for portfolio review. Busi
 **Nguyen Tuan Khoi**  
 Finance & Data Analytics · Power BI · Process Automation
 
-[GitHub Profile](https://github.com/TuanKhoi2411) · [Finance Case Studies](https://github.com/TuanKhoi2411/finance-analytics-case-studies) · [LinkedIn](https://www.linkedin.com/in/tuan-khoi-nguyen)
+[GitHub Profile](https://github.com/TuanKhoi2411) · [Finance Case Studies](https://github.com/TuanKhoi2411/finance-analytics-case-studies) · [LinkedIn](https://www.linkedin.com/in/tuan-khoi-nguyen-324139316/)
   
