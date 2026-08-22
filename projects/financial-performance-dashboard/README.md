@@ -1,4 +1,4 @@
-# CP1 Business Performance Dashboard
+# Financial Performance Dashboard
 
 ## Management question
 
@@ -8,7 +8,7 @@ How can management move from a high-level P&L view to the drivers behind perform
 
 | Item | Detail |
 |---|---|
-| Power BI report | [`CP1_Nguyen Tuan Khoi_Redesign1.pbix`](./CP1_Nguyen%20Tuan%20Khoi_Redesign1.pbix) |
+| Power BI report | [`Financial_Performance_Dashboard.pbix`](./Financial_Performance_Dashboard.pbix) |
 | Pages | Overview · Breakdown · Segments · Breakeven |
 | Visual inventory | 73 visual containers across four report pages |
 | Analytical lenses | P&L · revenue · net profit · segment contribution · break-even · Opex and EBIT |
@@ -17,7 +17,7 @@ The decision flow starts with executive KPIs, then moves into operating drivers,
 
 ## Interactive presentation
 
-[`CP1_Financial_Performance_Interactive.html`](./CP1_Financial_Performance_Interactive.html) is the matching 11-slide browser presentation. Download it and open locally in Chrome or Edge.
+[`Financial_Performance_Interactive.html`](./Financial_Performance_Interactive.html) is the matching 12-slide browser presentation. Download it and open locally in Chrome or Edge.
 
 Controls: `←` / `→` or `Space` to navigate, `F` for fullscreen, and `O` for overview.
 

@@ -16,17 +16,17 @@
 | Sales | [UK Online Retail Sales](./projects/sales-performance/README.md) | Where is growth coming from, which customers and products matter, and how do returns affect quality? | PBIX + PBIP + data + HTML deck |
 | Marketing | [Portuguese Bank Marketing](./projects/marketing-performance/README.md) | Which audiences, channels, and campaign conditions improve subscription conversion? | PBIP + data + HTML deck |
 | Finance | [Apple Financial Performance](./projects/finance-performance/README.md) | Are growth, margins, liquidity, and cost structure moving sustainably? | PBIP + data + HTML deck |
-| Finance / BI | [CP1 Business Performance](./projects/cp1-financial-performance/README.md) | How can management move from a high-level P&L view into performance, segment, and break-even drivers? | PBIX + HTML deck |
+| Finance / BI | [Financial Performance Dashboard](./projects/financial-performance-dashboard/README.md) | How can management move from a high-level P&L view into performance, segment, and break-even drivers? | PBIX + HTML deck |
 
 Each project folder keeps its dashboard, matching standalone interactive presentation, and project-specific README together. The three source-backed domain projects also include their raw data.
 
 ## Shared quality standard
 
 - Separate semantic model and report definitions for each PBIP domain project
-- Three 16:9 report pages per PBIP domain project; four pages in the CP1 PBIX
+- Three 16:9 report pages per PBIP domain project; four pages in the Financial Performance PBIX
 - Source-backed public data with an explicit source record
 - Decision-oriented KPI, trend, composition, and deep-dive views
-- Standalone 11-slide HTML presentation with embedded visuals
+- Standalone 12-slide HTML presentation with embedded or code-native visuals
 - Transparent refresh-path instructions and known limitations
 
 ## Author

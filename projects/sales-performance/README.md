@@ -18,7 +18,7 @@ The report moves from overall sales direction into customer concentration, produ
 
 ## Interactive presentation
 
-[`Sales_Performance_Interactive.html`](./Sales_Performance_Interactive.html) is the accompanying 11-slide decision story. Download the file and open it in Chrome or Edge; all ten chart images are embedded for offline viewing.
+[`Sales_Performance_Interactive.html`](./Sales_Performance_Interactive.html) is the accompanying 12-slide decision story. Download the file and open it in Chrome or Edge; all ten chart images are embedded for offline viewing.
 
 Controls: `←` / `→` or `Space` to navigate, `F` for fullscreen, and `O` for overview.
 
@@ -32,5 +32,5 @@ Controls: `←` / `→` or `Space` to navigate, `F` for fullscreen, and `O` for 
 ## Verification and limits
 
 - Project definition contains a report, semantic model, valid active page, and three report pages.
-- The HTML deck contains 11 slides, embedded visuals, and keyboard navigation.
+- The HTML deck contains 12 slides, embedded visuals, and keyboard navigation.
 - Dashboard definitions and files were preserved from the source task; a fresh Power BI Desktop reopen was not performed during this repository packaging step.

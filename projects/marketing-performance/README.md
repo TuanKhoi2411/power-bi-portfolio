@@ -18,7 +18,7 @@ The report starts with campaign performance, then isolates audience and campaign
 
 ## Interactive presentation
 
-[`Marketing_Performance_Interactive.html`](./Marketing_Performance_Interactive.html) is the accompanying 11-slide decision story. Download it and open locally in Chrome or Edge; all ten chart images are embedded.
+[`Marketing_Performance_Interactive.html`](./Marketing_Performance_Interactive.html) is the accompanying 12-slide decision story. Download it and open locally in Chrome or Edge; all ten chart images are embedded.
 
 Controls: `←` / `→` or `Space` to navigate, `F` for fullscreen, and `O` for overview.
 
@@ -31,6 +31,6 @@ Controls: `←` / `→` or `Space` to navigate, `F` for fullscreen, and `O` for 
 ## Verification and limits
 
 - PBIP package contains the project pointer, report definition, semantic model, valid active page, and three report pages.
-- The HTML deck contains 11 slides, embedded visuals, and keyboard navigation.
+- The HTML deck contains 12 slides, embedded visuals, and keyboard navigation.
 - The model describes associations in historical campaign data; it does not prove causal lift.
 - A fresh Power BI Desktop reopen was not performed during this repository packaging step.
