@@ -1,33 +1,69 @@
 <div align="center">
 
-# Power BI Portfolio
+# Power BI Analytics Portfolio
 
-**Four decision-focused dashboards across Sales, Marketing, and Finance**
+**Four decision-focused dashboard products across Sales, Marketing, and Finance**
 
 [![Portfolio](https://img.shields.io/badge/PORTFOLIO-D8FF4F?style=for-the-badge)](https://tuankhoi2411.github.io/)
 [![LinkedIn](https://img.shields.io/badge/LINKEDIN-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/tuan-khoi-nguyen-324139316/)
 
 </div>
 
-## Projects
+This repository demonstrates how I turn business questions into controlled data models, decision-ready Power BI reports, and concise management stories. Each project keeps the dashboard, its supporting evidence, and a standalone interactive presentation together.
 
-| Domain | Dashboard | Decision supported | Deliverables |
+## Portfolio index
+
+| Domain | Dashboard product | Decision supported | Main deliverables |
 |---|---|---|---|
-| Sales | [UK Online Retail — Sales Performance](./projects/sales-performance/README.md) | Where is growth coming from, which customers and products matter, and how do returns affect quality? | PBIX + PBIP + data + HTML deck |
-| Marketing | [Portuguese Bank — Marketing Performance](./projects/marketing-performance/README.md) | Which audiences, channels, and campaign conditions improve subscription conversion? | PBIP + data + HTML deck |
-| Finance | [Apple Inc. — Financial Performance](./projects/finance-performance/README.md) | Are growth, margins, liquidity, and cost structure moving sustainably? | PBIP + data + HTML deck |
-| Finance / BI | [Sports & Health Enterprise — Financial Performance](./projects/financial-performance-dashboard/README.md) | How can management move from a high-level P&L view into performance, segment, and break-even drivers? | PBIX + HTML deck |
+| Sales | [UK Online Retail — Sales Performance](./projects/sales-performance/README.md) | Where is growth coming from, which customers and products matter, and how do returns affect sales quality? | PBIX · PBIP · source data · HTML story |
+| Marketing | [Portuguese Bank — Marketing Performance](./projects/marketing-performance/README.md) | Which audiences and campaign conditions are associated with stronger subscription conversion? | PBIP · source data · HTML story |
+| Finance | [Apple Inc. — Financial Performance](./projects/finance-performance/README.md) | Are growth, margins, liquidity, and cost structure moving sustainably? | PBIP · SEC source data · HTML story |
+| Finance / BI | [Sports & Health Enterprise — Financial Performance](./projects/financial-performance-dashboard/README.md) | How can management move from a headline P&L into margin, cost, segment, and break-even drivers? | PBIX · HTML story |
 
-Each project folder keeps its dashboard, matching standalone interactive presentation, and project-specific README together. The three source-backed domain projects also include their raw data.
+## What to review
 
-## Shared quality standard
+1. Start with each project README for the management question and a 60-second review path.
+2. Open the HTML story for the decision narrative and recommended actions.
+3. Use the PBIX for direct Power BI review, or download the complete PBIP folder to inspect the report and semantic model definitions.
+4. Review the included raw data and refresh notes where the source is public.
 
-- Separate semantic model and report definitions for each PBIP domain project
-- Three 16:9 report pages per PBIP domain project; four pages in the Financial Performance PBIX
-- Source-backed public data with an explicit source record
-- Decision-oriented KPI, trend, composition, and deep-dive views
-- Standalone 12-slide HTML presentation with embedded or code-native visuals
-- Transparent refresh-path instructions and known limitations
+## Delivery status
+
+| Project | Dashboard | Interactive story | Data included | Published status |
+|---|---:|---:|---:|---|
+| UK Online Retail | PBIX + PBIP | 12 slides | Yes | Review-ready |
+| Portuguese Bank | PBIP | 12 slides | Yes | Review-ready; PBIX not published |
+| Apple Inc. | PBIP | 12 slides | Yes | Review-ready; PBIX not published |
+| Sports & Health Enterprise | PBIX | 12 slides | No separate raw file | Review-ready |
+
+## Repository guide
+
+Each project is self-contained:
+
+```text
+projects/<project-name>/
+├── README.md                 # business context, status, and review guide
+├── *.html                   # standalone interactive management story
+├── *.pbix                   # packaged Power BI report where available
+├── dashboard/               # PBIP report + semantic model where available
+└── data/                    # included public source file where available
+```
+
+## Quality standard
+
+- Management question before charts.
+- Separate Sales, Marketing, and Finance models rather than a forced cross-domain comparison.
+- Overview plus decision-specific deep dives.
+- Explicit model, page, source, and delivery status.
+- Honest refresh dependencies and limitations.
+- Standalone 12-slide HTML stories with presentation controls.
+
+## Notes
+
+- Public-source projects cite their publisher and retain the source file used for the model.
+- PBIP files are project entry points, not standalone reports. Download the complete `dashboard/` folder before opening them.
+- PBIP queries may retain the original local `SourcePath`; each project README explains what must be changed before refresh.
+- These are portfolio case studies, not production systems or investment recommendations.
 
 ## Author
 

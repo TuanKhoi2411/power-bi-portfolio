@@ -1,36 +1,74 @@
 # Apple Inc. — Financial Performance
 
-## Management question
+Power BI portfolio project for public-company growth, profitability, balance-sheet resilience, and liquidity analysis.
 
-Are revenue growth, margin expansion, balance-sheet resilience, and operating costs moving in a sustainable direction?
+## Review in 60 seconds
 
-## Dashboard
-
-| Item | Detail |
+| Question | Answer |
 |---|---|
-| Power BI project | [`dashboard/Apple_Inc_Financial_Performance_Dashboard.pbip`](./dashboard/Apple_Inc_Financial_Performance_Dashboard.pbip) |
-| Pages | Apple Finance · Profitability & Growth · Balance & Liquidity |
-| Canvas | 1280 × 720 on every page |
-| Semantic model | FactFinance + DimDate, 90 authored measures |
-| Source | SEC EDGAR XBRL Company Facts for Apple Inc., forms 10-K and 10-Q |
+| Management question | Are revenue growth, margin expansion, balance-sheet resilience, and operating costs moving sustainably? |
+| What I built | A three-page Power BI report, semantic model, and a 12-slide executive story. |
+| Evidence | Apple Inc. SEC EDGAR Company Facts from forms 10-K and 10-Q. |
+| Status | PBIP, SEC source JSON, and HTML story are published; a standalone PBIX is not published. |
 
-The report moves from headline financial performance into profitability, growth consistency, balance-sheet capacity, and liquidity constraints.
+## Goal
 
-## Interactive presentation
+Build a finance review product that helps a reviewer:
 
-[`Apple_Inc_Financial_Performance_Interactive.html`](./Apple_Inc_Financial_Performance_Interactive.html) is the accompanying 12-slide decision story. Download it and open locally in Chrome or Edge; all ten chart images are embedded.
+- Establish the direction of growth and profitability.
+- Compare margin and operating-cost behavior over time.
+- Assess balance-sheet capacity and liquidity constraints.
+- Trace conclusions back to public filing data.
 
-Controls: `←` / `→` or `Space` to navigate, `F` for fullscreen, and `O` for overview.
+## Dashboard pages
 
-## Source and refresh
+| Page | Decision lens |
+|---|---|
+| Apple Finance | Establish headline performance and current direction. |
+| Profitability & Growth | Compare revenue, margins, and operating cost behavior. |
+| Balance & Liquidity | Review financial capacity, liquidity, and balance-sheet resilience. |
 
-- Included source: [`data/sec-aapl-companyfacts.json`](./data/sec-aapl-companyfacts.json)
-- Publisher: [SEC EDGAR Company Facts API](https://data.sec.gov/api/xbrl/companyfacts/CIK0000320193.json)
+## Key portfolio signals
+
+- Three report pages at 1280 × 720.
+- `FactFinance` plus a dedicated `DimDate` table.
+- 90 authored measures.
+- Source-backed SEC filing data.
+- Separate profitability and balance-sheet decision lenses.
+
+## Main artifacts
+
+| Artifact | Use |
+|---|---|
+| [`dashboard/Apple_Inc_Financial_Performance_Dashboard.pbip`](./dashboard/Apple_Inc_Financial_Performance_Dashboard.pbip) | Entry point for the complete PBIP report and semantic model. |
+| [`Apple_Inc_Financial_Performance_Interactive.html`](./Apple_Inc_Financial_Performance_Interactive.html) | Standalone 12-slide executive story; download and open in Chrome or Edge. |
+| [`data/sec-aapl-companyfacts.json`](./data/sec-aapl-companyfacts.json) | SEC EDGAR Company Facts response retained for traceability. |
+
+## Data and model
+
+- Publisher: [SEC EDGAR Company Facts API](https://data.sec.gov/api/xbrl/companyfacts/CIK0000320193.json).
+- Filing scope: Apple Inc. forms 10-K and 10-Q represented in the source response.
+- Model: `FactFinance` related to `DimDate`.
 - Before refreshing on another computer, replace `SourcePath` in `FactFinance.tmdl` with the absolute path to the included JSON file.
 
-## Verification and limits
+## How to review
 
-- PBIP package contains the project pointer, report definition, semantic model, valid active page, and three report pages.
-- The HTML deck contains 12 slides, embedded visuals, and keyboard navigation.
-- Public filings can contain restatements and taxonomy changes; source-period selection should be reviewed before extending the model.
-- A fresh Power BI Desktop reopen was not performed during this repository packaging step.
+1. Open the HTML story for the executive interpretation.
+2. Download the complete `dashboard/` folder before opening the PBIP file.
+3. Review profitability first, then use the balance and liquidity page to challenge the operating story.
+
+HTML controls: `←` / `→` or `Space` to navigate, `F` for fullscreen, and `O` for overview.
+
+## QA status and limits
+
+- The PBIP contains the project pointer, report definition, semantic model, three pages, and a valid active-page reference.
+- The HTML story contains 12 slides, embedded visuals, and keyboard navigation.
+- A fresh Power BI Desktop reopen was not performed during repository packaging.
+- SEC facts can contain restatements and taxonomy changes; period selection should be reviewed before extending the model.
+- This case is analytical portfolio work, not an investment recommendation.
+
+## Portfolio talking points
+
+- Converts XBRL filing data into an accessible management view.
+- Separates operating performance from balance-sheet and liquidity analysis.
+- Demonstrates source traceability, finance measures, and executive storytelling.

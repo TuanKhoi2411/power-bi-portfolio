@@ -1,36 +1,75 @@
 # UK Online Retail — Sales Performance
 
-## Management question
+Power BI portfolio project for commercial performance, customer concentration, product contribution, and return-quality analysis.
 
-Where is commercial growth coming from, which customers and products drive the result, and how do returns affect sales quality?
+## Review in 60 seconds
 
-## Dashboard
-
-| Item | Detail |
+| Question | Answer |
 |---|---|
-| Power BI files | [`UK_Online_Retail_Sales_Performance_Dashboard.pbix`](./UK_Online_Retail_Sales_Performance_Dashboard.pbix) and [`dashboard/UK_Online_Retail_Sales_Performance_Dashboard.pbip`](./dashboard/UK_Online_Retail_Sales_Performance_Dashboard.pbip) |
-| Pages | UK Retail Sales · Customer Insights · Product & Returns |
-| Canvas | 1280 × 720 on every page |
-| Semantic model | FactSales + DimDate, 74 authored measures |
-| Source | UCI Online Retail, transactions from 2010-12-01 to 2011-12-09 |
+| Management question | Where is commercial growth coming from, which customers and products drive the result, and how do returns affect sales quality? |
+| What I built | A three-page Power BI report, semantic model, packaged PBIX, and a 12-slide management story. |
+| Evidence | UCI Online Retail transactions covering 1 December 2010 to 9 December 2011. |
+| Status | PBIX, PBIP, source workbook, and HTML story are published. |
 
-The report moves from overall sales direction into customer concentration, product performance, and return behavior. It is a separate Sales model rather than a cross-domain comparison.
+## Goal
 
-## Interactive presentation
+Build a sales review product that helps management:
 
-[`UK_Online_Retail_Sales_Performance_Interactive.html`](./UK_Online_Retail_Sales_Performance_Interactive.html) is the accompanying 12-slide decision story. Download the file and open it in Chrome or Edge; all ten chart images are embedded for offline viewing.
+- Establish sales direction and transaction quality.
+- Identify valuable customers and concentration risk.
+- Compare product contribution and return behavior.
+- Move from headline performance into evidence-backed commercial action.
 
-Controls: `←` / `→` or `Space` to navigate, `F` for fullscreen, and `O` for overview.
+## Dashboard pages
 
-## Source and refresh
+| Page | Decision lens |
+|---|---|
+| UK Retail Sales | Establish scale, trend, sales quality, and overall direction. |
+| Customer Insights | Identify customer value, concentration, and behavior. |
+| Product & Returns | Compare product contribution and investigate return patterns. |
 
-- Included source: [`data/Online Retail.xlsx`](./data/Online%20Retail.xlsx)
-- Publisher: [UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/352/online+retail)
-- The PBIX is the easiest review artifact because its imported model is already packaged.
-- The PBIP query retains the original local `SourcePath`. Before refreshing the PBIP on another computer, replace that value in `FactSales.tmdl` with the absolute path to the included workbook.
+## Key portfolio signals
 
-## Verification and limits
+- Three report pages at 1280 × 720.
+- `FactSales` plus a dedicated `DimDate` table.
+- 74 authored measures.
+- Public, source-backed transactional data.
+- Separate report and semantic-model definitions in PBIP format.
 
-- Project definition contains a report, semantic model, valid active page, and three report pages.
-- The HTML deck contains 12 slides, embedded visuals, and keyboard navigation.
-- Dashboard definitions and files were preserved from the source task; a fresh Power BI Desktop reopen was not performed during this repository packaging step.
+## Main artifacts
+
+| Artifact | Use |
+|---|---|
+| [`UK_Online_Retail_Sales_Performance_Dashboard.pbix`](./UK_Online_Retail_Sales_Performance_Dashboard.pbix) | Fastest way to inspect the imported model and interactive report. |
+| [`dashboard/UK_Online_Retail_Sales_Performance_Dashboard.pbip`](./dashboard/UK_Online_Retail_Sales_Performance_Dashboard.pbip) | Entry point for the source-controlled Power BI project. |
+| [`UK_Online_Retail_Sales_Performance_Interactive.html`](./UK_Online_Retail_Sales_Performance_Interactive.html) | Standalone 12-slide management story; download and open in Chrome or Edge. |
+| [`data/Online Retail.xlsx`](./data/Online%20Retail.xlsx) | Raw public source workbook used by the model. |
+
+## Data and model
+
+- Publisher: [UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/352/online+retail).
+- Grain: transaction-line sales records.
+- Model: `FactSales` related to `DimDate`.
+- The PBIP query retains the original local `SourcePath`. Before refreshing on another computer, replace it in `FactSales.tmdl` with the absolute path to the included workbook.
+
+## How to review
+
+1. Open the HTML story for the executive narrative.
+2. Open the PBIX in Power BI Desktop for immediate interaction.
+3. Use the PBIP only after downloading the complete `dashboard/` directory.
+4. Review customer and product pages after establishing the overall direction on the first page.
+
+HTML controls: `←` / `→` or `Space` to navigate, `F` for fullscreen, and `O` for overview.
+
+## QA status and limits
+
+- The PBIP contains a report, semantic model, three pages, and a valid active-page reference.
+- The HTML story contains 12 slides, embedded visuals, and keyboard navigation.
+- The source task validated the dashboard definitions; a fresh Power BI Desktop reopen was not performed during repository packaging.
+- Historical transactions describe the supplied period and should not be treated as a current commercial forecast.
+
+## Portfolio talking points
+
+- Connects sales scale with customer concentration, product contribution, and return quality.
+- Demonstrates Power BI modeling, DAX, navigation, and management storytelling.
+- Publishes both a reviewer-friendly PBIX and a source-controlled PBIP structure.
