@@ -9,7 +9,7 @@ Power BI portfolio project for public-company growth, profitability, balance-she
 | Management question | Are revenue growth, margin expansion, balance-sheet resilience, and operating costs moving sustainably? |
 | What I built | A three-page Power BI report, semantic model, and a 12-slide executive story. |
 | Evidence | Apple Inc. SEC EDGAR Company Facts from forms 10-K and 10-Q. |
-| Status | PBIP, SEC source JSON, and HTML story are published; a standalone PBIX is not published. |
+| Status | PBIX, PBIP, SEC source JSON, and HTML story are published. |
 
 ## Goal
 
@@ -40,6 +40,7 @@ Build a finance review product that helps a reviewer:
 
 | Artifact | Use |
 |---|---|
+| [`Apple_Inc_Financial_Performance_Dashboard.pbix`](./Apple_Inc_Financial_Performance_Dashboard.pbix) | Packaged Power BI report for immediate review in Power BI Desktop. |
 | [`dashboard/Apple_Inc_Financial_Performance_Dashboard.pbip`](./dashboard/Apple_Inc_Financial_Performance_Dashboard.pbip) | Entry point for the complete PBIP report and semantic model. |
 | [`Apple_Inc_Financial_Performance_Interactive.html`](./Apple_Inc_Financial_Performance_Interactive.html) | Standalone 12-slide executive story; download and open in Chrome or Edge. |
 | [`data/sec-aapl-companyfacts.json`](./data/sec-aapl-companyfacts.json) | SEC EDGAR Company Facts response retained for traceability. |
@@ -54,16 +55,18 @@ Build a finance review product that helps a reviewer:
 ## How to review
 
 1. Open the HTML story for the executive interpretation.
-2. Download the complete `dashboard/` folder before opening the PBIP file.
-3. Review profitability first, then use the balance and liquidity page to challenge the operating story.
+2. Open the PBIX for immediate dashboard interaction in Power BI Desktop.
+3. For model inspection, download the complete `dashboard/` folder before opening the PBIP file.
+4. Review profitability first, then use the balance and liquidity page to challenge the operating story.
 
 HTML controls: `←` / `→` or `Space` to navigate, `F` for fullscreen, and `O` for overview.
 
 ## QA status and limits
 
 - The PBIP contains the project pointer, report definition, semantic model, three pages, and a valid active-page reference.
+- The PBIP was opened in Power BI Desktop with its visuals and data model loaded, then exported to the published PBIX.
 - The HTML story contains 12 slides, embedded visuals, and keyboard navigation.
-- A fresh Power BI Desktop reopen was not performed during repository packaging.
+- A separate post-export reopen of the PBIX was not performed during this update.
 - SEC facts can contain restatements and taxonomy changes; period selection should be reviewed before extending the model.
 - This case is analytical portfolio work, not an investment recommendation.
 

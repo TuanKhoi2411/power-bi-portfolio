@@ -13,12 +13,12 @@ This repository demonstrates how I turn business questions into controlled data 
 
 ## Portfolio index
 
-| Domain | Dashboard product | Decision supported | Main deliverables |
-|---|---|---|---|
-| Sales | [UK Online Retail — Sales Performance](./projects/sales-performance/README.md) | Where is growth coming from, which customers and products matter, and how do returns affect sales quality? | PBIX · PBIP · source data · HTML story |
-| Marketing | [Portuguese Bank — Marketing Performance](./projects/marketing-performance/README.md) | Which audiences and campaign conditions are associated with stronger subscription conversion? | PBIP · source data · HTML story |
-| Finance | [Apple Inc. — Financial Performance](./projects/finance-performance/README.md) | Are growth, margins, liquidity, and cost structure moving sustainably? | PBIP · SEC source data · HTML story |
-| Finance / BI | [Sports & Health Enterprise — Financial Performance](./projects/financial-performance-dashboard/README.md) | How can management move from a headline P&L into margin, cost, segment, and break-even drivers? | PBIX · HTML story |
+| Dashboard product | Decision supported | Main deliverables |
+|---|---|---|
+| [UK Online Retail — Sales Performance](./projects/sales-performance/README.md) | Where is growth coming from, which customers and products matter, and how do returns affect sales quality? | PBIX · PBIP · source data · HTML story |
+| [Portuguese Bank — Marketing Performance](./projects/marketing-performance/README.md) | Which audiences and campaign conditions are associated with stronger subscription conversion? | PBIX · PBIP · source data · HTML story |
+| [Apple Inc. — Financial Performance](./projects/finance-performance/README.md) | Are growth, margins, liquidity, and cost structure moving sustainably? | PBIX · PBIP · SEC source data · HTML story |
+| [Sports & Health Enterprise — Financial Performance](./projects/financial-performance-dashboard/README.md) | How can management move from a headline P&L into margin, cost, segment, and break-even drivers? | PBIX · HTML story |
 
 ## What to review
 
@@ -32,8 +32,8 @@ This repository demonstrates how I turn business questions into controlled data 
 | Project | Dashboard | Interactive story | Data included | Published status |
 |---|---:|---:|---:|---|
 | UK Online Retail | PBIX + PBIP | 12 slides | Yes | Review-ready |
-| Portuguese Bank | PBIP | 12 slides | Yes | Review-ready; PBIX not published |
-| Apple Inc. | PBIP | 12 slides | Yes | Review-ready; PBIX not published |
+| Portuguese Bank | PBIX + PBIP | 12 slides | Yes | Review-ready |
+| Apple Inc. | PBIX + PBIP | 12 slides | Yes | Review-ready |
 | Sports & Health Enterprise | PBIX | 12 slides | No separate raw file | Review-ready |
 
 ## Repository guide

@@ -9,7 +9,7 @@ Power BI portfolio project for audience segmentation, campaign effectiveness, an
 | Management question | Which audiences, channels, and campaign conditions are associated with stronger subscription conversion? |
 | What I built | A three-page Power BI report, semantic model, and a 12-slide management story. |
 | Evidence | 41,188 direct-marketing contacts from the UCI Bank Marketing dataset. |
-| Status | PBIP, source CSV, and HTML story are published; a standalone PBIX is not published. |
+| Status | PBIX, PBIP, source CSV, and HTML story are published. |
 
 ## Goal
 
@@ -40,6 +40,7 @@ Build a marketing review product that helps decision-makers:
 
 | Artifact | Use |
 |---|---|
+| [`Portuguese_Bank_Marketing_Performance_Dashboard.pbix`](./Portuguese_Bank_Marketing_Performance_Dashboard.pbix) | Packaged Power BI report for immediate review in Power BI Desktop. |
 | [`dashboard/Portuguese_Bank_Marketing_Performance_Dashboard.pbip`](./dashboard/Portuguese_Bank_Marketing_Performance_Dashboard.pbip) | Entry point for the complete PBIP report and semantic model. |
 | [`Portuguese_Bank_Marketing_Performance_Interactive.html`](./Portuguese_Bank_Marketing_Performance_Interactive.html) | Standalone 12-slide management story; download and open in Chrome or Edge. |
 | [`data/bank-additional-full.csv`](./data/bank-additional-full.csv) | Raw public source data used by the model. |
@@ -54,16 +55,18 @@ Build a marketing review product that helps decision-makers:
 ## How to review
 
 1. Open the HTML story for the decision narrative and key caveats.
-2. Download the complete `dashboard/` folder before opening the PBIP file.
-3. Start with overall conversion, then compare segments, and finish with campaign conditions.
+2. Open the PBIX for immediate dashboard interaction in Power BI Desktop.
+3. For model inspection, download the complete `dashboard/` folder before opening the PBIP file.
+4. Start with overall conversion, then compare segments, and finish with campaign conditions.
 
 HTML controls: `←` / `→` or `Space` to navigate, `F` for fullscreen, and `O` for overview.
 
 ## QA status and limits
 
 - The PBIP contains the project pointer, report definition, semantic model, three pages, and a valid active-page reference.
+- The PBIP was opened in Power BI Desktop with its visuals and data model loaded, then exported to the published PBIX.
 - The HTML story contains 12 slides, embedded visuals, and keyboard navigation.
-- A fresh Power BI Desktop reopen was not performed during repository packaging.
+- A separate post-export reopen of the PBIX was not performed during this update.
 - The model shows historical associations; it does not prove that a contact strategy caused conversion.
 
 ## Portfolio talking points
