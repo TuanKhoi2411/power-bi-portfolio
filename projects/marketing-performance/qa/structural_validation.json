@@ -1,0 +1,185 @@
+{
+  "project": "marketing-performance",
+  "generated_at": "2026-08-24T00:38:51+07:00",
+  "status": "pass",
+  "checks": {
+    "pbip_exists": true,
+    "report_folder_exists": true,
+    "semantic_model_folder_exists": true,
+    "source_exists": true,
+    "page_count_is_three": true,
+    "active_page_exists": true,
+    "page_order_resolves": true,
+    "every_page_is_1280x720": true,
+    "every_page_has_report_visuals": true
+  },
+  "measure_count": 34,
+  "active_page_name": "84ff1f563b3f8d1ef13c",
+  "page_order": [
+    "04aa72885baf39dae838",
+    "84ff1f563b3f8d1ef13c",
+    "e538d4f98f027c18f3d3"
+  ],
+  "pages": [
+    {
+      "name": "84ff1f563b3f8d1ef13c",
+      "display_name": "Audience Segmentation",
+      "width": 1280,
+      "height": 720,
+      "report_visual_count": 28,
+      "visual_types": [
+        {
+          "type": "actionButton",
+          "count": 1
+        },
+        {
+          "type": "areaChart",
+          "count": 5
+        },
+        {
+          "type": "cardVisual",
+          "count": 10
+        },
+        {
+          "type": "clusteredBarChart",
+          "count": 1
+        },
+        {
+          "type": "clusteredColumnChart",
+          "count": 1
+        },
+        {
+          "type": "donutChart",
+          "count": 1
+        },
+        {
+          "type": "lineChart",
+          "count": 1
+        },
+        {
+          "type": "pageNavigator",
+          "count": 1
+        },
+        {
+          "type": "slicer",
+          "count": 4
+        },
+        {
+          "type": "tableEx",
+          "count": 1
+        },
+        {
+          "type": "textbox",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "name": "e538d4f98f027c18f3d3",
+      "display_name": "Campaign Effectiveness",
+      "width": 1280,
+      "height": 720,
+      "report_visual_count": 28,
+      "visual_types": [
+        {
+          "type": "actionButton",
+          "count": 1
+        },
+        {
+          "type": "areaChart",
+          "count": 5
+        },
+        {
+          "type": "cardVisual",
+          "count": 10
+        },
+        {
+          "type": "clusteredBarChart",
+          "count": 1
+        },
+        {
+          "type": "clusteredColumnChart",
+          "count": 1
+        },
+        {
+          "type": "donutChart",
+          "count": 1
+        },
+        {
+          "type": "lineChart",
+          "count": 1
+        },
+        {
+          "type": "pageNavigator",
+          "count": 1
+        },
+        {
+          "type": "slicer",
+          "count": 4
+        },
+        {
+          "type": "tableEx",
+          "count": 1
+        },
+        {
+          "type": "textbox",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "name": "04aa72885baf39dae838",
+      "display_name": "Bank Marketing",
+      "width": 1280,
+      "height": 720,
+      "report_visual_count": 28,
+      "visual_types": [
+        {
+          "type": "actionButton",
+          "count": 1
+        },
+        {
+          "type": "areaChart",
+          "count": 5
+        },
+        {
+          "type": "cardVisual",
+          "count": 10
+        },
+        {
+          "type": "clusteredBarChart",
+          "count": 1
+        },
+        {
+          "type": "clusteredColumnChart",
+          "count": 1
+        },
+        {
+          "type": "donutChart",
+          "count": 1
+        },
+        {
+          "type": "lineChart",
+          "count": 1
+        },
+        {
+          "type": "pageNavigator",
+          "count": 1
+        },
+        {
+          "type": "slicer",
+          "count": 4
+        },
+        {
+          "type": "tableEx",
+          "count": 1
+        },
+        {
+          "type": "textbox",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "scope_note": "Structural PBIP/PBIR/TMDL validation only. This does not replace refresh, reconciliation, interaction, or Power BI Desktop reopen QA."
+}

@@ -1,0 +1,76 @@
+// Canonical Power Query M exported from TMDL.
+// Update SourcePath before refresh on another machine.
+
+let
+    SourcePath = "C:\\Users\\ADMIN\\Documents\\Codex\\2026-07-22\\computer-use-plugin-computer-use-openai\\public-business-pbip\\data\\raw\\sec-aapl-companyfacts.json",
+    Source = Json.Document(File.Contents(SourcePath)),
+    UsGaap = Source[facts][#"us-gaap"],
+    ConceptMap = #table(
+        type table [Concept = text, DisplayMetric = text, MetricClass = text, MetricSort = Int64.Type],
+        {
+            {"RevenueFromContractWithCustomerExcludingAssessedTax", "Revenue", "Flow", 1},
+            {"SalesRevenueNet", "Revenue", "Flow", 1},
+            {"CostOfGoodsAndServicesSold", "Cost of Sales", "Flow", 2},
+            {"GrossProfit", "Gross Profit", "Flow", 3},
+            {"OperatingExpenses", "Operating Expenses", "Flow", 4},
+            {"OperatingIncomeLoss", "Operating Income", "Flow", 5},
+            {"NetIncomeLoss", "Net Income", "Flow", 6},
+            {"CashAndCashEquivalentsAtCarryingValue", "Cash & Equivalents", "Balance", 7},
+            {"Assets", "Total Assets", "Balance", 8},
+            {"Liabilities", "Total Liabilities", "Balance", 9}
+        }
+    ),
+    AddFacts = Table.AddColumn(
+        ConceptMap,
+        "Facts",
+        each
+            let
+                ConceptRecord = try Record.Field(UsGaap, [Concept]) otherwise null,
+                UnitRows = if ConceptRecord = null then {} else try ConceptRecord[units][USD] otherwise {}
+            in
+                UnitRows,
+        type list
+    ),
+    ExpandFactsList = Table.ExpandListColumn(AddFacts, "Facts"),
+    ExpandFacts = Table.ExpandRecordColumn(
+        ExpandFactsList,
+        "Facts",
+        {"start", "end", "val", "accn", "fy", "fp", "form", "filed", "frame"},
+        {"StartDate", "EndDate", "Value", "AccessionNumber", "FiscalYear", "FiscalPeriod", "Form", "FiledDate", "Frame"}
+    ),
+    Typed = Table.TransformColumnTypes(
+        ExpandFacts,
+        {
+            {"StartDate", type date}, {"EndDate", type date}, {"Value", Currency.Type},
+            {"FiscalYear", Int64.Type}, {"FiledDate", type date}, {"Frame", type text}
+        },
+        "en-US"
+    ),
+    FilterForms = Table.SelectRows(Typed, each ([Form] = "10-K" or [Form] = "10-Q") and [Frame] <> null),
+    FilterFrameClass = Table.SelectRows(
+        FilterForms,
+        each if [MetricClass] = "Balance" then Text.EndsWith([Frame], "I") else not Text.EndsWith([Frame], "I")
+    ),
+    AddPeriodType = Table.AddColumn(
+        FilterFrameClass,
+        "PeriodType",
+        each if Text.Contains([Frame], "Q") then "Quarter" else "Year",
+        type text
+    ),
+    AddPeriodLabel = Table.AddColumn(
+        AddPeriodType,
+        "PeriodLabel",
+        each if [PeriodType] = "Quarter" then Text.Start([Frame], 6) & " " & Text.Middle([Frame], 6, 2) else Text.Start([Frame], 6),
+        type text
+    ),
+    SortedForDedup = Table.Sort(AddPeriodLabel, {{"FiledDate", Order.Descending}, {"Concept", Order.Ascending}}),
+    Deduplicated = Table.Distinct(SortedForDedup, {"DisplayMetric", "MetricClass", "EndDate", "Frame", "Form"}),
+    AddCompany = Table.AddColumn(Deduplicated, "Company", each Source[entityName], type text),
+    AddCik = Table.AddColumn(AddCompany, "CIK", each Text.PadStart(Text.From(Source[cik]), 10, "0"), type text),
+    Reordered = Table.ReorderColumns(
+        AddCik,
+        {"Company", "CIK", "DisplayMetric", "Concept", "MetricClass", "MetricSort", "PeriodType", "PeriodLabel", "StartDate", "EndDate", "FiscalYear", "FiscalPeriod", "Value", "Form", "FiledDate", "Frame", "AccessionNumber"}
+    )
+in
+    Reordered
+

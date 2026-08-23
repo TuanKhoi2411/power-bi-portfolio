@@ -5,7 +5,8 @@ This project is a rebuildable Marketing analytics product based on the public UC
 ## Read first
 
 - `README.md`
-- every document in `agent/`
+- `BI_Dashboard_Creation_Prompt.md`
+- every document in `agent/`, `model/`, `powerbi/`, `qa/`, and `docs/`
 
 ## Canonical artifacts
 

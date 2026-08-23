@@ -11,7 +11,7 @@ This project is a rebuildable Finance dashboard based on Apple Inc. SEC EDGAR co
 - PBIX: `Apple_Inc_Financial_Performance_Dashboard.pbix`
 - Story: `Apple_Inc_Financial_Performance_Interactive.html`
 
-Read `README.md` and all files in `agent/` before changing the project.
+Read `README.md`, `BI_Dashboard_Creation_Prompt.md`, and all files in `agent/`, `model/`, `powerbi/`, `qa/`, and `docs/` before changing the project.
 
 ## Guardrails
 

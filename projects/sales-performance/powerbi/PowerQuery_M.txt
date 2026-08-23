@@ -1,0 +1,40 @@
+// Canonical Power Query M exported from TMDL.
+// Update SourcePath before refresh on another machine.
+
+let
+    SourcePath = "C:\\Users\\ADMIN\\Documents\\Codex\\2026-07-22\\computer-use-plugin-computer-use-openai\\public-business-pbip\\data\\raw\\uci-online-retail\\Online Retail.xlsx",
+    Workbook = Excel.Workbook(File.Contents(SourcePath), null, true),
+    RawSheet = Workbook{[Item="Online Retail", Kind="Sheet"]}[Data],
+    PromotedHeaders = Table.PromoteHeaders(RawSheet, [PromoteAllScalars=true]),
+    Typed = Table.TransformColumnTypes(
+        PromotedHeaders,
+        {
+            {"InvoiceNo", type text}, {"StockCode", type text}, {"Description", type text},
+            {"Quantity", Int64.Type}, {"InvoiceDate", type datetime}, {"UnitPrice", Currency.Type},
+            {"CustomerID", type text}, {"Country", type text}
+        },
+        "en-GB"
+    ),
+    CleanText = Table.TransformColumns(
+        Typed,
+        {
+            {"InvoiceNo", each Text.Trim(_), type text},
+            {"StockCode", each Text.Trim(_), type text},
+            {"Description", each if _ = null then "Unknown product" else Text.Trim(_), type text},
+            {"CustomerID", each if _ = null or Text.Trim(_) = "" then "Unknown" else Text.Trim(_), type text},
+            {"Country", each Text.Trim(_), type text}
+        }
+    ),
+    AddLineId = Table.AddIndexColumn(CleanText, "SalesLineId", 1, 1, Int64.Type),
+    AddDate = Table.AddColumn(AddLineId, "SalesDate", each Date.From([InvoiceDate]), type date),
+    AddCancellation = Table.AddColumn(AddDate, "IsCancellation", each Text.StartsWith(Text.Upper([InvoiceNo]), "C") or [Quantity] < 0, type logical),
+    AddTransactionType = Table.AddColumn(AddCancellation, "TransactionType", each if [IsCancellation] then "Return / cancellation" else "Sale", type text),
+    AddNetSales = Table.AddColumn(AddTransactionType, "NetSalesAmount", each Number.Round([Quantity] * [UnitPrice], 2), Currency.Type),
+    AddGrossSales = Table.AddColumn(AddNetSales, "GrossSalesAmount", each if not [IsCancellation] and [Quantity] > 0 and [UnitPrice] > 0 then Number.Round([Quantity] * [UnitPrice], 2) else 0, Currency.Type),
+    AddReturnAmount = Table.AddColumn(AddGrossSales, "ReturnAmount", each if [IsCancellation] or [Quantity] < 0 then Number.Abs(Number.Round([Quantity] * [UnitPrice], 2)) else 0, Currency.Type),
+    AddUnitsSold = Table.AddColumn(AddReturnAmount, "UnitsSold", each if not [IsCancellation] and [Quantity] > 0 then [Quantity] else 0, Int64.Type),
+    AddReturnedUnits = Table.AddColumn(AddUnitsSold, "ReturnedUnits", each if [Quantity] < 0 then Number.Abs([Quantity]) else 0, Int64.Type),
+    AddValidPrice = Table.AddColumn(AddReturnedUnits, "HasValidPrice", each [UnitPrice] > 0, type logical)
+in
+    AddValidPrice
+

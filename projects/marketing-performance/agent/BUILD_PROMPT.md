@@ -1,5 +1,7 @@
 # Agent build prompt — Portuguese Bank Marketing Performance
 
+Canonical full specification: `../BI_Dashboard_Creation_Prompt.md`. Read it before using this compact execution brief.
+
 ## Objective
 
 Build or enhance a three-page Power BI Marketing dashboard that answers:

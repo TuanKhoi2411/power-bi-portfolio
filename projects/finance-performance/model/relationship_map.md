@@ -1,0 +1,11 @@
+# Relationship map
+
+Canonical TMDL relationship definition:
+
+```text
+relationship 6f6298af-2558-45bc-9001-140fdfd00002
+	fromColumn: FactFinance.EndDate
+	toColumn: DimDate.Date
+
+
+```

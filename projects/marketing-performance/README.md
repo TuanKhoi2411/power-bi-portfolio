@@ -77,4 +77,4 @@ HTML controls: `←` / `→` or `Space` to navigate, `F` for fullscreen, and `O`
 
 ## Agent build package
 
-To rebuild or extend this dashboard with an agent, start with [project instructions](./AGENTS.md), then use the [copy-ready build prompt](./agent/BUILD_PROMPT.md), [data/model contract](./agent/DATA_MODEL_SPEC.md), [report blueprint](./agent/REPORT_SPEC.md), and [build/QA checklist](./agent/BUILD_AND_QA.md).
+To rebuild or extend this dashboard with an agent, start with the [full creation prompt](./BI_Dashboard_Creation_Prompt.md) and [project instructions](./AGENTS.md). The package also includes [exact DAX](./model/measures.dax), [measure catalog](./model/measure_catalog.csv), [data dictionary](./model/data_dictionary.md), [Power Query](./powerbi/PowerQuery_M.txt), [PBIX build instructions](./powerbi/PBIX_build_instructions.md), [creation history](./docs/creation_history.md), and [QA results](./qa/validation_results.md).

@@ -1,0 +1,177 @@
+{
+  "project": "sales-performance",
+  "generated_at": "2026-08-24T00:38:51+07:00",
+  "status": "pass",
+  "checks": {
+    "pbip_exists": true,
+    "report_folder_exists": true,
+    "semantic_model_folder_exists": true,
+    "source_exists": true,
+    "page_count_is_three": true,
+    "active_page_exists": true,
+    "page_order_resolves": true,
+    "every_page_is_1280x720": true,
+    "every_page_has_report_visuals": true
+  },
+  "measure_count": 74,
+  "active_page_name": "96519703efc52905567d",
+  "page_order": [
+    "1263645aabc43962e0c0",
+    "94d0f9a7c2db7a903fe4",
+    "96519703efc52905567d"
+  ],
+  "pages": [
+    {
+      "name": "94d0f9a7c2db7a903fe4",
+      "display_name": "Customer Insights",
+      "width": 1280,
+      "height": 720,
+      "report_visual_count": 28,
+      "visual_types": [
+        {
+          "type": "actionButton",
+          "count": 1
+        },
+        {
+          "type": "areaChart",
+          "count": 5
+        },
+        {
+          "type": "cardVisual",
+          "count": 10
+        },
+        {
+          "type": "clusteredBarChart",
+          "count": 1
+        },
+        {
+          "type": "clusteredColumnChart",
+          "count": 1
+        },
+        {
+          "type": "donutChart",
+          "count": 1
+        },
+        {
+          "type": "lineChart",
+          "count": 1
+        },
+        {
+          "type": "pageNavigator",
+          "count": 1
+        },
+        {
+          "type": "slicer",
+          "count": 4
+        },
+        {
+          "type": "tableEx",
+          "count": 1
+        },
+        {
+          "type": "textbox",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "name": "96519703efc52905567d",
+      "display_name": "Product & Returns",
+      "width": 1280,
+      "height": 720,
+      "report_visual_count": 28,
+      "visual_types": [
+        {
+          "type": "actionButton",
+          "count": 1
+        },
+        {
+          "type": "areaChart",
+          "count": 5
+        },
+        {
+          "type": "cardVisual",
+          "count": 10
+        },
+        {
+          "type": "clusteredBarChart",
+          "count": 2
+        },
+        {
+          "type": "clusteredColumnChart",
+          "count": 1
+        },
+        {
+          "type": "lineChart",
+          "count": 1
+        },
+        {
+          "type": "pageNavigator",
+          "count": 1
+        },
+        {
+          "type": "slicer",
+          "count": 4
+        },
+        {
+          "type": "tableEx",
+          "count": 1
+        },
+        {
+          "type": "textbox",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "name": "1263645aabc43962e0c0",
+      "display_name": "UK Retail Sales",
+      "width": 1280,
+      "height": 720,
+      "report_visual_count": 28,
+      "visual_types": [
+        {
+          "type": "actionButton",
+          "count": 1
+        },
+        {
+          "type": "areaChart",
+          "count": 5
+        },
+        {
+          "type": "cardVisual",
+          "count": 10
+        },
+        {
+          "type": "clusteredBarChart",
+          "count": 2
+        },
+        {
+          "type": "donutChart",
+          "count": 1
+        },
+        {
+          "type": "lineChart",
+          "count": 1
+        },
+        {
+          "type": "pageNavigator",
+          "count": 1
+        },
+        {
+          "type": "slicer",
+          "count": 4
+        },
+        {
+          "type": "tableEx",
+          "count": 1
+        },
+        {
+          "type": "textbox",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "scope_note": "Structural PBIP/PBIR/TMDL validation only. This does not replace refresh, reconciliation, interaction, or Power BI Desktop reopen QA."
+}

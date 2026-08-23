@@ -4,7 +4,7 @@ This document makes the portfolio actionable for a coding or computer-use agent.
 
 ## 1. Select exactly one project
 
-Work inside one `projects/<project-name>/` directory unless the request explicitly covers multiple projects. Read its `AGENTS.md` and `agent/BUILD_PROMPT.md` before editing.
+Work inside one `projects/<project-name>/` directory unless the request explicitly covers multiple projects. For PBIP projects, read `AGENTS.md`, `BI_Dashboard_Creation_Prompt.md`, and every file in `agent/`, `model/`, `powerbi/`, `qa/`, and `docs/` before editing.
 
 ## 2. Establish artifact truth
 
@@ -87,4 +87,4 @@ Report:
 
 Use this with any capable agent:
 
-> Work on `<project path>`. Follow the repository and project `AGENTS.md` files. Read all files in `agent/`, inspect the canonical PBIP/PBIX and source data, implement the requested change, run the documented QA, and report limitations without inventing evidence.
+> Work on `<project path>`. Follow the repository and project `AGENTS.md` files. Read `BI_Dashboard_Creation_Prompt.md` and all files in `agent/`, `model/`, `powerbi/`, `qa/`, and `docs/`; inspect the canonical PBIP/PBIX and source data; implement the requested change; regenerate model documentation; run the documented QA; and report limitations without inventing evidence.

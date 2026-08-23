@@ -53,7 +53,7 @@ The current Power Query partition may contain a machine-specific `SourcePath`. B
 
 ## Minimum reconciliation
 
-- `Net Sales = Gross Sales - Return Amount` under the model's sign convention.
+- Reconcile Gross Sales, Return Amount, and signed Net Sales independently to their Power Query definitions. Do not force `Net Sales = Gross Sales - Return Amount`: administrative, invalid-price, or exceptional rows can create a documented residual because the three measures intentionally apply different validity/classification rules.
 - Order count uses distinct invoice logic.
 - Customer count excludes null IDs only from identified-customer measures, not from total sales.
 - Return Rate denominator is documented and stable.

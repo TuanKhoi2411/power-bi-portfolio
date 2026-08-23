@@ -51,7 +51,7 @@ projects/<project-name>/
 
 ## Agent-ready build packages
 
-Each project now includes an `AGENTS.md` and an `agent/` handoff package covering the reusable build prompt, data/model contract, report blueprint, build procedure, QA checks, and known limitations. Start with [the repository agent workflow](./docs/AGENT_WORKFLOW.md).
+Each PBIP project now includes a full `BI_Dashboard_Creation_Prompt.md`, exact exported DAX, measure catalog, data dictionary, relationship/model notes, Power Query M, PBIX build instructions, creation provenance, structural validation, and QA checklist. Start with [the repository agent workflow](./docs/AGENT_WORKFLOW.md), [the recovered build provenance](./docs/BUILD_PROVENANCE.md), and [the reference implementation notes](./docs/REFERENCE_IMPLEMENTATION_NOTES.md).
 
 | Project | Agent package | Supported mode |
 |---|---|---|

@@ -1,0 +1,63 @@
+// Canonical Power Query M exported from TMDL.
+// Update SourcePath before refresh on another machine.
+
+let
+    SourcePath = "C:\\Users\\ADMIN\\Documents\\Codex\\2026-07-22\\computer-use-plugin-computer-use-openai\\public-business-pbip\\data\\raw\\uci-bank-marketing\\bank-additional\\bank-additional\\bank-additional-full.csv",
+    RawCsv = Csv.Document(File.Contents(SourcePath), [Delimiter=";", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+    PromotedHeaders = Table.PromoteHeaders(RawCsv, [PromoteAllScalars=true]),
+    Typed = Table.TransformColumnTypes(
+        PromotedHeaders,
+        {
+            {"age", Int64.Type}, {"job", type text}, {"marital", type text}, {"education", type text},
+            {"default", type text}, {"housing", type text}, {"loan", type text}, {"contact", type text},
+            {"month", type text}, {"day_of_week", type text}, {"duration", Int64.Type}, {"campaign", Int64.Type},
+            {"pdays", Int64.Type}, {"previous", Int64.Type}, {"poutcome", type text},
+            {"emp.var.rate", type number}, {"cons.price.idx", type number}, {"cons.conf.idx", type number},
+            {"euribor3m", type number}, {"nr.employed", type number}, {"y", type text}
+        },
+        "en-US"
+    ),
+    AddContactId = Table.AddIndexColumn(Typed, "ContactId", 1, 1, Int64.Type),
+    AddConverted = Table.AddColumn(AddContactId, "Converted", each if [y] = "yes" then 1 else 0, Int64.Type),
+    AddMonthNumber = Table.AddColumn(
+        AddConverted,
+        "CampaignMonthNumber",
+        each List.PositionOf({"jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec"}, [month]) + 1,
+        Int64.Type
+    ),
+    AddMonthName = Table.AddColumn(AddMonthNumber, "CampaignMonth", each Date.MonthName(#date(2000, [CampaignMonthNumber], 1), "en-US"), type text),
+    AddCampaignDate = Table.AddColumn(AddMonthName, "CampaignDate", each #date(2000, [CampaignMonthNumber], 1), type date),
+    AddAgeBand = Table.AddColumn(
+        AddCampaignDate,
+        "AgeBand",
+        each if [age] < 30 then "Under 30" else if [age] < 40 then "30–39" else if [age] < 50 then "40–49" else if [age] < 60 then "50–59" else "60+",
+        type text
+    ),
+    AddDurationBand = Table.AddColumn(
+        AddAgeBand,
+        "DurationBand",
+        each if [duration] < 60 then "Under 1 min" else if [duration] < 180 then "1–3 min" else if [duration] < 300 then "3–5 min" else if [duration] < 600 then "5–10 min" else "10+ min",
+        type text
+    ),
+    AddContactBand = Table.AddColumn(
+        AddDurationBand,
+        "ContactFrequencyBand",
+        each if [campaign] = 1 then "1 contact" else if [campaign] <= 3 then "2–3 contacts" else if [campaign] <= 5 then "4–5 contacts" else "6+ contacts",
+        type text
+    ),
+    AddPriorContact = Table.AddColumn(AddContactBand, "PriorContacted", each if [previous] > 0 then "Previously contacted" else "First-time contact", type text),
+    Renamed = Table.RenameColumns(
+        AddPriorContact,
+        {
+            {"age", "Age"}, {"job", "Job"}, {"marital", "MaritalStatus"}, {"education", "Education"},
+            {"default", "CreditDefault"}, {"housing", "HousingLoan"}, {"loan", "PersonalLoan"},
+            {"contact", "ContactChannel"}, {"day_of_week", "ContactDayOfWeek"}, {"duration", "DurationSeconds"},
+            {"campaign", "CampaignContacts"}, {"pdays", "DaysSincePriorContact"}, {"previous", "PriorContacts"},
+            {"poutcome", "PriorOutcome"}, {"emp.var.rate", "EmploymentVariationRate"},
+            {"cons.price.idx", "ConsumerPriceIndex"}, {"cons.conf.idx", "ConsumerConfidenceIndex"},
+            {"euribor3m", "Euribor3Month"}, {"nr.employed", "NumberEmployed"}, {"y", "SubscriptionOutcome"}
+        }
+    )
+in
+    Renamed
+

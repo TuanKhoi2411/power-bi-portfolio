@@ -5,10 +5,12 @@ This project is a rebuildable Sales analytics product based on public UCI Online
 ## Read first
 
 - `README.md`
+- `BI_Dashboard_Creation_Prompt.md`
 - `agent/BUILD_PROMPT.md`
 - `agent/DATA_MODEL_SPEC.md`
 - `agent/REPORT_SPEC.md`
 - `agent/BUILD_AND_QA.md`
+- every file in `model/`, `powerbi/`, `qa/`, and `docs/`
 
 ## Canonical artifacts
 

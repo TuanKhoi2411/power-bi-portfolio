@@ -20,6 +20,22 @@ $requiredAgentFiles = @(
     'agent/BUILD_AND_QA.md'
 )
 
+$requiredPbipDocumentation = @(
+    'BI_Dashboard_Creation_Prompt.md',
+    'docs/creation_history.md',
+    'model/data_dictionary.md',
+    'model/measure_catalog.csv',
+    'model/measures.dax',
+    'model/metric_definitions.md',
+    'model/relationship_map.md',
+    'model/semantic_model_notes.md',
+    'powerbi/PBIX_build_instructions.md',
+    'powerbi/PowerQuery_M.txt',
+    'qa/qa_checklist.md',
+    'qa/structural_validation.json',
+    'qa/validation_results.md'
+)
+
 foreach ($project in $projects) {
     $projectRoot = Join-Path $RepositoryRoot "projects/$($project.Name)"
     foreach ($relativePath in $requiredAgentFiles + @('README.md', $project.Entry)) {
@@ -30,6 +46,12 @@ foreach ($project in $projects) {
     }
 
     if ($project.Mode -eq 'pbip') {
+        foreach ($relativePath in $requiredPbipDocumentation) {
+            $candidate = Join-Path $projectRoot $relativePath
+            if (-not (Test-Path -LiteralPath $candidate)) {
+                $failures.Add("Missing detailed PBIP documentation: projects/$($project.Name)/$relativePath")
+            }
+        }
         $sourcePath = Join-Path $projectRoot $project.Source
         if (-not (Test-Path -LiteralPath $sourcePath)) {
             $failures.Add("Missing source for rebuildable project: projects/$($project.Name)/$($project.Source)")
