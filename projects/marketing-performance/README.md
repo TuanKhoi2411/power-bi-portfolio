@@ -74,3 +74,7 @@ HTML controls: `←` / `→` or `Space` to navigate, `F` for fullscreen, and `O`
 - Demonstrates audience segmentation without overstating causality.
 - Connects campaign KPIs to drill-down questions and management interpretation.
 - Keeps the raw public source, model, report, and narrative artifact together.
+
+## Agent build package
+
+To rebuild or extend this dashboard with an agent, start with [project instructions](./AGENTS.md), then use the [copy-ready build prompt](./agent/BUILD_PROMPT.md), [data/model contract](./agent/DATA_MODEL_SPEC.md), [report blueprint](./agent/REPORT_SPEC.md), and [build/QA checklist](./agent/BUILD_AND_QA.md).

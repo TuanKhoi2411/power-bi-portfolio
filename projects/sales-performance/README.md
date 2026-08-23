@@ -73,3 +73,7 @@ HTML controls: `←` / `→` or `Space` to navigate, `F` for fullscreen, and `O`
 - Connects sales scale with customer concentration, product contribution, and return quality.
 - Demonstrates Power BI modeling, DAX, navigation, and management storytelling.
 - Publishes both a reviewer-friendly PBIX and a source-controlled PBIP structure.
+
+## Agent build package
+
+To rebuild or extend this dashboard with an agent, start with [project instructions](./AGENTS.md), then use the [copy-ready build prompt](./agent/BUILD_PROMPT.md), [data/model contract](./agent/DATA_MODEL_SPEC.md), [report blueprint](./agent/REPORT_SPEC.md), and [build/QA checklist](./agent/BUILD_AND_QA.md).

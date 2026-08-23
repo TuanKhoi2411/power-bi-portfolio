@@ -49,6 +49,17 @@ projects/<project-name>/
 └── data/                    # included public source file where available
 ```
 
+## Agent-ready build packages
+
+Each project now includes an `AGENTS.md` and an `agent/` handoff package covering the reusable build prompt, data/model contract, report blueprint, build procedure, QA checks, and known limitations. Start with [the repository agent workflow](./docs/AGENT_WORKFLOW.md).
+
+| Project | Agent package | Supported mode |
+|---|---|---|
+| UK Online Retail | [Open instructions](./projects/sales-performance/AGENTS.md) | Full PBIP rebuild or enhancement |
+| Portuguese Bank | [Open instructions](./projects/marketing-performance/AGENTS.md) | Full PBIP rebuild or enhancement |
+| Apple Inc. | [Open instructions](./projects/finance-performance/AGENTS.md) | Full PBIP rebuild or enhancement |
+| Sports & Health Enterprise | [Open instructions](./projects/financial-performance-dashboard/AGENTS.md) | Existing-PBIX enhancement; source/PBIP not published |
+
 ## Quality standard
 
 - Management question before charts.

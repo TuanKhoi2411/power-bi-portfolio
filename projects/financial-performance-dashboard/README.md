@@ -68,3 +68,7 @@ HTML controls: `←` / `→` or `Space` to navigate, `F` for fullscreen, and `O`
 - Moves from headline P&L reporting into margin, cost, segment, and resilience decisions.
 - Connects operating evidence to an explicit 90-day action agenda.
 - Demonstrates finance storytelling alongside interactive Power BI delivery.
+
+## Agent enhancement package
+
+This project currently supports in-place PBIX enhancement, not a from-scratch rebuild. Start with [project instructions](./AGENTS.md), then use the [agent prompt](./agent/BUILD_PROMPT.md), [known model specification](./agent/DATA_MODEL_SPEC.md), [report blueprint](./agent/REPORT_SPEC.md), and [build/QA checklist](./agent/BUILD_AND_QA.md). The raw source and PBIP must be added before this project can be classified as fully rebuildable.
