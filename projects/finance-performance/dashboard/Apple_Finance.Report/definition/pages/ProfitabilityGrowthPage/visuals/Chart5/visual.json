@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "3b3006ea11eb6c8116e4",
   "position": {
     "x": 740,
     "y": 455,
-    "z": 23000,
+    "z": 22000,
     "height": 235,
     "width": 515,
-    "tabOrder": 23000
+    "tabOrder": 22000
   },
   "visual": {
     "visualType": "tableEx",
@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "FactFinance"
+                      "Entity": "DimDate"
                     }
                   },
-                  "Property": "EndDate"
+                  "Property": "Date"
                 }
               },
-              "queryRef": "FactFinance.EndDate",
+              "queryRef": "DimDate.Date",
               "nativeQueryRef": "Quarter",
               "displayName": "Quarter"
             },
@@ -53,12 +53,12 @@
                       "Entity": "FactFinance"
                     }
                   },
-                  "Property": "Quarterly Gross Profit"
+                  "Property": "Operating Leverage Spread"
                 }
               },
-              "queryRef": "FactFinance.Quarterly Gross Profit",
-              "nativeQueryRef": "Gross Profit",
-              "displayName": "Gross Profit"
+              "queryRef": "FactFinance.Operating Leverage Spread",
+              "nativeQueryRef": "Op. Leverage",
+              "displayName": "Op. Leverage"
             },
             {
               "field": {
@@ -68,12 +68,12 @@
                       "Entity": "FactFinance"
                     }
                   },
-                  "Property": "Quarterly Operating Income"
+                  "Property": "Quarterly Operating Expense Ratio"
                 }
               },
-              "queryRef": "FactFinance.Quarterly Operating Income",
-              "nativeQueryRef": "Operating Income",
-              "displayName": "Operating Income"
+              "queryRef": "FactFinance.Quarterly Operating Expense Ratio",
+              "nativeQueryRef": "Opex %",
+              "displayName": "Opex %"
             },
             {
               "field": {
@@ -83,55 +83,10 @@
                       "Entity": "FactFinance"
                     }
                   },
-                  "Property": "Quarterly Net Income"
+                  "Property": "Quarterly Net Margin"
                 }
               },
-              "queryRef": "FactFinance.Quarterly Net Income",
-              "nativeQueryRef": "Net Income",
-              "displayName": "Net Income"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "FactFinance"
-                    }
-                  },
-                  "Property": "Gross Margin"
-                }
-              },
-              "queryRef": "FactFinance.Gross Margin",
-              "nativeQueryRef": "Gross Margin",
-              "displayName": "Gross Margin"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "FactFinance"
-                    }
-                  },
-                  "Property": "Operating Margin"
-                }
-              },
-              "queryRef": "FactFinance.Operating Margin",
-              "nativeQueryRef": "Operating Margin",
-              "displayName": "Operating Margin"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "FactFinance"
-                    }
-                  },
-                  "Property": "Net Margin"
-                }
-              },
-              "queryRef": "FactFinance.Net Margin",
+              "queryRef": "FactFinance.Quarterly Net Margin",
               "nativeQueryRef": "Net Margin",
               "displayName": "Net Margin"
             }
@@ -153,7 +108,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Profitability Detail'"
+                  "Value": "'Quarterly Profitability Drivers'"
                 }
               }
             },
@@ -231,7 +186,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#D8E7E4'"
+                      "Value": "'#D8E5E2'"
                     }
                   }
                 }
@@ -240,7 +195,7 @@
             "radius": {
               "expr": {
                 "Literal": {
-                  "Value": "6D"
+                  "Value": "9D"
                 }
               }
             }
@@ -262,7 +217,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#829A97'"
+                      "Value": "'#6E8F88'"
                     }
                   }
                 }
@@ -271,21 +226,21 @@
             "transparency": {
               "expr": {
                 "Literal": {
-                  "Value": "82D"
+                  "Value": "88D"
                 }
               }
             },
             "shadowBlur": {
               "expr": {
                 "Literal": {
-                  "Value": "6D"
+                  "Value": "5D"
                 }
               }
             },
             "shadowDistance": {
               "expr": {
                 "Literal": {
-                  "Value": "2D"
+                  "Value": "1D"
                 }
               }
             },
@@ -293,6 +248,19 @@
               "expr": {
                 "Literal": {
                   "Value": "45D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Quarterly Profitability Drivers'"
                 }
               }
             }

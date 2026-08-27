@@ -1,0 +1,20 @@
+table DimTransactionType
+	lineageTag: 3391ce32-0545-4b71-a40b-dfcfa011f007
+
+	column TransactionTypeKey
+		dataType: string
+		isKey
+		lineageTag: 1ed90899-210a-4fea-9b58-20fbfa02f008
+		summarizeBy: none
+		sourceColumn: [TransactionTypeKey]
+
+	column TransactionType
+		dataType: string
+		lineageTag: 227f106a-4c94-4ed3-bf68-30232953f009
+		summarizeBy: none
+		sourceColumn: [TransactionType]
+
+	partition DimTransactionType = calculated
+		mode: import
+		source = DISTINCT ( SELECTCOLUMNS ( FactSales, "TransactionTypeKey", FactSales[TransactionTypeKey], "TransactionType", FactSales[TransactionType] ) )
+

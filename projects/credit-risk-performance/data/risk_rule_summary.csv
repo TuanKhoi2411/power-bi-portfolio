@@ -1,0 +1,7 @@
+Rule,RuleSource,Loans,BadLoans,BadRate,LiftVsSeasonedPortfolio
+"Grade score > 2.5 AND Term months > 48.0 AND Annual income <= $84,540 AND Interest rate > 18.8%",Decision tree leaf 1,1211,254,0.2097440132122213,3.688287364700863
+Income < $30K AND interest > 17% AND grade E/F/G,Assignment hypothesis,183,29,0.15846994535519127,2.786647819821213
+"Grade score > 2.5 AND Term months > 48.0 AND Annual income <= $84,540 AND Interest rate <= 18.8%",Decision tree leaf 2,2034,298,0.14650934119960668,2.5763240803941616
+"Grade score > 2.5 AND Term months > 48.0 AND Annual income > $84,540 AND Interest rate > 19.9%",Decision tree leaf 3,532,74,0.13909774436090225,2.4459933093089745
+Term = 60 months AND grade C,Assignment example,1282,150,0.11700468018720749,2.0574932124937404
+Grade score > 2.5 AND Term months <= 48.0 AND Grade score > 3.5 AND Grade score > 4.5,Decision tree leaf 4,1670,195,0.11676646706586827,2.053304304156927

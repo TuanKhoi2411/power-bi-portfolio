@@ -1,29 +1,24 @@
-# PBIX build instructions
+# PBIX Build Instructions
 
-## Targets
+## Target
 
-- PBIP: `../dashboard/Apple_Inc_Financial_Performance_Dashboard.pbip`
-- PBIX: `../Apple_Inc_Financial_Performance_Dashboard.pbix`
-- Source: `../data/sec-aapl-companyfacts.json`
+- PBIP entry point: `dashboard/Apple_Finance.pbip`
+- Packaged output: `Apple_Inc_Financial_Performance_Dashboard.pbix`
+- Canonical source: `C:\PowerBI Dashboard - KhoiPort`
 
-## Build steps
+## Build
 
-1. Open the complete PBIP in Power BI Desktop.
-2. Replace the local JSON `SourcePath` with the repository SEC file.
-3. Refresh and inspect concept mapping, USD units, form, filing date, accession, frame, fiscal period, and instant/duration classification.
-4. Confirm `FactFinance[EndDate]` → `DimDate[Date]`.
-5. Confirm all 90 measures and three 1280×720 pages.
-6. Reconcile representative income-statement and balance-sheet periods.
-7. Test navigation, reset, slicers, cross-filtering, period compatibility, and filing detail.
-8. Save PBIP; use **File → Save As** to update the PBIX.
-9. Close/reopen PBIX and repeat a smoke/reconciliation test.
+1. Download the complete project folder; a `.pbip` file is only an entry point.
+2. Open `dashboard/Apple_Finance.pbip` in Power BI Desktop.
+3. If refresh fails, update the source path to the included/public source documented in the README.
+4. Refresh and resolve errors before changing visuals.
+5. Validate the page set: Overview, Profitability & Growth, Balance & Liquidity.
+6. Compare the semantic model with `model/model_inventory.md` and exact measures with `model/measures.dax`.
+7. Run the QA checklist, save the PBIP, then export `Apple_Inc_Financial_Performance_Dashboard.pbix`.
+8. Regenerate the dashboard PDF in `preview/`; portfolio images are rendered from this PDF, not from slide artwork.
 
-## Documentation/validation commands
+## Guardrails
 
-```powershell
-./scripts/export-model-documentation.ps1
-./scripts/validate-pbip-structure.ps1
-./scripts/validate-agent-packages.ps1
-```
-
-Structural pass is not Desktop acceptance. Record refresh/reopen and accounting reconciliation separately.
+- Do not edit files inside `.pbi/`; they are local caches/settings.
+- Do not publish secrets, credentials, private data, or local absolute paths.
+- Do not rename tables or measures without updating visuals, documentation, and QA.

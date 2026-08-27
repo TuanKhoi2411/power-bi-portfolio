@@ -1,142 +1,399 @@
-// Auto-exported from the canonical TMDL semantic model.
-// Project: marketing-performance
-// Measure table: FactMarketing
-// Measure count: 34
-// Regenerate with scripts/export-model-documentation.ps1 after TMDL changes.
+-- Extracted from the current canonical KhoiPort PBIP on 2026-08-27.
+-- Portuguese Bank — Marketing Performance
 
-// Display folder: Marketing\Core
-// Format string: #,0
-[Contacts] = COUNTROWS ( FactMarketing )
+Contacts =
+COUNTROWS ( FactMarketing )
+		formatString: #,0
+		displayFolder: Marketing\Core
+		lineageTag: 17306521-a8c0-4a97-8d2d-d9b58f2715f2
 
-// Display folder: Marketing\Core
-// Format string: #,0
-[Conversions] = SUM ( FactMarketing[Converted] )
+Conversions =
+SUM ( FactMarketing[Converted] )
+		formatString: #,0
+		displayFolder: Marketing\Core
+		lineageTag: 7cca8780-7f85-4f83-bd75-04a14626b759
 
-// Display folder: Marketing\Core
-// Format string: 0.0%
-[Conversion Rate] = DIVIDE ( [Conversions], [Contacts] )
+Conversion Rate =
+DIVIDE ( [Conversions], [Contacts] )
+		formatString: 0.0%
+		displayFolder: Marketing\Core
+		lineageTag: 81b18793-1346-41d1-b016-8eb1a069867b
 
-// Display folder: Marketing\Engagement
-// Format string: #,0 "sec"
-[Average Contact Duration] = AVERAGE ( FactMarketing[DurationSeconds] )
+Average Contact Duration =
+AVERAGE ( FactMarketing[DurationSeconds] )
+		formatString: #,0 "sec"
+		displayFolder: Marketing\Engagement
+		lineageTag: dd8358e8-a81a-4bb5-a4e8-9623084614ed
 
-// Display folder: Marketing\Efficiency
-// Format string: 0.00
-[Average Campaign Contacts] = AVERAGE ( FactMarketing[CampaignContacts] )
+Average Campaign Contacts =
+AVERAGE ( FactMarketing[CampaignContacts] )
+		formatString: 0.00
+		displayFolder: Marketing\Efficiency
+		lineageTag: 2e52a116-928d-46d5-a742-f44e666ea6b8
 
-// Display folder: Marketing\Audience
-// Format string: 0.0%
-[Prior Contact Rate] = DIVIDE ( CALCULATE ( [Contacts], FactMarketing[PriorContacts] > 0 ), [Contacts] )
+Prior Contact Rate =
+DIVIDE ( CALCULATE ( [Contacts], FactMarketing[PriorContacts] > 0 ), [Contacts] )
+		formatString: 0.0%
+		displayFolder: Marketing\Audience
+		lineageTag: 973db1e5-ba38-42f7-99cd-7afdeedb2b37
 
-// Display folder: Marketing\Channel
-// Format string: 0.0%
-[Cellular Contact Share] = DIVIDE ( CALCULATE ( [Contacts], FactMarketing[ContactChannel] = "cellular" ), [Contacts] )
+Cellular Contact Share =
+DIVIDE ( CALCULATE ( [Contacts], FactMarketing[ContactChannel] = "cellular" ), [Contacts] )
+		formatString: 0.0%
+		displayFolder: Marketing\Channel
+		lineageTag: 10a8922d-37e4-492b-935b-f33ca0468d70
 
-// Display folder: Marketing\Audience
-// Format string: 0.0%
-[Successful Prior Outcome Rate] = DIVIDE ( CALCULATE ( [Contacts], FactMarketing[PriorOutcome] = "success" ), [Contacts] )
+Successful Prior Outcome Rate =
+DIVIDE ( CALCULATE ( [Contacts], FactMarketing[PriorOutcome] = "success" ), [Contacts] )
+		formatString: 0.0%
+		displayFolder: Marketing\Audience
+		lineageTag: a357c02f-6766-40e3-a870-09e75328e118
 
-// Display folder: Marketing\Efficiency
-// Format string: #,0.0
-[Conversions per 1K Contacts] = DIVIDE ( [Conversions] * 1000, [Contacts] )
+Conversions per 1K Contacts =
+DIVIDE ( [Conversions] * 1000, [Contacts] )
+		formatString: #,0.0
+		displayFolder: Marketing\Efficiency
+		lineageTag: a8c8032e-a5a5-4a1a-9b65-0951b136ac5f
 
-// Display folder: Marketing\Movement
-// Format string: #,0
-[Contacts Previous Month] = VAR CurrentMonth = MAX ( FactMarketing[CampaignMonthNumber] ) RETURN CALCULATE ( [Contacts], REMOVEFILTERS ( FactMarketing[CampaignMonth], FactMarketing[CampaignMonthNumber], FactMarketing[CampaignDate] ), FactMarketing[CampaignMonthNumber] = CurrentMonth - 1 )
+Contacts Previous Month =
+VAR CurrentMonth = MAX ( DimDate[MonthNumber] ) RETURN CALCULATE ( [Contacts], REMOVEFILTERS ( DimDate ), DimDate[MonthNumber] = CurrentMonth - 1 )
+		formatString: #,0
+		displayFolder: Marketing\Movement
+		lineageTag: a03b3059-155a-4837-a328-20672bc24e33
 
-// Display folder: Marketing\Movement
-// Format string: +0.0%;-0.0%;0.0%
-[Contacts MoM] = DIVIDE ( [Contacts] - [Contacts Previous Month], [Contacts Previous Month] )
+Contacts MoM =
+DIVIDE ( [Contacts] - [Contacts Previous Month], [Contacts Previous Month] )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Marketing\Movement
+		lineageTag: 53fbd2c8-04a3-4e6a-b5aa-452362092156
 
-// Display folder: Marketing\Movement
-// Format string: #,0
-[Conversions Previous Month] = VAR CurrentMonth = MAX ( FactMarketing[CampaignMonthNumber] ) RETURN CALCULATE ( [Conversions], REMOVEFILTERS ( FactMarketing[CampaignMonth], FactMarketing[CampaignMonthNumber], FactMarketing[CampaignDate] ), FactMarketing[CampaignMonthNumber] = CurrentMonth - 1 )
+Conversions Previous Month =
+VAR CurrentMonth = MAX ( DimDate[MonthNumber] ) RETURN CALCULATE ( [Conversions], REMOVEFILTERS ( DimDate ), DimDate[MonthNumber] = CurrentMonth - 1 )
+		formatString: #,0
+		displayFolder: Marketing\Movement
+		lineageTag: 58150b36-b375-4fed-ad7f-a90a4a76adf8
 
-// Display folder: Marketing\Movement
-// Format string: +0.0%;-0.0%;0.0%
-[Conversions MoM] = DIVIDE ( [Conversions] - [Conversions Previous Month], [Conversions Previous Month] )
+Conversions MoM =
+DIVIDE ( [Conversions] - [Conversions Previous Month], [Conversions Previous Month] )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Marketing\Movement
+		lineageTag: 6562bed7-7110-4003-b82d-fe231b3b7186
 
-// Display folder: Marketing\Movement
-// Format string: 0.0%
-[Conversion Rate Previous Month] = VAR CurrentMonth = MAX ( FactMarketing[CampaignMonthNumber] ) RETURN CALCULATE ( [Conversion Rate], REMOVEFILTERS ( FactMarketing[CampaignMonth], FactMarketing[CampaignMonthNumber], FactMarketing[CampaignDate] ), FactMarketing[CampaignMonthNumber] = CurrentMonth - 1 )
+Conversion Rate Previous Month =
+VAR CurrentMonth = MAX ( DimDate[MonthNumber] ) RETURN CALCULATE ( [Conversion Rate], REMOVEFILTERS ( DimDate ), DimDate[MonthNumber] = CurrentMonth - 1 )
+		formatString: 0.0%
+		displayFolder: Marketing\Movement
+		lineageTag: 858df9e4-86e2-4f0e-a2fa-43f65c643720
 
-// Display folder: Marketing\Movement
-// Format string: +0.0%;-0.0%;0.0%
-[Conversion Rate Variance pp] = [Conversion Rate] - [Conversion Rate Previous Month]
+Conversion Rate Variance pp =
+[Conversion Rate] - [Conversion Rate Previous Month]
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Marketing\Movement
+		lineageTag: 2606a67c-8604-444a-877a-1f2f978a34e8
 
-// Display folder: Marketing\Movement
-// Format string: #,0 "sec"
-[Average Duration Previous Month] = VAR CurrentMonth = MAX ( FactMarketing[CampaignMonthNumber] ) RETURN CALCULATE ( [Average Contact Duration], REMOVEFILTERS ( FactMarketing[CampaignMonth], FactMarketing[CampaignMonthNumber], FactMarketing[CampaignDate] ), FactMarketing[CampaignMonthNumber] = CurrentMonth - 1 )
+Average Duration Previous Month =
+VAR CurrentMonth = MAX ( DimDate[MonthNumber] ) RETURN CALCULATE ( [Average Contact Duration], REMOVEFILTERS ( DimDate ), DimDate[MonthNumber] = CurrentMonth - 1 )
+		formatString: #,0 "sec"
+		displayFolder: Marketing\Movement
+		lineageTag: 9a59fcf3-9d9e-4be0-8c8e-1835fed0241f
 
-// Display folder: Marketing\Movement
-// Format string: +0.0%;-0.0%;0.0%
-[Average Duration MoM] = DIVIDE ( [Average Contact Duration] - [Average Duration Previous Month], [Average Duration Previous Month] )
+Average Duration MoM =
+DIVIDE ( [Average Contact Duration] - [Average Duration Previous Month], [Average Duration Previous Month] )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Marketing\Movement
+		lineageTag: 507e994d-37e0-4aa1-8e89-cf5b9415db84
 
-// Display folder: Marketing\Movement
-// Format string: 0.00
-[Average Campaign Contacts Previous Month] = VAR CurrentMonth = MAX ( FactMarketing[CampaignMonthNumber] ) RETURN CALCULATE ( [Average Campaign Contacts], REMOVEFILTERS ( FactMarketing[CampaignMonth], FactMarketing[CampaignMonthNumber], FactMarketing[CampaignDate] ), FactMarketing[CampaignMonthNumber] = CurrentMonth - 1 )
+Average Campaign Contacts Previous Month =
+VAR CurrentMonth = MAX ( DimDate[MonthNumber] ) RETURN CALCULATE ( [Average Campaign Contacts], REMOVEFILTERS ( DimDate ), DimDate[MonthNumber] = CurrentMonth - 1 )
+		formatString: 0.00
+		displayFolder: Marketing\Movement
+		lineageTag: 2928289e-0986-4f50-b4c5-89b523fe2c84
 
-// Display folder: Marketing\Movement
-// Format string: +0.0%;-0.0%;0.0%
-[Average Campaign Contacts MoM] = DIVIDE ( [Average Campaign Contacts] - [Average Campaign Contacts Previous Month], [Average Campaign Contacts Previous Month] )
+Average Campaign Contacts MoM =
+DIVIDE ( [Average Campaign Contacts] - [Average Campaign Contacts Previous Month], [Average Campaign Contacts Previous Month] )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Marketing\Movement
+		lineageTag: 5a13da3a-11b4-4a9d-adb1-c2538c2c58a4
 
-// Display folder: Marketing\Display
-// Format string: 
-[KPI Contacts Display] = IF ( [Contacts] >= 1000, FORMAT ( DIVIDE ( [Contacts], 1000 ), "0.0" ) & "K", FORMAT ( [Contacts], "#,0" ) )
+KPI Contacts Display =
+IF ( [Contacts] >= 1000, FORMAT ( DIVIDE ( [Contacts], 1000 ), "0.0" ) & "K", FORMAT ( [Contacts], "#,0" ) )
+		displayFolder: Marketing\Display
+		lineageTag: 994068e4-a022-49bf-b23f-f0974f38996a
 
-// Display folder: Marketing\Display
-// Format string: 
-[KPI Conversions Display] = IF ( [Conversions] >= 1000, FORMAT ( DIVIDE ( [Conversions], 1000 ), "0.0" ) & "K", FORMAT ( [Conversions], "#,0" ) )
+KPI Conversions Display =
+IF ( [Conversions] >= 1000, FORMAT ( DIVIDE ( [Conversions], 1000 ), "0.0" ) & "K", FORMAT ( [Conversions], "#,0" ) )
+		displayFolder: Marketing\Display
+		lineageTag: e5416531-ac82-4a1d-832b-10954294b0aa
 
-// Display folder: Marketing\Display
-// Format string: 
-[KPI Conversion Rate Display] = FORMAT ( [Conversion Rate], "0.0%" )
+KPI Conversion Rate Display =
+FORMAT ( [Conversion Rate], "0.0%" )
+		displayFolder: Marketing\Display
+		lineageTag: c8931842-a88d-4f1a-bdc5-c2e861b2b8a1
 
-// Display folder: Marketing\Display
-// Format string: 
-[KPI Average Duration Display] = FORMAT ( [Average Contact Duration], "#,0" ) & " sec"
+KPI Average Duration Display =
+FORMAT ( [Average Contact Duration], "#,0" ) & " sec"
+		displayFolder: Marketing\Display
+		lineageTag: 4227642b-80c2-4477-8df7-a4f90151e847
 
-// Display folder: Marketing\Display
-// Format string: 
-[KPI Average Contacts Display] = FORMAT ( [Average Campaign Contacts], "0.0" ) & "x"
+KPI Average Contacts Display =
+FORMAT ( [Average Campaign Contacts], "0.0" ) & "x"
+		displayFolder: Marketing\Display
+		lineageTag: 54f14430-0226-4b7d-929a-4ddb16942786
 
-// Display folder: Marketing\Movement
-// Format string: 0.0%
-[Prior Contact Rate Previous Month] = VAR M = MAX ( FactMarketing[CampaignMonthNumber] ) RETURN CALCULATE ( [Prior Contact Rate], REMOVEFILTERS ( FactMarketing[CampaignMonth], FactMarketing[CampaignMonthNumber], FactMarketing[CampaignDate] ), FactMarketing[CampaignMonthNumber] = M - 1 )
+Prior Contact Rate Previous Month =
+VAR M = MAX ( DimDate[MonthNumber] ) RETURN CALCULATE ( [Prior Contact Rate], REMOVEFILTERS ( DimDate ), DimDate[MonthNumber] = M - 1 )
+		formatString: 0.0%
+		displayFolder: Marketing\Movement
+		lineageTag: c03bb695-5c48-42cf-9290-d531d3babdd9
 
-// Display folder: Marketing\Movement
-// Format string: +0.0%;-0.0%;0.0%
-[Prior Contact Rate Variance pp] = [Prior Contact Rate] - [Prior Contact Rate Previous Month]
+Prior Contact Rate Variance pp =
+[Prior Contact Rate] - [Prior Contact Rate Previous Month]
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Marketing\Movement
+		lineageTag: 7052f9a2-e758-4bfa-8334-39b309ee7d79
 
-// Display folder: Marketing\Movement
-// Format string: 0.0%
-[Cellular Share Previous Month] = VAR M = MAX ( FactMarketing[CampaignMonthNumber] ) RETURN CALCULATE ( [Cellular Contact Share], REMOVEFILTERS ( FactMarketing[CampaignMonth], FactMarketing[CampaignMonthNumber], FactMarketing[CampaignDate] ), FactMarketing[CampaignMonthNumber] = M - 1 )
+Cellular Share Previous Month =
+VAR M = MAX ( DimDate[MonthNumber] ) RETURN CALCULATE ( [Cellular Contact Share], REMOVEFILTERS ( DimDate ), DimDate[MonthNumber] = M - 1 )
+		formatString: 0.0%
+		displayFolder: Marketing\Movement
+		lineageTag: 76ef34ef-20e9-468f-a536-69362d366349
 
-// Display folder: Marketing\Movement
-// Format string: +0.0%;-0.0%;0.0%
-[Cellular Share Variance pp] = [Cellular Contact Share] - [Cellular Share Previous Month]
+Cellular Share Variance pp =
+[Cellular Contact Share] - [Cellular Share Previous Month]
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Marketing\Movement
+		lineageTag: 3eae48e5-ee7c-425e-a100-5bda16a4bee6
 
-// Display folder: Marketing\Movement
-// Format string: 0.0%
-[Successful Prior Rate Previous Month] = VAR M = MAX ( FactMarketing[CampaignMonthNumber] ) RETURN CALCULATE ( [Successful Prior Outcome Rate], REMOVEFILTERS ( FactMarketing[CampaignMonth], FactMarketing[CampaignMonthNumber], FactMarketing[CampaignDate] ), FactMarketing[CampaignMonthNumber] = M - 1 )
+Successful Prior Rate Previous Month =
+VAR M = MAX ( DimDate[MonthNumber] ) RETURN CALCULATE ( [Successful Prior Outcome Rate], REMOVEFILTERS ( DimDate ), DimDate[MonthNumber] = M - 1 )
+		formatString: 0.0%
+		displayFolder: Marketing\Movement
+		lineageTag: 47a4abd1-a3d7-4b57-9c31-b97746da7c49
 
-// Display folder: Marketing\Movement
-// Format string: +0.0%;-0.0%;0.0%
-[Successful Prior Rate Variance pp] = [Successful Prior Outcome Rate] - [Successful Prior Rate Previous Month]
+Successful Prior Rate Variance pp =
+[Successful Prior Outcome Rate] - [Successful Prior Rate Previous Month]
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Marketing\Movement
+		lineageTag: a4151500-f5ae-48f8-a799-706a772a1c0d
 
-// Display folder: Marketing\Display
-// Format string: 
-[KPI Prior Contact Rate Display] = FORMAT ( [Prior Contact Rate], "0.0%" )
+KPI Prior Contact Rate Display =
+FORMAT ( [Prior Contact Rate], "0.0%" )
+		displayFolder: Marketing\Display
+		lineageTag: 74d7f7da-3b08-4435-8ef7-d3988a0e833b
 
-// Display folder: Marketing\Display
-// Format string: 
-[KPI Conversions per 1K Display] = FORMAT ( [Conversions per 1K Contacts], "#,0" )
+KPI Conversions per 1K Display =
+FORMAT ( [Conversions per 1K Contacts], "#,0" )
+		displayFolder: Marketing\Display
+		lineageTag: b52f4903-572b-4bc7-91fb-d987ca957e0e
 
-// Display folder: Marketing\Display
-// Format string: 
-[KPI Cellular Share Display] = FORMAT ( [Cellular Contact Share], "0.0%" )
+KPI Cellular Share Display =
+FORMAT ( [Cellular Contact Share], "0.0%" )
+		displayFolder: Marketing\Display
+		lineageTag: 299627a7-79aa-4a44-ad95-9cbe9d2e3688
 
-// Display folder: Marketing\Display
-// Format string: 
-[KPI Successful Prior Display] = FORMAT ( [Successful Prior Outcome Rate], "0.0%" )
+KPI Successful Prior Display =
+FORMAT ( [Successful Prior Outcome Rate], "0.0%" )
+		displayFolder: Marketing\Display
+		lineageTag: ee7c38ef-e142-434b-88d8-f92f1f8b9363
 
+Segment Conversion Rate (500+ Contacts) =
+IF ( [Contacts] >= 500, [Conversion Rate] )
+		formatString: 0.0%
+		displayFolder: Marketing\Responsible Analysis
+		lineageTag: f14c7728-11b3-400b-9548-e98cc54b354b
+
+Segment Conversions per 1K (500+ Contacts) =
+IF ( [Contacts] >= 500, [Conversions per 1K Contacts] )
+		formatString: #,0.0
+		displayFolder: Marketing\Responsible Analysis
+		lineageTag: 389e610b-910d-4f63-949d-fb825fe3e3cd
+
+Sample Size Status =
+SWITCH ( TRUE (), [Contacts] < 100, "Very small base (<100)", [Contacts] < 500, "Directional base (100–499)", "Reviewable base (500+)" )
+		displayFolder: Marketing\Responsible Analysis
+		lineageTag: 21c210d7-f94c-4f4b-a836-1f8b7ceee919
+
+Duration Leakage Warning =
+"Post-contact metric — do not use as a pre-call targeting feature"
+		displayFolder: Marketing\Responsible Analysis
+		lineageTag: 1d2df2a9-c74d-4a24-beb3-1860832eab3e
+
+Contact Share =
+DIVIDE ( [Contacts], CALCULATE ( [Contacts], REMOVEFILTERS ( FactMarketing ) ) )
+		formatString: 0.0%
+		displayFolder: Marketing\Audience
+		lineageTag: 47539b1f-8a08-498d-b3ff-53b88e5914c2
+
+Conversion Rate Change Display =
+VAR Delta = [Conversion Rate Variance pp] RETURN SWITCH ( TRUE (), ISBLANK ( [Conversion Rate Previous Month] ), "No prior month", Delta > 0, "▲ " & FORMAT ( ABS ( Delta ) * 100, "0.0" ) & " pp", Delta < 0, "▼ " & FORMAT ( ABS ( Delta ) * 100, "0.0" ) & " pp", "— 0.0 pp" )
+		displayFolder: Marketing\Display
+		lineageTag: 22b0f588-aada-4cd0-a4ed-4fb631ce375e
+
+Conversion Contribution =
+DIVIDE ( [Conversions], CALCULATE ( [Conversions], REMOVEFILTERS ( DimDate ) ) )
+		formatString: 0.0%
+		displayFolder: Marketing\Efficiency
+		lineageTag: 179e438a-93fc-46a9-8b4e-0b54b4d541c2
+
+Latest Month Conversion Rate =
+VAR ReviewableMonths = FILTER ( ALL ( DimDate[MonthNumber] ), CALCULATE ( [Contacts] ) >= 500 ) VAR M = MAXX ( ReviewableMonths, DimDate[MonthNumber] ) RETURN CALCULATE ( [Conversion Rate], REMOVEFILTERS ( DimDate ), DimDate[MonthNumber] = M )
+		formatString: 0.0%
+		displayFolder: Marketing\Movement
+		lineageTag: 44f77516-60be-41dd-ac80-02c6ade516e3
+
+Prior Month Conversion Rate =
+VAR ReviewableMonths = FILTER ( ALL ( DimDate[MonthNumber] ), CALCULATE ( [Contacts] ) >= 500 ) VAR M = MAXX ( ReviewableMonths, DimDate[MonthNumber] ) VAR PriorM = MAXX ( FILTER ( ReviewableMonths, DimDate[MonthNumber] < M ), DimDate[MonthNumber] ) RETURN CALCULATE ( [Conversion Rate], REMOVEFILTERS ( DimDate ), DimDate[MonthNumber] = PriorM )
+		formatString: 0.0%
+		displayFolder: Marketing\Movement
+		lineageTag: 1feaa1c2-88d0-4421-854c-e92d6a65bf62
+
+Latest Conversion Rate Variance pp =
+[Latest Month Conversion Rate] - [Prior Month Conversion Rate]
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Marketing\Movement
+		lineageTag: 37f11f76-c4aa-4174-9421-dce4af66bbf3
+
+Latest Conversion Change Display =
+VAR Delta = [Latest Conversion Rate Variance pp] RETURN SWITCH ( TRUE (), ISBLANK ( [Prior Month Conversion Rate] ), "No prior month", Delta > 0, "▲ " & FORMAT ( ABS ( Delta ) * 100, "0.0" ) & " pp", Delta < 0, "▼ " & FORMAT ( ABS ( Delta ) * 100, "0.0" ) & " pp", "— 0.0 pp" )
+		displayFolder: Marketing\Display
+		lineageTag: 00af1390-f868-4ba3-8dc7-dd424454864f
+
+KPI Latest Conversion Rate Display =
+FORMAT ( [Latest Month Conversion Rate], "0.0%" )
+		displayFolder: Marketing\Display
+		lineageTag: b734da75-8e4b-40a9-887c-5d0393f3c43e
+
+High Frequency Contacts =
+CALCULATE ( [Contacts], FactMarketing[CampaignContacts] >= 4 )
+		formatString: #,0
+		displayFolder: Marketing\Contact Pressure
+		lineageTag: a62e9f9c-9264-4237-9252-64e31052ad82
+
+High Frequency Contact Share =
+DIVIDE ( [High Frequency Contacts], [Contacts] )
+		formatString: 0.0%
+		displayFolder: Marketing\Contact Pressure
+		lineageTag: f881d296-6709-4507-a145-6dcf73406473
+
+Latest High Frequency Share =
+VAR ReviewableMonths = FILTER ( ALL ( DimDate[MonthNumber] ), CALCULATE ( [Contacts] ) >= 500 ) VAR M = MAXX ( ReviewableMonths, DimDate[MonthNumber] ) RETURN CALCULATE ( [High Frequency Contact Share], REMOVEFILTERS ( DimDate ), DimDate[MonthNumber] = M )
+		formatString: 0.0%
+		displayFolder: Marketing\Contact Pressure
+		lineageTag: f3b4e803-26f4-4eb2-aacc-32226c0d01f7
+
+Prior Month High Frequency Share =
+VAR ReviewableMonths = FILTER ( ALL ( DimDate[MonthNumber] ), CALCULATE ( [Contacts] ) >= 500 ) VAR M = MAXX ( ReviewableMonths, DimDate[MonthNumber] ) VAR PriorM = MAXX ( FILTER ( ReviewableMonths, DimDate[MonthNumber] < M ), DimDate[MonthNumber] ) RETURN CALCULATE ( [High Frequency Contact Share], REMOVEFILTERS ( DimDate ), DimDate[MonthNumber] = PriorM )
+		formatString: 0.0%
+		displayFolder: Marketing\Contact Pressure
+		lineageTag: 572c27b1-cba9-4df7-a81c-38327cca501e
+
+High Frequency Share Variance pp =
+[Latest High Frequency Share] - [Prior Month High Frequency Share]
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Marketing\Contact Pressure
+		lineageTag: 511581c4-93a7-4e86-bbed-94288d1b4cf2
+
+KPI High Frequency Share Display =
+FORMAT ( [Latest High Frequency Share], "0.0%" )
+		displayFolder: Marketing\Display
+		lineageTag: c0923103-1de7-45b9-a73e-0252f67e930a
+
+KPI MoM Display Contacts MoM =
+VAR V = [Contacts MoM] RETURN IF ( ISBLANK ( V ), BLANK (), "MoM: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI Delta
+		lineageTag: 3e183422-1fae-5971-942f-322ca0e60895
+
+KPI MoM Color Contacts MoM =
+VAR V = [Contacts MoM] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#0B5C8E", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI Delta
+		lineageTag: e6d59b52-92f0-5678-98cf-4a612ce556d8
+
+KPI MoM Display Conversions MoM =
+VAR V = [Conversions MoM] RETURN IF ( ISBLANK ( V ), BLANK (), "MoM: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI Delta
+		lineageTag: 53918693-1f01-5d7f-a4d8-3d0ed3c575d8
+
+KPI MoM Color Conversions MoM =
+VAR V = [Conversions MoM] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#0B5C8E", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI Delta
+		lineageTag: 3cc3c199-1bfd-5045-8270-4bc1ff0f6b9d
+
+KPI MoM Display Conversion Rate Change Display =
+VAR V = [Conversion Rate Variance pp] RETURN IF ( ISBLANK ( V ), BLANK (), "MoM: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI Delta
+		lineageTag: 89b084be-8454-58c7-9276-f581c0fb27fd
+
+KPI MoM Color Conversion Rate Change Display =
+VAR V = [Conversion Rate Variance pp] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#0B5C8E", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI Delta
+		lineageTag: 01050fed-135f-5e72-8d3d-b0374d6fa42e
+
+KPI MoM Display Prior Contact Rate Variance pp =
+VAR V = [Prior Contact Rate Variance pp] RETURN IF ( ISBLANK ( V ), BLANK (), "MoM: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI Delta
+		lineageTag: f06a2b19-0a09-5f1e-8b02-b9756500477c
+
+KPI MoM Color Prior Contact Rate Variance pp =
+VAR V = [Prior Contact Rate Variance pp] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#0B5C8E", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI Delta
+		lineageTag: cf82464e-8346-59a8-8e4b-9dc30ae66130
+
+KPI MoM Display Average Campaign Contacts MoM =
+VAR V = [Average Campaign Contacts MoM] RETURN IF ( ISBLANK ( V ), BLANK (), "MoM: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI Delta
+		lineageTag: 5e547da8-eb6e-5fc1-a5d6-a2eb3ebed80e
+
+KPI MoM Color Average Campaign Contacts MoM =
+VAR V = [Average Campaign Contacts MoM] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#0B5C8E", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI Delta
+		lineageTag: e6e73534-9780-5c7e-844f-a9d4fb05b24a
+
+KPI MoM Display Cellular Share Variance pp =
+VAR V = [Cellular Share Variance pp] RETURN IF ( ISBLANK ( V ), BLANK (), "MoM: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI Delta
+		lineageTag: cc4268f4-0cd8-5aea-87b4-a4b82d9cdee5
+
+KPI MoM Color Cellular Share Variance pp =
+VAR V = [Cellular Share Variance pp] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#0B5C8E", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI Delta
+		lineageTag: ccac2fab-ece3-5b62-a7f8-54d8961935c5
+
+KPI MoM Display Successful Prior Rate Variance pp =
+VAR V = [Successful Prior Rate Variance pp] RETURN IF ( ISBLANK ( V ), BLANK (), "MoM: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI Delta
+		lineageTag: 75174736-d301-5090-a5df-fb3163334b9c
+
+KPI MoM Color Successful Prior Rate Variance pp =
+VAR V = [Successful Prior Rate Variance pp] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#0B5C8E", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI Delta
+		lineageTag: 762b3d8d-3fd5-56d4-a028-3f8e6ed9f6e1
+
+KPI MoM Display Average Duration MoM =
+VAR V = [Average Duration MoM] RETURN IF ( ISBLANK ( V ), BLANK (), "MoM: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI Delta
+		lineageTag: 2ef3f96d-38b2-510e-929a-7958d71160ec
+
+KPI MoM Color Average Duration MoM =
+VAR V = [Average Duration MoM] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#0B5C8E", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI Delta
+		lineageTag: 3be06637-a13f-572b-8361-d46e934d9edf
+
+KPI MoM Display Latest Conversion Change Display =
+VAR V = [Latest Conversion Rate Variance pp] RETURN IF ( ISBLANK ( V ), BLANK (), "MoM: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI Delta
+		lineageTag: e4deeb64-f2b1-58ba-bfde-ca3bf09c5a98
+
+KPI MoM Color Latest Conversion Change Display =
+VAR V = [Latest Conversion Rate Variance pp] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#0B5C8E", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI Delta
+		lineageTag: 283193db-3d61-5392-8d12-f916c62c7f3a
+
+KPI MoM Display High Frequency Share Variance pp =
+VAR V = [High Frequency Share Variance pp] RETURN IF ( ISBLANK ( V ), BLANK (), "MoM: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI Delta
+		lineageTag: 4093500d-7345-5fe3-967f-ee861db5cdd9
+
+KPI MoM Color High Frequency Share Variance pp =
+VAR V = [High Frequency Share Variance pp] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#0B5C8E", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI Delta
+		lineageTag: c7421c3e-7b78-5276-83e5-2e272d95b6cd

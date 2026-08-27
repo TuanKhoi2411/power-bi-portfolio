@@ -1,0 +1,20 @@
+table DimAgeBand
+	lineageTag: cb4e686e-f55e-4d88-9789-5f15bde4c0cf
+
+	column AgeBandKey
+		dataType: string
+		isKey
+		lineageTag: 5afe8c9b-cf8d-478d-a35a-765cc1a2831a
+		summarizeBy: none
+		sourceColumn: [AgeBandKey]
+
+	column AgeBand
+		dataType: string
+		lineageTag: d8888abb-fd27-4cb8-859c-e7e3d52dd024
+		summarizeBy: none
+		sourceColumn: [AgeBand]
+
+	partition DimAgeBand = calculated
+		mode: import
+		source = DISTINCT ( SELECTCOLUMNS ( FactMarketing, "AgeBandKey", FactMarketing[AgeBandKey], "AgeBand", FactMarketing[AgeBand] ) )
+

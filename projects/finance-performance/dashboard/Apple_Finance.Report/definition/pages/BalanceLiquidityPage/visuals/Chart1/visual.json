@@ -1,38 +1,18 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "f3f10e4f552cdd8ee773",
   "position": {
     "x": 905,
     "y": 235,
-    "z": 19000,
+    "z": 18000,
     "height": 205,
     "width": 350,
-    "tabOrder": 19000
+    "tabOrder": 18000
   },
   "visual": {
-    "visualType": "clusteredBarChart",
+    "visualType": "donutChart",
     "query": {
       "queryState": {
-        "Category": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "FactFinance"
-                    }
-                  },
-                  "Property": "DisplayMetric"
-                }
-              },
-              "queryRef": "FactFinance.DisplayMetric",
-              "nativeQueryRef": "Metric",
-              "displayName": "Metric",
-              "active": true
-            }
-          ]
-        },
         "Y": {
           "projections": [
             {
@@ -43,12 +23,27 @@
                       "Entity": "FactFinance"
                     }
                   },
-                  "Property": "Latest Metric Value"
+                  "Property": "Latest Liabilities"
                 }
               },
-              "queryRef": "FactFinance.Latest Metric Value",
-              "nativeQueryRef": "Latest Value",
-              "displayName": "Latest Value"
+              "queryRef": "FactFinance.Latest Liabilities",
+              "nativeQueryRef": "Liabilities",
+              "displayName": "Liabilities"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactFinance"
+                    }
+                  },
+                  "Property": "Latest Net Asset Position"
+                }
+              },
+              "queryRef": "FactFinance.Latest Net Asset Position",
+              "nativeQueryRef": "Net Assets",
+              "displayName": "Net Assets"
             }
           ]
         }
@@ -63,12 +58,13 @@
                     "Entity": "FactFinance"
                   }
                 },
-                "Property": "Latest Metric Value"
+                "Property": "Latest Liabilities"
               }
             },
             "direction": "Descending"
           }
-        ]
+        ],
+        "isDefaultSort": true
       }
     },
     "objects": {
@@ -86,6 +82,40 @@
               "expr": {
                 "Literal": {
                   "Value": "'Top'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
+                }
+              }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1000000000D"
+                }
+              }
+            },
+            "labelPrecision": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
                 }
               }
             }
@@ -124,7 +154,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Latest Balance Sheet Metrics'"
+                  "Value": "'Capital Structure | Liabilities vs Net Assets (% of Assets)'"
                 }
               }
             },
@@ -202,7 +232,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#D8E7E4'"
+                      "Value": "'#D8E5E2'"
                     }
                   }
                 }
@@ -211,7 +241,7 @@
             "radius": {
               "expr": {
                 "Literal": {
-                  "Value": "6D"
+                  "Value": "9D"
                 }
               }
             }
@@ -233,7 +263,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#829A97'"
+                      "Value": "'#6E8F88'"
                     }
                   }
                 }
@@ -242,21 +272,21 @@
             "transparency": {
               "expr": {
                 "Literal": {
-                  "Value": "82D"
+                  "Value": "88D"
                 }
               }
             },
             "shadowBlur": {
               "expr": {
                 "Literal": {
-                  "Value": "6D"
+                  "Value": "5D"
                 }
               }
             },
             "shadowDistance": {
               "expr": {
                 "Literal": {
-                  "Value": "2D"
+                  "Value": "1D"
                 }
               }
             },
@@ -269,8 +299,53 @@
             }
           }
         }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Capital Structure | Liabilities vs Net Assets (% of Assets)'"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "06a3dd7c77c035a5106f",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "FactFinance"
+              }
+            },
+            "Property": "Latest Liabilities"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "18a7205597f2cd43944a",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "FactFinance"
+              }
+            },
+            "Property": "Latest Net Asset Position"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

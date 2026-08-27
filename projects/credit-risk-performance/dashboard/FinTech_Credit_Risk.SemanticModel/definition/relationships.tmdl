@@ -1,0 +1,36 @@
+relationship 6f6298af-2558-45bc-9001-140fdfd00001
+	fromColumn: FactLoans.LoanDate
+	toColumn: DimDate.Date
+
+relationship 6f6298af-2558-45bc-9001-140fdfd00002
+	fromColumn: FactLoans.GradeKey
+	toColumn: DimGrade.GradeKey
+
+relationship 6f6298af-2558-45bc-9001-140fdfd00003
+	fromColumn: FactLoans.PurposeKey
+	toColumn: DimPurpose.PurposeKey
+
+relationship 6f6298af-2558-45bc-9001-140fdfd00004
+	fromColumn: FactLoans.StateKey
+	toColumn: DimState.StateKey
+
+relationship 6f6298af-2558-45bc-9001-140fdfd00005
+	fromColumn: FactLoans.IncomeBandKey
+	toColumn: DimIncomeBand.IncomeBandKey
+
+relationship 6f6298af-2558-45bc-9001-140fdfd00006
+	fromColumn: FactLoans.LoanLabelKey
+	toColumn: DimLoanLabel.LoanLabelKey
+
+relationship 6f6298af-2558-45bc-9001-140fdfd00007
+	fromColumn: FactLoans.HomeOwnershipKey
+	toColumn: DimHomeOwnership.HomeOwnershipKey
+
+relationship 6f6298af-2558-45bc-9001-140fdfd00008
+	fromColumn: FactLoans.TermMonths
+	toColumn: DimTerm.TermMonths
+
+relationship 6f6298af-2558-45bc-9001-140fdfd00009
+	fromColumn: FactLoans.IncomeLevelKey
+	toColumn: DimIncomeLevel.IncomeLevelKey
+

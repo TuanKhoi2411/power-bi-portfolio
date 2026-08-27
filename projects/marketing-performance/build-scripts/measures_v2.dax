@@ -1,0 +1,155 @@
+// Auto-exported from the canonical TMDL semantic model.
+// Project: marketing-performance
+// Measure table: FactMarketing
+// Measure count: 34
+// Regenerate with scripts/export-model-documentation.ps1 after TMDL changes.
+
+// Display folder: Marketing\Core
+// Format string: #,0
+[Contacts] = COUNTROWS ( FactMarketing )
+
+// Display folder: Marketing\Core
+// Format string: #,0
+[Conversions] = SUM ( FactMarketing[Converted] )
+
+// Display folder: Marketing\Core
+// Format string: 0.0%
+[Conversion Rate] = DIVIDE ( [Conversions], [Contacts] )
+
+// Display folder: Marketing\Engagement
+// Format string: #,0 "sec"
+[Average Contact Duration] = AVERAGE ( FactMarketing[DurationSeconds] )
+
+// Display folder: Marketing\Efficiency
+// Format string: 0.00
+[Average Campaign Contacts] = AVERAGE ( FactMarketing[CampaignContacts] )
+
+// Display folder: Marketing\Audience
+// Format string: 0.0%
+[Prior Contact Rate] = DIVIDE ( CALCULATE ( [Contacts], FactMarketing[PriorContacts] > 0 ), [Contacts] )
+
+// Display folder: Marketing\Channel
+// Format string: 0.0%
+[Cellular Contact Share] = DIVIDE ( CALCULATE ( [Contacts], FactMarketing[ContactChannel] = "cellular" ), [Contacts] )
+
+// Display folder: Marketing\Audience
+// Format string: 0.0%
+[Successful Prior Outcome Rate] = DIVIDE ( CALCULATE ( [Contacts], FactMarketing[PriorOutcome] = "success" ), [Contacts] )
+
+// Display folder: Marketing\Efficiency
+// Format string: #,0.0
+[Conversions per 1K Contacts] = DIVIDE ( [Conversions] * 1000, [Contacts] )
+
+[Segment Conversion Rate (500+ Contacts)] = IF ( [Contacts] >= 500, [Conversion Rate] )
+
+[Segment Conversions per 1K (500+ Contacts)] = IF ( [Contacts] >= 500, [Conversions per 1K Contacts] )
+
+[Sample Size Status] = SWITCH ( TRUE (), [Contacts] < 100, "Very small base (<100)", [Contacts] < 500, "Directional base (100–499)", "Reviewable base (500+)" )
+
+[Duration Leakage Warning] = "Post-contact metric — do not use as a pre-call targeting feature"
+
+[Contact Share] = DIVIDE ( [Contacts], CALCULATE ( [Contacts], REMOVEFILTERS ( FactMarketing ) ) )
+
+// Display folder: Marketing\Movement
+// Format string: #,0
+[Contacts Previous Month] = VAR CurrentMonth = MAX ( FactMarketing[CampaignMonthNumber] ) RETURN CALCULATE ( [Contacts], REMOVEFILTERS ( FactMarketing[CampaignMonth], FactMarketing[CampaignMonthNumber], FactMarketing[CampaignDate] ), FactMarketing[CampaignMonthNumber] = CurrentMonth - 1 )
+
+// Display folder: Marketing\Movement
+// Format string: +0.0%;-0.0%;0.0%
+[Contacts MoM] = DIVIDE ( [Contacts] - [Contacts Previous Month], [Contacts Previous Month] )
+
+// Display folder: Marketing\Movement
+// Format string: #,0
+[Conversions Previous Month] = VAR CurrentMonth = MAX ( FactMarketing[CampaignMonthNumber] ) RETURN CALCULATE ( [Conversions], REMOVEFILTERS ( FactMarketing[CampaignMonth], FactMarketing[CampaignMonthNumber], FactMarketing[CampaignDate] ), FactMarketing[CampaignMonthNumber] = CurrentMonth - 1 )
+
+// Display folder: Marketing\Movement
+// Format string: +0.0%;-0.0%;0.0%
+[Conversions MoM] = DIVIDE ( [Conversions] - [Conversions Previous Month], [Conversions Previous Month] )
+
+// Display folder: Marketing\Movement
+// Format string: 0.0%
+[Conversion Rate Previous Month] = VAR CurrentMonth = MAX ( FactMarketing[CampaignMonthNumber] ) RETURN CALCULATE ( [Conversion Rate], REMOVEFILTERS ( FactMarketing[CampaignMonth], FactMarketing[CampaignMonthNumber], FactMarketing[CampaignDate] ), FactMarketing[CampaignMonthNumber] = CurrentMonth - 1 )
+
+// Display folder: Marketing\Movement
+// Format string: +0.0%;-0.0%;0.0%
+[Conversion Rate Variance pp] = [Conversion Rate] - [Conversion Rate Previous Month]
+
+[Conversion Rate Change Display] = VAR Delta = [Conversion Rate Variance pp] RETURN SWITCH ( TRUE (), ISBLANK ( [Conversion Rate Previous Month] ), "No prior month", Delta > 0, "▲ " & FORMAT ( ABS ( Delta ) * 100, "0.0" ) & " pp", Delta < 0, "▼ " & FORMAT ( ABS ( Delta ) * 100, "0.0" ) & " pp", "— 0.0 pp" )
+
+[Conversion Contribution] = DIVIDE ( [Conversions], CALCULATE ( [Conversions], REMOVEFILTERS ( FactMarketing[CampaignMonth], FactMarketing[CampaignMonthNumber], FactMarketing[CampaignDate] ) ) )
+
+// Display folder: Marketing\Movement
+// Format string: #,0 "sec"
+[Average Duration Previous Month] = VAR CurrentMonth = MAX ( FactMarketing[CampaignMonthNumber] ) RETURN CALCULATE ( [Average Contact Duration], REMOVEFILTERS ( FactMarketing[CampaignMonth], FactMarketing[CampaignMonthNumber], FactMarketing[CampaignDate] ), FactMarketing[CampaignMonthNumber] = CurrentMonth - 1 )
+
+// Display folder: Marketing\Movement
+// Format string: +0.0%;-0.0%;0.0%
+[Average Duration MoM] = DIVIDE ( [Average Contact Duration] - [Average Duration Previous Month], [Average Duration Previous Month] )
+
+// Display folder: Marketing\Movement
+// Format string: 0.00
+[Average Campaign Contacts Previous Month] = VAR CurrentMonth = MAX ( FactMarketing[CampaignMonthNumber] ) RETURN CALCULATE ( [Average Campaign Contacts], REMOVEFILTERS ( FactMarketing[CampaignMonth], FactMarketing[CampaignMonthNumber], FactMarketing[CampaignDate] ), FactMarketing[CampaignMonthNumber] = CurrentMonth - 1 )
+
+// Display folder: Marketing\Movement
+// Format string: +0.0%;-0.0%;0.0%
+[Average Campaign Contacts MoM] = DIVIDE ( [Average Campaign Contacts] - [Average Campaign Contacts Previous Month], [Average Campaign Contacts Previous Month] )
+
+// Display folder: Marketing\Display
+// Format string: 
+[KPI Contacts Display] = IF ( [Contacts] >= 1000, FORMAT ( DIVIDE ( [Contacts], 1000 ), "0.0" ) & "K", FORMAT ( [Contacts], "#,0" ) )
+
+// Display folder: Marketing\Display
+// Format string: 
+[KPI Conversions Display] = IF ( [Conversions] >= 1000, FORMAT ( DIVIDE ( [Conversions], 1000 ), "0.0" ) & "K", FORMAT ( [Conversions], "#,0" ) )
+
+// Display folder: Marketing\Display
+// Format string: 
+[KPI Conversion Rate Display] = FORMAT ( [Conversion Rate], "0.0%" )
+
+// Display folder: Marketing\Display
+// Format string: 
+[KPI Average Duration Display] = FORMAT ( [Average Contact Duration], "#,0" ) & " sec"
+
+// Display folder: Marketing\Display
+// Format string: 
+[KPI Average Contacts Display] = FORMAT ( [Average Campaign Contacts], "0.0" ) & "x"
+
+// Display folder: Marketing\Movement
+// Format string: 0.0%
+[Prior Contact Rate Previous Month] = VAR M = MAX ( FactMarketing[CampaignMonthNumber] ) RETURN CALCULATE ( [Prior Contact Rate], REMOVEFILTERS ( FactMarketing[CampaignMonth], FactMarketing[CampaignMonthNumber], FactMarketing[CampaignDate] ), FactMarketing[CampaignMonthNumber] = M - 1 )
+
+// Display folder: Marketing\Movement
+// Format string: +0.0%;-0.0%;0.0%
+[Prior Contact Rate Variance pp] = [Prior Contact Rate] - [Prior Contact Rate Previous Month]
+
+// Display folder: Marketing\Movement
+// Format string: 0.0%
+[Cellular Share Previous Month] = VAR M = MAX ( FactMarketing[CampaignMonthNumber] ) RETURN CALCULATE ( [Cellular Contact Share], REMOVEFILTERS ( FactMarketing[CampaignMonth], FactMarketing[CampaignMonthNumber], FactMarketing[CampaignDate] ), FactMarketing[CampaignMonthNumber] = M - 1 )
+
+// Display folder: Marketing\Movement
+// Format string: +0.0%;-0.0%;0.0%
+[Cellular Share Variance pp] = [Cellular Contact Share] - [Cellular Share Previous Month]
+
+// Display folder: Marketing\Movement
+// Format string: 0.0%
+[Successful Prior Rate Previous Month] = VAR M = MAX ( FactMarketing[CampaignMonthNumber] ) RETURN CALCULATE ( [Successful Prior Outcome Rate], REMOVEFILTERS ( FactMarketing[CampaignMonth], FactMarketing[CampaignMonthNumber], FactMarketing[CampaignDate] ), FactMarketing[CampaignMonthNumber] = M - 1 )
+
+// Display folder: Marketing\Movement
+// Format string: +0.0%;-0.0%;0.0%
+[Successful Prior Rate Variance pp] = [Successful Prior Outcome Rate] - [Successful Prior Rate Previous Month]
+
+// Display folder: Marketing\Display
+// Format string: 
+[KPI Prior Contact Rate Display] = FORMAT ( [Prior Contact Rate], "0.0%" )
+
+// Display folder: Marketing\Display
+// Format string: 
+[KPI Conversions per 1K Display] = FORMAT ( [Conversions per 1K Contacts], "#,0" )
+
+// Display folder: Marketing\Display
+// Format string: 
+[KPI Cellular Share Display] = FORMAT ( [Cellular Contact Share], "0.0%" )
+
+// Display folder: Marketing\Display
+// Format string: 
+[KPI Successful Prior Display] = FORMAT ( [Successful Prior Outcome Rate], "0.0%" )

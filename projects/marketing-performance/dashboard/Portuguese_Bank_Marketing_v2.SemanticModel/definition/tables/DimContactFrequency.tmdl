@@ -1,0 +1,20 @@
+table DimContactFrequency
+	lineageTag: 5ece3922-783d-4299-aea8-d07583184042
+
+	column ContactFrequencyKey
+		dataType: string
+		isKey
+		lineageTag: 8fa167fa-bc3c-42f5-ab45-95abe931c043
+		summarizeBy: none
+		sourceColumn: [ContactFrequencyKey]
+
+	column ContactFrequencyBand
+		dataType: string
+		lineageTag: 7bbed112-3ea4-4b06-9728-46971d47f044
+		summarizeBy: none
+		sourceColumn: [ContactFrequencyBand]
+
+	partition DimContactFrequency = calculated
+		mode: import
+		source = DISTINCT ( SELECTCOLUMNS ( FactMarketing, "ContactFrequencyKey", FactMarketing[ContactFrequencyKey], "ContactFrequencyBand", FactMarketing[ContactFrequencyBand] ) )
+

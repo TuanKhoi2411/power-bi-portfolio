@@ -1,0 +1,36 @@
+relationship 37968828-0091-4dcb-b440-32c411cc2d30
+	fromColumn: FactMarketing.CampaignDate
+	toColumn: DimDate.Date
+
+relationship 8b490670-96fa-48c2-a9e8-1da709a7e94b
+	fromColumn: FactMarketing.JobKey
+	toColumn: DimJob.JobKey
+
+relationship e5fb1b70-6cd7-4193-8b07-4bf5e2317b27
+	fromColumn: FactMarketing.ChannelKey
+	toColumn: DimChannel.ChannelKey
+
+relationship b9acd442-2977-4cdc-ad19-b05e1cbba335
+	fromColumn: FactMarketing.PriorOutcomeKey
+	toColumn: DimPriorOutcome.PriorOutcomeKey
+
+relationship 9e8066e4-5e1c-4409-9cc5-d2e1d3f8c39d
+	fromColumn: FactMarketing.AgeBandKey
+	toColumn: DimAgeBand.AgeBandKey
+
+relationship 989104a1-70bd-48b0-9d4b-73d25c63a029
+	fromColumn: FactMarketing.MaritalStatusKey
+	toColumn: DimMaritalStatus.MaritalStatusKey
+
+relationship 44882314-f42d-4332-85d7-c5e5f09f0030
+	fromColumn: FactMarketing.EducationKey
+	toColumn: DimEducation.EducationKey
+
+relationship 3624b73b-1bd4-4eb6-b19f-cbfe155b5031
+	fromColumn: FactMarketing.DayOfWeekKey
+	toColumn: DimDayOfWeek.DayOfWeekKey
+
+relationship fa6df5d3-6c15-483c-b77b-d0ee7f523032
+	fromColumn: FactMarketing.ContactFrequencyKey
+	toColumn: DimContactFrequency.ContactFrequencyKey
+

@@ -1,0 +1,20 @@
+table DimPeriodType
+	lineageTag: b10ce2e2-14a6-4820-b3cb-692fbb28cc4e
+
+	column PeriodTypeKey
+		dataType: string
+		isKey
+		lineageTag: 408248fd-c7bf-4e80-9af9-54d583076e45
+		summarizeBy: none
+		sourceColumn: [PeriodTypeKey]
+
+	column PeriodType
+		dataType: string
+		lineageTag: 778ad926-f4df-49a8-9c27-f60ec5d24015
+		summarizeBy: none
+		sourceColumn: [PeriodType]
+
+	partition DimPeriodType = calculated
+		mode: import
+		source = DISTINCT ( SELECTCOLUMNS ( FactFinance, "PeriodTypeKey", FactFinance[PeriodTypeKey], "PeriodType", FactFinance[PeriodType] ) )
+

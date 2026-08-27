@@ -1,0 +1,27 @@
+table DimCustomer
+	lineageTag: 7ed3d613-013e-4471-8af8-f21bebba474d
+
+	column CustomerKey
+		dataType: string
+		isKey
+		lineageTag: 65a06f9b-b666-4249-a132-356524b60554
+		summarizeBy: none
+		sourceColumn: [CustomerKey]
+
+	column Customer
+		dataType: string
+		isHidden
+		lineageTag: b32e7d2e-46f9-4cef-8e9d-8cf6b743f002
+		summarizeBy: none
+		sourceColumn: [Customer]
+
+	column CustomerStatus
+		dataType: string
+		lineageTag: 7c847c8d-4f2c-45c2-a3ed-b38da893f004
+		summarizeBy: none
+		sourceColumn: [CustomerStatus]
+
+	partition DimCustomer = calculated
+		mode: import
+		source = DISTINCT ( SELECTCOLUMNS ( FactSales, "CustomerKey", FactSales[CustomerKey], "Customer", IF ( FactSales[CustomerKey] = "UNKNOWN", "Unknown customer", "Customer " & FactSales[CustomerKey] ), "CustomerStatus", IF ( FactSales[CustomerKey] = "UNKNOWN", "Unknown customer", "Identified customer" ) ) )
+

@@ -1,0 +1,72 @@
+table RiskRuleSummary
+	lineageTag: 76778c74-8438-4e51-a252-eed53bd9c87e
+
+	column Rule
+		dataType: string
+		lineageTag: 1bc417e6-d3f8-48c6-8cb6-59c85c358f4c
+		summarizeBy: none
+		sourceColumn: Rule
+
+	column RuleSource
+		dataType: string
+		lineageTag: efbd1e43-1be5-4735-8a0b-16313c9ff9df
+		summarizeBy: none
+		sourceColumn: RuleSource
+
+	column Loans
+		dataType: int64
+		formatString: #,0
+		lineageTag: e1a61f4c-b40f-47a2-95c3-8e466835a71b
+		summarizeBy: sum
+		sourceColumn: Loans
+
+	column BadLoans
+		dataType: int64
+		formatString: #,0
+		lineageTag: 15fe8c06-b224-4dbc-9c72-34b8bc675722
+		summarizeBy: sum
+		sourceColumn: BadLoans
+
+	column BadRate
+		dataType: double
+		formatString: 0.0%
+		lineageTag: e651285d-6c84-494a-a73a-43412146c346
+		summarizeBy: average
+		sourceColumn: BadRate
+
+	column LiftVsSeasonedPortfolio
+		dataType: double
+		formatString: 0.00x
+		lineageTag: a5a4335f-7514-46b9-8a5a-35d7b202c16c
+		summarizeBy: average
+		sourceColumn: LiftVsSeasonedPortfolio
+
+	column RuleLabel =
+			SWITCH (
+				RiskRuleSummary[RuleSource],
+				"Decision tree leaf 1", "DT1 High-rate",
+				"Assignment hypothesis", "Low-inc E/F/G",
+				"Decision tree leaf 2", "DT2 Lower-rate",
+				"Decision tree leaf 3", "DT3 High-inc",
+				"Assignment example", "60M Grade C",
+				"Decision tree leaf 4", "Weak grade",
+				RiskRuleSummary[RuleSource]
+			)
+		dataType: string
+		lineageTag: 5681692c-6a2b-42df-ae85-1d2db546aff0
+		summarizeBy: none
+
+	partition RiskRuleSummary = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\PowerBI Dashboard - KhoiPort\04_FinTech_Credit_Risk\Data\risk_rule_summary.csv"), [Delimiter=",", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Types = Table.TransformColumnTypes(Headers, {{"Rule", type text}, {"RuleSource", type text}, {"Loans", Int64.Type}, {"BadLoans", Int64.Type}, {"BadRate", type number}, {"LiftVsSeasonedPortfolio", type number}}, "en-US")
+				in
+				    Types
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

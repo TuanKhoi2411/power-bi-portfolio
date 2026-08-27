@@ -1,0 +1,27 @@
+table DimDate
+	lineageTag: 71207b5e-19c7-455d-acfa-679fc2fb5f60
+
+	column Date
+		dataType: dateTime
+		isKey
+		formatString: M/d/yyyy
+		lineageTag: 055d27b1-2d18-4845-97ec-7f17b1ae329a
+		summarizeBy: none
+		sourceColumn: [Date]
+
+	column MonthNumber = MONTH ( DimDate[Date] )
+		dataType: int64
+		formatString: 0
+		lineageTag: 2ec2c225-1942-4a68-9020-5c9ace4dc457
+		summarizeBy: none
+
+	column Month = FORMAT ( DimDate[Date], "mmmm" )
+		dataType: string
+		lineageTag: aa4b53ca-2b8e-4a2e-adb2-c08b74858419
+		summarizeBy: none
+		sortByColumn: MonthNumber
+
+	partition DimDate = calculated
+		mode: import
+		source = CALENDAR ( MINX ( FactMarketing, FactMarketing[CampaignDate] ), MAXX ( FactMarketing, FactMarketing[CampaignDate] ) )
+

@@ -2,3 +2,15 @@ relationship 6f6298af-2558-45bc-9001-140fdfd00002
 	fromColumn: FactFinance.EndDate
 	toColumn: DimDate.Date
 
+relationship 6c83bc1c-83f3-4a6d-8fc1-a77199905bd7
+	fromColumn: FactFinance.MetricKey
+	toColumn: DimMetric.MetricKey
+
+relationship d74e8ad9-62bc-4ef5-a99b-303ea3cf6e62
+	fromColumn: FactFinance.FormKey
+	toColumn: DimForm.FormKey
+
+relationship a4ac387a-5c6a-434a-9478-8821d19c5303
+	fromColumn: FactFinance.PeriodTypeKey
+	toColumn: DimPeriodType.PeriodTypeKey
+

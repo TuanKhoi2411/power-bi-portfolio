@@ -1,0 +1,20 @@
+table DimDayOfWeek
+	lineageTag: 7d07eca4-e920-4534-925e-a634152e7039
+
+	column DayOfWeekKey
+		dataType: string
+		isKey
+		lineageTag: 9a4b4c53-aa0e-436c-922a-97fcb205b040
+		summarizeBy: none
+		sourceColumn: [DayOfWeekKey]
+
+	column ContactDayOfWeek
+		dataType: string
+		lineageTag: 66dbf435-04e0-4688-9c9d-84262bbb6041
+		summarizeBy: none
+		sourceColumn: [ContactDayOfWeek]
+
+	partition DimDayOfWeek = calculated
+		mode: import
+		source = DISTINCT ( SELECTCOLUMNS ( FactMarketing, "DayOfWeekKey", FactMarketing[DayOfWeekKey], "ContactDayOfWeek", FactMarketing[ContactDayOfWeek] ) )
+

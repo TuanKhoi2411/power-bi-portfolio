@@ -1,16 +1,16 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "a9803052ab8b8e185114",
   "position": {
     "x": 907,
     "y": 235,
-    "z": 21000,
+    "z": 20000,
     "height": 205,
     "width": 348,
-    "tabOrder": 21000
+    "tabOrder": 20000
   },
   "visual": {
-    "visualType": "clusteredColumnChart",
+    "visualType": "lineChart",
     "query": {
       "queryState": {
         "Category": {
@@ -20,16 +20,16 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "FactFinance"
+                      "Entity": "DimDate"
                     }
                   },
-                  "Property": "EndDate"
+                  "Property": "Date"
                 }
               },
-              "queryRef": "FactFinance.EndDate",
-              "nativeQueryRef": "Reporting Date",
+              "queryRef": "DimDate.Date",
+              "nativeQueryRef": "Quarter",
               "active": true,
-              "displayName": "Reporting Date"
+              "displayName": "Quarter"
             }
           ]
         },
@@ -43,12 +43,12 @@
                       "Entity": "FactFinance"
                     }
                   },
-                  "Property": "Assets"
+                  "Property": "Revenue YoY"
                 }
               },
-              "queryRef": "FactFinance.Assets",
-              "nativeQueryRef": "Assets",
-              "displayName": "Assets"
+              "queryRef": "FactFinance.Revenue YoY",
+              "nativeQueryRef": "Revenue YoY",
+              "displayName": "Revenue YoY"
             },
             {
               "field": {
@@ -58,27 +58,12 @@
                       "Entity": "FactFinance"
                     }
                   },
-                  "Property": "Liabilities"
+                  "Property": "Operating Leverage Spread"
                 }
               },
-              "queryRef": "FactFinance.Liabilities",
-              "nativeQueryRef": "Liabilities",
-              "displayName": "Liabilities"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "FactFinance"
-                    }
-                  },
-                  "Property": "Cash"
-                }
-              },
-              "queryRef": "FactFinance.Cash",
-              "nativeQueryRef": "Cash",
-              "displayName": "Cash"
+              "queryRef": "FactFinance.Operating Leverage Spread",
+              "nativeQueryRef": "Operating Leverage",
+              "displayName": "Operating Leverage"
             }
           ]
         }
@@ -105,17 +90,40 @@
           }
         }
       ],
-      "dataPoint": [
+      "categoryAxis": [
         {
           "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#0F766E'"
-                    }
-                  }
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
                 }
               }
             }
@@ -137,7 +145,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Assets, Liabilities and Cash'"
+                  "Value": "'Growth Quality | Revenue YoY vs Operating Leverage'"
                 }
               }
             },
@@ -215,7 +223,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#D8E7E4'"
+                      "Value": "'#D8E5E2'"
                     }
                   }
                 }
@@ -224,7 +232,7 @@
             "radius": {
               "expr": {
                 "Literal": {
-                  "Value": "6D"
+                  "Value": "9D"
                 }
               }
             }
@@ -246,7 +254,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#829A97'"
+                      "Value": "'#6E8F88'"
                     }
                   }
                 }
@@ -255,21 +263,21 @@
             "transparency": {
               "expr": {
                 "Literal": {
-                  "Value": "82D"
+                  "Value": "88D"
                 }
               }
             },
             "shadowBlur": {
               "expr": {
                 "Literal": {
-                  "Value": "6D"
+                  "Value": "5D"
                 }
               }
             },
             "shadowDistance": {
               "expr": {
                 "Literal": {
-                  "Value": "2D"
+                  "Value": "1D"
                 }
               }
             },
@@ -277,6 +285,19 @@
               "expr": {
                 "Literal": {
                   "Value": "45D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Growth Quality | Revenue YoY vs Operating Leverage'"
                 }
               }
             }

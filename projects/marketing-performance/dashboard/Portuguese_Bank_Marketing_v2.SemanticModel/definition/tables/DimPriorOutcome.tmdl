@@ -1,0 +1,20 @@
+table DimPriorOutcome
+	lineageTag: d94acff7-76c9-41cc-a9e1-6f359a921e52
+
+	column PriorOutcomeKey
+		dataType: string
+		isKey
+		lineageTag: 0238173e-7d26-4812-896f-003ecb84236b
+		summarizeBy: none
+		sourceColumn: [PriorOutcomeKey]
+
+	column PriorOutcome
+		dataType: string
+		lineageTag: c231d43d-8cb4-4a36-af3a-1881d7087023
+		summarizeBy: none
+		sourceColumn: [PriorOutcome]
+
+	partition DimPriorOutcome = calculated
+		mode: import
+		source = DISTINCT ( SELECTCOLUMNS ( FactMarketing, "PriorOutcomeKey", FactMarketing[PriorOutcomeKey], "PriorOutcome", FactMarketing[PriorOutcome] ) )
+

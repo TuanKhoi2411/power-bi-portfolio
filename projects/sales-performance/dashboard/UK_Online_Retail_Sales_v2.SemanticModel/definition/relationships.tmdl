@@ -1,0 +1,20 @@
+relationship 6f6298af-2558-45bc-9001-140fdfd00001
+	fromColumn: FactSales.SalesDate
+	toColumn: DimDate.Date
+
+relationship 9714e330-0bc7-42c6-9915-a68135566ba8
+	fromColumn: FactSales.CustomerKey
+	toColumn: DimCustomer.CustomerKey
+
+relationship 26e7b8e2-5bbf-44bd-965b-d54ca3050a2f
+	fromColumn: FactSales.ProductKey
+	toColumn: DimProduct.ProductKey
+
+relationship 2f97b102-e18d-4e6e-9a37-d3c71cba288e
+	fromColumn: FactSales.CountryKey
+	toColumn: DimCountry.CountryKey
+
+relationship 503cad95-afc0-4ad1-9372-e720ab9cf006
+	fromColumn: FactSales.TransactionTypeKey
+	toColumn: DimTransactionType.TransactionTypeKey
+

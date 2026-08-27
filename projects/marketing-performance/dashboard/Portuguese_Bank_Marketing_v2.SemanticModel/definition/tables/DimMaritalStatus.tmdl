@@ -1,0 +1,20 @@
+table DimMaritalStatus
+	lineageTag: b998ee80-e76d-42ad-8328-ed008581f033
+
+	column MaritalStatusKey
+		dataType: string
+		isKey
+		lineageTag: a1f61d81-c302-4ad8-9a0b-ce91faf43034
+		summarizeBy: none
+		sourceColumn: [MaritalStatusKey]
+
+	column MaritalStatus
+		dataType: string
+		lineageTag: 9d7a9a74-f164-4c2f-8246-4481ebf2e035
+		summarizeBy: none
+		sourceColumn: [MaritalStatus]
+
+	partition DimMaritalStatus = calculated
+		mode: import
+		source = DISTINCT ( SELECTCOLUMNS ( FactMarketing, "MaritalStatusKey", FactMarketing[MaritalStatusKey], "MaritalStatus", FactMarketing[MaritalStatus] ) )
+

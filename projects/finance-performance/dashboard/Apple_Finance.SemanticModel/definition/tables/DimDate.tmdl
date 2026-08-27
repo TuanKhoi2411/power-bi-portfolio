@@ -45,6 +45,25 @@ table DimDate
 		lineageTag: 6d1e0bf7-5d6f-4b96-b242-9a832635e4ed
 		summarizeBy: none
 
+	column FiscalYear = YEAR ( EDATE ( DimDate[Date], 3 ) )
+		dataType: int64
+		formatString: 0
+		lineageTag: 0140be0e-0c66-4ee3-a46b-9ca5adeab410
+		summarizeBy: none
+
+	column FiscalPeriod = "Q" & FORMAT ( INT ( MOD ( MONTH ( DimDate[Date] ) + 2, 12 ) / 3 ) + 1, "0" )
+		dataType: string
+		lineageTag: 4896e9e3-6101-49d8-8973-c4fa57c38989
+		summarizeBy: none
+		sortByColumn: FiscalPeriodSort
+
+	column FiscalPeriodSort = INT ( MOD ( MONTH ( DimDate[Date] ) + 2, 12 ) / 3 ) + 1
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 46e3f18d-a948-4e64-b875-82db82b7f388
+		summarizeBy: none
+
 	partition DimDate = calculated
 		mode: import
 		source = CALENDAR ( DATE ( 2008, 1, 1 ), DATE ( 2026, 12, 31 ) )

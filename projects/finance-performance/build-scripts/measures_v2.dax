@@ -1,0 +1,395 @@
+// Auto-exported from the canonical TMDL semantic model.
+// Project: finance-performance
+// Measure table: FactFinance
+// Measure count: 90
+// Regenerate with scripts/export-model-documentation.ps1 after TMDL changes.
+
+// Display folder: Finance\Base
+// Format string: $#,0
+[Finance Value] = SUM ( FactFinance[Value] )
+
+[Balance Value] = MAX ( FactFinance[Value] )
+
+// Display folder: Finance\Income Statement
+// Format string: $#,0
+[Revenue] = CALCULATE ( [Finance Value], FactFinance[DisplayMetric] = "Revenue", FactFinance[MetricClass] = "Flow" )
+
+// Display folder: Finance\Income Statement
+// Format string: $#,0
+[Cost of Sales] = CALCULATE ( [Finance Value], FactFinance[DisplayMetric] = "Cost of Sales", FactFinance[MetricClass] = "Flow" )
+
+// Display folder: Finance\Income Statement
+// Format string: $#,0
+[Gross Profit] = CALCULATE ( [Finance Value], FactFinance[DisplayMetric] = "Gross Profit", FactFinance[MetricClass] = "Flow" )
+
+// Display folder: Finance\Income Statement
+// Format string: $#,0
+[Operating Expenses] = CALCULATE ( [Finance Value], FactFinance[DisplayMetric] = "Operating Expenses", FactFinance[MetricClass] = "Flow" )
+
+// Display folder: Finance\Income Statement
+// Format string: $#,0
+[Operating Income] = CALCULATE ( [Finance Value], FactFinance[DisplayMetric] = "Operating Income", FactFinance[MetricClass] = "Flow" )
+
+// Display folder: Finance\Income Statement
+// Format string: $#,0
+[Net Income] = CALCULATE ( [Finance Value], FactFinance[DisplayMetric] = "Net Income", FactFinance[MetricClass] = "Flow" )
+
+// Display folder: Finance\Balance Sheet
+// Format string: $#,0
+[Assets] = CALCULATE ( [Balance Value], FactFinance[DisplayMetric] = "Total Assets", FactFinance[MetricClass] = "Balance" )
+
+// Display folder: Finance\Balance Sheet
+// Format string: $#,0
+[Liabilities] = CALCULATE ( [Balance Value], FactFinance[DisplayMetric] = "Total Liabilities", FactFinance[MetricClass] = "Balance" )
+
+// Display folder: Finance\Balance Sheet
+// Format string: $#,0
+[Cash] = CALCULATE ( [Balance Value], FactFinance[DisplayMetric] = "Cash & Equivalents", FactFinance[MetricClass] = "Balance" )
+
+// Display folder: Finance\Quarterly
+// Format string: $#,0
+[Quarterly Revenue] = CALCULATE ( [Revenue], FactFinance[PeriodType] = "Quarter" )
+
+// Display folder: Finance\Quarterly
+// Format string: $#,0
+[Quarterly Gross Profit] = CALCULATE ( [Gross Profit], FactFinance[PeriodType] = "Quarter" )
+
+// Display folder: Finance\Quarterly
+// Format string: $#,0
+[Quarterly Operating Income] = CALCULATE ( [Operating Income], FactFinance[PeriodType] = "Quarter" )
+
+// Display folder: Finance\Quarterly
+// Format string: $#,0
+[Quarterly Net Income] = CALCULATE ( [Net Income], FactFinance[PeriodType] = "Quarter" )
+
+// Display folder: Finance\Quarterly
+[Quarterly Cost of Sales] = CALCULATE ( [Cost of Sales], FactFinance[PeriodType] = "Quarter" )
+[Quarterly Operating Expenses] = CALCULATE ( [Operating Expenses], FactFinance[PeriodType] = "Quarter" )
+[Quarterly Gross Margin] = DIVIDE ( [Quarterly Gross Profit], [Quarterly Revenue] )
+[Quarterly Operating Margin] = DIVIDE ( [Quarterly Operating Income], [Quarterly Revenue] )
+[Quarterly Net Margin] = DIVIDE ( [Quarterly Net Income], [Quarterly Revenue] )
+[Quarterly Cost of Sales Ratio] = DIVIDE ( [Quarterly Cost of Sales], [Quarterly Revenue] )
+[Quarterly Operating Expense Ratio] = DIVIDE ( [Quarterly Operating Expenses], [Quarterly Revenue] )
+[Quarterly Net Income Conversion] = DIVIDE ( [Quarterly Net Income], [Quarterly Gross Profit] )
+
+// Display folder: Finance\Margins
+// Format string: 0.0%
+[Gross Margin] = DIVIDE ( [Gross Profit], [Revenue] )
+
+// Display folder: Finance\Margins
+// Format string: 0.0%
+[Operating Margin] = DIVIDE ( [Operating Income], [Revenue] )
+
+// Display folder: Finance\Margins
+// Format string: 0.0%
+[Net Margin] = DIVIDE ( [Net Income], [Revenue] )
+
+// Display folder: Finance\Latest KPIs
+// Format string: $#,0
+[Latest Revenue] = VAR LatestDate = CALCULATE ( MAX ( FactFinance[EndDate] ), REMOVEFILTERS ( DimDate ), FactFinance[DisplayMetric] = "Revenue", FactFinance[PeriodType] = "Quarter" ) RETURN CALCULATE ( [Quarterly Revenue], REMOVEFILTERS ( DimDate ), FactFinance[EndDate] = LatestDate )
+
+// Display folder: Finance\Latest KPIs
+// Format string: $#,0
+[Latest Gross Profit] = VAR LatestDate = CALCULATE ( MAX ( FactFinance[EndDate] ), REMOVEFILTERS ( DimDate ), FactFinance[DisplayMetric] = "Gross Profit", FactFinance[PeriodType] = "Quarter" ) RETURN CALCULATE ( [Quarterly Gross Profit], REMOVEFILTERS ( DimDate ), FactFinance[EndDate] = LatestDate )
+
+// Display folder: Finance\Latest KPIs
+// Format string: $#,0
+[Latest Operating Income] = VAR LatestDate = CALCULATE ( MAX ( FactFinance[EndDate] ), REMOVEFILTERS ( DimDate ), FactFinance[DisplayMetric] = "Operating Income", FactFinance[PeriodType] = "Quarter" ) RETURN CALCULATE ( [Quarterly Operating Income], REMOVEFILTERS ( DimDate ), FactFinance[EndDate] = LatestDate )
+
+// Display folder: Finance\Latest KPIs
+// Format string: $#,0
+[Latest Net Income] = VAR LatestDate = CALCULATE ( MAX ( FactFinance[EndDate] ), REMOVEFILTERS ( DimDate ), FactFinance[DisplayMetric] = "Net Income", FactFinance[PeriodType] = "Quarter" ) RETURN CALCULATE ( [Quarterly Net Income], REMOVEFILTERS ( DimDate ), FactFinance[EndDate] = LatestDate )
+
+[Latest Cost of Sales Amount] = [Latest Revenue] - [Latest Gross Profit]
+
+[Latest Operating Expenses Amount] = [Latest Gross Profit] - [Latest Operating Income]
+
+[Latest Other and Tax Amount] = [Latest Operating Income] - [Latest Net Income]
+
+// Display folder: Finance\Latest KPIs
+// Format string: 0.0%
+[Latest Gross Margin] = VAR LatestDate = CALCULATE ( MAX ( FactFinance[EndDate] ), REMOVEFILTERS ( DimDate ), FactFinance[DisplayMetric] = "Revenue", FactFinance[PeriodType] = "Quarter" ) RETURN CALCULATE ( [Gross Margin], REMOVEFILTERS ( DimDate ), FactFinance[EndDate] = LatestDate, FactFinance[PeriodType] = "Quarter" )
+
+// Display folder: Finance\Movement
+// Format string: $#,0
+[Revenue Previous Year] = VAR CurrentFrame = CALCULATE ( SELECTEDVALUE ( FactFinance[Frame] ), FactFinance[DisplayMetric] = "Revenue", FactFinance[PeriodType] = "Quarter" ) VAR CurrentYear = IF ( NOT ISBLANK ( CurrentFrame ) && CONTAINSSTRING ( CurrentFrame, "Q" ), VALUE ( MID ( CurrentFrame, 3, 4 ) ) ) VAR PriorFrame = IF ( NOT ISBLANK ( CurrentYear ), "CY" & FORMAT ( CurrentYear - 1, "0000" ) & RIGHT ( CurrentFrame, 2 ) ) RETURN IF ( ISBLANK ( PriorFrame ), BLANK (), CALCULATE ( [Quarterly Revenue], REMOVEFILTERS ( DimDate ), REMOVEFILTERS ( FactFinance[EndDate] ), REMOVEFILTERS ( FactFinance[FiscalYear] ), REMOVEFILTERS ( FactFinance[FiscalPeriod] ), REMOVEFILTERS ( FactFinance[Frame] ), FactFinance[Frame] = PriorFrame ) )
+
+// Display folder: Finance\Movement
+// Format string: +0.0%;-0.0%;0.0%
+[Revenue YoY] = VAR CurrentRevenue = [Quarterly Revenue] VAR PriorRevenue = [Revenue Previous Year] RETURN IF ( ISBLANK ( CurrentRevenue ) || ISBLANK ( PriorRevenue ), BLANK (), DIVIDE ( CurrentRevenue - PriorRevenue, PriorRevenue ) )
+
+// Display folder: Finance\Balance Sheet
+// Format string: 0.0%
+[Liabilities to Assets] = DIVIDE ( [Liabilities], [Assets] )
+
+// Display folder: Finance\Latest KPIs
+// Format string: $#,0
+[Latest Metric Value] = VAR LatestDate = CALCULATE ( MAX ( FactFinance[EndDate] ), REMOVEFILTERS ( DimDate ) ) RETURN CALCULATE ( [Finance Value], REMOVEFILTERS ( DimDate ), FactFinance[EndDate] = LatestDate )
+
+// Display folder: Finance\Variance
+// Format string: $#,0
+[Latest Revenue Previous Year] = VAR LatestDate = CALCULATE ( MAX ( FactFinance[EndDate] ), REMOVEFILTERS ( DimDate ), FactFinance[DisplayMetric] = "Revenue", FactFinance[PeriodType] = "Quarter" ) VAR LatestFY = CALCULATE ( MAX ( FactFinance[FiscalYear] ), REMOVEFILTERS ( DimDate ), FactFinance[DisplayMetric] = "Revenue", FactFinance[PeriodType] = "Quarter", FactFinance[EndDate] = LatestDate ) VAR LatestFP = CALCULATE ( MAX ( FactFinance[FiscalPeriod] ), REMOVEFILTERS ( DimDate ), FactFinance[DisplayMetric] = "Revenue", FactFinance[PeriodType] = "Quarter", FactFinance[EndDate] = LatestDate ) VAR PriorDate = CALCULATE ( MAX ( FactFinance[EndDate] ), REMOVEFILTERS ( DimDate ), FactFinance[DisplayMetric] = "Revenue", FactFinance[PeriodType] = "Quarter", FactFinance[FiscalYear] = LatestFY - 1, FactFinance[FiscalPeriod] = LatestFP, FactFinance[EndDate] < LatestDate ) RETURN CALCULATE ( [Quarterly Revenue], REMOVEFILTERS ( DimDate ), FactFinance[EndDate] = PriorDate )
+
+// Display folder: Finance\Variance
+// Format string: +0.0%;-0.0%;0.0%
+[Latest Revenue YoY] = DIVIDE ( [Latest Revenue] - [Latest Revenue Previous Year], [Latest Revenue Previous Year] )
+
+// Display folder: Finance\Variance
+// Format string: $#,0
+[Latest Gross Profit Previous Year] = VAR LatestDate = CALCULATE ( MAX ( FactFinance[EndDate] ), REMOVEFILTERS ( DimDate ), FactFinance[DisplayMetric] = "Gross Profit", FactFinance[PeriodType] = "Quarter" ) VAR LatestFY = CALCULATE ( MAX ( FactFinance[FiscalYear] ), REMOVEFILTERS ( DimDate ), FactFinance[DisplayMetric] = "Gross Profit", FactFinance[PeriodType] = "Quarter", FactFinance[EndDate] = LatestDate ) VAR LatestFP = CALCULATE ( MAX ( FactFinance[FiscalPeriod] ), REMOVEFILTERS ( DimDate ), FactFinance[DisplayMetric] = "Gross Profit", FactFinance[PeriodType] = "Quarter", FactFinance[EndDate] = LatestDate ) VAR PriorDate = CALCULATE ( MAX ( FactFinance[EndDate] ), REMOVEFILTERS ( DimDate ), FactFinance[DisplayMetric] = "Gross Profit", FactFinance[PeriodType] = "Quarter", FactFinance[FiscalYear] = LatestFY - 1, FactFinance[FiscalPeriod] = LatestFP, FactFinance[EndDate] < LatestDate ) RETURN CALCULATE ( [Quarterly Gross Profit], REMOVEFILTERS ( DimDate ), FactFinance[EndDate] = PriorDate )
+
+// Display folder: Finance\Variance
+// Format string: +0.0%;-0.0%;0.0%
+[Latest Gross Profit YoY] = DIVIDE ( [Latest Gross Profit] - [Latest Gross Profit Previous Year], [Latest Gross Profit Previous Year] )
+
+// Display folder: Finance\Variance
+// Format string: $#,0
+[Latest Operating Income Previous Year] = VAR LatestDate = CALCULATE ( MAX ( FactFinance[EndDate] ), REMOVEFILTERS ( DimDate ), FactFinance[DisplayMetric] = "Operating Income", FactFinance[PeriodType] = "Quarter" ) VAR LatestFY = CALCULATE ( MAX ( FactFinance[FiscalYear] ), REMOVEFILTERS ( DimDate ), FactFinance[DisplayMetric] = "Operating Income", FactFinance[PeriodType] = "Quarter", FactFinance[EndDate] = LatestDate ) VAR LatestFP = CALCULATE ( MAX ( FactFinance[FiscalPeriod] ), REMOVEFILTERS ( DimDate ), FactFinance[DisplayMetric] = "Operating Income", FactFinance[PeriodType] = "Quarter", FactFinance[EndDate] = LatestDate ) VAR PriorDate = CALCULATE ( MAX ( FactFinance[EndDate] ), REMOVEFILTERS ( DimDate ), FactFinance[DisplayMetric] = "Operating Income", FactFinance[PeriodType] = "Quarter", FactFinance[FiscalYear] = LatestFY - 1, FactFinance[FiscalPeriod] = LatestFP, FactFinance[EndDate] < LatestDate ) RETURN CALCULATE ( [Quarterly Operating Income], REMOVEFILTERS ( DimDate ), FactFinance[EndDate] = PriorDate )
+
+// Display folder: Finance\Variance
+// Format string: +0.0%;-0.0%;0.0%
+[Latest Operating Income YoY] = DIVIDE ( [Latest Operating Income] - [Latest Operating Income Previous Year], [Latest Operating Income Previous Year] )
+
+// Display folder: Finance\Variance
+// Format string: $#,0
+[Latest Net Income Previous Year] = VAR LatestDate = CALCULATE ( MAX ( FactFinance[EndDate] ), REMOVEFILTERS ( DimDate ), FactFinance[DisplayMetric] = "Net Income", FactFinance[PeriodType] = "Quarter" ) VAR LatestFY = CALCULATE ( MAX ( FactFinance[FiscalYear] ), REMOVEFILTERS ( DimDate ), FactFinance[DisplayMetric] = "Net Income", FactFinance[PeriodType] = "Quarter", FactFinance[EndDate] = LatestDate ) VAR LatestFP = CALCULATE ( MAX ( FactFinance[FiscalPeriod] ), REMOVEFILTERS ( DimDate ), FactFinance[DisplayMetric] = "Net Income", FactFinance[PeriodType] = "Quarter", FactFinance[EndDate] = LatestDate ) VAR PriorDate = CALCULATE ( MAX ( FactFinance[EndDate] ), REMOVEFILTERS ( DimDate ), FactFinance[DisplayMetric] = "Net Income", FactFinance[PeriodType] = "Quarter", FactFinance[FiscalYear] = LatestFY - 1, FactFinance[FiscalPeriod] = LatestFP, FactFinance[EndDate] < LatestDate ) RETURN CALCULATE ( [Quarterly Net Income], REMOVEFILTERS ( DimDate ), FactFinance[EndDate] = PriorDate )
+
+// Display folder: Finance\Variance
+// Format string: +0.0%;-0.0%;0.0%
+[Latest Net Income YoY] = DIVIDE ( [Latest Net Income] - [Latest Net Income Previous Year], [Latest Net Income Previous Year] )
+
+// Display folder: Finance\Variance
+// Format string: 0.0%
+[Latest Gross Margin Previous Year] = VAR LatestDate = CALCULATE ( MAX ( FactFinance[EndDate] ), REMOVEFILTERS ( DimDate ), FactFinance[DisplayMetric] = "Revenue", FactFinance[PeriodType] = "Quarter" ) VAR LatestFY = CALCULATE ( MAX ( FactFinance[FiscalYear] ), REMOVEFILTERS ( DimDate ), FactFinance[DisplayMetric] = "Revenue", FactFinance[PeriodType] = "Quarter", FactFinance[EndDate] = LatestDate ) VAR LatestFP = CALCULATE ( MAX ( FactFinance[FiscalPeriod] ), REMOVEFILTERS ( DimDate ), FactFinance[DisplayMetric] = "Revenue", FactFinance[PeriodType] = "Quarter", FactFinance[EndDate] = LatestDate ) VAR PriorDate = CALCULATE ( MAX ( FactFinance[EndDate] ), REMOVEFILTERS ( DimDate ), FactFinance[DisplayMetric] = "Revenue", FactFinance[PeriodType] = "Quarter", FactFinance[FiscalYear] = LatestFY - 1, FactFinance[FiscalPeriod] = LatestFP, FactFinance[EndDate] < LatestDate ) RETURN CALCULATE ( [Gross Margin], REMOVEFILTERS ( DimDate ), FactFinance[EndDate] = PriorDate, FactFinance[PeriodType] = "Quarter" )
+
+// Display folder: Finance\Variance
+// Format string: +0.0%;-0.0%;0.0%
+[Latest Gross Margin Variance pp] = [Latest Gross Margin] - [Latest Gross Margin Previous Year]
+
+// Display folder: Finance\Variance
+// Format string: $#,0;[Red]-$#,0
+[Revenue Variance vs PY] = [Quarterly Revenue] - [Revenue Previous Year]
+
+// Display folder: Finance\Margins
+// Format string: 0.0%
+[Operating Expense Ratio] = DIVIDE ( [Operating Expenses], [Revenue] )
+
+// Display folder: Finance\Balance Sheet
+// Format string: 0.0%
+[Cash Coverage of Liabilities] = DIVIDE ( [Cash], [Liabilities] )
+
+[Cash to Assets] = DIVIDE ( [Cash], [Assets] )
+
+// Display folder: Finance\Display
+// Format string: 
+[KPI Revenue Display] = "$" & FORMAT ( DIVIDE ( [Latest Revenue], 1000000000 ), "0.0" ) & "B"
+
+// Display folder: Finance\Display
+// Format string: 
+[KPI Gross Profit Display] = "$" & FORMAT ( DIVIDE ( [Latest Gross Profit], 1000000000 ), "0.0" ) & "B"
+
+// Display folder: Finance\Display
+// Format string: 
+[KPI Operating Income Display] = "$" & FORMAT ( DIVIDE ( [Latest Operating Income], 1000000000 ), "0.0" ) & "B"
+
+// Display folder: Finance\Display
+// Format string: 
+[KPI Net Income Display] = "$" & FORMAT ( DIVIDE ( [Latest Net Income], 1000000000 ), "0.0" ) & "B"
+
+// Display folder: Finance\Display
+// Format string: 
+[KPI Gross Margin Display] = FORMAT ( [Latest Gross Margin], "0.0%" )
+
+// Display folder: Finance\Latest KPIs
+// Format string: 0.0%
+[Latest Operating Margin] = VAR D = CALCULATE ( MAX ( FactFinance[EndDate] ), REMOVEFILTERS ( DimDate ), FactFinance[DisplayMetric] = "Revenue", FactFinance[PeriodType] = "Quarter" ) RETURN CALCULATE ( [Operating Margin], REMOVEFILTERS ( DimDate ), FactFinance[EndDate] = D, FactFinance[PeriodType] = "Quarter" )
+
+// Display folder: Finance\Latest KPIs
+// Format string: 0.0%
+[Latest Net Margin] = VAR D = CALCULATE ( MAX ( FactFinance[EndDate] ), REMOVEFILTERS ( DimDate ), FactFinance[DisplayMetric] = "Revenue", FactFinance[PeriodType] = "Quarter" ) RETURN CALCULATE ( [Net Margin], REMOVEFILTERS ( DimDate ), FactFinance[EndDate] = D, FactFinance[PeriodType] = "Quarter" )
+
+// Display folder: Finance\Latest KPIs
+// Format string: 0.0%
+[Latest Operating Expense Ratio] = VAR D = CALCULATE ( MAX ( FactFinance[EndDate] ), REMOVEFILTERS ( DimDate ), FactFinance[DisplayMetric] = "Revenue", FactFinance[PeriodType] = "Quarter" ) RETURN CALCULATE ( [Operating Expense Ratio], REMOVEFILTERS ( DimDate ), FactFinance[EndDate] = D, FactFinance[PeriodType] = "Quarter" )
+
+// Display folder: Finance\Margins
+// Format string: 0.0%
+[Cost of Sales Ratio] = DIVIDE ( [Cost of Sales], [Revenue] )
+
+// Display folder: Finance\Latest KPIs
+// Format string: 0.0%
+[Latest Cost of Sales Ratio] = VAR D = CALCULATE ( MAX ( FactFinance[EndDate] ), REMOVEFILTERS ( DimDate ), FactFinance[DisplayMetric] = "Revenue", FactFinance[PeriodType] = "Quarter" ) RETURN CALCULATE ( [Cost of Sales Ratio], REMOVEFILTERS ( DimDate ), FactFinance[EndDate] = D, FactFinance[PeriodType] = "Quarter" )
+
+// Display folder: Finance\Latest Balance
+// Format string: $#,0
+[Latest Assets] = VAR D = CALCULATE ( MAX ( FactFinance[EndDate] ), REMOVEFILTERS ( DimDate ), FactFinance[DisplayMetric] = "Total Assets" ) RETURN CALCULATE ( [Assets], REMOVEFILTERS ( DimDate ), FactFinance[EndDate] = D )
+
+// Display folder: Finance\Latest Balance
+// Format string: $#,0
+[Latest Liabilities] = VAR D = CALCULATE ( MAX ( FactFinance[EndDate] ), REMOVEFILTERS ( DimDate ), FactFinance[DisplayMetric] = "Total Liabilities" ) RETURN CALCULATE ( [Liabilities], REMOVEFILTERS ( DimDate ), FactFinance[EndDate] = D )
+
+// Display folder: Finance\Latest Balance
+// Format string: $#,0
+[Latest Cash] = VAR D = CALCULATE ( MAX ( FactFinance[EndDate] ), REMOVEFILTERS ( DimDate ), FactFinance[DisplayMetric] = "Cash & Equivalents" ) RETURN CALCULATE ( [Cash], REMOVEFILTERS ( DimDate ), FactFinance[EndDate] = D )
+
+// Display folder: Finance\Latest Balance
+// Format string: 0.0%
+[Latest Liabilities to Assets] = DIVIDE ( [Latest Liabilities], [Latest Assets] )
+
+// Display folder: Finance\Latest Balance
+// Format string: 0.0%
+[Latest Cash Coverage] = DIVIDE ( [Latest Cash], [Latest Liabilities] )
+
+[Latest Cash to Assets] = DIVIDE ( [Latest Cash], [Latest Assets] )
+
+// Display folder: Finance\Balance Sheet
+// Format string: $#,0
+[Net Asset Position] = [Assets] - [Liabilities]
+
+[Net Asset Ratio] = DIVIDE ( [Net Asset Position], [Assets] )
+
+// Display folder: Finance\Latest Balance
+// Format string: $#,0
+[Latest Net Asset Position] = [Latest Assets] - [Latest Liabilities]
+
+// Display folder: Finance\Movement
+// Format string: 0.0%
+[Latest Operating Margin PY] = VAR D = CALCULATE ( MAX ( FactFinance[EndDate] ), REMOVEFILTERS ( DimDate ), FactFinance[DisplayMetric] = "Revenue", FactFinance[PeriodType] = "Quarter" ) VAR FY = CALCULATE ( MAX ( FactFinance[FiscalYear] ), REMOVEFILTERS ( DimDate ), FactFinance[EndDate] = D, FactFinance[DisplayMetric] = "Revenue", FactFinance[PeriodType] = "Quarter" ) VAR FP = CALCULATE ( MAX ( FactFinance[FiscalPeriod] ), REMOVEFILTERS ( DimDate ), FactFinance[EndDate] = D, FactFinance[DisplayMetric] = "Revenue", FactFinance[PeriodType] = "Quarter" ) VAR PYD = CALCULATE ( MAX ( FactFinance[EndDate] ), REMOVEFILTERS ( DimDate ), FactFinance[FiscalYear] = FY - 1, FactFinance[FiscalPeriod] = FP, FactFinance[DisplayMetric] = "Revenue", FactFinance[PeriodType] = "Quarter" ) RETURN CALCULATE ( [Operating Margin], REMOVEFILTERS ( DimDate ), FactFinance[EndDate] = PYD, FactFinance[PeriodType] = "Quarter" )
+
+// Display folder: Finance\Movement
+// Format string: +0.0%;-0.0%;0.0%
+[Latest Operating Margin Variance pp] = [Latest Operating Margin] - [Latest Operating Margin PY]
+
+// Display folder: Finance\Movement
+// Format string: 0.0%
+[Latest Net Margin PY] = VAR D = CALCULATE ( MAX ( FactFinance[EndDate] ), REMOVEFILTERS ( DimDate ), FactFinance[DisplayMetric] = "Revenue", FactFinance[PeriodType] = "Quarter" ) VAR FY = CALCULATE ( MAX ( FactFinance[FiscalYear] ), REMOVEFILTERS ( DimDate ), FactFinance[EndDate] = D, FactFinance[DisplayMetric] = "Revenue", FactFinance[PeriodType] = "Quarter" ) VAR FP = CALCULATE ( MAX ( FactFinance[FiscalPeriod] ), REMOVEFILTERS ( DimDate ), FactFinance[EndDate] = D, FactFinance[DisplayMetric] = "Revenue", FactFinance[PeriodType] = "Quarter" ) VAR PYD = CALCULATE ( MAX ( FactFinance[EndDate] ), REMOVEFILTERS ( DimDate ), FactFinance[FiscalYear] = FY - 1, FactFinance[FiscalPeriod] = FP, FactFinance[DisplayMetric] = "Revenue", FactFinance[PeriodType] = "Quarter" ) RETURN CALCULATE ( [Net Margin], REMOVEFILTERS ( DimDate ), FactFinance[EndDate] = PYD, FactFinance[PeriodType] = "Quarter" )
+
+// Display folder: Finance\Movement
+// Format string: +0.0%;-0.0%;0.0%
+[Latest Net Margin Variance pp] = [Latest Net Margin] - [Latest Net Margin PY]
+
+// Display folder: Finance\Movement
+// Format string: 0.0%
+[Latest Opex Ratio PY] = VAR D = CALCULATE ( MAX ( FactFinance[EndDate] ), REMOVEFILTERS ( DimDate ), FactFinance[DisplayMetric] = "Revenue", FactFinance[PeriodType] = "Quarter" ) VAR FY = CALCULATE ( MAX ( FactFinance[FiscalYear] ), REMOVEFILTERS ( DimDate ), FactFinance[EndDate] = D, FactFinance[DisplayMetric] = "Revenue", FactFinance[PeriodType] = "Quarter" ) VAR FP = CALCULATE ( MAX ( FactFinance[FiscalPeriod] ), REMOVEFILTERS ( DimDate ), FactFinance[EndDate] = D, FactFinance[DisplayMetric] = "Revenue", FactFinance[PeriodType] = "Quarter" ) VAR PYD = CALCULATE ( MAX ( FactFinance[EndDate] ), REMOVEFILTERS ( DimDate ), FactFinance[FiscalYear] = FY - 1, FactFinance[FiscalPeriod] = FP, FactFinance[DisplayMetric] = "Revenue", FactFinance[PeriodType] = "Quarter" ) RETURN CALCULATE ( [Operating Expense Ratio], REMOVEFILTERS ( DimDate ), FactFinance[EndDate] = PYD, FactFinance[PeriodType] = "Quarter" )
+
+// Display folder: Finance\Movement
+// Format string: +0.0%;-0.0%;0.0%
+[Latest Opex Ratio Variance pp] = [Latest Operating Expense Ratio] - [Latest Opex Ratio PY]
+
+// Display folder: Finance\Movement
+// Format string: $#,0
+[Assets Previous Year] = VAR FY = MAX ( FactFinance[FiscalYear] ) VAR FP = MAX ( FactFinance[FiscalPeriod] ) RETURN CALCULATE ( [Assets], REMOVEFILTERS ( DimDate ), REMOVEFILTERS ( FactFinance[EndDate] ), REMOVEFILTERS ( FactFinance[FiscalYear] ), REMOVEFILTERS ( FactFinance[FiscalPeriod] ), FactFinance[FiscalYear] = FY - 1, FactFinance[FiscalPeriod] = FP )
+
+// Display folder: Finance\Movement
+// Format string: +0.0%;-0.0%;0.0%
+[Assets YoY] = DIVIDE ( [Assets] - [Assets Previous Year], [Assets Previous Year] )
+
+// Display folder: Finance\Movement
+// Format string: $#,0
+[Liabilities Previous Year] = VAR FY = MAX ( FactFinance[FiscalYear] ) VAR FP = MAX ( FactFinance[FiscalPeriod] ) RETURN CALCULATE ( [Liabilities], REMOVEFILTERS ( DimDate ), REMOVEFILTERS ( FactFinance[EndDate] ), REMOVEFILTERS ( FactFinance[FiscalYear] ), REMOVEFILTERS ( FactFinance[FiscalPeriod] ), FactFinance[FiscalYear] = FY - 1, FactFinance[FiscalPeriod] = FP )
+
+// Display folder: Finance\Movement
+// Format string: +0.0%;-0.0%;0.0%
+[Liabilities YoY] = DIVIDE ( [Liabilities] - [Liabilities Previous Year], [Liabilities Previous Year] )
+
+// Display folder: Finance\Movement
+// Format string: $#,0
+[Cash Previous Year] = CALCULATE ( [Cash], DATEADD ( DimDate[Date], -1, YEAR ) )
+
+// Display folder: Finance\Movement
+// Format string: +0.0%;-0.0%;0.0%
+[Cash YoY] = DIVIDE ( [Cash] - [Cash Previous Year], [Cash Previous Year] )
+
+// Display folder: Finance\Movement
+// Format string: 0.0%
+[Liabilities to Assets PY] = CALCULATE ( [Liabilities to Assets], DATEADD ( DimDate[Date], -1, YEAR ) )
+
+// Display folder: Finance\Movement
+// Format string: +0.0%;-0.0%;0.0%
+[Liabilities to Assets Variance pp] = [Liabilities to Assets] - [Liabilities to Assets PY]
+
+// Display folder: Finance\Movement
+// Format string: 0.0%
+[Cash Coverage PY] = CALCULATE ( [Cash Coverage of Liabilities], DATEADD ( DimDate[Date], -1, YEAR ) )
+
+// Display folder: Finance\Movement
+// Format string: +0.0%;-0.0%;0.0%
+[Cash Coverage Variance pp] = [Cash Coverage of Liabilities] - [Cash Coverage PY]
+
+// Display folder: Finance\Movement
+// Format string: $#,0
+[Latest Assets PY] = VAR D = CALCULATE ( MAX ( FactFinance[EndDate] ), REMOVEFILTERS ( DimDate ), FactFinance[DisplayMetric] = "Total Assets" ) VAR FY = CALCULATE ( MAX ( FactFinance[FiscalYear] ), REMOVEFILTERS ( DimDate ), FactFinance[EndDate] = D, FactFinance[DisplayMetric] = "Total Assets" ) VAR FP = CALCULATE ( MAX ( FactFinance[FiscalPeriod] ), REMOVEFILTERS ( DimDate ), FactFinance[EndDate] = D, FactFinance[DisplayMetric] = "Total Assets" ) VAR PYD = CALCULATE ( MAX ( FactFinance[EndDate] ), REMOVEFILTERS ( DimDate ), FactFinance[FiscalYear] = FY - 1, FactFinance[FiscalPeriod] = FP, FactFinance[DisplayMetric] = "Total Assets" ) RETURN CALCULATE ( [Assets], REMOVEFILTERS ( DimDate ), FactFinance[EndDate] = PYD )
+
+// Display folder: Finance\Movement
+// Format string: +0.0%;-0.0%;0.0%
+[Latest Assets YoY] = DIVIDE ( [Latest Assets] - [Latest Assets PY], [Latest Assets PY] )
+
+// Display folder: Finance\Movement
+// Format string: $#,0
+[Latest Liabilities PY] = VAR D = CALCULATE ( MAX ( FactFinance[EndDate] ), REMOVEFILTERS ( DimDate ), FactFinance[DisplayMetric] = "Total Liabilities" ) VAR FY = CALCULATE ( MAX ( FactFinance[FiscalYear] ), REMOVEFILTERS ( DimDate ), FactFinance[EndDate] = D, FactFinance[DisplayMetric] = "Total Liabilities" ) VAR FP = CALCULATE ( MAX ( FactFinance[FiscalPeriod] ), REMOVEFILTERS ( DimDate ), FactFinance[EndDate] = D, FactFinance[DisplayMetric] = "Total Liabilities" ) VAR PYD = CALCULATE ( MAX ( FactFinance[EndDate] ), REMOVEFILTERS ( DimDate ), FactFinance[FiscalYear] = FY - 1, FactFinance[FiscalPeriod] = FP, FactFinance[DisplayMetric] = "Total Liabilities" ) RETURN CALCULATE ( [Liabilities], REMOVEFILTERS ( DimDate ), FactFinance[EndDate] = PYD )
+
+// Display folder: Finance\Movement
+// Format string: +0.0%;-0.0%;0.0%
+[Latest Liabilities YoY] = DIVIDE ( [Latest Liabilities] - [Latest Liabilities PY], [Latest Liabilities PY] )
+
+// Display folder: Finance\Movement
+// Format string: $#,0
+[Latest Cash PY] = VAR D = CALCULATE ( MAX ( FactFinance[EndDate] ), REMOVEFILTERS ( DimDate ), FactFinance[DisplayMetric] = "Cash & Equivalents" ) VAR FY = CALCULATE ( MAX ( FactFinance[FiscalYear] ), REMOVEFILTERS ( DimDate ), FactFinance[EndDate] = D, FactFinance[DisplayMetric] = "Cash & Equivalents" ) VAR FP = CALCULATE ( MAX ( FactFinance[FiscalPeriod] ), REMOVEFILTERS ( DimDate ), FactFinance[EndDate] = D, FactFinance[DisplayMetric] = "Cash & Equivalents" ) VAR PYD = CALCULATE ( MAX ( FactFinance[EndDate] ), REMOVEFILTERS ( DimDate ), FactFinance[FiscalYear] = FY - 1, FactFinance[FiscalPeriod] = FP, FactFinance[DisplayMetric] = "Cash & Equivalents" ) RETURN CALCULATE ( [Cash], REMOVEFILTERS ( DimDate ), FactFinance[EndDate] = PYD )
+
+// Display folder: Finance\Movement
+// Format string: +0.0%;-0.0%;0.0%
+[Latest Cash YoY] = DIVIDE ( [Latest Cash] - [Latest Cash PY], [Latest Cash PY] )
+
+// Display folder: Finance\Movement
+// Format string: 0.0%
+[Latest Liabilities to Assets PY] = DIVIDE ( [Latest Liabilities PY], [Latest Assets PY] )
+
+// Display folder: Finance\Movement
+// Format string: +0.0%;-0.0%;0.0%
+[Latest Liabilities to Assets Variance pp] = [Latest Liabilities to Assets] - [Latest Liabilities to Assets PY]
+
+// Display folder: Finance\Movement
+// Format string: 0.0%
+[Latest Cash Coverage PY] = DIVIDE ( [Latest Cash PY], [Latest Liabilities PY] )
+
+// Display folder: Finance\Movement
+// Format string: +0.0%;-0.0%;0.0%
+[Latest Cash Coverage Variance pp] = [Latest Cash Coverage] - [Latest Cash Coverage PY]
+
+[Latest Cash to Assets PY] = DIVIDE ( [Latest Cash PY], [Latest Assets PY] )
+
+[Latest Cash to Assets Variance pp] = [Latest Cash to Assets] - [Latest Cash to Assets PY]
+
+// Display folder: Finance\Display
+// Format string: 
+[KPI Operating Margin Display] = FORMAT ( [Latest Operating Margin], "0.0%" )
+
+// Display folder: Finance\Display
+// Format string: 
+[KPI Net Margin Display] = FORMAT ( [Latest Net Margin], "0.0%" )
+
+// Display folder: Finance\Display
+// Format string: 
+[KPI Opex Ratio Display] = FORMAT ( [Latest Operating Expense Ratio], "0.0%" )
+
+// Display folder: Finance\Display
+// Format string: 
+[KPI Assets Display] = "$" & FORMAT ( DIVIDE ( [Latest Assets], 1000000000 ), "0.0" ) & "B"
+
+// Display folder: Finance\Display
+// Format string: 
+[KPI Liabilities Display] = "$" & FORMAT ( DIVIDE ( [Latest Liabilities], 1000000000 ), "0.0" ) & "B"
+
+// Display folder: Finance\Display
+// Format string: 
+[KPI Cash Display] = "$" & FORMAT ( DIVIDE ( [Latest Cash], 1000000000 ), "0.0" ) & "B"
+
+// Display folder: Finance\Display
+// Format string: 
+[KPI Liabilities to Assets Display] = FORMAT ( [Latest Liabilities to Assets], "0.0%" )
+
+// Display folder: Finance\Display
+// Format string: 
+[KPI Cash Coverage Display] = FORMAT ( [Latest Cash Coverage], "0.0%" )
+
+[KPI Cash to Assets Display] = FORMAT ( [Latest Cash to Assets], "0.0%" )

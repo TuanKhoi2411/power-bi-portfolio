@@ -1,0 +1,20 @@
+table DimPurpose
+	lineageTag: 9ee2bd47-41b4-45ed-bf66-c99d3e64c201
+
+	column PurposeKey
+		dataType: string
+		isKey
+		lineageTag: 9ee2bd47-41b4-45ed-bf66-c99d3e64c202
+		summarizeBy: none
+		sourceColumn: [PurposeKey]
+
+	column Purpose
+		dataType: string
+		lineageTag: 9ee2bd47-41b4-45ed-bf66-c99d3e64c203
+		summarizeBy: none
+		sourceColumn: [Purpose]
+
+	partition DimPurpose = calculated
+		mode: import
+		source = DISTINCT ( SELECTCOLUMNS ( FactLoans, "PurposeKey", FactLoans[PurposeKey], "Purpose", FactLoans[Purpose] ) )
+

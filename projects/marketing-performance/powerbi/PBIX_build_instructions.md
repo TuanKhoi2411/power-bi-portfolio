@@ -1,28 +1,24 @@
-# PBIX build instructions
+# PBIX Build Instructions
 
-## Targets
+## Target
 
-- PBIP: `../dashboard/Portuguese_Bank_Marketing_Performance_Dashboard.pbip`
-- PBIX: `../Portuguese_Bank_Marketing_Performance_Dashboard.pbix`
-- Source: `../data/bank-additional-full.csv`
+- PBIP entry point: `dashboard/Portuguese_Bank_Marketing.pbip`
+- Packaged output: `Portuguese_Bank_Marketing_Performance_Dashboard.pbix`
+- Canonical source: `C:\PowerBI Dashboard - KhoiPort`
 
-## Build steps
+## Build
 
-1. Open the complete PBIP project in Power BI Desktop.
-2. Replace the local `FactMarketing` source path with the repository CSV.
-3. Verify the semicolon delimiter and refresh 41,188 contact rows unless documented transformations change the count.
-4. Review types, `unknown` categories, target mapping, bands, and campaign-date logic.
-5. Confirm all 34 measures and all three 1280×720 pages.
-6. Test page navigation, reset, audience/campaign filters, cross-highlighting, sample-size context, and tables.
-7. Save PBIP; use **File → Save As** to update the packaged PBIX.
-8. Close/reopen PBIX and repeat representative filters and totals.
+1. Download the complete project folder; a `.pbip` file is only an entry point.
+2. Open `dashboard/Portuguese_Bank_Marketing.pbip` in Power BI Desktop.
+3. If refresh fails, update the source path to the included/public source documented in the README.
+4. Refresh and resolve errors before changing visuals.
+5. Validate the page set: Bank Marketing, Audience Segmentation, Campaign Effectiveness.
+6. Compare the semantic model with `model/model_inventory.md` and exact measures with `model/measures.dax`.
+7. Run the QA checklist, save the PBIP, then export `Portuguese_Bank_Marketing_Performance_Dashboard.pbix`.
+8. Regenerate the dashboard PDF in `preview/`; portfolio images are rendered from this PDF, not from slide artwork.
 
-## Documentation/validation commands
+## Guardrails
 
-```powershell
-./scripts/export-model-documentation.ps1
-./scripts/validate-pbip-structure.ps1
-./scripts/validate-agent-packages.ps1
-```
-
-Do not mark a changed build complete without a current Desktop refresh/reopen test.
+- Do not edit files inside `.pbi/`; they are local caches/settings.
+- Do not publish secrets, credentials, private data, or local absolute paths.
+- Do not rename tables or measures without updating visuals, documentation, and QA.

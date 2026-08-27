@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "555a42d142ccbd71f469",
   "position": {
     "x": 740,
     "y": 455,
-    "z": 23000,
+    "z": 22000,
     "height": 235,
     "width": 515,
-    "tabOrder": 23000
+    "tabOrder": 22000
   },
   "visual": {
     "visualType": "tableEx",
@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "FactFinance"
+                      "Entity": "DimDate"
                     }
                   },
-                  "Property": "EndDate"
+                  "Property": "Date"
                 }
               },
-              "queryRef": "FactFinance.EndDate",
+              "queryRef": "DimDate.Date",
               "nativeQueryRef": "Reporting date",
               "displayName": "Reporting date"
             },
@@ -68,42 +68,12 @@
                       "Entity": "FactFinance"
                     }
                   },
-                  "Property": "Cash"
-                }
-              },
-              "queryRef": "FactFinance.Cash",
-              "nativeQueryRef": "Cash",
-              "displayName": "Cash"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "FactFinance"
-                    }
-                  },
                   "Property": "Net Asset Position"
                 }
               },
               "queryRef": "FactFinance.Net Asset Position",
               "nativeQueryRef": "Net Assets",
               "displayName": "Net Assets"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "FactFinance"
-                    }
-                  },
-                  "Property": "Liabilities to Assets"
-                }
-              },
-              "queryRef": "FactFinance.Liabilities to Assets",
-              "nativeQueryRef": "Liabilities / Assets",
-              "displayName": "Liabilities / Assets"
             },
             {
               "field": {
@@ -138,7 +108,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Balance Sheet Detail'"
+                  "Value": "'Quarterly Balance-Sheet Risk Detail'"
                 }
               }
             },
@@ -216,7 +186,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#D8E7E4'"
+                      "Value": "'#D8E5E2'"
                     }
                   }
                 }
@@ -225,7 +195,7 @@
             "radius": {
               "expr": {
                 "Literal": {
-                  "Value": "6D"
+                  "Value": "9D"
                 }
               }
             }
@@ -247,7 +217,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#829A97'"
+                      "Value": "'#6E8F88'"
                     }
                   }
                 }
@@ -256,21 +226,21 @@
             "transparency": {
               "expr": {
                 "Literal": {
-                  "Value": "82D"
+                  "Value": "88D"
                 }
               }
             },
             "shadowBlur": {
               "expr": {
                 "Literal": {
-                  "Value": "6D"
+                  "Value": "5D"
                 }
               }
             },
             "shadowDistance": {
               "expr": {
                 "Literal": {
-                  "Value": "2D"
+                  "Value": "1D"
                 }
               }
             },
@@ -278,6 +248,19 @@
               "expr": {
                 "Literal": {
                   "Value": "45D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Quarterly Balance-Sheet Risk Detail'"
                 }
               }
             }

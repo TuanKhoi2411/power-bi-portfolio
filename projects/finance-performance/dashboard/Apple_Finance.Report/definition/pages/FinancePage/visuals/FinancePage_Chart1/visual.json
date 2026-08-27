@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "c6792669773df5407d3a",
   "position": {
     "x": 189.5,
     "y": 235,
-    "z": 19000,
+    "z": 18000,
     "height": 205,
     "width": 343,
-    "tabOrder": 19000
+    "tabOrder": 18000
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -20,16 +20,16 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "FactFinance"
+                      "Entity": "FinanceComponent"
                     }
                   },
-                  "Property": "DisplayMetric"
+                  "Property": "Component"
                 }
               },
-              "queryRef": "FactFinance.DisplayMetric",
-              "nativeQueryRef": "Metric",
+              "queryRef": "FinanceComponent.Component",
+              "nativeQueryRef": "Component",
               "active": true,
-              "displayName": "Metric"
+              "displayName": "Component"
             }
           ]
         },
@@ -43,15 +43,32 @@
                       "Entity": "FactFinance"
                     }
                   },
-                  "Property": "Latest Metric Value"
+                  "Property": "Latest Revenue Component Amount"
                 }
               },
-              "queryRef": "FactFinance.Latest Metric Value",
-              "nativeQueryRef": "Latest Value",
-              "displayName": "Latest Value"
+              "queryRef": "FactFinance.Latest Revenue Component Amount",
+              "nativeQueryRef": "Amount",
+              "displayName": "Amount"
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "FactFinance"
+                  }
+                },
+                "Property": "Latest Revenue Component Amount"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
       }
     },
     "objects": {
@@ -61,7 +78,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             },
@@ -69,6 +86,80 @@
               "expr": {
                 "Literal": {
                   "Value": "'Top'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "categoryAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
+                }
+              }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1000000000D"
+                }
+              }
+            },
+            "labelPrecision": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
                 }
               }
             }
@@ -107,7 +198,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Latest Financial Metrics'"
+                  "Value": "'Revenue Allocation | Latest Quarter (Actual $)'"
                 }
               }
             },
@@ -185,7 +276,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#D8E7E4'"
+                      "Value": "'#D8E5E2'"
                     }
                   }
                 }
@@ -194,7 +285,7 @@
             "radius": {
               "expr": {
                 "Literal": {
-                  "Value": "6D"
+                  "Value": "9D"
                 }
               }
             }
@@ -216,7 +307,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#829A97'"
+                      "Value": "'#6E8F88'"
                     }
                   }
                 }
@@ -225,21 +316,21 @@
             "transparency": {
               "expr": {
                 "Literal": {
-                  "Value": "82D"
+                  "Value": "88D"
                 }
               }
             },
             "shadowBlur": {
               "expr": {
                 "Literal": {
-                  "Value": "6D"
+                  "Value": "5D"
                 }
               }
             },
             "shadowDistance": {
               "expr": {
                 "Literal": {
-                  "Value": "2D"
+                  "Value": "1D"
                 }
               }
             },
@@ -247,6 +338,19 @@
               "expr": {
                 "Literal": {
                   "Value": "45D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Revenue Allocation | Latest Quarter (Actual $)'"
                 }
               }
             }

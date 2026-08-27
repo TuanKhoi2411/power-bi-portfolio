@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "6a3963a5f7d33e8ed72c",
   "position": {
     "x": 29,
     "y": 355,
-    "z": 5000,
+    "z": 4000,
     "height": 66,
     "width": 129,
-    "tabOrder": 5000
+    "tabOrder": 4000
   },
   "visual": {
     "visualType": "slicer",
@@ -20,16 +20,16 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "FactFinance"
+                      "Entity": "DimDate"
                     }
                   },
-                  "Property": "PeriodType"
+                  "Property": "FiscalYear"
                 }
               },
-              "queryRef": "FactFinance.PeriodType",
-              "nativeQueryRef": "Period type",
-              "displayName": "Period type",
-              "active": true
+              "queryRef": "DimDate.FiscalYear",
+              "nativeQueryRef": "Fiscal year",
+              "active": true,
+              "displayName": "Fiscal year"
             }
           ]
         }
@@ -108,7 +108,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Period type'"
+                  "Value": "'Fiscal year'"
                 }
               }
             },
@@ -117,7 +117,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#3F6562'"
+                      "Value": "'#45645F'"
                     }
                   }
                 }
@@ -160,6 +160,13 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "7D"
                 }
               }
             }
@@ -213,6 +220,11 @@
           }
         }
       ]
+    },
+    "syncGroup": {
+      "groupName": "Global fiscal year",
+      "fieldChanges": true,
+      "filterChanges": true
     },
     "drillFilterOtherVisuals": true
   }

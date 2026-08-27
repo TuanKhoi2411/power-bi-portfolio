@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "f9e224c366a27eb726cd",
   "position": {
     "x": 465,
     "y": 455,
-    "z": 20000,
+    "z": 19000,
     "height": 235,
     "width": 260,
-    "tabOrder": 20000
+    "tabOrder": 19000
   },
   "visual": {
     "visualType": "lineChart",
@@ -20,16 +20,16 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "FactFinance"
+                      "Entity": "DimDate"
                     }
                   },
-                  "Property": "EndDate"
+                  "Property": "Date"
                 }
               },
-              "queryRef": "FactFinance.EndDate",
+              "queryRef": "DimDate.Date",
               "nativeQueryRef": "Quarter",
-              "displayName": "Quarter",
-              "active": true
+              "active": true,
+              "displayName": "Quarter"
             }
           ]
         },
@@ -43,12 +43,12 @@
                       "Entity": "FactFinance"
                     }
                   },
-                  "Property": "Quarterly Revenue"
+                  "Property": "Revenue YoY"
                 }
               },
-              "queryRef": "FactFinance.Quarterly Revenue",
-              "nativeQueryRef": "Revenue",
-              "displayName": "Revenue"
+              "queryRef": "FactFinance.Revenue YoY",
+              "nativeQueryRef": "Revenue YoY",
+              "displayName": "Revenue YoY"
             },
             {
               "field": {
@@ -58,12 +58,12 @@
                       "Entity": "FactFinance"
                     }
                   },
-                  "Property": "Quarterly Net Income"
+                  "Property": "Quarterly Operating Income YoY"
                 }
               },
-              "queryRef": "FactFinance.Quarterly Net Income",
-              "nativeQueryRef": "Net Income",
-              "displayName": "Net Income"
+              "queryRef": "FactFinance.Quarterly Operating Income YoY",
+              "nativeQueryRef": "Operating Income YoY",
+              "displayName": "Operating Income YoY"
             }
           ]
         }
@@ -106,6 +106,46 @@
             }
           }
         }
+      ],
+      "categoryAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "visualContainerObjects": {
@@ -122,7 +162,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Quarterly Revenue and Net Income'"
+                  "Value": "'Revenue vs Operating Income YoY'"
                 }
               }
             },
@@ -200,7 +240,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#D8E7E4'"
+                      "Value": "'#D8E5E2'"
                     }
                   }
                 }
@@ -209,7 +249,7 @@
             "radius": {
               "expr": {
                 "Literal": {
-                  "Value": "6D"
+                  "Value": "9D"
                 }
               }
             }
@@ -231,7 +271,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#829A97'"
+                      "Value": "'#6E8F88'"
                     }
                   }
                 }
@@ -240,21 +280,21 @@
             "transparency": {
               "expr": {
                 "Literal": {
-                  "Value": "82D"
+                  "Value": "88D"
                 }
               }
             },
             "shadowBlur": {
               "expr": {
                 "Literal": {
-                  "Value": "6D"
+                  "Value": "5D"
                 }
               }
             },
             "shadowDistance": {
               "expr": {
                 "Literal": {
-                  "Value": "2D"
+                  "Value": "1D"
                 }
               }
             },
@@ -267,8 +307,67 @@
             }
           }
         }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Revenue vs Operating Income YoY'"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "8193db2593c638ec1b27",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DimDate"
+              }
+            },
+            "Property": "Date"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "21f1d63550d54b891a3b",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "FactFinance"
+              }
+            },
+            "Property": "Revenue YoY"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "2fa16be0d86a2c7ae783",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "FactFinance"
+              }
+            },
+            "Property": "Quarterly Operating Income YoY"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

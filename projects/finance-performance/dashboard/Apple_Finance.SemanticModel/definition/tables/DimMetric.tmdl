@@ -1,0 +1,35 @@
+table DimMetric
+	lineageTag: c12e4a7f-80fd-49bc-baea-99d777ad13ad
+
+	column MetricKey
+		dataType: string
+		isKey
+		lineageTag: 8823061a-3f11-4b27-a799-c4f232997a90
+		summarizeBy: none
+		sourceColumn: [MetricKey]
+
+	column DisplayMetric
+		dataType: string
+		lineageTag: 65d6c426-74f6-4d61-9be4-1a3c88b2a011
+		summarizeBy: none
+		sourceColumn: [DisplayMetric]
+		sortByColumn: MetricSort
+
+	column MetricClass
+		dataType: string
+		lineageTag: e5216a88-821b-4f13-a6a4-09f973d7a012
+		summarizeBy: none
+		sourceColumn: [MetricClass]
+
+	column MetricSort
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: bf1e4b3a-a6cc-44f9-b5f6-a9799ccb6013
+		summarizeBy: none
+		sourceColumn: [MetricSort]
+
+	partition DimMetric = calculated
+		mode: import
+		source = DISTINCT ( SELECTCOLUMNS ( FactFinance, "MetricKey", FactFinance[MetricKey], "DisplayMetric", FactFinance[DisplayMetric], "MetricClass", FactFinance[MetricClass], "MetricSort", FactFinance[MetricSort] ) )
+

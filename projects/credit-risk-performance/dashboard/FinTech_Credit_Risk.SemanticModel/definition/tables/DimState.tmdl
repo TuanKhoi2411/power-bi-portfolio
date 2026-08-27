@@ -1,0 +1,20 @@
+table DimState
+	lineageTag: 9ee2bd47-41b4-45ed-bf66-c99d3e64c301
+
+	column StateKey
+		dataType: string
+		isKey
+		lineageTag: 9ee2bd47-41b4-45ed-bf66-c99d3e64c302
+		summarizeBy: none
+		sourceColumn: [StateKey]
+
+	column State
+		dataType: string
+		lineageTag: 9ee2bd47-41b4-45ed-bf66-c99d3e64c303
+		summarizeBy: none
+		sourceColumn: [State]
+
+	partition DimState = calculated
+		mode: import
+		source = DISTINCT ( SELECTCOLUMNS ( FactLoans, "StateKey", FactLoans[StateKey], "State", FactLoans[State] ) )
+

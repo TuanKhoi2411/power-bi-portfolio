@@ -1,0 +1,20 @@
+table DimEducation
+	lineageTag: e1ba9f3d-599e-47ca-8a63-47f5202d8036
+
+	column EducationKey
+		dataType: string
+		isKey
+		lineageTag: 4640c154-501a-4c4a-8486-9ac75cafc037
+		summarizeBy: none
+		sourceColumn: [EducationKey]
+
+	column Education
+		dataType: string
+		lineageTag: e1731496-61a2-40d6-88d0-67a57bf8b038
+		summarizeBy: none
+		sourceColumn: [Education]
+
+	partition DimEducation = calculated
+		mode: import
+		source = DISTINCT ( SELECTCOLUMNS ( FactMarketing, "EducationKey", FactMarketing[EducationKey], "Education", FactMarketing[Education] ) )
+

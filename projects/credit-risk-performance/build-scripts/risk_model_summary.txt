@@ -1,0 +1,5 @@
+Source rows: 139,877
+Seasoned rows (>40% term): 52,209
+Seasoned bad loans: 2,969
+Seasoned bad-loan rate: 5.686759%
+Random-forest holdout AUC: 0.6979

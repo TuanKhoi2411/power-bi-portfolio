@@ -1,0 +1,89 @@
+{
+  "name": "FinTech Risk Control — Plum, Copper & Ivory",
+  "dataColors": [
+    "#4B2142",
+    "#D98324",
+    "#7A9E7E",
+    "#C94C4C",
+    "#E1A948",
+    "#8A6FA8",
+    "#9A8C83",
+    "#DED6CE"
+  ],
+  "background": "#FAF7F2",
+  "foreground": "#2B2230",
+  "tableAccent": "#D98324",
+  "good": "#6E9674",
+  "neutral": "#E1A948",
+  "bad": "#C94C4C",
+  "maximum": "#4B2142",
+  "center": "#E1A948",
+  "minimum": "#C94C4C",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "visualHeader": [
+          {
+            "show": false
+          }
+        ],
+        "border": [
+          {
+            "show": false,
+            "radius": 10
+          }
+        ],
+        "dropShadow": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#CEC4BB"
+              }
+            },
+            "position": "Outer",
+            "preset": "BottomRight",
+            "shadowBlur": 4,
+            "shadowDistance": 2,
+            "transparency": 75
+          }
+        ],
+        "background": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "transparency": 0
+          }
+        ]
+      }
+    },
+    "page": {
+      "*": {
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "#FAF7F2"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "outspace": [
+          {
+            "color": {
+              "solid": {
+                "color": "#F1EAE4"
+              }
+            },
+            "transparency": 0
+          }
+        ]
+      }
+    }
+  }
+}

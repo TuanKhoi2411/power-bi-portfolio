@@ -1,0 +1,29 @@
+{
+  "name": "FinTech Risk Control — Deep Navy & Coral",
+  "dataColors": ["#0B3954", "#087E8B", "#5BC0BE", "#FF5A5F", "#F2B134", "#6C63FF", "#8FA3B8", "#D9E2EC"],
+  "background": "#F5F8FC",
+  "foreground": "#102A43",
+  "tableAccent": "#087E8B",
+  "good": "#23A776",
+  "neutral": "#F2B134",
+  "bad": "#FF5A5F",
+  "maximum": "#0B3954",
+  "center": "#F2B134",
+  "minimum": "#FF5A5F",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "visualHeader": [{"show": false}],
+        "border": [{"show": false, "radius": 10}],
+        "dropShadow": [{"show": true, "color": {"solid": {"color": "#B8C4D2"}}, "position": "Outer", "preset": "BottomRight", "shadowBlur": 4, "shadowDistance": 2, "transparency": 75}],
+        "background": [{"show": true, "color": {"solid": {"color": "#FFFFFF"}}, "transparency": 0}]
+      }
+    },
+    "page": {
+      "*": {
+        "background": [{"color": {"solid": {"color": "#F5F8FC"}}, "transparency": 0}],
+        "outspace": [{"color": {"solid": {"color": "#EEF3F8"}}, "transparency": 0}]
+      }
+    }
+  }
+}

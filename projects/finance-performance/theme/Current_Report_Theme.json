@@ -1,0 +1,100 @@
+{
+  "name": "Apple Finance — Emerald Gold",
+  "dataColors": [
+    "#0F766E",
+    "#D97706",
+    "#F2B134",
+    "#5EEAD4",
+    "#123B3A",
+    "#5C7C79",
+    "#8AA6A2",
+    "#D8E7E4"
+  ],
+  "background": "#F3F8F7",
+  "foreground": "#123B3A",
+  "tableAccent": "#0F766E",
+  "good": "#16A34A",
+  "neutral": "#829A97",
+  "bad": "#DC5353",
+  "textClasses": {
+    "title": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 12,
+      "color": "#123B3A"
+    },
+    "callout": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 24,
+      "color": "#123B3A"
+    },
+    "label": {
+      "fontFace": "Segoe UI",
+      "fontSize": 9,
+      "color": "#252423"
+    },
+    "header": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 10,
+      "color": "#123B3A"
+    }
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "title": [
+          {
+            "show": true,
+            "fontFamily": "Segoe UI Semibold",
+            "fontSize": 10,
+            "fontColor": {
+              "solid": {
+                "color": "#123B3A"
+              }
+            },
+            "alignment": "left"
+          }
+        ],
+        "background": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#D8E7E4"
+              }
+            },
+            "radius": 6
+          }
+        ],
+        "dropShadow": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#829A97"
+              }
+            },
+            "transparency": 80,
+            "shadowBlur": 6,
+            "shadowDistance": 2
+          }
+        ],
+        "visualHeader": [
+          {
+            "show": false
+          }
+        ]
+      }
+    }
+  }
+}

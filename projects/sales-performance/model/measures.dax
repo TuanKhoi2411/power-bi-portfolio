@@ -1,302 +1,731 @@
-// Auto-exported from the canonical TMDL semantic model.
-// Project: sales-performance
-// Measure table: FactSales
-// Measure count: 74
-// Regenerate with scripts/export-model-documentation.ps1 after TMDL changes.
-
-// Display folder: Sales\Core
-// Format string: £#,0
-[Gross Sales] = SUM ( FactSales[GrossSalesAmount] )
-
-// Display folder: Sales\Core
-// Format string: £#,0
-[Return Amount] = SUM ( FactSales[ReturnAmount] )
-
-// Display folder: Sales\Core
-// Format string: £#,0
-[Net Sales] = SUM ( FactSales[NetSalesAmount] )
-
-// Display folder: Sales\Core
-// Format string: #,0
-[Units Sold] = SUM ( FactSales[UnitsSold] )
-
-// Display folder: Sales\Core
-// Format string: #,0
-[Returned Units] = SUM ( FactSales[ReturnedUnits] )
-
-// Display folder: Sales\Core
-// Format string: #,0
-[Orders] = CALCULATE ( DISTINCTCOUNT ( FactSales[InvoiceNo] ), FactSales[IsCancellation] = FALSE () )
-
-// Display folder: Sales\Core
-// Format string: #,0
-[Customers] = CALCULATE ( DISTINCTCOUNT ( FactSales[CustomerID] ), FactSales[CustomerID] <> "Unknown" )
-
-// Display folder: Sales\Efficiency
-// Format string: £#,0.00
-[Average Order Value] = DIVIDE ( [Net Sales], [Orders] )
-
-// Display folder: Sales\Efficiency
-// Format string: £#,0.00
-[Average Selling Price] = DIVIDE ( [Gross Sales], [Units Sold] )
-
-// Display folder: Sales\Quality
-// Format string: 0.0%
-[Return Rate] = DIVIDE ( [Return Amount], [Gross Sales] )
-
-// Display folder: Sales\Movement
-// Format string: £#,0
-[Net Sales Previous Month] = VAR MaxSalesDate = MAX ( FactSales[SalesDate] ) VAR CurrentDate = IF ( MaxSalesDate < EOMONTH ( MaxSalesDate, 0 ), EOMONTH ( MaxSalesDate, -1 ), MaxSalesDate ) VAR PreviousDate = EOMONTH ( CurrentDate, -1 ) RETURN CALCULATE ( [Net Sales], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( PreviousDate ) && DimDate[MonthNumber] = MONTH ( PreviousDate ) ) )
-
-// Display folder: Sales\Movement
-// Format string: +0.0%;-0.0%;0.0%
-[Net Sales MoM] = VAR MaxSalesDate = MAX ( FactSales[SalesDate] ) VAR CurrentDate = IF ( MaxSalesDate < EOMONTH ( MaxSalesDate, 0 ), EOMONTH ( MaxSalesDate, -1 ), MaxSalesDate ) VAR CurrentValue = CALCULATE ( [Net Sales], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( CurrentDate ) && DimDate[MonthNumber] = MONTH ( CurrentDate ) ) ) RETURN DIVIDE ( CurrentValue - [Net Sales Previous Month], [Net Sales Previous Month] )
-
-// Display folder: Sales\Movement
-// Format string: £#,0
-[Net Sales Previous Year] = CALCULATE ( [Net Sales], DATEADD ( DimDate[Date], -1, YEAR ) )
-
-// Display folder: Sales\Movement
-// Format string: +0.0%;-0.0%;0.0%
-[Net Sales YoY] = DIVIDE ( [Net Sales] - [Net Sales Previous Year], [Net Sales Previous Year] )
-
-// Display folder: Sales\Movement
-// Format string: £#,0
-[Gross Sales Previous Month] = VAR MaxSalesDate = MAX ( FactSales[SalesDate] ) VAR CurrentDate = IF ( MaxSalesDate < EOMONTH ( MaxSalesDate, 0 ), EOMONTH ( MaxSalesDate, -1 ), MaxSalesDate ) VAR PreviousDate = EOMONTH ( CurrentDate, -1 ) RETURN CALCULATE ( [Gross Sales], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( PreviousDate ) && DimDate[MonthNumber] = MONTH ( PreviousDate ) ) )
-
-// Display folder: Sales\Movement
-// Format string: +0.0%;-0.0%;0.0%
-[Gross Sales MoM] = VAR MaxSalesDate = MAX ( FactSales[SalesDate] ) VAR CurrentDate = IF ( MaxSalesDate < EOMONTH ( MaxSalesDate, 0 ), EOMONTH ( MaxSalesDate, -1 ), MaxSalesDate ) VAR CurrentValue = CALCULATE ( [Gross Sales], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( CurrentDate ) && DimDate[MonthNumber] = MONTH ( CurrentDate ) ) ) RETURN DIVIDE ( CurrentValue - [Gross Sales Previous Month], [Gross Sales Previous Month] )
-
-// Display folder: Sales\Movement
-// Format string: #,0
-[Orders Previous Month] = VAR MaxSalesDate = MAX ( FactSales[SalesDate] ) VAR CurrentDate = IF ( MaxSalesDate < EOMONTH ( MaxSalesDate, 0 ), EOMONTH ( MaxSalesDate, -1 ), MaxSalesDate ) VAR PreviousDate = EOMONTH ( CurrentDate, -1 ) RETURN CALCULATE ( [Orders], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( PreviousDate ) && DimDate[MonthNumber] = MONTH ( PreviousDate ) ) )
-
-// Display folder: Sales\Movement
-// Format string: +0.0%;-0.0%;0.0%
-[Orders MoM] = VAR MaxSalesDate = MAX ( FactSales[SalesDate] ) VAR CurrentDate = IF ( MaxSalesDate < EOMONTH ( MaxSalesDate, 0 ), EOMONTH ( MaxSalesDate, -1 ), MaxSalesDate ) VAR CurrentValue = CALCULATE ( [Orders], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( CurrentDate ) && DimDate[MonthNumber] = MONTH ( CurrentDate ) ) ) RETURN DIVIDE ( CurrentValue - [Orders Previous Month], [Orders Previous Month] )
-
-// Display folder: Sales\Movement
-// Format string: #,0
-[Units Sold Previous Month] = VAR MaxSalesDate = MAX ( FactSales[SalesDate] ) VAR CurrentDate = IF ( MaxSalesDate < EOMONTH ( MaxSalesDate, 0 ), EOMONTH ( MaxSalesDate, -1 ), MaxSalesDate ) VAR PreviousDate = EOMONTH ( CurrentDate, -1 ) RETURN CALCULATE ( [Units Sold], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( PreviousDate ) && DimDate[MonthNumber] = MONTH ( PreviousDate ) ) )
-
-// Display folder: Sales\Movement
-// Format string: +0.0%;-0.0%;0.0%
-[Units Sold MoM] = VAR MaxSalesDate = MAX ( FactSales[SalesDate] ) VAR CurrentDate = IF ( MaxSalesDate < EOMONTH ( MaxSalesDate, 0 ), EOMONTH ( MaxSalesDate, -1 ), MaxSalesDate ) VAR CurrentValue = CALCULATE ( [Units Sold], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( CurrentDate ) && DimDate[MonthNumber] = MONTH ( CurrentDate ) ) ) RETURN DIVIDE ( CurrentValue - [Units Sold Previous Month], [Units Sold Previous Month] )
-
-// Display folder: Sales\Movement
-// Format string: 0.0%
-[Return Rate Previous Month] = VAR MaxSalesDate = MAX ( FactSales[SalesDate] ) VAR CurrentDate = IF ( MaxSalesDate < EOMONTH ( MaxSalesDate, 0 ), EOMONTH ( MaxSalesDate, -1 ), MaxSalesDate ) VAR PreviousDate = EOMONTH ( CurrentDate, -1 ) RETURN CALCULATE ( [Return Rate], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( PreviousDate ) && DimDate[MonthNumber] = MONTH ( PreviousDate ) ) )
-
-// Display folder: Sales\Movement
-// Format string: +0.0%;-0.0%;0.0%
-[Return Rate Variance pp] = VAR MaxSalesDate = MAX ( FactSales[SalesDate] ) VAR CurrentDate = IF ( MaxSalesDate < EOMONTH ( MaxSalesDate, 0 ), EOMONTH ( MaxSalesDate, -1 ), MaxSalesDate ) VAR CurrentValue = CALCULATE ( [Return Rate], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( CurrentDate ) && DimDate[MonthNumber] = MONTH ( CurrentDate ) ) ) RETURN CurrentValue - [Return Rate Previous Month]
-
-// Display folder: Sales\Variance
-// Format string: £#,0;[Red]-£#,0
-[Net Sales Variance vs PY] = [Net Sales] - [Net Sales Previous Year]
-
-// Display folder: Sales\Quality
-// Format string: 0.0%
-[Gross to Net Rate] = DIVIDE ( [Net Sales], [Gross Sales] )
-
-// Display folder: Sales\Ranking
-// Format string: #,0
-[Merchandise Net Sales] = CALCULATE ( [Net Sales], FactSales[TransactionType] = "Sale", FactSales[HasValidPrice] = TRUE (), FILTER ( FactSales, VAR ProductName = TRIM ( FactSales[Description] ) VAR ProductCode = UPPER ( TRIM ( FactSales[StockCode] ) ) RETURN LEN ( ProductName ) >= 4 && LEFT ( ProductName, 1 ) <> "?" && LEFT ( ProductName, 1 ) <> "*" && NOT ( ProductCode IN { "POST", "DOT", "M", "BANK CHARGES", "AMAZONFEE", "CRUK", "C2", "D", "PADS" } ) ) )
-
-// Display folder: Sales\Ranking
-// Format string: #,0
-[Country Sales Rank] = RANKX ( ALLSELECTED ( FactSales[Country] ), [Net Sales],, DESC, DENSE )
-
-// Display folder: Sales\Ranking
-// Format string: #,0
-[Top 10 Country Net Sales] = IF ( [Country Sales Rank] <= 10, [Net Sales] )
-
-// Display folder: Sales\Ranking
-// Format string: #,0
-[Product Sales Rank] = RANKX ( ALLSELECTED ( FactSales[Description] ), [Merchandise Net Sales],, DESC, DENSE )
-
-// Display folder: Sales\Ranking
-// Format string: #,0
-[Top 10 Product Net Sales] = IF ( NOT ISBLANK ( [Merchandise Net Sales] ) && [Product Sales Rank] <= 10, [Merchandise Net Sales] )
-
-// Display folder: Sales\Ranking
-// Format string: #,0
-[Top 5 Country Net Sales] = IF ( [Country Sales Rank] <= 5, [Net Sales] )
-
-// Display folder: Sales\Ranking
-// Format string: #,0
-[Top 5 Product Net Sales] = IF ( NOT ISBLANK ( [Merchandise Net Sales] ) && [Product Sales Rank] <= 5, [Merchandise Net Sales] )
-
-// Display folder: Sales\Display
-// Format string: 
-[KPI Net Sales Display] = UNICHAR ( 163 ) & FORMAT ( DIVIDE ( [Net Sales], 1000000 ), "0.0" ) & "M"
-
-// Display folder: Sales\Display
-// Format string: 
-[KPI Gross Sales Display] = UNICHAR ( 163 ) & FORMAT ( DIVIDE ( [Gross Sales], 1000000 ), "0.0" ) & "M"
-
-// Display folder: Sales\Display
-// Format string: 
-[KPI Orders Display] = IF ( [Orders] >= 1000, FORMAT ( DIVIDE ( [Orders], 1000 ), "0.0" ) & "K", FORMAT ( [Orders], "#,0" ) )
-
-// Display folder: Sales\Display
-// Format string: 
-[KPI Units Sold Display] = IF ( [Units Sold] >= 1000000, FORMAT ( DIVIDE ( [Units Sold], 1000000 ), "0.0" ) & "M", FORMAT ( DIVIDE ( [Units Sold], 1000 ), "0.0" ) & "K" )
-
-// Display folder: Sales\Display
-// Format string: 
-[KPI Return Rate Display] = FORMAT ( [Return Rate], "0.0%" )
-
-// Display folder: Customer\Core
-// Format string: £#,0
-[Customer Identified Net Sales] = CALCULATE ( [Net Sales], FactSales[CustomerID] <> "Unknown" )
-
-// Display folder: Customer\Core
-// Format string: £#,0.00
-[Net Sales per Customer] = DIVIDE ( [Customer Identified Net Sales], [Customers] )
-
-// Display folder: Customer\Core
-// Format string: 0.00
-[Orders per Customer] = DIVIDE ( [Orders], [Customers] )
-
-// Display folder: Customer\Quality
-// Format string: 0.0%
-[Customer Data Coverage] = DIVIDE ( CALCULATE ( COUNTROWS ( FactSales ), FactSales[CustomerID] <> "Unknown" ), COUNTROWS ( FactSales ) )
-
-// Display folder: Customer\Core
-// Format string: #,0
-[Repeat Customers] = COUNTROWS ( FILTER ( VALUES ( FactSales[CustomerID] ), FactSales[CustomerID] <> "Unknown" && CALCULATE ( [Orders] ) > 1 ) )
-
-// Display folder: Customer\Core
-// Format string: 0.0%
-[Repeat Customer Rate] = DIVIDE ( [Repeat Customers], [Customers] )
-
-// Display folder: Product\Core
-// Format string: #,0
-[Active Products] = CALCULATE ( DISTINCTCOUNT ( FactSales[StockCode] ), FactSales[TransactionType] = "Sale", FactSales[HasValidPrice] = TRUE () )
-
-// Display folder: Customer\Ranking
-// Format string: #,0
-[Customer Sales Rank] = RANKX ( FILTER ( ALLSELECTED ( FactSales[CustomerID] ), FactSales[CustomerID] <> "Unknown" ), [Net Sales],, DESC, DENSE )
-
-// Display folder: Customer\Ranking
-// Format string: £#,0
-[Top 10 Customer Net Sales] = IF ( [Customer Sales Rank] <= 10, [Net Sales] )
-
-// Display folder: Product\Ranking
-// Format string: #,0
-[Product Return Rank] = RANKX ( ALLSELECTED ( FactSales[Description] ), [Return Amount],, DESC, DENSE )
-
-// Display folder: Product\Ranking
-// Format string: £#,0
-[Top 5 Product Return Amount] = IF ( [Product Return Rank] <= 5, [Return Amount] )
-
-// Display folder: Customer\Movement
-// Format string: #,0
-[Customers Previous Month] = VAR D = MAX ( FactSales[SalesDate] ) VAR P = EOMONTH ( D, -1 ) RETURN CALCULATE ( [Customers], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( P ) && DimDate[MonthNumber] = MONTH ( P ) ) )
-
-// Display folder: Customer\Movement
-// Format string: +0.0%;-0.0%;0.0%
-[Customers MoM] = DIVIDE ( [Customers] - [Customers Previous Month], [Customers Previous Month] )
-
-// Display folder: Customer\Movement
-// Format string: £#,0
-[Customer Sales Previous Month] = VAR D = MAX ( FactSales[SalesDate] ) VAR P = EOMONTH ( D, -1 ) RETURN CALCULATE ( [Customer Identified Net Sales], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( P ) && DimDate[MonthNumber] = MONTH ( P ) ) )
-
-// Display folder: Customer\Movement
-// Format string: +0.0%;-0.0%;0.0%
-[Customer Sales MoM] = DIVIDE ( [Customer Identified Net Sales] - [Customer Sales Previous Month], [Customer Sales Previous Month] )
-
-// Display folder: Customer\Movement
-// Format string: £#,0.00
-[AOV Previous Month] = VAR D = MAX ( FactSales[SalesDate] ) VAR P = EOMONTH ( D, -1 ) RETURN CALCULATE ( [Average Order Value], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( P ) && DimDate[MonthNumber] = MONTH ( P ) ) )
-
-// Display folder: Customer\Movement
-// Format string: +0.0%;-0.0%;0.0%
-[AOV MoM] = DIVIDE ( [Average Order Value] - [AOV Previous Month], [AOV Previous Month] )
-
-// Display folder: Customer\Movement
-// Format string: 0.00
-[Orders per Customer Previous Month] = VAR D = MAX ( FactSales[SalesDate] ) VAR P = EOMONTH ( D, -1 ) RETURN CALCULATE ( [Orders per Customer], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( P ) && DimDate[MonthNumber] = MONTH ( P ) ) )
-
-// Display folder: Customer\Movement
-// Format string: +0.0%;-0.0%;0.0%
-[Orders per Customer MoM] = DIVIDE ( [Orders per Customer] - [Orders per Customer Previous Month], [Orders per Customer Previous Month] )
-
-// Display folder: Customer\Movement
-// Format string: 0.0%
-[Customer Coverage Previous Month] = VAR D = MAX ( FactSales[SalesDate] ) VAR P = EOMONTH ( D, -1 ) RETURN CALCULATE ( [Customer Data Coverage], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( P ) && DimDate[MonthNumber] = MONTH ( P ) ) )
-
-// Display folder: Customer\Movement
-// Format string: +0.0%;-0.0%;0.0%
-[Customer Coverage Variance pp] = [Customer Data Coverage] - [Customer Coverage Previous Month]
-
-// Display folder: Product\Movement
-// Format string: #,0
-[Active Products Previous Month] = VAR D = MAX ( FactSales[SalesDate] ) VAR P = EOMONTH ( D, -1 ) RETURN CALCULATE ( [Active Products], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( P ) && DimDate[MonthNumber] = MONTH ( P ) ) )
-
-// Display folder: Product\Movement
-// Format string: +0.0%;-0.0%;0.0%
-[Active Products MoM] = DIVIDE ( [Active Products] - [Active Products Previous Month], [Active Products Previous Month] )
-
-// Display folder: Product\Movement
-// Format string: £#,0
-[Merchandise Sales Previous Month] = VAR D = MAX ( FactSales[SalesDate] ) VAR P = EOMONTH ( D, -1 ) RETURN CALCULATE ( [Merchandise Net Sales], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( P ) && DimDate[MonthNumber] = MONTH ( P ) ) )
-
-// Display folder: Product\Movement
-// Format string: +0.0%;-0.0%;0.0%
-[Merchandise Sales MoM] = DIVIDE ( [Merchandise Net Sales] - [Merchandise Sales Previous Month], [Merchandise Sales Previous Month] )
-
-// Display folder: Product\Movement
-// Format string: £#,0
-[Return Amount Previous Month] = VAR D = MAX ( FactSales[SalesDate] ) VAR P = EOMONTH ( D, -1 ) RETURN CALCULATE ( [Return Amount], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( P ) && DimDate[MonthNumber] = MONTH ( P ) ) )
-
-// Display folder: Product\Movement
-// Format string: +0.0%;-0.0%;0.0%
-[Return Amount MoM] = DIVIDE ( [Return Amount] - [Return Amount Previous Month], [Return Amount Previous Month] )
-
-// Display folder: Product\Movement
-// Format string: £#,0.00
-[ASP Previous Month] = VAR D = MAX ( FactSales[SalesDate] ) VAR P = EOMONTH ( D, -1 ) RETURN CALCULATE ( [Average Selling Price], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( P ) && DimDate[MonthNumber] = MONTH ( P ) ) )
-
-// Display folder: Product\Movement
-// Format string: +0.0%;-0.0%;0.0%
-[ASP MoM] = DIVIDE ( [Average Selling Price] - [ASP Previous Month], [ASP Previous Month] )
-
-// Display folder: Customer\Display
-// Format string: 
-[KPI Customers Display] = FORMAT ( [Customers], "#,0" )
-
-// Display folder: Customer\Display
-// Format string: 
-[KPI Net Sales per Customer Display] = UNICHAR ( 163 ) & FORMAT ( [Net Sales per Customer], "#,0" )
-
-// Display folder: Customer\Display
-// Format string: 
-[KPI AOV Display] = UNICHAR ( 163 ) & FORMAT ( [Average Order Value], "#,0" )
-
-// Display folder: Customer\Display
-// Format string: 
-[KPI Orders per Customer Display] = FORMAT ( [Orders per Customer], "0.0" ) & "x"
-
-// Display folder: Customer\Display
-// Format string: 
-[KPI Customer Coverage Display] = FORMAT ( [Customer Data Coverage], "0.0%" )
-
-// Display folder: Product\Display
-// Format string: 
-[KPI Products Display] = FORMAT ( [Active Products], "#,0" )
-
-// Display folder: Product\Display
-// Format string: 
-[KPI Merchandise Sales Display] = UNICHAR ( 163 ) & FORMAT ( DIVIDE ( [Merchandise Net Sales], 1000000 ), "0.0" ) & "M"
-
-// Display folder: Product\Display
-// Format string: 
-[KPI Return Amount Display] = UNICHAR ( 163 ) & FORMAT ( DIVIDE ( [Return Amount], 1000000 ), "0.0" ) & "M"
-
-// Display folder: Product\Display
-// Format string: 
-[KPI ASP Display] = UNICHAR ( 163 ) & FORMAT ( [Average Selling Price], "0.00" )
-
+-- Extracted from the current canonical KhoiPort PBIP on 2026-08-27.
+-- UK Online Retail — Sales Performance
+
+Gross Sales =
+SUM ( FactSales[GrossSalesAmount] )
+		formatString: £#,0
+		displayFolder: Sales\Core
+		lineageTag: c451163c-2710-4d5c-8beb-60cda4983218
+
+Return Amount =
+SUM ( FactSales[ReturnAmount] )
+		formatString: £#,0
+		displayFolder: Sales\Core
+		lineageTag: 217d51bb-af31-497e-86b6-1edeb8756fe7
+
+Net Sales =
+SUM ( FactSales[NetSalesAmount] )
+		formatString: £#,0
+		displayFolder: Sales\Core
+		lineageTag: 52ef1f01-6a5c-4d1a-96ab-ab0f76ad6de2
+
+Units Sold =
+SUM ( FactSales[UnitsSold] )
+		formatString: #,0
+		displayFolder: Sales\Core
+		lineageTag: 39027bc3-ad88-42a6-8eb2-6e38571fda2b
+
+Returned Units =
+SUM ( FactSales[ReturnedUnits] )
+		formatString: #,0
+		displayFolder: Sales\Core
+		lineageTag: 062425be-20b5-42c7-9f91-de800c673d81
+
+Orders =
+CALCULATE ( DISTINCTCOUNT ( FactSales[InvoiceNo] ), FactSales[IsCancellation] = FALSE () )
+		formatString: #,0
+		displayFolder: Sales\Core
+		lineageTag: 15da1106-4050-4d06-8e79-6e8e5826ef07
+
+Customers =
+CALCULATE ( DISTINCTCOUNT ( FactSales[CustomerID] ), FactSales[CustomerID] <> "Unknown" )
+		formatString: #,0
+		displayFolder: Sales\Core
+		lineageTag: c9216c4f-1be0-4a16-9c3d-d68af415994c
+
+Average Order Value =
+DIVIDE ( [Net Sales], [Orders] )
+		formatString: £#,0.00
+		displayFolder: Sales\Efficiency
+		lineageTag: 99e6af0c-211f-4618-80e1-564be4d9520a
+
+Average Selling Price =
+DIVIDE ( [Gross Sales], [Units Sold] )
+		formatString: £#,0.00
+		displayFolder: Sales\Efficiency
+		lineageTag: c4168361-8193-49a4-a13b-58b964448647
+
+Return Rate =
+DIVIDE ( [Return Amount], [Gross Sales] )
+		formatString: 0.0%
+		displayFolder: Sales\Quality
+		lineageTag: e74fa4ad-bc64-4bcc-a04a-3c500e5e6eba
+
+Net Sales Previous Month =
+VAR MaxSalesDate = MAX ( FactSales[SalesDate] ) VAR CurrentDate = IF ( MaxSalesDate < EOMONTH ( MaxSalesDate, 0 ), EOMONTH ( MaxSalesDate, -1 ), MaxSalesDate ) VAR PreviousDate = EOMONTH ( CurrentDate, -1 ) RETURN CALCULATE ( [Net Sales], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( PreviousDate ) && DimDate[MonthNumber] = MONTH ( PreviousDate ) ) )
+		formatString: £#,0
+		displayFolder: Sales\Movement
+		lineageTag: 32cceb3a-dd6c-4940-8f34-78a2c3d6d607
+
+Net Sales MoM =
+VAR MaxSalesDate = MAX ( FactSales[SalesDate] ) VAR CurrentDate = IF ( MaxSalesDate < EOMONTH ( MaxSalesDate, 0 ), EOMONTH ( MaxSalesDate, -1 ), MaxSalesDate ) VAR CurrentValue = CALCULATE ( [Net Sales], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( CurrentDate ) && DimDate[MonthNumber] = MONTH ( CurrentDate ) ) ) RETURN DIVIDE ( CurrentValue - [Net Sales Previous Month], [Net Sales Previous Month] )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Sales\Movement
+		lineageTag: 65f8ce76-0cd9-4596-b196-75b9f6bc2b89
+
+Net Sales Previous Year =
+VAR D = MAX ( FactSales[SalesDate] ) VAR PriorStart = DATE ( YEAR ( D ) - 1, MONTH ( D ), 1 ) VAR PriorEnd = IF ( D < EOMONTH ( D, 0 ), DATE ( YEAR ( D ) - 1, MONTH ( D ), DAY ( D ) ), EOMONTH ( PriorStart, 0 ) ) RETURN CALCULATE ( [Net Sales], FILTER ( ALL ( DimDate ), DimDate[Date] >= PriorStart && DimDate[Date] <= PriorEnd ) )
+		formatString: £#,0
+		displayFolder: Sales\Movement
+		lineageTag: c1e34e31-3089-40cc-9678-d2f359a31578
+
+Net Sales YoY =
+DIVIDE ( [Net Sales] - [Net Sales Previous Year], [Net Sales Previous Year] )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Sales\Movement
+		lineageTag: 4871f549-c617-45ed-aa83-2b5818198fcd
+
+Gross Sales Previous Month =
+VAR MaxSalesDate = MAX ( FactSales[SalesDate] ) VAR CurrentDate = IF ( MaxSalesDate < EOMONTH ( MaxSalesDate, 0 ), EOMONTH ( MaxSalesDate, -1 ), MaxSalesDate ) VAR PreviousDate = EOMONTH ( CurrentDate, -1 ) RETURN CALCULATE ( [Gross Sales], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( PreviousDate ) && DimDate[MonthNumber] = MONTH ( PreviousDate ) ) )
+		formatString: £#,0
+		displayFolder: Sales\Movement
+		lineageTag: 5cd62187-f607-4197-a81f-23d20f0225eb
+
+Gross Sales MoM =
+VAR MaxSalesDate = MAX ( FactSales[SalesDate] ) VAR CurrentDate = IF ( MaxSalesDate < EOMONTH ( MaxSalesDate, 0 ), EOMONTH ( MaxSalesDate, -1 ), MaxSalesDate ) VAR CurrentValue = CALCULATE ( [Gross Sales], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( CurrentDate ) && DimDate[MonthNumber] = MONTH ( CurrentDate ) ) ) RETURN DIVIDE ( CurrentValue - [Gross Sales Previous Month], [Gross Sales Previous Month] )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Sales\Movement
+		lineageTag: 00d07be0-b81c-4669-8d8c-da8f5e8f926e
+
+Orders Previous Month =
+VAR MaxSalesDate = MAX ( FactSales[SalesDate] ) VAR CurrentDate = IF ( MaxSalesDate < EOMONTH ( MaxSalesDate, 0 ), EOMONTH ( MaxSalesDate, -1 ), MaxSalesDate ) VAR PreviousDate = EOMONTH ( CurrentDate, -1 ) RETURN CALCULATE ( [Orders], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( PreviousDate ) && DimDate[MonthNumber] = MONTH ( PreviousDate ) ) )
+		formatString: #,0
+		displayFolder: Sales\Movement
+		lineageTag: c95ea62e-788f-47b5-ae00-b6373c487ec8
+
+Orders MoM =
+VAR MaxSalesDate = MAX ( FactSales[SalesDate] ) VAR CurrentDate = IF ( MaxSalesDate < EOMONTH ( MaxSalesDate, 0 ), EOMONTH ( MaxSalesDate, -1 ), MaxSalesDate ) VAR CurrentValue = CALCULATE ( [Orders], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( CurrentDate ) && DimDate[MonthNumber] = MONTH ( CurrentDate ) ) ) RETURN DIVIDE ( CurrentValue - [Orders Previous Month], [Orders Previous Month] )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Sales\Movement
+		lineageTag: 86d8e3b7-5ac7-41ee-827e-4baca6ab010f
+
+Units Sold Previous Month =
+VAR MaxSalesDate = MAX ( FactSales[SalesDate] ) VAR CurrentDate = IF ( MaxSalesDate < EOMONTH ( MaxSalesDate, 0 ), EOMONTH ( MaxSalesDate, -1 ), MaxSalesDate ) VAR PreviousDate = EOMONTH ( CurrentDate, -1 ) RETURN CALCULATE ( [Units Sold], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( PreviousDate ) && DimDate[MonthNumber] = MONTH ( PreviousDate ) ) )
+		formatString: #,0
+		displayFolder: Sales\Movement
+		lineageTag: ba255c51-652e-4e52-89f8-acdf95f5f813
+
+Units Sold MoM =
+VAR MaxSalesDate = MAX ( FactSales[SalesDate] ) VAR CurrentDate = IF ( MaxSalesDate < EOMONTH ( MaxSalesDate, 0 ), EOMONTH ( MaxSalesDate, -1 ), MaxSalesDate ) VAR CurrentValue = CALCULATE ( [Units Sold], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( CurrentDate ) && DimDate[MonthNumber] = MONTH ( CurrentDate ) ) ) RETURN DIVIDE ( CurrentValue - [Units Sold Previous Month], [Units Sold Previous Month] )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Sales\Movement
+		lineageTag: cf052e64-c08f-4cce-b94d-996b8e6604fe
+
+Return Rate Previous Month =
+VAR MaxSalesDate = MAX ( FactSales[SalesDate] ) VAR CurrentDate = IF ( MaxSalesDate < EOMONTH ( MaxSalesDate, 0 ), EOMONTH ( MaxSalesDate, -1 ), MaxSalesDate ) VAR PreviousDate = EOMONTH ( CurrentDate, -1 ) RETURN CALCULATE ( [Return Rate], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( PreviousDate ) && DimDate[MonthNumber] = MONTH ( PreviousDate ) ) )
+		formatString: 0.0%
+		displayFolder: Sales\Movement
+		lineageTag: 29737ad5-6d14-4dd6-bf90-bbeafe6ef4c0
+
+Return Rate Variance pp =
+VAR MaxSalesDate = MAX ( FactSales[SalesDate] ) VAR CurrentDate = IF ( MaxSalesDate < EOMONTH ( MaxSalesDate, 0 ), EOMONTH ( MaxSalesDate, -1 ), MaxSalesDate ) VAR CurrentValue = CALCULATE ( [Return Rate], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( CurrentDate ) && DimDate[MonthNumber] = MONTH ( CurrentDate ) ) ) RETURN CurrentValue - [Return Rate Previous Month]
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Sales\Movement
+		lineageTag: ea720ec6-ca9f-4627-bc0d-4f3bdc50e6a5
+
+Net Sales Variance vs PY =
+[Net Sales] - [Net Sales Previous Year]
+		formatString: £#,0;[Red]-£#,0
+		displayFolder: Sales\Variance
+		lineageTag: cf0eef0c-8533-4f72-a5c2-47de8e9d57ee
+
+Gross to Net Rate =
+DIVIDE ( [Net Sales], [Gross Sales] )
+		formatString: 0.0%
+		displayFolder: Sales\Quality
+		lineageTag: 81282731-e7a9-47b7-9d2e-c40340f6976a
+
+Merchandise Net Sales =
+CALCULATE ( [Net Sales], FactSales[TransactionType] = "Sale", FactSales[HasValidPrice] = TRUE (), FILTER ( FactSales, VAR ProductName = TRIM ( FactSales[Description] ) VAR ProductCode = UPPER ( TRIM ( FactSales[StockCode] ) ) RETURN LEN ( ProductName ) >= 4 && LEFT ( ProductName, 1 ) <> "?" && LEFT ( ProductName, 1 ) <> "*" && NOT ( ProductCode IN { "POST", "DOT", "M", "BANK CHARGES", "AMAZONFEE", "CRUK", "C2", "D", "PADS" } ) ) )
+		formatString: #,0
+		displayFolder: Sales\Ranking
+		lineageTag: 14241b87-5037-44ed-ae74-c969f1fc3050
+
+Country Sales Rank =
+RANKX ( ALLSELECTED ( DimCountry[Country] ), [Net Sales],, DESC, DENSE )
+		formatString: #,0
+		displayFolder: Sales\Ranking
+		lineageTag: 89e0ce87-060a-4a95-91e4-3cdcc4073977
+
+Top 10 Country Net Sales =
+IF ( [Country Sales Rank] <= 10, [Net Sales] )
+		formatString: #,0
+		displayFolder: Sales\Ranking
+		lineageTag: e18e33b7-56f0-4a92-a684-a425b1574144
+
+Product Sales Rank =
+RANKX ( ALLSELECTED ( DimProduct[Product] ), [Merchandise Net Sales],, DESC, DENSE )
+		formatString: #,0
+		displayFolder: Sales\Ranking
+		lineageTag: e22b989e-c754-478e-a819-13743fb39101
+
+Top 10 Product Net Sales =
+IF ( NOT ISBLANK ( [Merchandise Net Sales] ) && [Product Sales Rank] <= 10, [Merchandise Net Sales] )
+		formatString: #,0
+		displayFolder: Sales\Ranking
+		lineageTag: 59e47039-57cd-47d3-88ec-df29ae7098e3
+
+Top 5 Country Net Sales =
+IF ( [Country Sales Rank] <= 5, [Net Sales] )
+		formatString: #,0
+		displayFolder: Sales\Ranking
+		lineageTag: d946622c-a61c-4fbd-b82d-b0457f0b7672
+
+Top 5 Product Net Sales =
+IF ( NOT ISBLANK ( [Merchandise Net Sales] ) && [Product Sales Rank] <= 5, [Merchandise Net Sales] )
+		formatString: #,0
+		displayFolder: Sales\Ranking
+		lineageTag: 44e4818c-c449-4e1c-afd3-7a822029f518
+
+KPI Net Sales Display =
+UNICHAR ( 163 ) & FORMAT ( DIVIDE ( [Net Sales], 1000000 ), "0.0" ) & "M"
+		displayFolder: Sales\Display
+		lineageTag: fa4a6cc9-1b1a-409b-8308-9a69cda7661a
+
+KPI Gross Sales Display =
+UNICHAR ( 163 ) & FORMAT ( DIVIDE ( [Gross Sales], 1000000 ), "0.0" ) & "M"
+		displayFolder: Sales\Display
+		lineageTag: 190b83d0-68b6-436c-a87a-65172dc453c1
+
+KPI Orders Display =
+IF ( [Orders] >= 1000, FORMAT ( DIVIDE ( [Orders], 1000 ), "0.0" ) & "K", FORMAT ( [Orders], "#,0" ) )
+		displayFolder: Sales\Display
+		lineageTag: d7e16b25-33f4-47dd-b0f2-cbd8e2220fb7
+
+KPI Units Sold Display =
+IF ( [Units Sold] >= 1000000, FORMAT ( DIVIDE ( [Units Sold], 1000000 ), "0.0" ) & "M", FORMAT ( DIVIDE ( [Units Sold], 1000 ), "0.0" ) & "K" )
+		displayFolder: Sales\Display
+		lineageTag: 24d2499d-2478-472f-ae4b-ec8c3ca5624c
+
+KPI Return Rate Display =
+FORMAT ( [Return Rate], "0.0%" )
+		displayFolder: Sales\Display
+		lineageTag: e6610564-9825-4ae9-bd45-a16535358647
+
+Customer Identified Net Sales =
+CALCULATE ( [Net Sales], FactSales[CustomerID] <> "Unknown" )
+		formatString: £#,0
+		displayFolder: Customer\Core
+		lineageTag: 14d5362b-bec4-4ad7-8f59-991131fc42c4
+
+Net Sales per Customer =
+DIVIDE ( [Customer Identified Net Sales], [Customers] )
+		formatString: £#,0.00
+		displayFolder: Customer\Core
+		lineageTag: 5f3a04f4-de13-4341-9e63-2bf08090d5fa
+
+Orders per Customer =
+DIVIDE ( [Identified Orders], [Customers] )
+		formatString: 0.00
+		displayFolder: Customer\Core
+		lineageTag: 7ef235ff-81b4-47f2-b850-a828190926a0
+
+Customer Data Coverage =
+DIVIDE ( CALCULATE ( COUNTROWS ( FactSales ), FactSales[CustomerID] <> "Unknown" ), COUNTROWS ( FactSales ) )
+		formatString: 0.0%
+		displayFolder: Customer\Quality
+		lineageTag: 2675581f-2f00-43b8-a8ab-6802e34f49eb
+
+Repeat Customers =
+COUNTROWS ( FILTER ( VALUES ( DimCustomer[CustomerKey] ), DimCustomer[CustomerKey] <> "UNKNOWN" && CALCULATE ( [Orders] ) > 1 ) )
+		formatString: #,0
+		displayFolder: Customer\Core
+		lineageTag: 9de20959-9320-4cb0-b889-c1fabe3ed54d
+
+Repeat Customer Rate =
+DIVIDE ( [Repeat Customers], [Customers] )
+		formatString: 0.0%
+		displayFolder: Customer\Core
+		lineageTag: 00611ba5-32a2-4797-9ca9-c5898946eaa0
+
+Active Products =
+CALCULATE ( DISTINCTCOUNT ( FactSales[StockCode] ), FactSales[TransactionType] = "Sale", FactSales[HasValidPrice] = TRUE () )
+		formatString: #,0
+		displayFolder: Product\Core
+		lineageTag: c53a32bf-656c-4729-9b1c-338d53fcf394
+
+Customer Sales Rank =
+RANKX ( FILTER ( ALLSELECTED ( DimCustomer[CustomerKey] ), DimCustomer[CustomerKey] <> "UNKNOWN" ), [Net Sales],, DESC, DENSE )
+		formatString: #,0
+		displayFolder: Customer\Ranking
+		lineageTag: 41a912c3-b010-48a2-bbd7-621d6543ac13
+
+Top 10 Customer Net Sales =
+IF ( [Customer Sales Rank] <= 10, [Net Sales] )
+		formatString: £#,0
+		displayFolder: Customer\Ranking
+		lineageTag: 15d5dfa6-d870-4023-a9b1-9614deae64dc
+
+Product Return Rank =
+RANKX ( ALLSELECTED ( DimProduct[Product] ), [Return Amount],, DESC, DENSE )
+		formatString: #,0
+		displayFolder: Product\Ranking
+		lineageTag: 32c903f5-8185-4518-af71-8e0f1898a0b9
+
+Top 5 Product Return Amount =
+IF ( [Product Return Rank] <= 5, [Return Amount] )
+		formatString: £#,0
+		displayFolder: Product\Ranking
+		lineageTag: 76b78166-9afb-4384-9578-d8674301e7df
+
+Customers Previous Month =
+VAR D = MAX ( FactSales[SalesDate] ) VAR P = EOMONTH ( D, -1 ) RETURN CALCULATE ( [Customers], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( P ) && DimDate[MonthNumber] = MONTH ( P ) ) )
+		formatString: #,0
+		displayFolder: Customer\Movement
+		lineageTag: 89c749dd-9928-4063-8ce8-07b59177592a
+
+Customers MoM =
+DIVIDE ( [Customers] - [Customers Previous Month], [Customers Previous Month] )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Customer\Movement
+		lineageTag: bce7d12a-3055-4a07-b06b-119b5cfc4535
+
+Customer Sales Previous Month =
+VAR D = MAX ( FactSales[SalesDate] ) VAR P = EOMONTH ( D, -1 ) RETURN CALCULATE ( [Customer Identified Net Sales], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( P ) && DimDate[MonthNumber] = MONTH ( P ) ) )
+		formatString: £#,0
+		displayFolder: Customer\Movement
+		lineageTag: b23fdd55-381a-40e1-936f-a6089c6a1368
+
+Customer Sales MoM =
+DIVIDE ( [Customer Identified Net Sales] - [Customer Sales Previous Month], [Customer Sales Previous Month] )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Customer\Movement
+		lineageTag: 511f1ca9-49cf-4dd8-aa90-9778bec55474
+
+AOV Previous Month =
+VAR D = MAX ( FactSales[SalesDate] ) VAR P = EOMONTH ( D, -1 ) RETURN CALCULATE ( [Average Order Value], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( P ) && DimDate[MonthNumber] = MONTH ( P ) ) )
+		formatString: £#,0.00
+		displayFolder: Customer\Movement
+		lineageTag: e9c6e2f2-594a-4de3-b6ff-fc3cc65afabe
+
+AOV MoM =
+DIVIDE ( [Average Order Value] - [AOV Previous Month], [AOV Previous Month] )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Customer\Movement
+		lineageTag: 7e653283-d76a-456c-bc06-cd99436601eb
+
+Orders per Customer Previous Month =
+VAR D = MAX ( FactSales[SalesDate] ) VAR P = EOMONTH ( D, -1 ) RETURN CALCULATE ( [Orders per Customer], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( P ) && DimDate[MonthNumber] = MONTH ( P ) ) )
+		formatString: 0.00
+		displayFolder: Customer\Movement
+		lineageTag: 19fedafd-54bc-4906-bee1-1a8b811cd116
+
+Orders per Customer MoM =
+DIVIDE ( [Orders per Customer] - [Orders per Customer Previous Month], [Orders per Customer Previous Month] )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Customer\Movement
+		lineageTag: c4f6b534-1ad7-4825-8363-e81e11220171
+
+Customer Coverage Previous Month =
+VAR D = MAX ( FactSales[SalesDate] ) VAR P = EOMONTH ( D, -1 ) RETURN CALCULATE ( [Customer Net Sales Coverage], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( P ) && DimDate[MonthNumber] = MONTH ( P ) ) )
+		formatString: 0.0%
+		displayFolder: Customer\Movement
+		lineageTag: a3a1627d-7d97-4634-a934-a16f075e162b
+
+Customer Coverage Variance pp =
+[Customer Net Sales Coverage] - [Customer Coverage Previous Month]
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Customer\Movement
+		lineageTag: 7b610d71-a138-43cf-a639-8166d0f210cc
+
+Active Products Previous Month =
+VAR D = MAX ( FactSales[SalesDate] ) VAR P = EOMONTH ( D, -1 ) RETURN CALCULATE ( [Active Products], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( P ) && DimDate[MonthNumber] = MONTH ( P ) ) )
+		formatString: #,0
+		displayFolder: Product\Movement
+		lineageTag: fc015e62-0604-466e-8e95-b1532958494a
+
+Active Products MoM =
+DIVIDE ( [Active Products] - [Active Products Previous Month], [Active Products Previous Month] )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Product\Movement
+		lineageTag: 31825e59-ac31-4120-9d44-273d13edd4b7
+
+Merchandise Sales Previous Month =
+VAR D = MAX ( FactSales[SalesDate] ) VAR P = EOMONTH ( D, -1 ) RETURN CALCULATE ( [Merchandise Net Sales], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( P ) && DimDate[MonthNumber] = MONTH ( P ) ) )
+		formatString: £#,0
+		displayFolder: Product\Movement
+		lineageTag: ba7b808e-df33-4a8a-a17c-bf84dcc8db42
+
+Merchandise Sales MoM =
+DIVIDE ( [Merchandise Net Sales] - [Merchandise Sales Previous Month], [Merchandise Sales Previous Month] )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Product\Movement
+		lineageTag: a2ac4ba2-35cc-47dd-8718-924097e9f124
+
+Return Amount Previous Month =
+VAR D = MAX ( FactSales[SalesDate] ) VAR P = EOMONTH ( D, -1 ) RETURN CALCULATE ( [Return Amount], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( P ) && DimDate[MonthNumber] = MONTH ( P ) ) )
+		formatString: £#,0
+		displayFolder: Product\Movement
+		lineageTag: 80dafda3-58e8-4f99-ad03-dd273b941ea3
+
+Return Amount MoM =
+DIVIDE ( [Return Amount] - [Return Amount Previous Month], [Return Amount Previous Month] )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Product\Movement
+		lineageTag: bff58f61-b977-438c-84c2-1bb36e26cdc3
+
+ASP Previous Month =
+VAR D = MAX ( FactSales[SalesDate] ) VAR P = EOMONTH ( D, -1 ) RETURN CALCULATE ( [Average Selling Price], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( P ) && DimDate[MonthNumber] = MONTH ( P ) ) )
+		formatString: £#,0.00
+		displayFolder: Product\Movement
+		lineageTag: 67827970-b37b-4fc6-8353-cf28adaac6e7
+
+ASP MoM =
+DIVIDE ( [Average Selling Price] - [ASP Previous Month], [ASP Previous Month] )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Product\Movement
+		lineageTag: 2b96556f-b2c0-4f0b-955d-1fcc735c4248
+
+KPI Customers Display =
+FORMAT ( [Customers], "#,0" )
+		displayFolder: Customer\Display
+		lineageTag: 39ff807e-a704-42c9-a9e7-90587f36d7e8
+
+KPI Net Sales per Customer Display =
+UNICHAR ( 163 ) & FORMAT ( [Net Sales per Customer], "#,0" )
+		displayFolder: Customer\Display
+		lineageTag: bd5e96c9-0e50-4196-aeab-b6dbec1d7f0a
+
+KPI AOV Display =
+UNICHAR ( 163 ) & FORMAT ( [Average Order Value], "#,0" )
+		displayFolder: Customer\Display
+		lineageTag: fab9ac88-4f6e-4bbe-b47f-32150f08d5d2
+
+KPI Orders per Customer Display =
+FORMAT ( [Orders per Customer], "0.0" ) & "x"
+		displayFolder: Customer\Display
+		lineageTag: bbf73bc8-fc30-42ce-8517-4f197c55db32
+
+KPI Customer Coverage Display =
+FORMAT ( [Customer Net Sales Coverage], "0.0%" )
+		displayFolder: Customer\Display
+		lineageTag: 655c78ac-eeb4-485e-8649-cb5a98babe69
+
+KPI Products Display =
+FORMAT ( [Active Products], "#,0" )
+		displayFolder: Product\Display
+		lineageTag: e9c58366-220b-42f8-9677-b53ac1e4166e
+
+KPI Merchandise Sales Display =
+UNICHAR ( 163 ) & FORMAT ( DIVIDE ( [Merchandise Net Sales], 1000000 ), "0.0" ) & "M"
+		displayFolder: Product\Display
+		lineageTag: 97433d41-d5de-4d41-825d-748be9678a4b
+
+KPI Return Amount Display =
+UNICHAR ( 163 ) & FORMAT ( DIVIDE ( [Return Amount], 1000000 ), "0.0" ) & "M"
+		displayFolder: Product\Display
+		lineageTag: 1cb48238-d028-40c9-a07a-406e6069d1c4
+
+KPI ASP Display =
+UNICHAR ( 163 ) & FORMAT ( [Average Selling Price], "0.00" )
+		displayFolder: Product\Display
+		lineageTag: 96d164b7-c434-432c-9da8-55ce2429b83e
+
+Net Sales Prior Month Trend =
+VAR D = MAX ( DimDate[Date] ) VAR P = EOMONTH ( D, -1 ) RETURN CALCULATE ( [Net Sales], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( P ) && DimDate[MonthNumber] = MONTH ( P ) ) )
+		formatString: £#,0
+		displayFolder: Sales\Movement
+		lineageTag: 7914b0c5-6550-4777-a93a-0132c3a8d7c6
+
+Anonymous Net Sales =
+CALCULATE ( [Net Sales], FactSales[CustomerID] = "Unknown" )
+		formatString: £#,0
+		displayFolder: Customer\Quality
+		lineageTag: 79093cc8-3e7f-48c3-88d0-6a770ba640d0
+
+Identified Orders =
+CALCULATE ( [Orders], FactSales[CustomerID] <> "Unknown" )
+		formatString: #,0
+		displayFolder: Customer\Core
+		lineageTag: 565edaf0-eda6-4d50-b865-4f8b13228f54
+
+Customer Net Sales Coverage =
+DIVIDE ( [Customer Identified Net Sales], [Net Sales] )
+		formatString: 0.0%
+		displayFolder: Customer\Quality
+		lineageTag: 6db27e88-41fc-42c1-a775-6713494dbe17
+
+Gross-to-Net Reconciliation Residual =
+[Net Sales] - ( [Gross Sales] - [Return Amount] )
+		formatString: £#,0;[Red]-£#,0
+		displayFolder: Sales\Quality
+		lineageTag: 49a82c85-919d-47d8-a535-b9e2a6fd610b
+
+Latest Period Status =
+VAR D = MAX ( FactSales[SalesDate] ) RETURN IF ( D < EOMONTH ( D, 0 ), "Partial through " & FORMAT ( D, "dd MMM yyyy" ), "Complete month" )
+		displayFolder: Sales\Quality
+		lineageTag: 25d29804-0ffb-4866-a391-6fea9a9dc931
+
+Completed Month Net Sales MoM Change =
+VAR ContextMonthEnd = EOMONTH ( MAX ( DimDate[Date] ), 0 ) VAR DataMaxDate = CALCULATE ( MAX ( FactSales[SalesDate] ), REMOVEFILTERS ( DimDate ) ) VAR IsPartialLatestMonth = ContextMonthEnd = EOMONTH ( DataMaxDate, 0 ) && DataMaxDate < EOMONTH ( DataMaxDate, 0 ) VAR PreviousMonthSales = CALCULATE ( [Net Sales], DATEADD ( DimDate[Date], -1, MONTH ) ) RETURN IF ( IsPartialLatestMonth || ISBLANK ( PreviousMonthSales ), BLANK (), [Net Sales] - PreviousMonthSales )
+		formatString: £#,0
+		displayFolder: Sales\Movement
+		lineageTag: 122b51df-e637-4cbe-9688-47a85e287680
+
+Top 10 Identified Customer Sales =
+SUMX ( TOPN ( 10, FILTER ( ALLSELECTED ( DimCustomer[CustomerKey] ), DimCustomer[CustomerKey] <> "UNKNOWN" ), [Net Sales], DESC ), CALCULATE ( [Net Sales] ) )
+		formatString: £#,0
+		displayFolder: Customer\Concentration
+		lineageTag: db6fa4ee-e27a-45c0-91da-5af787f3fcce
+
+Other Identified Customer Sales =
+MAX ( 0, [Customer Identified Net Sales] - [Top 10 Identified Customer Sales] )
+		formatString: £#,0
+		displayFolder: Customer\Concentration
+		lineageTag: e65f82dc-7b14-4945-92e2-a32f1fbc8595
+
+Customer Country Rank =
+RANKX ( ALLSELECTED ( DimCountry[Country] ), [Customers],, DESC, DENSE )
+		formatString: #,0
+		displayFolder: Customer\Ranking
+		lineageTag: 20e2ee34-3651-44aa-b140-f52b989c4491
+
+Top 5 Country Customers =
+IF ( [Customer Country Rank] <= 5, [Customers] )
+		formatString: #,0
+		displayFolder: Customer\Ranking
+		lineageTag: 02b9edb0-8d95-4865-a0f5-4833e31e5996
+
+UK Net Sales =
+CALCULATE ( [Net Sales], REMOVEFILTERS ( DimCountry ), DimCountry[Country] = "United Kingdom" )
+		formatString: £#,0
+		displayFolder: Sales\Concentration
+		lineageTag: 8525d07c-1c66-48d4-bd81-20395a0a5afb
+
+UK Sales Share =
+DIVIDE ( [UK Net Sales], CALCULATE ( [Net Sales], REMOVEFILTERS ( DimCountry ) ) )
+		formatString: 0.0%
+		displayFolder: Sales\Concentration
+		lineageTag: 45975acb-7ab6-4555-b031-5ffbda202730
+
+Top 10 Customer Sales Share =
+DIVIDE ( [Top 10 Identified Customer Sales], [Customer Identified Net Sales] )
+		formatString: 0.0%
+		displayFolder: Customer\Concentration
+		lineageTag: e4751446-c64b-4079-a2d1-349eb6d25c84
+
+Top 10 Product Sales =
+SUMX ( TOPN ( 10, ALLSELECTED ( DimProduct[Product] ), [Merchandise Net Sales], DESC ), CALCULATE ( [Merchandise Net Sales] ) )
+		formatString: £#,0
+		displayFolder: Product\Concentration
+		lineageTag: 75fd73d6-bc87-4b3c-a3db-f55ed8a5c7bd
+
+Top 10 Product Sales Share =
+DIVIDE ( [Top 10 Product Sales], [Merchandise Net Sales] )
+		formatString: 0.0%
+		displayFolder: Product\Concentration
+		lineageTag: 963eece5-d4e8-4281-81da-4a02840b64b2
+
+Top 10 Product Share Current Month =
+VAR D = CALCULATE ( MAX ( FactSales[SalesDate] ), REMOVEFILTERS ( DimDate ) ) VAR CurrentDate = IF ( D < EOMONTH ( D, 0 ), EOMONTH ( D, -1 ), D ) RETURN CALCULATE ( [Top 10 Product Sales Share], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( CurrentDate ) && DimDate[MonthNumber] = MONTH ( CurrentDate ) ) )
+		formatString: 0.0%
+		displayFolder: Product\Movement
+		lineageTag: 557c4784-1890-44e2-a092-aa51723ecda5
+
+Top 10 Product Share Previous Month =
+VAR D = CALCULATE ( MAX ( FactSales[SalesDate] ), REMOVEFILTERS ( DimDate ) ) VAR CurrentDate = IF ( D < EOMONTH ( D, 0 ), EOMONTH ( D, -1 ), D ) VAR P = EOMONTH ( CurrentDate, -1 ) RETURN CALCULATE ( [Top 10 Product Sales Share], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( P ) && DimDate[MonthNumber] = MONTH ( P ) ) )
+		formatString: 0.0%
+		displayFolder: Product\Movement
+		lineageTag: ec62a526-620e-416a-a7db-f0b369ff01da
+
+Top 10 Product Share Variance pp =
+[Top 10 Product Share Current Month] - [Top 10 Product Share Previous Month]
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Product\Movement
+		lineageTag: 10ee4b47-64f6-4eec-ab86-d8ceee33f8ce
+
+KPI Top 10 Product Share Display =
+FORMAT ( [Top 10 Product Share Current Month], "0.0%" )
+		displayFolder: Product\Display
+		lineageTag: 979bf60a-7c5d-4d62-a832-6182758cb429
+
+Repeat Customer Net Sales =
+SUMX ( FILTER ( VALUES ( DimCustomer[CustomerKey] ), DimCustomer[CustomerKey] <> "UNKNOWN" && CALCULATE ( [Orders] ) > 1 ), CALCULATE ( [Net Sales] ) )
+		formatString: £#,0
+		displayFolder: Customer\Retention
+		lineageTag: dcf4c9b2-94b8-43bb-882b-920474015373
+
+Repeat Customer Revenue Share =
+DIVIDE ( [Repeat Customer Net Sales], [Customer Identified Net Sales] )
+		formatString: 0.0%
+		displayFolder: Customer\Retention
+		lineageTag: 3b847dd1-4f95-4d3c-807a-717e99937b57
+
+Repeat Revenue Share Current Month =
+VAR D = CALCULATE ( MAX ( FactSales[SalesDate] ), REMOVEFILTERS ( DimDate ) ) VAR CurrentDate = IF ( D < EOMONTH ( D, 0 ), EOMONTH ( D, -1 ), D ) RETURN CALCULATE ( [Repeat Customer Revenue Share], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( CurrentDate ) && DimDate[MonthNumber] = MONTH ( CurrentDate ) ) )
+		formatString: 0.0%
+		displayFolder: Customer\Movement
+		lineageTag: 87bd2062-fb48-4797-98ad-9b28fdfcd2bb
+
+Repeat Revenue Share Previous Month =
+VAR D = CALCULATE ( MAX ( FactSales[SalesDate] ), REMOVEFILTERS ( DimDate ) ) VAR CurrentDate = IF ( D < EOMONTH ( D, 0 ), EOMONTH ( D, -1 ), D ) VAR P = EOMONTH ( CurrentDate, -1 ) RETURN CALCULATE ( [Repeat Customer Revenue Share], FILTER ( ALL ( DimDate ), DimDate[Year] = YEAR ( P ) && DimDate[MonthNumber] = MONTH ( P ) ) )
+		formatString: 0.0%
+		displayFolder: Customer\Movement
+		lineageTag: 6311046d-1344-4c07-bca5-e5e206db0cea
+
+Repeat Revenue Share Variance pp =
+[Repeat Revenue Share Current Month] - [Repeat Revenue Share Previous Month]
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Customer\Movement
+		lineageTag: 96547538-ee34-4676-a690-1560a8beb613
+
+KPI Repeat Revenue Share Display =
+FORMAT ( [Repeat Revenue Share Current Month], "0.0%" )
+		displayFolder: Customer\Display
+		lineageTag: 812c4f62-6029-41f8-88dc-308b1e79d4f5
+
+KPI MoM Display Customers MoM =
+VAR V = [Customers MoM] RETURN IF ( ISBLANK ( V ), BLANK (), "MoM: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI Delta
+		lineageTag: 1dd459c8-8d12-5ef3-87ad-611b7c482e43
+
+KPI MoM Color Customers MoM =
+VAR V = [Customers MoM] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#6C5CE7", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI Delta
+		lineageTag: 780f1777-00b8-57ac-b9e1-683b44017460
+
+KPI MoM Display Customer Sales MoM =
+VAR V = [Customer Sales MoM] RETURN IF ( ISBLANK ( V ), BLANK (), "MoM: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI Delta
+		lineageTag: e03dc5bf-9b88-5f7f-bb4b-e1cd78d05729
+
+KPI MoM Color Customer Sales MoM =
+VAR V = [Customer Sales MoM] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#6C5CE7", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI Delta
+		lineageTag: 75775fa4-b35b-5b6d-a4f8-8f3266b8d2dd
+
+KPI MoM Display AOV MoM =
+VAR V = [AOV MoM] RETURN IF ( ISBLANK ( V ), BLANK (), "MoM: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI Delta
+		lineageTag: d76d27d5-9451-5bd6-83f5-209f48630d12
+
+KPI MoM Color AOV MoM =
+VAR V = [AOV MoM] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#6C5CE7", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI Delta
+		lineageTag: abcc6893-4ad2-56ae-9440-a1cf2be61094
+
+KPI MoM Display Orders per Customer MoM =
+VAR V = [Orders per Customer MoM] RETURN IF ( ISBLANK ( V ), BLANK (), "MoM: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI Delta
+		lineageTag: 1a70d149-8f1c-51b1-9990-3e46c4cce279
+
+KPI MoM Color Orders per Customer MoM =
+VAR V = [Orders per Customer MoM] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#6C5CE7", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI Delta
+		lineageTag: 957752c5-8e12-515d-91e2-c02a9404056e
+
+KPI MoM Display Repeat Revenue Share Variance pp =
+VAR V = [Repeat Revenue Share Variance pp] RETURN IF ( ISBLANK ( V ), BLANK (), "MoM: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI Delta
+		lineageTag: 9803f7f0-ceff-5015-b184-7d83063e2e7e
+
+KPI MoM Color Repeat Revenue Share Variance pp =
+VAR V = [Repeat Revenue Share Variance pp] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#6C5CE7", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI Delta
+		lineageTag: aa3f4d83-b3b3-50cf-bb4a-f214c1094520
+
+KPI MoM Display Top 10 Product Share Variance pp =
+VAR V = [Top 10 Product Share Variance pp] RETURN IF ( ISBLANK ( V ), BLANK (), "MoM: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI Delta
+		lineageTag: 8524de49-1e64-5855-91d8-7d304b4fd48b
+
+KPI MoM Color Top 10 Product Share Variance pp =
+VAR V = [Top 10 Product Share Variance pp] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#6C5CE7", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI Delta
+		lineageTag: 89aadee2-1e7f-5566-bc89-78b810c937bf
+
+KPI MoM Display Merchandise Sales MoM =
+VAR V = [Merchandise Sales MoM] RETURN IF ( ISBLANK ( V ), BLANK (), "MoM: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI Delta
+		lineageTag: 8fff8361-bfd1-594b-8a47-bdcbea16076c
+
+KPI MoM Color Merchandise Sales MoM =
+VAR V = [Merchandise Sales MoM] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#6C5CE7", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI Delta
+		lineageTag: 35e66d34-3dac-5b28-a108-763a564b2f6a
+
+KPI MoM Display Units Sold MoM =
+VAR V = [Units Sold MoM] RETURN IF ( ISBLANK ( V ), BLANK (), "MoM: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI Delta
+		lineageTag: aa1890bd-d5b7-5e82-9a32-22b3faad6093
+
+KPI MoM Color Units Sold MoM =
+VAR V = [Units Sold MoM] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#6C5CE7", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI Delta
+		lineageTag: e2e1905f-183d-576e-9125-e23f001db7a0
+
+KPI MoM Display Return Amount MoM =
+VAR V = [Return Amount MoM] RETURN IF ( ISBLANK ( V ), BLANK (), "MoM: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI Delta
+		lineageTag: f63af5b4-7419-54b3-b774-c742e40b7123
+
+KPI MoM Color Return Amount MoM =
+VAR V = [Return Amount MoM] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#6C5CE7", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI Delta
+		lineageTag: 2b328549-69c9-5f7b-9b94-e1ec175d806a
+
+KPI MoM Display ASP MoM =
+VAR V = [ASP MoM] RETURN IF ( ISBLANK ( V ), BLANK (), "MoM: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI Delta
+		lineageTag: 5d2a4611-c794-56b5-90bf-0ebf445292aa
+
+KPI MoM Color ASP MoM =
+VAR V = [ASP MoM] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#6C5CE7", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI Delta
+		lineageTag: 659f9ee7-1b27-54e2-ab77-cea13763c264
+
+KPI MoM Display Net Sales MoM =
+VAR V = [Net Sales MoM] RETURN IF ( ISBLANK ( V ), BLANK (), "MoM: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI Delta
+		lineageTag: ac46c36d-254a-5f0a-87e6-173a4769dac2
+
+KPI MoM Color Net Sales MoM =
+VAR V = [Net Sales MoM] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#6C5CE7", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI Delta
+		lineageTag: 081e5121-e562-5988-b936-148884f9be74
+
+KPI MoM Display Gross Sales MoM =
+VAR V = [Gross Sales MoM] RETURN IF ( ISBLANK ( V ), BLANK (), "MoM: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI Delta
+		lineageTag: b5b6d38e-5c4e-5630-b8ab-31f60b92ca13
+
+KPI MoM Color Gross Sales MoM =
+VAR V = [Gross Sales MoM] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#6C5CE7", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI Delta
+		lineageTag: a83cc03a-3406-599a-87b4-eb4e11e61e70
+
+KPI MoM Display Orders MoM =
+VAR V = [Orders MoM] RETURN IF ( ISBLANK ( V ), BLANK (), "MoM: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI Delta
+		lineageTag: 63434cd4-f6ae-5102-b4be-b5db6b48bd23
+
+KPI MoM Color Orders MoM =
+VAR V = [Orders MoM] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#6C5CE7", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI Delta
+		lineageTag: 7921f278-2bac-522b-b937-f5da832fd06a
+
+KPI MoM Display Return Rate Variance pp =
+VAR V = [Return Rate Variance pp] RETURN IF ( ISBLANK ( V ), BLANK (), "MoM: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI Delta
+		lineageTag: 36c5d1b5-3165-52f9-bc41-50d59c5c640e
+
+KPI MoM Color Return Rate Variance pp =
+VAR V = [Return Rate Variance pp] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#6C5CE7", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI Delta
+		lineageTag: edad3e30-82e4-513c-ab2c-2684fc2b54e0
+
+One-time Customers =
+MAX ( 0, [Customers] - [Repeat Customers] )
+		formatString: #,0
+		displayFolder: Customer\Core
+		lineageTag: 4e9ba2d8-3dfb-43c1-9ced-e741af612f6f

@@ -1,0 +1,23 @@
+table FinanceComponent
+	lineageTag: bc6ef1f9-c7f6-4e26-aa3d-ea66995bddf6
+
+	column Component
+		dataType: string
+		isKey
+		lineageTag: 0d6172c9-99f5-4a09-afe0-ced457e606b4
+		summarizeBy: none
+		sourceColumn: [Component]
+		sortByColumn: ComponentSort
+
+	column ComponentSort
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 72bf4f93-9e36-490a-9dd7-eb21ed9cbd6d
+		summarizeBy: none
+		sourceColumn: [ComponentSort]
+
+	partition FinanceComponent = calculated
+		mode: import
+		source = DATATABLE ( "Component", STRING, "ComponentSort", INTEGER, { { "Cost of Sales", 1 }, { "Operating Expenses", 2 }, { "Other & Tax", 3 }, { "Net Income", 4 } } )
+

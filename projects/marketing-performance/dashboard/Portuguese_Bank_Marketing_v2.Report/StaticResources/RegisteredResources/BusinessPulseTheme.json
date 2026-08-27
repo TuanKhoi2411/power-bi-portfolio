@@ -1,0 +1,100 @@
+{
+  "name": "Portuguese Bank Marketing — Navy Coral",
+  "dataColors": [
+    "#0B5C8E",
+    "#F05D5E",
+    "#F59E0B",
+    "#38BDF8",
+    "#102A43",
+    "#2CB1BC",
+    "#829AB1",
+    "#D9E7F0"
+  ],
+  "background": "#F4F8FB",
+  "foreground": "#102A43",
+  "tableAccent": "#0B5C8E",
+  "good": "#16A34A",
+  "neutral": "#829AB1",
+  "bad": "#E1495B",
+  "textClasses": {
+    "title": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 12,
+      "color": "#102A43"
+    },
+    "callout": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 24,
+      "color": "#102A43"
+    },
+    "label": {
+      "fontFace": "Segoe UI",
+      "fontSize": 9,
+      "color": "#252423"
+    },
+    "header": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 10,
+      "color": "#102A43"
+    }
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "title": [
+          {
+            "show": true,
+            "fontFamily": "Segoe UI Semibold",
+            "fontSize": 10,
+            "fontColor": {
+              "solid": {
+                "color": "#102A43"
+              }
+            },
+            "alignment": "left"
+          }
+        ],
+        "background": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#D9E7F0"
+              }
+            },
+            "radius": 6
+          }
+        ],
+        "dropShadow": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#829AB1"
+              }
+            },
+            "transparency": 80,
+            "shadowBlur": 6,
+            "shadowDistance": 2
+          }
+        ],
+        "visualHeader": [
+          {
+            "show": false
+          }
+        ]
+      }
+    }
+  }
+}

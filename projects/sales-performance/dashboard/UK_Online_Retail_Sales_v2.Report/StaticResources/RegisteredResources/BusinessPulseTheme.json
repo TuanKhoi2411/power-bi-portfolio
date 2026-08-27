@@ -1,0 +1,100 @@
+{
+  "name": "Business Pulse — Ocean Amber",
+  "dataColors": [
+    "#6C5CE7",
+    "#FF6B6B",
+    "#FF9F43",
+    "#A29BFE",
+    "#2B2D42",
+    "#252423",
+    "#777A92",
+    "#F7F7FC"
+  ],
+  "background": "#F7F7FC",
+  "foreground": "#252423",
+  "tableAccent": "#6C5CE7",
+  "good": "#16A34A",
+  "neutral": "#777A92",
+  "bad": "#F65164",
+  "textClasses": {
+    "title": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 12,
+      "color": "#2B2D42"
+    },
+    "callout": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 24,
+      "color": "#2B2D42"
+    },
+    "label": {
+      "fontFace": "Segoe UI",
+      "fontSize": 9,
+      "color": "#252423"
+    },
+    "header": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 10,
+      "color": "#2B2D42"
+    }
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "title": [
+          {
+            "show": true,
+            "fontFamily": "Segoe UI Semibold",
+            "fontSize": 10,
+            "fontColor": {
+              "solid": {
+                "color": "#2B2D42"
+              }
+            },
+            "alignment": "left"
+          }
+        ],
+        "background": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#E1E3F0"
+              }
+            },
+            "radius": 6
+          }
+        ],
+        "dropShadow": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#777A92"
+              }
+            },
+            "transparency": 80,
+            "shadowBlur": 6,
+            "shadowDistance": 2
+          }
+        ],
+        "visualHeader": [
+          {
+            "show": false
+          }
+        ]
+      }
+    }
+  }
+}

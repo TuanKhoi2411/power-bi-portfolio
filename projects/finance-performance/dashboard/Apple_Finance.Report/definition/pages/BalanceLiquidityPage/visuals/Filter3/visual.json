@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "1583cd041faa038e5390",
   "position": {
     "x": 29,
     "y": 531,
-    "z": 7000,
+    "z": 6000,
     "height": 66,
     "width": 129,
-    "tabOrder": 7000
+    "tabOrder": 6000
   },
   "visual": {
     "visualType": "slicer",
@@ -20,16 +20,16 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "FactFinance"
+                      "Entity": "DimForm"
                     }
                   },
                   "Property": "Form"
                 }
               },
-              "queryRef": "FactFinance.Form",
+              "queryRef": "DimForm.Form",
               "nativeQueryRef": "SEC form",
-              "displayName": "SEC form",
-              "active": true
+              "active": true,
+              "displayName": "SEC form"
             }
           ]
         }
@@ -117,7 +117,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#3F6562'"
+                      "Value": "'#45645F'"
                     }
                   }
                 }
@@ -160,6 +160,13 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "7D"
                 }
               }
             }
@@ -213,6 +220,11 @@
           }
         }
       ]
+    },
+    "syncGroup": {
+      "groupName": "Global SEC form",
+      "fieldChanges": true,
+      "filterChanges": true
     },
     "drillFilterOtherVisuals": true
   }

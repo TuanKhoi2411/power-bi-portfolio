@@ -1,0 +1,25 @@
+table DimHomeOwnership
+	lineageTag: 9ee2bd47-41b4-45ed-bf66-c99d3e64c601
+
+	column HomeOwnershipKey
+		dataType: string
+		isKey
+		lineageTag: 9ee2bd47-41b4-45ed-bf66-c99d3e64c602
+		summarizeBy: none
+		sourceColumn: [HomeOwnershipKey]
+
+	column HomeOwnership
+		dataType: string
+		lineageTag: 9ee2bd47-41b4-45ed-bf66-c99d3e64c603
+		summarizeBy: none
+		sourceColumn: [HomeOwnership]
+
+	column HomeOwnershipGroup = SWITCH ( DimHomeOwnership[HomeOwnership], "Rent", "Rent", "Mortgage", "Mortgage", "Own", "Own", "Other" )
+		dataType: string
+		lineageTag: 9ee2bd47-41b4-45ed-bf66-c99d3e64c604
+		summarizeBy: none
+
+	partition DimHomeOwnership = calculated
+		mode: import
+		source = DISTINCT ( SELECTCOLUMNS ( FactLoans, "HomeOwnershipKey", FactLoans[HomeOwnershipKey], "HomeOwnership", SWITCH ( FactLoans[HomeOwnership], "RENT", "Rent", "MORTGAGE", "Mortgage", "OWN", "Own", "OTHER", "Other", "NONE", "None", "ANY", "Any", FactLoans[HomeOwnership] ) ) )
+

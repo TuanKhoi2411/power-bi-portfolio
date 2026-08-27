@@ -1,0 +1,20 @@
+table DimIncomeBand
+	lineageTag: 9ee2bd47-41b4-45ed-bf66-c99d3e64c401
+
+	column IncomeBandKey
+		dataType: string
+		isKey
+		lineageTag: 9ee2bd47-41b4-45ed-bf66-c99d3e64c402
+		summarizeBy: none
+		sourceColumn: [IncomeBandKey]
+
+	column IncomeBand
+		dataType: string
+		lineageTag: 9ee2bd47-41b4-45ed-bf66-c99d3e64c403
+		summarizeBy: none
+		sourceColumn: [IncomeBand]
+
+	partition DimIncomeBand = calculated
+		mode: import
+		source = DISTINCT ( SELECTCOLUMNS ( FactLoans, "IncomeBandKey", FactLoans[IncomeBandKey], "IncomeBand", FactLoans[IncomeBand] ) )
+

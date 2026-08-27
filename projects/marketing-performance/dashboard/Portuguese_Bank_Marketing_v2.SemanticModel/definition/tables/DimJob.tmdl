@@ -1,0 +1,20 @@
+table DimJob
+	lineageTag: 5858ca80-e926-446e-b8e8-c8e54c25460c
+
+	column JobKey
+		dataType: string
+		isKey
+		lineageTag: 37d87aca-7a5a-468e-bfec-535daf528774
+		summarizeBy: none
+		sourceColumn: [JobKey]
+
+	column Job
+		dataType: string
+		lineageTag: b4cd3cff-73c0-47dc-8f03-2cb6f7d4a021
+		summarizeBy: none
+		sourceColumn: [Job]
+
+	partition DimJob = calculated
+		mode: import
+		source = DISTINCT ( SELECTCOLUMNS ( FactMarketing, "JobKey", FactMarketing[JobKey], "Job", FactMarketing[Job] ) )
+

@@ -1,0 +1,1749 @@
+cultureInfo en-US
+
+	linguisticMetadata =
+			{
+			  "Version": "2.0.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "factsales.country": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "Country"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.net_sales": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "Net Sales"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.description": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "Description"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.transactiontype": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "TransactionType"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.gross_sales": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "Gross Sales"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.return_amount": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "Return Amount"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.orders": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "Orders"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.customers": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "Customers"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.return_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "Return Rate"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.units_sold": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "Units Sold"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "dimdate.yearmonth": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DimDate",
+			          "ConceptualProperty": "YearMonth"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "dimdate.date": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DimDate",
+			          "ConceptualProperty": "Date"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Campaign date": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factfinance.displaymetric": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "DisplayMetric"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factfinance.latest_metric_value": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Latest Metric Value"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factfinance.enddate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "EndDate"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factfinance.quarterly_revenue": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Quarterly Revenue"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factfinance.quarterly_net_income": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Quarterly Net Income"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factfinance.assets": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Assets"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factfinance.liabilities": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Liabilities"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factfinance.cash": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Cash"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factfinance.gross_margin": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Gross Margin"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factfinance.operating_margin": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Operating Margin"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factfinance.net_margin": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Net Margin"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factfinance.quarterly_gross_profit": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Quarterly Gross Profit"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factfinance.quarterly_operating_income": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Quarterly Operating Income"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factfinance.periodtype": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "PeriodType"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factfinance.form": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Form"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factfinance.latest_revenue": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Latest Revenue"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factfinance.latest_gross_profit": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Latest Gross Profit"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factfinance.latest_operating_income": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Latest Operating Income"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factfinance.latest_net_income": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Latest Net Income"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factfinance.latest_gross_margin": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Latest Gross Margin"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.job": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "Job"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.conversion_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "Conversion Rate"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Conversion Rate": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factmarketing.campaignmonth": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "CampaignMonth"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.contacts": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "Contacts"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Contacts": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factmarketing.conversions": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "Conversions"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Conversions": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factmarketing.contactchannel": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "ContactChannel"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.average_contact_duration": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "Average Contact Duration"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Avg Duration": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Average Duration": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factmarketing.ageband": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "AgeBand"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.prioroutcome": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "PriorOutcome"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.average_campaign_contacts": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "Average Campaign Contacts"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Avg Touches": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Average Touches": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factsales.top_5_country_net_sales": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "Top 5 Country Net Sales"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.top_5_product_net_sales": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "Top 5 Product Net Sales"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.net_sales_previous_year": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "Net Sales Previous Year"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.net_sales_yoy": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "Net Sales YoY"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.gross_to_net_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "Gross to Net Rate"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.net_sales_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "Net Sales MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.gross_sales_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "Gross Sales MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.orders_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "Orders MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.units_sold_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "Units Sold MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.return_rate_variance_pp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "Return Rate Variance pp"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.kpi_net_sales_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "KPI Net Sales Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.kpi_gross_sales_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "KPI Gross Sales Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.kpi_orders_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "KPI Orders Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.kpi_units_sold_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "KPI Units Sold Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factsales.kpi_return_rate_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactSales",
+			          "ConceptualProperty": "KPI Return Rate Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factfinance.revenue_previous_year": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Revenue Previous Year"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factfinance.revenue_yoy": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Revenue YoY"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factfinance.latest_revenue_yoy": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Latest Revenue YoY"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factfinance.latest_gross_profit_yoy": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Latest Gross Profit YoY"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factfinance.latest_operating_income_yoy": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Latest Operating Income YoY"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factfinance.latest_net_income_yoy": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Latest Net Income YoY"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factfinance.latest_gross_margin_variance_pp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "Latest Gross Margin Variance pp"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factfinance.kpi_revenue_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "KPI Revenue Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factfinance.kpi_gross_profit_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "KPI Gross Profit Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factfinance.kpi_operating_income_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "KPI Operating Income Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factfinance.kpi_net_income_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "KPI Net Income Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factfinance.kpi_gross_margin_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactFinance",
+			          "ConceptualProperty": "KPI Gross Margin Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.conversion_rate_previous_month": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "Conversion Rate Previous Month"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.contacts_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "Contacts MoM"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Contacts MoM": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factmarketing.conversion_rate_variance_pp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "Conversion Rate Variance pp"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Δ pp": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factmarketing.conversions_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "Conversions MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.average_duration_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "Average Duration MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.average_campaign_contacts_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "Average Campaign Contacts MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.kpi_contacts_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "KPI Contacts Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Contacts": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factmarketing.kpi_conversions_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "KPI Conversions Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Conversions": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factmarketing.kpi_conversion_rate_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "KPI Conversion Rate Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Conversion Rate": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factmarketing.kpi_average_duration_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "KPI Average Duration Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Avg Time": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Average Duration": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factmarketing.kpi_average_contacts_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "KPI Average Contacts Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Average Touches": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factmarketing.campaigndate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "CampaignDate"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.maritalstatus": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "MaritalStatus"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.prior_contact_rate_variance_pp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "Prior Contact Rate Variance pp"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.education": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "Education"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.kpi_prior_contact_rate_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "KPI Prior Contact Rate Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Prior Contact Rate": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factmarketing.prior_contact_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "Prior Contact Rate"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Prior Contact Rate": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factmarketing.contactdayofweek": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "ContactDayOfWeek"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.contactfrequencyband": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "ContactFrequencyBand"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.cellular_share_variance_pp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "Cellular Share Variance pp"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.successful_prior_rate_variance_pp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "Successful Prior Rate Variance pp"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.kpi_conversions_per_1k_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "KPI Conversions per 1K Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Conversions / 1K": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factmarketing.kpi_cellular_share_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "KPI Cellular Share Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Cellular Share": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factmarketing.kpi_successful_prior_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "KPI Successful Prior Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Successful Prior Outcome": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factmarketing.conversions_per_1k_contacts": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "Conversions per 1K Contacts"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Conversions / 1K": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factmarketing.cellular_contact_share": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "Cellular Contact Share"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Cellular Share": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factmarketing.successful_prior_outcome_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "Successful Prior Outcome Rate"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Successful Prior Outcome": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factmarketing.segment_conversion_rate_500_contacts": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "Segment Conversion Rate (500+ Contacts)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Conversion Rate (500+ Contacts)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factmarketing.conversion_rate_change_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "Conversion Rate Change Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.conversion_contribution": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "Conversion Contribution"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Share of Conversions": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dimjob.job": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DimJob",
+			          "ConceptualProperty": "Job"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Job": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dimdate.month": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DimDate",
+			          "ConceptualProperty": "Month"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Month": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dimchannel.contactchannel": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DimChannel",
+			          "ConceptualProperty": "ContactChannel"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Channel": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "ContactChannel": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dimageband.ageband": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DimAgeBand",
+			          "ConceptualProperty": "AgeBand"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "AgeBand": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Age band": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dimprioroutcome.prioroutcome": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DimPriorOutcome",
+			          "ConceptualProperty": "PriorOutcome"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "PriorOutcome": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Prior outcome": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dimmaritalstatus.maritalstatus": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DimMaritalStatus",
+			          "ConceptualProperty": "MaritalStatus"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Marital status": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dimeducation.education": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DimEducation",
+			          "ConceptualProperty": "Education"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Education": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dimdayofweek.contactdayofweek": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DimDayOfWeek",
+			          "ConceptualProperty": "ContactDayOfWeek"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Day": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Day of week": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dimcontactfrequency.contactfrequencyband": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DimContactFrequency",
+			          "ConceptualProperty": "ContactFrequencyBand"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Contact Frequency": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factmarketing.latest_conversion_change_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "Latest Conversion Change Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.high_frequency_share_variance_pp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "High Frequency Share Variance pp"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factmarketing.kpi_latest_conversion_rate_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "KPI Latest Conversion Rate Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Conv. (500+)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factmarketing.kpi_high_frequency_share_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "KPI High Frequency Share Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "4+ Contact %": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factmarketing.high_frequency_contact_share": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "High Frequency Contact Share"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "4+ Contact Share": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factmarketing.kpi_mom_display_contacts_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "KPI MoM Display Contacts MoM"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "MoM": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factmarketing.kpi_mom_display_conversions_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "KPI MoM Display Conversions MoM"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "MoM": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factmarketing.kpi_mom_display_latest_conversion_change_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "KPI MoM Display Latest Conversion Change Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "MoM": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factmarketing.kpi_mom_display_average_duration_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "KPI MoM Display Average Duration MoM"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "MoM": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factmarketing.kpi_mom_display_high_frequency_share_variance_pp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "KPI MoM Display High Frequency Share Variance pp"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "MoM": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factmarketing.kpi_mom_display_conversion_rate_change_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "KPI MoM Display Conversion Rate Change Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "MoM": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factmarketing.kpi_mom_display_prior_contact_rate_variance_pp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "KPI MoM Display Prior Contact Rate Variance pp"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "MoM": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factmarketing.kpi_mom_display_average_campaign_contacts_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "KPI MoM Display Average Campaign Contacts MoM"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "MoM": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factmarketing.kpi_mom_display_cellular_share_variance_pp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "KPI MoM Display Cellular Share Variance pp"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "MoM": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factmarketing.kpi_mom_display_successful_prior_rate_variance_pp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "KPI MoM Display Successful Prior Rate Variance pp"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "MoM": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factmarketing.priorcontacted": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactMarketing",
+			          "ConceptualProperty": "PriorContacted"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Prior contact status": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    }
+			  }
+			}
+		contentType: json
+

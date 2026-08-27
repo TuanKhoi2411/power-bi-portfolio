@@ -1,0 +1,20 @@
+table DimForm
+	lineageTag: 68df64e4-565e-4ba2-9d1e-99ab8a07e32f
+
+	column FormKey
+		dataType: string
+		isKey
+		lineageTag: b0083ba4-a8c3-49f7-8378-a1b344406ab5
+		summarizeBy: none
+		sourceColumn: [FormKey]
+
+	column Form
+		dataType: string
+		lineageTag: 19b59c75-6ceb-48c3-a2db-3e9416afa014
+		summarizeBy: none
+		sourceColumn: [Form]
+
+	partition DimForm = calculated
+		mode: import
+		source = DISTINCT ( SELECTCOLUMNS ( FactFinance, "FormKey", FactFinance[FormKey], "Form", FactFinance[Form] ) )
+

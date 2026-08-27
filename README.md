@@ -2,79 +2,72 @@
 
 # Power BI Analytics Portfolio
 
-**Four decision-focused dashboard products across Sales, Marketing, and Finance**
+**Five decision-focused dashboard products across Sales, Marketing, Finance, Credit Risk, and FP&A**
 
-[![Portfolio](https://img.shields.io/badge/PORTFOLIO-D8FF4F?style=for-the-badge)](https://tuankhoi2411.github.io/)
+[![Portfolio](https://img.shields.io/badge/PORTFOLIO-C7F436?style=for-the-badge)](https://tuankhoi2411.github.io/power-bi/)
 [![LinkedIn](https://img.shields.io/badge/LINKEDIN-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/tuan-khoi-nguyen-324139316/)
 
 </div>
 
-This repository demonstrates how I turn business questions into controlled data models, decision-ready Power BI reports, and concise management stories. Each project keeps the dashboard, its supporting evidence, and a standalone interactive presentation together.
+This repository packages each dashboard as a reviewable product: the latest PBIX, source-controlled PBIP where available, exact DAX/model evidence, rebuild instructions, QA checklist, and a dashboard-only PDF preview.
 
 ## Portfolio index
 
-| Dashboard product | Decision supported | Main deliverables |
+| Dashboard product | Decision supported | Deliverables |
 |---|---|---|
-| [UK Online Retail — Sales Performance](./projects/sales-performance/README.md) | Where is growth coming from, which customers and products matter, and how do returns affect sales quality? | PBIX · PBIP · source data · HTML story |
-| [Portuguese Bank — Marketing Performance](./projects/marketing-performance/README.md) | Which audiences and campaign conditions are associated with stronger subscription conversion? | PBIX · PBIP · source data · HTML story |
-| [Apple Inc. — Financial Performance](./projects/finance-performance/README.md) | Are growth, margins, liquidity, and cost structure moving sustainably? | PBIX · PBIP · SEC source data · HTML story |
-| [Sports & Health Enterprise — Financial Performance](./projects/financial-performance-dashboard/README.md) | How can management move from a headline P&L into margin, cost, segment, and break-even drivers? | PBIX · HTML story |
+| [UK Online Retail — Sales Performance](./projects/sales-performance/README.md) | Where is growth coming from, which customers/products matter, and how do returns affect quality? | PBIX · PBIP · data · DAX · PDF |
+| [Portuguese Bank — Marketing Performance](./projects/marketing-performance/README.md) | Which audiences and campaign conditions are associated with conversion? | PBIX · PBIP · data · DAX · PDF |
+| [Apple Inc. — Financial Performance](./projects/finance-performance/README.md) | Are growth, margins, liquidity, and cost structure moving sustainably? | PBIX · PBIP · SEC data · DAX · PDF |
+| [FinTech Credit Risk — Portfolio Performance](./projects/credit-risk-performance/README.md) | Where is risk concentrated, how should pricing respond, and which segments require action? | PBIX · PBIP · data · DAX · PDF |
+| [Sports & Health Enterprise — Financial Performance](./projects/financial-performance-dashboard/README.md) | How can management move from headline P&L into margin, cost, segment, and break-even drivers? | PBIX · HTML story · PDF |
 
-## What to review
+## Recruiter review path
 
-1. Start with each project README for the management question and a 60-second review path.
-2. Open the HTML story for the decision narrative and recommended actions.
-3. Use the PBIX for direct Power BI review, or download the complete PBIP folder to inspect the report and semantic model definitions.
-4. Review the included raw data and refresh notes where the source is public.
+1. Open a project README for the management question and 60-second summary.
+2. Review the dashboard-only PDF in `preview/`—no Power BI Desktop chrome and no slide artwork.
+3. Download the PBIX for direct interaction.
+4. Inspect the PBIP, exact DAX, source notes, and QA package for reproducibility.
 
-## Delivery status
+## Agent-ready packages
 
-| Project | Dashboard | Interactive story | Data included | Published status |
-|---|---:|---:|---:|---|
-| UK Online Retail | PBIX + PBIP | 12 slides | Yes | Review-ready |
-| Portuguese Bank | PBIX + PBIP | 12 slides | Yes | Review-ready |
-| Apple Inc. | PBIX + PBIP | 12 slides | Yes | Review-ready |
-| Sports & Health Enterprise | PBIX | 12 slides | No separate raw file | Review-ready |
-
-## Repository guide
-
-Each project is self-contained:
+The four source-controlled PBIP projects include:
 
 ```text
-projects/<project-name>/
-├── README.md                 # business context, status, and review guide
-├── *.html                   # standalone interactive management story
-├── *.pbix                   # packaged Power BI report where available
-├── dashboard/               # PBIP report + semantic model where available
-└── data/                    # included public source file where available
+projects/<project>/
+├── README.md
+├── AGENTS.md
+├── BI_Dashboard_Creation_Prompt.md
+├── *.pbix
+├── dashboard/                  # current PBIP report + semantic model
+├── data/                       # source/public data where distributable
+├── model/                      # exact DAX, measure catalog, model inventory
+├── powerbi/                    # PBIX rebuild instructions
+├── qa/                         # validation checklist
+├── preview/                    # PDF + dashboard page PNGs
+├── source-documentation/       # current source and model notes
+├── build-scripts/              # project build/documentation utilities
+└── theme/                      # Power BI theme assets
 ```
 
-## Agent-ready build packages
+Start with each project’s `BI_Dashboard_Creation_Prompt.md`. The DAX export and model inventory are generated from the current canonical PBIP, not reconstructed from screenshots.
 
-Each PBIP project now includes a full `BI_Dashboard_Creation_Prompt.md`, exact exported DAX, measure catalog, data dictionary, relationship/model notes, Power Query M, PBIX build instructions, creation provenance, structural validation, and QA checklist. Start with [the repository agent workflow](./docs/AGENT_WORKFLOW.md), [the recovered build provenance](./docs/BUILD_PROVENANCE.md), and [the reference implementation notes](./docs/REFERENCE_IMPLEMENTATION_NOTES.md).
+## Current delivery status
 
-| Project | Agent package | Supported mode |
-|---|---|---|
-| UK Online Retail | [Open instructions](./projects/sales-performance/AGENTS.md) | Full PBIP rebuild or enhancement |
-| Portuguese Bank | [Open instructions](./projects/marketing-performance/AGENTS.md) | Full PBIP rebuild or enhancement |
-| Apple Inc. | [Open instructions](./projects/finance-performance/AGENTS.md) | Full PBIP rebuild or enhancement |
-| Sports & Health Enterprise | [Open instructions](./projects/financial-performance-dashboard/AGENTS.md) | Existing-PBIX enhancement; source/PBIP not published |
+| Project | PBIX | PBIP | Dashboard PDF | Agent package |
+|---|---:|---:|---:|---:|
+| UK Online Retail | Yes | Yes | 3 pages | Yes |
+| Portuguese Bank | Yes | Yes | 3 pages | Yes |
+| Apple Inc. | Yes | Yes | 3 pages | Yes |
+| FinTech Credit Risk | Yes | Yes | 3-page portfolio preview; 4 report pages in PBIP | Yes |
+| Sports & Health Enterprise | Yes | Not published | 4 pages | Existing-PBIX workflow |
 
 ## Quality standard
 
 - Management question before charts.
-- Separate Sales, Marketing, and Finance models rather than a forced cross-domain comparison.
-- Overview plus decision-specific deep dives.
-- Explicit model, page, source, and delivery status.
-- Honest refresh dependencies and limitations.
-- Standalone 12-slide HTML stories with presentation controls.
-
-## Notes
-
-- Public-source projects cite their publisher and retain the source file used for the model.
-- PBIP files are project entry points, not standalone reports. Download the complete `dashboard/` folder before opening them.
-- PBIP queries may retain the original local `SourcePath`; each project README explains what must be changed before refresh.
-- These are portfolio case studies, not production systems or investment recommendations.
+- Clear page purpose, slicer state, navigation, and reset behavior.
+- Exact model/DAX evidence instead of undocumented screenshots.
+- Dashboard-only PDF previews derived from current dashboard pages.
+- Public or portfolio-safe data, explicit limitations, and no confidential inputs.
 
 ## Author
 

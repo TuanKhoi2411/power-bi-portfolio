@@ -1,0 +1,20 @@
+table DimGrade
+	lineageTag: 9ee2bd47-41b4-45ed-bf66-c99d3e64c101
+
+	column GradeKey
+		dataType: string
+		isKey
+		lineageTag: 9ee2bd47-41b4-45ed-bf66-c99d3e64c102
+		summarizeBy: none
+		sourceColumn: [GradeKey]
+
+	column Grade
+		dataType: string
+		lineageTag: 9ee2bd47-41b4-45ed-bf66-c99d3e64c103
+		summarizeBy: none
+		sourceColumn: [Grade]
+
+	partition DimGrade = calculated
+		mode: import
+		source = DISTINCT ( SELECTCOLUMNS ( FactLoans, "GradeKey", FactLoans[GradeKey], "Grade", FactLoans[Grade] ) )
+

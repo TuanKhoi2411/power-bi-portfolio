@@ -1,0 +1,20 @@
+table DimLoanLabel
+	lineageTag: 9ee2bd47-41b4-45ed-bf66-c99d3e64c501
+
+	column LoanLabelKey
+		dataType: string
+		isKey
+		lineageTag: 9ee2bd47-41b4-45ed-bf66-c99d3e64c502
+		summarizeBy: none
+		sourceColumn: [LoanLabelKey]
+
+	column LoanLabel
+		dataType: string
+		lineageTag: 9ee2bd47-41b4-45ed-bf66-c99d3e64c503
+		summarizeBy: none
+		sourceColumn: [LoanLabel]
+
+	partition DimLoanLabel = calculated
+		mode: import
+		source = DISTINCT ( SELECTCOLUMNS ( FactLoans, "LoanLabelKey", FactLoans[LoanLabelKey], "LoanLabel", FactLoans[LoanLabel] ) )
+

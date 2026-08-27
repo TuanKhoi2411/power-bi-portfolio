@@ -1,0 +1,97 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 48.6274528503418,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 50,
+            "y": 213.10233357354366
+          },
+          "nodeIndex": "DimCountry",
+          "nodeLineageTag": "0ec0c898-4064-455c-8a9f-2fe98139b327",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 301.23345441864171,
+            "y": -50
+          },
+          "nodeIndex": "DimCustomer",
+          "nodeLineageTag": "7ed3d613-013e-4471-8af8-f21bebba474d",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 628.84858035804052,
+            "y": 123.38773843528929
+          },
+          "nodeIndex": "DimDate",
+          "nodeLineageTag": "28e43bb4-dfcc-49a8-a6f3-4151eb1e7844",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 335.44245897485416,
+            "y": 558.04544727627433
+          },
+          "nodeIndex": "DimProduct",
+          "nodeLineageTag": "dd262e59-b95a-4351-b8b1-bb7244a51889",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 339.51662974402029,
+            "y": 206.26355238396468
+          },
+          "nodeIndex": "FactSales",
+          "nodeLineageTag": "f10de4e7-f503-4618-abe4-edb0847ccda1",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {},
+          "nodeIndex": "DimTransactionType",
+          "nodeLineageTag": "3391ce32-0545-4b71-a40b-dfcfa011f007",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

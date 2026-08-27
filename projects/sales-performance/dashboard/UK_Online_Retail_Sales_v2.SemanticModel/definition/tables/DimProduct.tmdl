@@ -1,0 +1,47 @@
+table DimProduct
+	lineageTag: dd262e59-b95a-4351-b8b1-bb7244a51889
+
+	column ProductKey
+		dataType: string
+		isKey
+		lineageTag: 837a6b8b-20f6-41fd-bded-ac23ae9ae4d1
+		summarizeBy: none
+		sourceColumn: [ProductKey]
+
+	column Product =
+			VAR ValidRows =
+				FILTER (
+					RELATEDTABLE ( FactSales ),
+					VAR ProductName = TRIM ( FactSales[Description] )
+					RETURN
+						NOT ISBLANK ( ProductName )
+							&& ProductName <> "Unknown product"
+							&& LEN ( ProductName ) >= 4
+							&& LEFT ( ProductName, 1 ) <> "?"
+							&& LEFT ( ProductName, 1 ) <> "*"
+				)
+			VAR DescriptionCounts =
+				GROUPBY (
+					ValidRows,
+					FactSales[Description],
+					"__RowCount", COUNTX ( CURRENTGROUP (), 1 ),
+					"__LatestDate", MAXX ( CURRENTGROUP (), FactSales[InvoiceDate] )
+				)
+			VAR BestDescription =
+				TOPN (
+					1,
+					DescriptionCounts,
+					[__RowCount], DESC,
+					[__LatestDate], DESC,
+					FactSales[Description], ASC
+				)
+			RETURN
+				COALESCE ( MAXX ( BestDescription, FactSales[Description] ), "Unknown product" )
+		dataType: string
+		lineageTag: 2d7b1fea-4c52-4eec-a28a-a7e15ed1f003
+		summarizeBy: none
+
+	partition DimProduct = calculated
+		mode: import
+		source = DISTINCT ( SELECTCOLUMNS ( FactSales, "ProductKey", FactSales[ProductKey] ) )
+

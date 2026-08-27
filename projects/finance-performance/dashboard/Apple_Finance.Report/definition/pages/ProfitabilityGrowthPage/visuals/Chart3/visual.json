@@ -1,16 +1,16 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "9eb0417c702b9667a72f",
   "position": {
     "x": 725,
     "y": 235,
-    "z": 21000,
+    "z": 20000,
     "height": 205,
     "width": 530,
-    "tabOrder": 21000
+    "tabOrder": 20000
   },
   "visual": {
-    "visualType": "clusteredColumnChart",
+    "visualType": "lineChart",
     "query": {
       "queryState": {
         "Category": {
@@ -20,16 +20,16 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "FactFinance"
+                      "Entity": "DimDate"
                     }
                   },
-                  "Property": "EndDate"
+                  "Property": "Date"
                 }
               },
-              "queryRef": "FactFinance.EndDate",
+              "queryRef": "DimDate.Date",
               "nativeQueryRef": "Quarter",
-              "displayName": "Quarter",
-              "active": true
+              "active": true,
+              "displayName": "Quarter"
             }
           ]
         },
@@ -43,12 +43,12 @@
                       "Entity": "FactFinance"
                     }
                   },
-                  "Property": "Cost of Sales"
+                  "Property": "Quarterly Cost of Sales Ratio"
                 }
               },
-              "queryRef": "FactFinance.Cost of Sales",
-              "nativeQueryRef": "Cost of Sales",
-              "displayName": "Cost of Sales"
+              "queryRef": "FactFinance.Quarterly Cost of Sales Ratio",
+              "nativeQueryRef": "Cost of Sales %",
+              "displayName": "Cost of Sales %"
             },
             {
               "field": {
@@ -58,12 +58,12 @@
                       "Entity": "FactFinance"
                     }
                   },
-                  "Property": "Operating Expenses"
+                  "Property": "Quarterly Operating Expense Ratio"
                 }
               },
-              "queryRef": "FactFinance.Operating Expenses",
-              "nativeQueryRef": "Operating Expenses",
-              "displayName": "Operating Expenses"
+              "queryRef": "FactFinance.Quarterly Operating Expense Ratio",
+              "nativeQueryRef": "Opex %",
+              "displayName": "Opex %"
             }
           ]
         }
@@ -106,6 +106,46 @@
             }
           }
         }
+      ],
+      "categoryAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "visualContainerObjects": {
@@ -122,7 +162,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Quarterly Cost Structure'"
+                  "Value": "'Cost Burden by Quarter | % of Revenue'"
                 }
               }
             },
@@ -200,7 +240,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#D8E7E4'"
+                      "Value": "'#D8E5E2'"
                     }
                   }
                 }
@@ -209,7 +249,7 @@
             "radius": {
               "expr": {
                 "Literal": {
-                  "Value": "6D"
+                  "Value": "9D"
                 }
               }
             }
@@ -231,7 +271,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#829A97'"
+                      "Value": "'#6E8F88'"
                     }
                   }
                 }
@@ -240,21 +280,21 @@
             "transparency": {
               "expr": {
                 "Literal": {
-                  "Value": "82D"
+                  "Value": "88D"
                 }
               }
             },
             "shadowBlur": {
               "expr": {
                 "Literal": {
-                  "Value": "6D"
+                  "Value": "5D"
                 }
               }
             },
             "shadowDistance": {
               "expr": {
                 "Literal": {
-                  "Value": "2D"
+                  "Value": "1D"
                 }
               }
             },
@@ -262,6 +302,19 @@
               "expr": {
                 "Literal": {
                   "Value": "45D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Cost Burden by Quarter | % of Revenue'"
                 }
               }
             }

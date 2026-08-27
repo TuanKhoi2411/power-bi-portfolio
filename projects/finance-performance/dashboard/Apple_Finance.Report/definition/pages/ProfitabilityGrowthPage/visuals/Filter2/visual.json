@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "bb765c8fc2c80294836f",
   "position": {
     "x": 29,
     "y": 443,
-    "z": 6000,
+    "z": 5000,
     "height": 66,
     "width": 129,
-    "tabOrder": 6000
+    "tabOrder": 5000
   },
   "visual": {
     "visualType": "slicer",
@@ -20,16 +20,16 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "FactFinance"
+                      "Entity": "DimPeriodType"
                     }
                   },
-                  "Property": "FiscalYear"
+                  "Property": "PeriodType"
                 }
               },
-              "queryRef": "FactFinance.FiscalYear",
-              "nativeQueryRef": "Fiscal year",
-              "displayName": "Fiscal year",
-              "active": true
+              "queryRef": "DimPeriodType.PeriodType",
+              "nativeQueryRef": "Period type",
+              "active": true,
+              "displayName": "Period type"
             }
           ]
         }
@@ -108,7 +108,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Fiscal year'"
+                  "Value": "'Period type'"
                 }
               }
             },
@@ -117,7 +117,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#3F6562'"
+                      "Value": "'#45645F'"
                     }
                   }
                 }
@@ -160,6 +160,13 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "7D"
                 }
               }
             }
@@ -213,6 +220,11 @@
           }
         }
       ]
+    },
+    "syncGroup": {
+      "groupName": "Global period type",
+      "fieldChanges": true,
+      "filterChanges": true
     },
     "drillFilterOtherVisuals": true
   }

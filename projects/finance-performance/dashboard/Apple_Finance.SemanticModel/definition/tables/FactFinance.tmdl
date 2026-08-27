@@ -4,7 +4,7 @@ table FactFinance
 	measure 'Finance Value' = SUM ( FactFinance[Value] )
 		formatString: $#,0
 		displayFolder: Finance\Base
-		lineageTag: 5010f43e-e0f8-4bbf-a7b8-762a3801df96
+		lineageTag: 33e82796-5134-4166-98f7-8d86a2d9dcf9
 
 	measure Revenue = CALCULATE ( [Finance Value], FactFinance[DisplayMetric] = "Revenue", FactFinance[MetricClass] = "Flow" )
 		formatString: $#,0
@@ -36,17 +36,17 @@ table FactFinance
 		displayFolder: Finance\Income Statement
 		lineageTag: 282f0984-158f-4dca-85b7-1fc3ef7515ea
 
-	measure Assets = CALCULATE ( [Finance Value], FactFinance[DisplayMetric] = "Total Assets", FactFinance[MetricClass] = "Balance" )
+	measure Assets = CALCULATE ( [Balance Value], FactFinance[DisplayMetric] = "Total Assets", FactFinance[MetricClass] = "Balance" )
 		formatString: $#,0
 		displayFolder: Finance\Balance Sheet
 		lineageTag: 036e9c04-fc60-472a-bb9f-4ff4c5878683
 
-	measure Liabilities = CALCULATE ( [Finance Value], FactFinance[DisplayMetric] = "Total Liabilities", FactFinance[MetricClass] = "Balance" )
+	measure Liabilities = CALCULATE ( [Balance Value], FactFinance[DisplayMetric] = "Total Liabilities", FactFinance[MetricClass] = "Balance" )
 		formatString: $#,0
 		displayFolder: Finance\Balance Sheet
 		lineageTag: c871dfd8-cc01-4f98-8534-59a137da63ea
 
-	measure Cash = CALCULATE ( [Finance Value], FactFinance[DisplayMetric] = "Cash & Equivalents", FactFinance[MetricClass] = "Balance" )
+	measure Cash = CALCULATE ( [Balance Value], FactFinance[DisplayMetric] = "Cash & Equivalents", FactFinance[MetricClass] = "Balance" )
 		formatString: $#,0
 		displayFolder: Finance\Balance Sheet
 		lineageTag: 42b14443-883d-4f4e-a45e-0edd4801f13d
@@ -111,12 +111,12 @@ table FactFinance
 		displayFolder: Finance\Latest KPIs
 		lineageTag: cbcd9a85-ddd1-45c7-9be4-db4ff5367ae6
 
-	measure 'Revenue Previous Year' = CALCULATE ( [Quarterly Revenue], DATEADD ( DimDate[Date], -1, YEAR ) )
+	measure 'Revenue Previous Year' = VAR CurrentFrame = CALCULATE ( SELECTEDVALUE ( FactFinance[Frame] ), FactFinance[DisplayMetric] = "Revenue", FactFinance[PeriodType] = "Quarter" ) VAR CurrentYear = IF ( NOT ISBLANK ( CurrentFrame ) && CONTAINSSTRING ( CurrentFrame, "Q" ), VALUE ( MID ( CurrentFrame, 3, 4 ) ) ) VAR PriorFrame = IF ( NOT ISBLANK ( CurrentYear ), "CY" & FORMAT ( CurrentYear - 1, "0000" ) & RIGHT ( CurrentFrame, 2 ) ) RETURN IF ( ISBLANK ( PriorFrame ), BLANK (), CALCULATE ( [Quarterly Revenue], REMOVEFILTERS ( DimDate ), REMOVEFILTERS ( FactFinance[EndDate] ), REMOVEFILTERS ( FactFinance[FiscalYear] ), REMOVEFILTERS ( FactFinance[FiscalPeriod] ), REMOVEFILTERS ( FactFinance[Frame] ), FactFinance[Frame] = PriorFrame ) )
 		formatString: $#,0
 		displayFolder: Finance\Movement
 		lineageTag: 28c748ce-7611-4fd2-bbcc-2129ad2f6e61
 
-	measure 'Revenue YoY' = DIVIDE ( [Quarterly Revenue] - [Revenue Previous Year], [Revenue Previous Year] )
+	measure 'Revenue YoY' = VAR CurrentRevenue = [Quarterly Revenue] VAR PriorRevenue = [Revenue Previous Year] RETURN IF ( ISBLANK ( CurrentRevenue ) || ISBLANK ( PriorRevenue ), BLANK (), DIVIDE ( CurrentRevenue - PriorRevenue, PriorRevenue ) )
 		formatString: +0.0%;-0.0%;0.0%
 		displayFolder: Finance\Movement
 		lineageTag: a86a4a1d-9985-4048-ba14-12f26dd901ce
@@ -306,7 +306,7 @@ table FactFinance
 		displayFolder: Finance\Movement
 		lineageTag: 96bc6737-b3fa-422f-b8af-09fafa9dcfb6
 
-	measure 'Assets Previous Year' = CALCULATE ( [Assets], DATEADD ( DimDate[Date], -1, YEAR ) )
+	measure 'Assets Previous Year' = VAR FY = MAX ( FactFinance[FiscalYear] ) VAR FP = MAX ( FactFinance[FiscalPeriod] ) RETURN CALCULATE ( [Assets], REMOVEFILTERS ( DimDate ), REMOVEFILTERS ( FactFinance[EndDate] ), REMOVEFILTERS ( FactFinance[FiscalYear] ), REMOVEFILTERS ( FactFinance[FiscalPeriod] ), FactFinance[FiscalYear] = FY - 1, FactFinance[FiscalPeriod] = FP )
 		formatString: $#,0
 		displayFolder: Finance\Movement
 		lineageTag: 3b341299-9685-492f-ae89-046575b8afaf
@@ -316,7 +316,7 @@ table FactFinance
 		displayFolder: Finance\Movement
 		lineageTag: 99b3292f-6197-4608-b99c-3c73426836ca
 
-	measure 'Liabilities Previous Year' = CALCULATE ( [Liabilities], DATEADD ( DimDate[Date], -1, YEAR ) )
+	measure 'Liabilities Previous Year' = VAR FY = MAX ( FactFinance[FiscalYear] ) VAR FP = MAX ( FactFinance[FiscalPeriod] ) RETURN CALCULATE ( [Liabilities], REMOVEFILTERS ( DimDate ), REMOVEFILTERS ( FactFinance[EndDate] ), REMOVEFILTERS ( FactFinance[FiscalYear] ), REMOVEFILTERS ( FactFinance[FiscalPeriod] ), FactFinance[FiscalYear] = FY - 1, FactFinance[FiscalPeriod] = FP )
 		formatString: $#,0
 		displayFolder: Finance\Movement
 		lineageTag: 1ad88bbd-c3a5-4556-ae5d-143c52ec7a3b
@@ -438,6 +438,233 @@ table FactFinance
 		displayFolder: Finance\Display
 		lineageTag: bfe134c0-9920-42f9-bf5d-74e8615f3b9d
 
+	measure 'Balance Value' = MAX ( FactFinance[Value] )
+		formatString: $#,0
+		displayFolder: Finance\Base
+		lineageTag: 5010f43e-e0f8-4bbf-a7b8-762a3801df96
+
+	measure 'Cash to Assets' = DIVIDE ( [Cash], [Assets] )
+		formatString: 0.0%
+		displayFolder: Finance\Balance Sheet
+		lineageTag: b594e2b5-098f-4a3c-a3f3-456826ebc57a
+
+	measure 'Latest Cash to Assets' = DIVIDE ( [Latest Cash], [Latest Assets] )
+		formatString: 0.0%
+		displayFolder: Finance\Latest Balance
+		lineageTag: bfcaa06b-1db9-44a6-a60b-1fa9a587d044
+
+	measure 'Latest Cash to Assets PY' = DIVIDE ( [Latest Cash PY], [Latest Assets PY] )
+		formatString: 0.0%
+		displayFolder: Finance\Movement
+		lineageTag: e2eca6c9-9845-439d-ab98-50bfec28dad2
+
+	measure 'Latest Cash to Assets Variance pp' = [Latest Cash to Assets] - [Latest Cash to Assets PY]
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Finance\Movement
+		lineageTag: 29d4e8aa-ba60-4a53-96d8-ff4fcececa8c
+
+	measure 'KPI Cash to Assets Display' = FORMAT ( [Latest Cash to Assets], "0.0%" )
+		displayFolder: Finance\Display
+		lineageTag: e8f5e0c6-9aa3-4f6e-bddb-d407497fdeea
+
+	measure 'Quarterly Cost of Sales' = CALCULATE ( [Cost of Sales], FactFinance[PeriodType] = "Quarter" )
+		formatString: $#,0
+		displayFolder: Finance\Quarterly
+		lineageTag: e7dc02be-fcc7-4f77-bddf-a572447c6b38
+
+	measure 'Quarterly Operating Expenses' = CALCULATE ( [Operating Expenses], FactFinance[PeriodType] = "Quarter" )
+		formatString: $#,0
+		displayFolder: Finance\Quarterly
+		lineageTag: 18078cf8-9e92-4381-84f7-2090c649f24c
+
+	measure 'Quarterly Gross Margin' = DIVIDE ( [Quarterly Gross Profit], [Quarterly Revenue] )
+		formatString: 0.0%
+		displayFolder: Finance\Quarterly
+		lineageTag: 27c77dd8-0a48-46d4-a37e-2d773a997aa8
+
+	measure 'Quarterly Operating Margin' = DIVIDE ( [Quarterly Operating Income], [Quarterly Revenue] )
+		formatString: 0.0%
+		displayFolder: Finance\Quarterly
+		lineageTag: 2df3e4c9-aec0-46e6-b85e-a29196205a42
+
+	measure 'Quarterly Net Margin' = DIVIDE ( [Quarterly Net Income], [Quarterly Revenue] )
+		formatString: 0.0%
+		displayFolder: Finance\Quarterly
+		lineageTag: b0703855-f191-4d8d-b5bb-955919f0a87e
+
+	measure 'Quarterly Cost of Sales Ratio' = DIVIDE ( [Quarterly Cost of Sales], [Quarterly Revenue] )
+		formatString: 0.0%
+		displayFolder: Finance\Quarterly
+		lineageTag: 41a2fbe5-b493-48b7-90aa-6c6af5e012d5
+
+	measure 'Quarterly Operating Expense Ratio' = DIVIDE ( [Quarterly Operating Expenses], [Quarterly Revenue] )
+		formatString: 0.0%
+		displayFolder: Finance\Quarterly
+		lineageTag: 0991f69b-7ce5-4b5f-b3c1-b6fce4c0a9a9
+
+	measure 'Quarterly Net Income Conversion' = DIVIDE ( [Quarterly Net Income], [Quarterly Gross Profit] )
+		formatString: 0.0%
+		displayFolder: Finance\Quarterly
+		lineageTag: 1fbf4b2c-8ef3-4c6f-a534-cc762bf4f93b
+
+	measure 'Net Asset Ratio' = DIVIDE ( [Net Asset Position], [Assets] )
+		formatString: 0.0%
+		displayFolder: Finance\Balance Sheet
+		lineageTag: 3561d770-cac4-4614-81c4-e43ad829bf37
+
+	measure 'Latest Cost of Sales Amount' = [Latest Revenue] - [Latest Gross Profit]
+		formatString: $#,0
+		displayFolder: Finance\Revenue Allocation
+		lineageTag: 95317c85-cae5-4a5e-b4b6-3b72545ac222
+
+	measure 'Latest Operating Expenses Amount' = [Latest Gross Profit] - [Latest Operating Income]
+		formatString: $#,0
+		displayFolder: Finance\Revenue Allocation
+		lineageTag: b10b389a-08ce-4a23-916b-7c2135286be6
+
+	measure 'Latest Other and Tax Amount' = [Latest Operating Income] - [Latest Net Income]
+		formatString: $#,0
+		displayFolder: Finance\Revenue Allocation
+		lineageTag: 5e95294b-4c6a-432b-a77c-b2035ae2f78e
+
+	measure 'Quarterly Operating Income Previous Year' = VAR CurrentFrame = CALCULATE ( SELECTEDVALUE ( FactFinance[Frame] ), FactFinance[DisplayMetric] = "Operating Income", FactFinance[PeriodType] = "Quarter" ) VAR CurrentYear = IF ( NOT ISBLANK ( CurrentFrame ) && CONTAINSSTRING ( CurrentFrame, "Q" ), VALUE ( MID ( CurrentFrame, 3, 4 ) ) ) VAR PriorFrame = IF ( NOT ISBLANK ( CurrentYear ), "CY" & FORMAT ( CurrentYear - 1, "0000" ) & RIGHT ( CurrentFrame, 2 ) ) RETURN IF ( ISBLANK ( PriorFrame ), BLANK (), CALCULATE ( [Quarterly Operating Income], REMOVEFILTERS ( DimDate ), REMOVEFILTERS ( FactFinance[EndDate] ), REMOVEFILTERS ( FactFinance[FiscalYear] ), REMOVEFILTERS ( FactFinance[FiscalPeriod] ), REMOVEFILTERS ( FactFinance[Frame] ), FactFinance[Frame] = PriorFrame ) )
+		formatString: $#,0
+		displayFolder: Finance\Operating Leverage
+		lineageTag: bdfd9dd7-9d3b-4245-b70c-9991ac1c7d58
+
+	measure 'Quarterly Operating Income YoY' = DIVIDE ( [Quarterly Operating Income] - [Quarterly Operating Income Previous Year], [Quarterly Operating Income Previous Year] )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Finance\Operating Leverage
+		lineageTag: a4a6c50c-26cf-4991-9469-e320c88be9b7
+
+	measure 'Operating Leverage Spread' = [Quarterly Operating Income YoY] - [Revenue YoY]
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Finance\Operating Leverage
+		lineageTag: b1485cca-a33b-4e98-bc24-df23d236c452
+
+	measure 'KPI YoY Display Latest Assets YoY' = VAR V = [Latest Assets YoY] RETURN IF ( ISBLANK ( V ), BLANK (), "YoY: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI Delta
+		lineageTag: 317b0e35-3051-58bd-9c56-c5c22bfaecc5
+
+	measure 'KPI YoY Color Latest Assets YoY' = VAR V = [Latest Assets YoY] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#0F766E", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI Delta
+		lineageTag: cf72d84a-52a8-5ff8-b5f7-4d16edcaae5c
+
+	measure 'KPI YoY Display Latest Liabilities YoY' = VAR V = [Latest Liabilities YoY] RETURN IF ( ISBLANK ( V ), BLANK (), "YoY: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI Delta
+		lineageTag: 204d48fd-8708-5f43-9f0c-f58eaca09e14
+
+	measure 'KPI YoY Color Latest Liabilities YoY' = VAR V = [Latest Liabilities YoY] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V < 0, "#0F766E", V > 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI Delta
+		lineageTag: 41beb383-c67d-5980-9d14-7b88a263dfde
+
+	measure 'KPI YoY Display Latest Cash YoY' = VAR V = [Latest Cash YoY] RETURN IF ( ISBLANK ( V ), BLANK (), "YoY: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI Delta
+		lineageTag: 7f0abada-c51e-59db-a200-6a4c9b68c2a3
+
+	measure 'KPI YoY Color Latest Cash YoY' = VAR V = [Latest Cash YoY] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#0F766E", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI Delta
+		lineageTag: b4ff8c70-01ed-52b2-a7f9-212c60c967a5
+
+	measure 'KPI YoY Display Latest Liabilities to Assets Variance pp' = VAR V = [Latest Liabilities to Assets Variance pp] RETURN IF ( ISBLANK ( V ), BLANK (), "YoY: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI Delta
+		lineageTag: 3d233b4c-4cf0-5136-a13e-8e0c1bc86fa0
+
+	measure 'KPI YoY Color Latest Liabilities to Assets Variance pp' = VAR V = [Latest Liabilities to Assets Variance pp] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V < 0, "#0F766E", V > 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI Delta
+		lineageTag: df452a93-7027-54c0-8984-5e679ff5abe1
+
+	measure 'KPI YoY Display Latest Cash to Assets Variance pp' = VAR V = [Latest Cash to Assets Variance pp] RETURN IF ( ISBLANK ( V ), BLANK (), "YoY: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI Delta
+		lineageTag: b7b1e791-c23b-58a5-805c-12d7bc5da563
+
+	measure 'KPI YoY Color Latest Cash to Assets Variance pp' = VAR V = [Latest Cash to Assets Variance pp] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#0F766E", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI Delta
+		lineageTag: 8f7c8b80-2810-518c-bfab-21a6883a8990
+
+	measure 'KPI YoY Display Latest Revenue YoY' = VAR V = [Latest Revenue YoY] RETURN IF ( ISBLANK ( V ), BLANK (), "YoY: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI Delta
+		lineageTag: dfae65a8-004d-519d-9aea-05a15bf68d03
+
+	measure 'KPI YoY Color Latest Revenue YoY' = VAR V = [Latest Revenue YoY] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#0F766E", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI Delta
+		lineageTag: e7574bbf-4a98-52a3-b668-8dd0c113a80e
+
+	measure 'KPI YoY Display Latest Gross Profit YoY' = VAR V = [Latest Gross Profit YoY] RETURN IF ( ISBLANK ( V ), BLANK (), "YoY: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI Delta
+		lineageTag: d25496e6-e6d8-5603-a758-e9a2cb5c8aec
+
+	measure 'KPI YoY Color Latest Gross Profit YoY' = VAR V = [Latest Gross Profit YoY] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#0F766E", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI Delta
+		lineageTag: 3b6ff313-1aa4-5233-9481-89d2742cae72
+
+	measure 'KPI YoY Display Latest Operating Income YoY' = VAR V = [Latest Operating Income YoY] RETURN IF ( ISBLANK ( V ), BLANK (), "YoY: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI Delta
+		lineageTag: 26726600-9be6-5396-b32a-00cf823f507b
+
+	measure 'KPI YoY Color Latest Operating Income YoY' = VAR V = [Latest Operating Income YoY] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#0F766E", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI Delta
+		lineageTag: 2bb7dee8-718e-5fc5-9f5a-657602f2bf23
+
+	measure 'KPI YoY Display Latest Net Income YoY' = VAR V = [Latest Net Income YoY] RETURN IF ( ISBLANK ( V ), BLANK (), "YoY: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI Delta
+		lineageTag: a32a937b-5887-5aec-a4ac-65182df7baed
+
+	measure 'KPI YoY Color Latest Net Income YoY' = VAR V = [Latest Net Income YoY] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#0F766E", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI Delta
+		lineageTag: aa7ac2e5-0ac2-5ccc-83ef-94b1d0d2db5d
+
+	measure 'KPI YoY Display Latest Gross Margin Variance pp' = VAR V = [Latest Gross Margin Variance pp] RETURN IF ( ISBLANK ( V ), BLANK (), "YoY: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI Delta
+		lineageTag: 3c7b17ef-359c-5ee1-af50-769080ba3f41
+
+	measure 'KPI YoY Color Latest Gross Margin Variance pp' = VAR V = [Latest Gross Margin Variance pp] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#0F766E", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI Delta
+		lineageTag: 434a520c-fe35-5b45-be9b-bc1ba39a4309
+
+	measure 'KPI YoY Display Latest Operating Margin Variance pp' = VAR V = [Latest Operating Margin Variance pp] RETURN IF ( ISBLANK ( V ), BLANK (), "YoY: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI Delta
+		lineageTag: 3efe3b44-7203-5b60-9bbc-340bd7dfa3b5
+
+	measure 'KPI YoY Color Latest Operating Margin Variance pp' = VAR V = [Latest Operating Margin Variance pp] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#0F766E", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI Delta
+		lineageTag: 3d5ce296-e0d9-5246-a7b1-6dfb5e50f873
+
+	measure 'KPI YoY Display Latest Net Margin Variance pp' = VAR V = [Latest Net Margin Variance pp] RETURN IF ( ISBLANK ( V ), BLANK (), "YoY: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI Delta
+		lineageTag: dae2a5d2-729d-5939-9c92-e2e14a7bc916
+
+	measure 'KPI YoY Color Latest Net Margin Variance pp' = VAR V = [Latest Net Margin Variance pp] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#0F766E", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI Delta
+		lineageTag: 8c087920-fa02-5b7b-81b6-ea0e5382d5c1
+
+	measure 'KPI YoY Display Latest Opex Ratio Variance pp' = VAR V = [Latest Opex Ratio Variance pp] RETURN IF ( ISBLANK ( V ), BLANK (), "YoY: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI Delta
+		lineageTag: b321a9aa-910f-5904-8342-43488286dfa6
+
+	measure 'KPI YoY Color Latest Opex Ratio Variance pp' = VAR V = [Latest Opex Ratio Variance pp] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V < 0, "#0F766E", V > 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI Delta
+		lineageTag: 60b21244-a0b6-5db9-af89-83b0b76a7736
+
+	measure 'Latest Revenue Component Amount' = SWITCH ( SELECTEDVALUE ( FinanceComponent[Component] ), "Cost of Sales", [Latest Cost of Sales Amount], "Operating Expenses", [Latest Operating Expenses Amount], "Other & Tax", [Latest Other and Tax Amount], "Net Income", [Latest Net Income] )
+		formatString: $#,0,,"M"
+		displayFolder: Finance\Executive Composition
+		lineageTag: ed4f6ab5-b3e7-46ce-b2b6-ae59f9c375c2
+
+	measure 'Latest Revenue Component Ratio' = DIVIDE ( [Latest Revenue Component Amount], [Latest Revenue] )
+		formatString: 0.0%
+		displayFolder: Finance\Executive Composition
+		lineageTag: fe85dd26-e8b4-4bdb-91ae-b1e1857e858e
+
+	measure 'Latest Other and Tax Ratio' = DIVIDE ( [Latest Other and Tax Amount], [Latest Revenue] )
+		formatString: 0.0%
+		displayFolder: Finance\Margins
+		lineageTag: 155156ae-9cb1-4e17-b8a6-b23b8b708c32
+
+	measure 'Header As Of Label' = "As of " & FORMAT ( MAX ( DimDate[Date] ), "MMM yyyy" )
+		displayFolder: Display\Context
+		lineageTag: 7cb4dd82-0984-4dd2-8c60-c39744dff752
+
 	column Company
 		dataType: string
 		lineageTag: da069df5-eb19-4c15-b6e6-bbe2bc2117da
@@ -553,81 +780,100 @@ table FactFinance
 		summarizeBy: none
 		sourceColumn: AccessionNumber
 
+	column MetricKey = UPPER ( TRIM ( FactFinance[DisplayMetric] ) )
+		dataType: string
+		isHidden
+		lineageTag: 779519ad-e24d-42d4-a69e-858a136d6bc2
+		summarizeBy: none
+
+	column FormKey = UPPER ( TRIM ( FactFinance[Form] ) )
+		dataType: string
+		isHidden
+		lineageTag: 5c310068-11b4-4f80-a1b4-13f9ea55561b
+		summarizeBy: none
+
+	column PeriodTypeKey = UPPER ( TRIM ( FactFinance[PeriodType] ) )
+		dataType: string
+		isHidden
+		lineageTag: 9f5f1d7b-2440-4fd5-84b4-3f7cd46b19e8
+		summarizeBy: none
+
 	partition FactFinance = m
 		mode: import
 		source =
 				let
-				    SourcePath = "C:\\Users\\ADMIN\\Documents\\Codex\\2026-07-22\\computer-use-plugin-computer-use-openai\\public-business-pbip\\data\\raw\\sec-aapl-companyfacts.json",
-				    Source = Json.Document(File.Contents(SourcePath)),
-				    UsGaap = Source[facts][#"us-gaap"],
-				    ConceptMap = #table(
-				        type table [Concept = text, DisplayMetric = text, MetricClass = text, MetricSort = Int64.Type],
-				        {
-				            {"RevenueFromContractWithCustomerExcludingAssessedTax", "Revenue", "Flow", 1},
-				            {"SalesRevenueNet", "Revenue", "Flow", 1},
-				            {"CostOfGoodsAndServicesSold", "Cost of Sales", "Flow", 2},
-				            {"GrossProfit", "Gross Profit", "Flow", 3},
-				            {"OperatingExpenses", "Operating Expenses", "Flow", 4},
-				            {"OperatingIncomeLoss", "Operating Income", "Flow", 5},
-				            {"NetIncomeLoss", "Net Income", "Flow", 6},
-				            {"CashAndCashEquivalentsAtCarryingValue", "Cash & Equivalents", "Balance", 7},
-				            {"Assets", "Total Assets", "Balance", 8},
-				            {"Liabilities", "Total Liabilities", "Balance", 9}
-				        }
-				    ),
-				    AddFacts = Table.AddColumn(
-				        ConceptMap,
-				        "Facts",
-				        each
-				            let
-				                ConceptRecord = try Record.Field(UsGaap, [Concept]) otherwise null,
-				                UnitRows = if ConceptRecord = null then {} else try ConceptRecord[units][USD] otherwise {}
-				            in
-				                UnitRows,
-				        type list
-				    ),
-				    ExpandFactsList = Table.ExpandListColumn(AddFacts, "Facts"),
-				    ExpandFacts = Table.ExpandRecordColumn(
-				        ExpandFactsList,
-				        "Facts",
-				        {"start", "end", "val", "accn", "fy", "fp", "form", "filed", "frame"},
-				        {"StartDate", "EndDate", "Value", "AccessionNumber", "FiscalYear", "FiscalPeriod", "Form", "FiledDate", "Frame"}
-				    ),
-				    Typed = Table.TransformColumnTypes(
-				        ExpandFacts,
-				        {
-				            {"StartDate", type date}, {"EndDate", type date}, {"Value", Currency.Type},
-				            {"FiscalYear", Int64.Type}, {"FiledDate", type date}, {"Frame", type text}
-				        },
-				        "en-US"
-				    ),
-				    FilterForms = Table.SelectRows(Typed, each ([Form] = "10-K" or [Form] = "10-Q") and [Frame] <> null),
-				    FilterFrameClass = Table.SelectRows(
-				        FilterForms,
-				        each if [MetricClass] = "Balance" then Text.EndsWith([Frame], "I") else not Text.EndsWith([Frame], "I")
-				    ),
-				    AddPeriodType = Table.AddColumn(
-				        FilterFrameClass,
-				        "PeriodType",
-				        each if Text.Contains([Frame], "Q") then "Quarter" else "Year",
-				        type text
-				    ),
-				    AddPeriodLabel = Table.AddColumn(
-				        AddPeriodType,
-				        "PeriodLabel",
-				        each if [PeriodType] = "Quarter" then Text.Start([Frame], 6) & " " & Text.Middle([Frame], 6, 2) else Text.Start([Frame], 6),
-				        type text
-				    ),
-				    SortedForDedup = Table.Sort(AddPeriodLabel, {{"FiledDate", Order.Descending}, {"Concept", Order.Ascending}}),
-				    Deduplicated = Table.Distinct(SortedForDedup, {"DisplayMetric", "MetricClass", "EndDate", "Frame", "Form"}),
-				    AddCompany = Table.AddColumn(Deduplicated, "Company", each Source[entityName], type text),
-				    AddCik = Table.AddColumn(AddCompany, "CIK", each Text.PadStart(Text.From(Source[cik]), 10, "0"), type text),
-				    Reordered = Table.ReorderColumns(
-				        AddCik,
-				        {"Company", "CIK", "DisplayMetric", "Concept", "MetricClass", "MetricSort", "PeriodType", "PeriodLabel", "StartDate", "EndDate", "FiscalYear", "FiscalPeriod", "Value", "Form", "FiledDate", "Frame", "AccessionNumber"}
-				    )
-				in
-				    Reordered
+				    SourcePath = "C:\\PowerBI Dashboard - KhoiPort\\02_Apple_Finance\\Data\\sec-aapl-companyfacts.json",
+					    Source = Json.Document(File.Contents(SourcePath)),
+					    UsGaap = Source[facts][#"us-gaap"],
+					    ConceptMap = #table(
+					        type table [Concept = text, DisplayMetric = text, MetricClass = text, MetricSort = Int64.Type],
+					        {
+					            {"RevenueFromContractWithCustomerExcludingAssessedTax", "Revenue", "Flow", 1},
+					            {"SalesRevenueNet", "Revenue", "Flow", 1},
+					            {"CostOfGoodsAndServicesSold", "Cost of Sales", "Flow", 2},
+					            {"GrossProfit", "Gross Profit", "Flow", 3},
+					            {"OperatingExpenses", "Operating Expenses", "Flow", 4},
+					            {"OperatingIncomeLoss", "Operating Income", "Flow", 5},
+					            {"NetIncomeLoss", "Net Income", "Flow", 6},
+					            {"CashAndCashEquivalentsAtCarryingValue", "Cash & Equivalents", "Balance", 7},
+					            {"Assets", "Total Assets", "Balance", 8},
+					            {"Liabilities", "Total Liabilities", "Balance", 9}
+					        }
+					    ),
+					    AddFacts = Table.AddColumn(
+					        ConceptMap,
+					        "Facts",
+					        each
+					            let
+					                ConceptRecord = try Record.Field(UsGaap, [Concept]) otherwise null,
+					                UnitRows = if ConceptRecord = null then {} else try ConceptRecord[units][USD] otherwise {}
+					            in
+					                UnitRows,
+					        type list
+					    ),
+					    ExpandFactsList = Table.ExpandListColumn(AddFacts, "Facts"),
+					    ExpandFacts = Table.ExpandRecordColumn(
+					        ExpandFactsList,
+					        "Facts",
+					        {"start", "end", "val", "accn", "fy", "fp", "form", "filed", "frame"},
+					        {"StartDate", "EndDate", "Value", "AccessionNumber", "FiscalYear", "FiscalPeriod", "Form", "FiledDate", "Frame"}
+					    ),
+					    Typed = Table.TransformColumnTypes(
+					        ExpandFacts,
+					        {
+					            {"StartDate", type date}, {"EndDate", type date}, {"Value", Currency.Type},
+					            {"FiscalYear", Int64.Type}, {"FiledDate", type date}, {"Frame", type text}
+					        },
+					        "en-US"
+					    ),
+					    FilterForms = Table.SelectRows(Typed, each ([Form] = "10-K" or [Form] = "10-Q") and [Frame] <> null),
+					    FilterFrameClass = Table.SelectRows(
+					        FilterForms,
+					        each if [MetricClass] = "Balance" then Text.EndsWith([Frame], "I") else not Text.EndsWith([Frame], "I")
+					    ),
+					    AddPeriodType = Table.AddColumn(
+					        FilterFrameClass,
+					        "PeriodType",
+					        each if Text.Contains([Frame], "Q") then "Quarter" else "Year",
+					        type text
+					    ),
+					    AddPeriodLabel = Table.AddColumn(
+					        AddPeriodType,
+					        "PeriodLabel",
+					        each if [PeriodType] = "Quarter" then Text.Start([Frame], 6) & " " & Text.Middle([Frame], 6, 2) else Text.Start([Frame], 6),
+					        type text
+					    ),
+					    SortedForDedup = Table.Sort(AddPeriodLabel, {{"FiledDate", Order.Descending}, {"Concept", Order.Ascending}}),
+					    // A quarter can be repeated in a later 10-K and an earlier 10-Q. Keep the latest filing for each metric-period-frame.
+					    Deduplicated = Table.Distinct(SortedForDedup, {"DisplayMetric", "MetricClass", "EndDate", "Frame"}),
+					    AddCompany = Table.AddColumn(Deduplicated, "Company", each Source[entityName], type text),
+					    AddCik = Table.AddColumn(AddCompany, "CIK", each Text.PadStart(Text.From(Source[cik]), 10, "0"), type text),
+					    Reordered = Table.ReorderColumns(
+					        AddCik,
+					        {"Company", "CIK", "DisplayMetric", "Concept", "MetricClass", "MetricSort", "PeriodType", "PeriodLabel", "StartDate", "EndDate", "FiscalYear", "FiscalPeriod", "Value", "Form", "FiledDate", "Frame", "AccessionNumber"}
+					    )
+					in
+					    Reordered
 
 	annotation PBI_NavigationStepName = Navigation
 

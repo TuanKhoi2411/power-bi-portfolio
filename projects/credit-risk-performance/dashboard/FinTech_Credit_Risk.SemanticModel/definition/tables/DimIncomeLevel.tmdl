@@ -1,0 +1,20 @@
+table DimIncomeLevel
+	lineageTag: 9ee2bd47-41b4-45ed-bf66-c99d3e64d001
+
+	column IncomeLevelKey
+		dataType: string
+		isKey
+		lineageTag: 9ee2bd47-41b4-45ed-bf66-c99d3e64d002
+		summarizeBy: none
+		sourceColumn: [IncomeLevelKey]
+
+	column IncomeLevel
+		dataType: string
+		lineageTag: 9ee2bd47-41b4-45ed-bf66-c99d3e64d003
+		summarizeBy: none
+		sourceColumn: [IncomeLevel]
+
+	partition DimIncomeLevel = calculated
+		mode: import
+		source = DISTINCT ( SELECTCOLUMNS ( FactLoans, "IncomeLevelKey", FactLoans[IncomeLevelKey], "IncomeLevel", FactLoans[IncomeLevel] ) )
+

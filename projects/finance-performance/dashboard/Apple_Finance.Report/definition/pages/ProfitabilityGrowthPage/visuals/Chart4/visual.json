@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "f30fc5064852e8cfe6c8",
   "position": {
     "x": 189.5,
     "y": 235,
-    "z": 22000,
+    "z": 21000,
     "height": 205,
     "width": 520,
-    "tabOrder": 22000
+    "tabOrder": 21000
   },
   "visual": {
     "visualType": "lineChart",
@@ -20,16 +20,16 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "FactFinance"
+                      "Entity": "DimDate"
                     }
                   },
-                  "Property": "EndDate"
+                  "Property": "Date"
                 }
               },
-              "queryRef": "FactFinance.EndDate",
+              "queryRef": "DimDate.Date",
               "nativeQueryRef": "Quarter",
-              "displayName": "Quarter",
-              "active": true
+              "active": true,
+              "displayName": "Quarter"
             }
           ]
         },
@@ -43,42 +43,12 @@
                       "Entity": "FactFinance"
                     }
                   },
-                  "Property": "Gross Margin"
+                  "Property": "Quarterly Net Income Conversion"
                 }
               },
-              "queryRef": "FactFinance.Gross Margin",
-              "nativeQueryRef": "Gross Margin",
-              "displayName": "Gross Margin"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "FactFinance"
-                    }
-                  },
-                  "Property": "Operating Margin"
-                }
-              },
-              "queryRef": "FactFinance.Operating Margin",
-              "nativeQueryRef": "Operating Margin",
-              "displayName": "Operating Margin"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "FactFinance"
-                    }
-                  },
-                  "Property": "Net Margin"
-                }
-              },
-              "queryRef": "FactFinance.Net Margin",
-              "nativeQueryRef": "Net Margin",
-              "displayName": "Net Margin"
+              "queryRef": "FactFinance.Quarterly Net Income Conversion",
+              "nativeQueryRef": "Net Income / Gross Profit",
+              "displayName": "Net Income / Gross Profit"
             }
           ]
         }
@@ -121,6 +91,46 @@
             }
           }
         }
+      ],
+      "categoryAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "visualContainerObjects": {
@@ -137,7 +147,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Quarterly Margin Trend'"
+                  "Value": "'How Much Gross Profit Reaches Net Income?'"
                 }
               }
             },
@@ -215,7 +225,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#D8E7E4'"
+                      "Value": "'#D8E5E2'"
                     }
                   }
                 }
@@ -224,7 +234,7 @@
             "radius": {
               "expr": {
                 "Literal": {
-                  "Value": "6D"
+                  "Value": "9D"
                 }
               }
             }
@@ -246,7 +256,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#829A97'"
+                      "Value": "'#6E8F88'"
                     }
                   }
                 }
@@ -255,21 +265,21 @@
             "transparency": {
               "expr": {
                 "Literal": {
-                  "Value": "82D"
+                  "Value": "88D"
                 }
               }
             },
             "shadowBlur": {
               "expr": {
                 "Literal": {
-                  "Value": "6D"
+                  "Value": "5D"
                 }
               }
             },
             "shadowDistance": {
               "expr": {
                 "Literal": {
-                  "Value": "2D"
+                  "Value": "1D"
                 }
               }
             },
@@ -277,6 +287,19 @@
               "expr": {
                 "Literal": {
                   "Value": "45D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'How Much Gross Profit Reaches Net Income?'"
                 }
               }
             }

@@ -1,16 +1,39 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "2582772f567d53fe5789",
   "position": {
     "x": 0,
     "y": 0,
-    "z": 1000,
-    "width": 1280,
+    "z": 0,
     "height": 65,
-    "tabOrder": 1000
+    "width": 1280,
+    "tabOrder": 0
   },
   "visual": {
     "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "APPLE FINANCE | BALANCE SHEET & LIQUIDITY",
+                    "textStyle": {
+                      "fontSize": "16pt",
+                      "fontFamily": "Segoe UI Semibold",
+                      "color": "#FFFFFF",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
     "visualContainerObjects": {
       "title": [
         {
@@ -170,31 +193,42 @@
             }
           }
         }
-      ]
-    },
-    "drillFilterOtherVisuals": true,
-    "objects": {
-      "general": [
+      ],
+      "padding": [
         {
           "properties": {
-            "paragraphs": [
-              {
-                "textRuns": [
-                  {
-                    "value": "APPLE FINANCE | BALANCE SHEET & LIQUIDITY",
-                    "textStyle": {
-                      "fontSize": "16pt",
-                      "fontFamily": "Segoe UI Semibold",
-                      "color": "#FFFFFF",
-                      "fontWeight": "bold"
-                    }
-                  }
-                ]
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
               }
-            ]
+            },
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "15D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
           }
         }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
   }
 }

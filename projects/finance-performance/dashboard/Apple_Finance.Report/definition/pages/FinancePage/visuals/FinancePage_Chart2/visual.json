@@ -1,16 +1,16 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "fd87836a9313c67e0225",
   "position": {
     "x": 548,
     "y": 235,
-    "z": 20000,
+    "z": 19000,
     "height": 205,
     "width": 343,
-    "tabOrder": 20000
+    "tabOrder": 19000
   },
   "visual": {
-    "visualType": "lineChart",
+    "visualType": "areaChart",
     "query": {
       "queryState": {
         "Category": {
@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "FactFinance"
+                      "Entity": "DimDate"
                     }
                   },
-                  "Property": "EndDate"
+                  "Property": "Date"
                 }
               },
-              "queryRef": "FactFinance.EndDate",
+              "queryRef": "DimDate.Date",
               "nativeQueryRef": "Quarter",
               "active": true,
               "displayName": "Quarter"
@@ -47,23 +47,8 @@
                 }
               },
               "queryRef": "FactFinance.Quarterly Revenue",
-              "nativeQueryRef": "Revenue",
-              "displayName": "Revenue"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "FactFinance"
-                    }
-                  },
-                  "Property": "Revenue Previous Year"
-                }
-              },
-              "queryRef": "FactFinance.Revenue Previous Year",
-              "nativeQueryRef": "Prior Year",
-              "displayName": "Prior Year"
+              "nativeQueryRef": "Quarterly Revenue",
+              "displayName": "Quarterly Revenue"
             }
           ]
         }
@@ -106,6 +91,46 @@
             }
           }
         }
+      ],
+      "categoryAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "visualContainerObjects": {
@@ -122,7 +147,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Quarterly Revenue vs Prior Year'"
+                  "Value": "'Quarterly Revenue Trend | Scale & Seasonality'"
                 }
               }
             },
@@ -200,7 +225,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#D8E7E4'"
+                      "Value": "'#D8E5E2'"
                     }
                   }
                 }
@@ -209,7 +234,7 @@
             "radius": {
               "expr": {
                 "Literal": {
-                  "Value": "6D"
+                  "Value": "9D"
                 }
               }
             }
@@ -231,7 +256,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#829A97'"
+                      "Value": "'#6E8F88'"
                     }
                   }
                 }
@@ -240,21 +265,21 @@
             "transparency": {
               "expr": {
                 "Literal": {
-                  "Value": "82D"
+                  "Value": "88D"
                 }
               }
             },
             "shadowBlur": {
               "expr": {
                 "Literal": {
-                  "Value": "6D"
+                  "Value": "5D"
                 }
               }
             },
             "shadowDistance": {
               "expr": {
                 "Literal": {
-                  "Value": "2D"
+                  "Value": "1D"
                 }
               }
             },
@@ -262,6 +287,19 @@
               "expr": {
                 "Literal": {
                   "Value": "45D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Quarterly Revenue Trend | Scale & Seasonality'"
                 }
               }
             }

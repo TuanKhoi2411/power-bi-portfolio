@@ -1,0 +1,25 @@
+table DimCountry
+	lineageTag: 0ec0c898-4064-455c-8a9f-2fe98139b327
+
+	column CountryKey
+		dataType: string
+		isKey
+		lineageTag: d183dd64-eb6b-4826-989b-7a5b16dc8b29
+		summarizeBy: none
+		sourceColumn: [CountryKey]
+
+	column Country
+		dataType: string
+		lineageTag: 9146a655-3d3e-4eb9-9b58-654bf552f001
+		summarizeBy: none
+		sourceColumn: [Country]
+
+	column MarketGroup = IF ( DimCountry[Country] = "United Kingdom", "United Kingdom", "International" )
+		dataType: string
+		lineageTag: 9371ee84-b58a-4e39-b179-546cb98ebdd8
+		summarizeBy: none
+
+	partition DimCountry = calculated
+		mode: import
+		source = DISTINCT ( SELECTCOLUMNS ( FactSales, "CountryKey", FactSales[CountryKey], "Country", FactSales[Country] ) )
+

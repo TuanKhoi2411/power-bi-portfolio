@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "d7077e98d9cf029c7b86",
   "position": {
     "x": 189.5,
     "y": 455,
-    "z": 19000,
+    "z": 18000,
     "height": 235,
     "width": 260,
-    "tabOrder": 19000
+    "tabOrder": 18000
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -20,16 +20,16 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "FactFinance"
+                      "Entity": "FinanceComponent"
                     }
                   },
-                  "Property": "DisplayMetric"
+                  "Property": "Component"
                 }
               },
-              "queryRef": "FactFinance.DisplayMetric",
-              "nativeQueryRef": "Metric",
-              "displayName": "Metric",
-              "active": true
+              "queryRef": "FinanceComponent.Component",
+              "nativeQueryRef": "Component",
+              "active": true,
+              "displayName": "Component"
             }
           ]
         },
@@ -43,12 +43,12 @@
                       "Entity": "FactFinance"
                     }
                   },
-                  "Property": "Latest Metric Value"
+                  "Property": "Latest Revenue Component Ratio"
                 }
               },
-              "queryRef": "FactFinance.Latest Metric Value",
-              "nativeQueryRef": "Latest Value",
-              "displayName": "Latest Value"
+              "queryRef": "FactFinance.Latest Revenue Component Ratio",
+              "nativeQueryRef": "% of Revenue",
+              "displayName": "% of Revenue"
             }
           ]
         }
@@ -63,7 +63,7 @@
                     "Entity": "FactFinance"
                   }
                 },
-                "Property": "Latest Metric Value"
+                "Property": "Latest Revenue Component Ratio"
               }
             },
             "direction": "Descending"
@@ -78,7 +78,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             },
@@ -86,6 +86,66 @@
               "expr": {
                 "Literal": {
                   "Value": "'Top'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "categoryAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
                 }
               }
             }
@@ -124,7 +184,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Latest Income Statement Metrics'"
+                  "Value": "'Cost & Profit Mix | Share of Latest Revenue'"
                 }
               }
             },
@@ -202,7 +262,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#D8E7E4'"
+                      "Value": "'#D8E5E2'"
                     }
                   }
                 }
@@ -211,7 +271,7 @@
             "radius": {
               "expr": {
                 "Literal": {
-                  "Value": "6D"
+                  "Value": "9D"
                 }
               }
             }
@@ -233,7 +293,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#829A97'"
+                      "Value": "'#6E8F88'"
                     }
                   }
                 }
@@ -242,21 +302,21 @@
             "transparency": {
               "expr": {
                 "Literal": {
-                  "Value": "82D"
+                  "Value": "88D"
                 }
               }
             },
             "shadowBlur": {
               "expr": {
                 "Literal": {
-                  "Value": "6D"
+                  "Value": "5D"
                 }
               }
             },
             "shadowDistance": {
               "expr": {
                 "Literal": {
-                  "Value": "2D"
+                  "Value": "1D"
                 }
               }
             },
@@ -264,6 +324,19 @@
               "expr": {
                 "Literal": {
                   "Value": "45D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Cost & Profit Mix | Share of Latest Revenue'"
                 }
               }
             }

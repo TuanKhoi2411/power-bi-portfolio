@@ -1,0 +1,25 @@
+# Sales model connection changes
+
+- Added readable attributes to Country, Customer, and Product dimensions.
+- Added `DimTransactionType` and a fifth active relationship.
+- Moved Customer Status into `DimCustomer`.
+- Rebound all report-facing Country, Customer, Product, Transaction Type, and Customer Status fields from `FactSales` to dimensions.
+- Updated ranking, concentration, repeat-customer, and return-ranking measures to evaluate over dimension attributes.
+- Validation: 6 tables, 5 relationships, 85 measures, 3 pages, zero missing report references.
+- Restored the populated import cache after model migration; the temporary blank report was caused by opening the PBIP without cached/processed data.
+- Preserved the unique ProductKey table and added Product as a calculated dimension attribute to handle historical descriptions safely.
+- Live-model verification: 541,909 fact rows, 3,958 products, 38 countries, Net Sales 9,747,747.93.
+- Rebalanced the Product & Returns top chart row: monthly trend widened to 640 px and Gross Sales Retention donut reduced to 410 px.
+- Removed the duplicate donut treatment on Customer Insights by converting customer-identification coverage into a labeled horizontal bar comparison.
+- Replaced that redundant identification comparison with `Monthly Repeat Customer Rate`, using DimDate[YearMonth] and the existing Repeat Customer Rate measure; observed monthly values range from roughly 15.5% to 31.6% in the latest 12 source months.
+- Standardized KPI labels across all three report pages to short business labels that fit beside sparklines, and shortened every chart title longer than 30 characters to prevent clipping or ellipsis.
+- Updated KPI projection `displayName` and `nativeQueryRef` metadata (not only formatting labels), which removes the remaining ellipses rendered by Power BI.
+- Rebalanced Customer Insights top row to 360 px Top-10 share, 260 px country comparison, and 415 px monthly repeat-rate trend.
+- Final Customer Insights sizing: 300 px Top-10 share, 300 px country comparison, and 435 px monthly repeat-rate trend.
+- Final KPI-label fit fix: shortened customer labels to 8–11 characters, reduced label font to 7 pt, and reduced right padding from 82 px to 60 px so Power BI no longer renders ellipses beside the sparklines.
+- Per user preference, restored the original Customer KPI wording, 8 pt label font, and 82 px right padding; the revised 300 / 300 / 435 px chart layout remains in place.
+- Corrected DimProduct naming: Product now uses the most frequent valid Description per StockCode, with latest InvoiceDate as the tie-breaker, instead of lexical MAX.
+- Validation after correction: only 112 codes have no valid description and their Merchandise Net Sales is blank; `85123A`, `DOT`, `POST`, `23284`, `22720`, and `21137` now resolve to meaningful labels.
+- Added a B2B-style analytics upgrade on 25 Aug 2026: MarketGroup segmentation, geographic/customer/product concentration measures, repeat-customer revenue measures, and latest-completed-month KPI logic.
+- Replaced the ambiguous Sales transaction-type donut with Core vs International Net Sales; replaced duplicated/low-value KPIs with Repeat Revenue and Top 10 Product Share.
+- Post-upgrade validation: 6 tables, 5 active relationships, 100 explicit measures, 3 pages, valid report JSON, and zero missing report references.

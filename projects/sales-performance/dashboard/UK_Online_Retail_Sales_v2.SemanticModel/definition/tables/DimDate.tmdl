@@ -1,0 +1,51 @@
+table DimDate
+	lineageTag: 28e43bb4-dfcc-49a8-a6f3-4151eb1e7844
+
+	column Date
+		dataType: dateTime
+		isKey
+		formatString: M/d/yyyy
+		lineageTag: fd351fc7-87f6-46a1-82f0-7312f8edd890
+		summarizeBy: none
+		sourceColumn: [Date]
+
+	column Year = YEAR ( DimDate[Date] )
+		dataType: int64
+		formatString: 0
+		lineageTag: f4bc9ee9-339a-4a41-9997-6557d453370d
+		summarizeBy: none
+
+	column MonthNumber = MONTH ( DimDate[Date] )
+		dataType: int64
+		formatString: 0
+		lineageTag: 0dce7fd9-fbdf-4002-992b-93492f7c9d62
+		summarizeBy: none
+
+	column Month = FORMAT ( DimDate[Date], "mmm" )
+		dataType: string
+		lineageTag: 3f5e2236-16d4-4e02-aeb1-5de911736664
+		summarizeBy: none
+		sortByColumn: MonthNumber
+
+	column YearMonth = FORMAT ( DimDate[Date], "yyyy-MM" )
+		dataType: string
+		lineageTag: e2155a21-205f-4c9d-b724-1bae89e5e068
+		summarizeBy: none
+		sortByColumn: YearMonthSort
+
+	column YearMonthSort = YEAR ( DimDate[Date] ) * 100 + MONTH ( DimDate[Date] )
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 31337a24-de41-4fd2-af24-e0aa0b70e666
+		summarizeBy: none
+
+	column Quarter = "Q" & FORMAT ( QUARTER ( DimDate[Date] ), "0" )
+		dataType: string
+		lineageTag: 6d1e0bf7-5d6f-4b96-b242-9a832635e4ed
+		summarizeBy: none
+
+	partition DimDate = calculated
+		mode: import
+		source = CALENDAR ( MINX ( FactSales, FactSales[SalesDate] ), MAXX ( FactSales, FactSales[SalesDate] ) )
+

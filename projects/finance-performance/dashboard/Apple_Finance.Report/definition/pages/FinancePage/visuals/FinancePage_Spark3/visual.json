@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "850786b4a447a5e0158a",
   "position": {
     "x": 733.9,
-    "y": 128,
-    "z": 14000,
+    "y": 136,
+    "z": 13000,
     "height": 52,
     "width": 74,
-    "tabOrder": 14000
+    "tabOrder": 13000
   },
   "visual": {
     "visualType": "areaChart",
@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "FactFinance"
+                      "Entity": "DimDate"
                     }
                   },
-                  "Property": "EndDate"
+                  "Property": "Date"
                 }
               },
-              "queryRef": "FactFinance.EndDate",
+              "queryRef": "DimDate.Date",
               "nativeQueryRef": "Quarter",
               "active": true,
               "displayName": "Quarter"
@@ -43,10 +43,10 @@
                       "Entity": "FactFinance"
                     }
                   },
-                  "Property": "Latest Operating Income"
+                  "Property": "Quarterly Operating Income"
                 }
               },
-              "queryRef": "FactFinance.Latest Operating Income",
+              "queryRef": "FactFinance.Quarterly Operating Income",
               "nativeQueryRef": "Operating Income",
               "displayName": "Operating Income"
             }
@@ -234,6 +234,19 @@
               "expr": {
                 "Literal": {
                   "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Financial KPI: Date'"
                 }
               }
             }

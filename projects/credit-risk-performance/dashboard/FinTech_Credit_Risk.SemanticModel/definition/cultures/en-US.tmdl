@@ -1,0 +1,2855 @@
+cultureInfo en-US
+
+	linguisticMetadata =
+			{
+			  "Version": "2.0.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "factloans.state": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "State"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.top_5_state_loan_amount": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "Top 5 State Loan Amount"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.purpose": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "Purpose"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.top_5_purpose_loan_amount": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "Top 5 Purpose Loan Amount"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.loanlabel": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "LoanLabel"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.funded_amount": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "Funded Amount"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.low_recovery_exposure": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "Low Recovery Exposure"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.loan_amount": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "Loan Amount"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.loan_amount_previous_year": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "Loan Amount Previous Year"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.loan_amount_yoy": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "Loan Amount YoY"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.funding_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "Funding Rate"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.loan_applications": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "Loan Applications"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.bad_loan_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "Bad Loan Rate"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.loan_amount_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "Loan Amount MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.funded_amount_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "Funded Amount MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.loan_applications_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "Loan Applications MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.outstanding_principal_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "Outstanding Principal MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.bad_loan_rate_variance_pp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "Bad Loan Rate Variance pp"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.kpi_loan_amount_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "KPI Loan Amount Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.kpi_funded_amount_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "KPI Funded Amount Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.kpi_loan_applications_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "KPI Loan Applications Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.kpi_outstanding_principal_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "KPI Outstanding Principal Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.kpi_bad_loan_rate_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "KPI Bad Loan Rate Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.outstanding_principal": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "Outstanding Principal"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.incomeband": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "IncomeBand"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.bad_loan_count": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "Bad Loan Count"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.borrowers": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "Borrowers"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.incomeverification": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "IncomeVerification"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "IncomeVerification": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factloans.verified_borrower_funded_amount": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "Verified Borrower Funded Amount"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.average_loan_amount": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "Average Loan Amount"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.borrowers_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "Borrowers MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.verified_funding_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "Verified Funding MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.avg_loan_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "Avg Loan MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.loans_per_borrower_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "Loans per Borrower MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.income_verification_variance_pp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "Income Verification Variance pp"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.kpi_borrowers_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "KPI Borrowers Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.kpi_loan_amount_per_customer_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "KPI Loan Amount per Customer Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.kpi_avg_loan_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "KPI Avg Loan Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.kpi_loans_per_borrower_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "KPI Loans per Borrower Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.kpi_income_verification_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "KPI Income Verification Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.loans_per_borrower": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "Loans per Borrower"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.income_verification_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "Income Verification Rate"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.top_5_purpose_low_recovery_exposure": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "Top 5 Purpose Low Recovery Exposure"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.grade": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "Grade"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.average_interest_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "Average Interest Rate"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.active_grades_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "Active Grades MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.recovery_rate_variance_pp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "Recovery Rate Variance pp"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.low_recovery_exposure_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "Low Recovery Exposure MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.avg_interest_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "Avg Interest MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.kpi_grades_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "KPI Grades Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.kpi_recovery_rate_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "KPI Recovery Rate Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.kpi_low_recovery_exposure_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "KPI Low Recovery Exposure Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.kpi_avg_interest_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "KPI Avg Interest Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.active_grades": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "Active Grades"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "factloans.recovery_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "Recovery Rate"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "dimdate.yearmonth": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DimDate",
+			          "ConceptualProperty": "YearMonth"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "dimdate.date": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DimDate",
+			          "ConceptualProperty": "Date"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Date": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.top_5_state_loan_amount": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Top 5 State Loan Amount"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.top_5_purpose_loan_amount": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Top 5 Purpose Loan Amount"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.funded_amount": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Funded Amount"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.low_recovery_exposure": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Low Recovery Exposure"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Low Recovery Exposure": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.loan_amount": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Loan Amount"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.loan_amount_previous_year": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Loan Amount Previous Year"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.loan_amount_yoy": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Loan Amount YoY"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.funding_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Funding Rate"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.loan_applications": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Loan Applications"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Applications": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Loan Applications": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.bad_loan_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Bad Loan Rate"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.loan_amount_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Loan Amount MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.funded_amount_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Funded Amount MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.loan_applications_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Loan Applications MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.outstanding_principal_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Outstanding Principal MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.bad_loan_rate_variance_pp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Bad Loan Rate Variance pp"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.kpi_loan_amount_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI Loan Amount Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.kpi_funded_amount_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI Funded Amount Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.kpi_loan_applications_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI Loan Applications Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.kpi_outstanding_principal_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI Outstanding Principal Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.kpi_bad_loan_rate_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI Bad Loan Rate Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.outstanding_principal": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Outstanding Principal"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.bad_loan_count": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Bad Loan Count"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.borrowers": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Borrowers"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Borrowers": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.verified_borrower_funded_amount": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Verified Borrower Funded Amount"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.average_loan_amount": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Average Loan Amount"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Average Loan Amount": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.borrowers_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Borrowers MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.verified_funding_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Verified Funding MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.avg_loan_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Avg Loan MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.loans_per_borrower_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Loans per Borrower MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.income_verification_variance_pp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Income Verification Variance pp"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.kpi_borrowers_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI Borrowers Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Total Borrowers": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.kpi_loan_amount_per_customer_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI Loan Amount per Customer Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.kpi_avg_loan_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI Avg Loan Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Average Loan Amount": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.kpi_loans_per_borrower_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI Loans per Borrower Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.kpi_income_verification_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI Income Verification Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Verification Coverage": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.loans_per_borrower": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Loans per Borrower"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.income_verification_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Income Verification Rate"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Income Verification Rate": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.top_5_purpose_low_recovery_exposure": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Top 5 Purpose Low Recovery Exposure"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.average_interest_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Average Interest Rate"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Average Interest Rate": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.active_grades_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Active Grades MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.recovery_rate_variance_pp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Recovery Rate Variance pp"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.low_recovery_exposure_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Low Recovery Exposure MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.avg_interest_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Avg Interest MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.kpi_grades_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI Grades Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.kpi_recovery_rate_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI Recovery Rate Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.kpi_low_recovery_exposure_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI Low Recovery Exposure Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Low-Recovery Exposure": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.kpi_avg_interest_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI Avg Interest Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Average Interest Rate": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.active_grades": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Active Grades"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.recovery_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Recovery Rate"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "dimdate.monthstart": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DimDate",
+			          "ConceptualProperty": "MonthStart"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Month": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.seasoned_bad_loan_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Seasoned Bad Loan Rate"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Bad Rate": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Seasoned Bad Loan Rate": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Seasoned Bad Rate": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.seasoned_loan_applications": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Seasoned Loan Applications"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Seasoned Loan Applications": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Applications": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Seasoned loans": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.seasoned_recovery_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Seasoned Recovery Rate"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Seasoned Recovery Rate": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.seasoned_loan_applications_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Seasoned Loan Applications MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.seasoned_bad_loan_rate_variance_pp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Seasoned Bad Loan Rate Variance pp"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.seasoned_good_loan_rate_variance_pp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Seasoned Good Loan Rate Variance pp"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.seasoned_recovery_rate_variance_pp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Seasoned Recovery Rate Variance pp"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.seasoning_bad_rate_gap": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Seasoning Bad Rate Gap"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.kpi_seasoned_applications_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI Seasoned Applications Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Seasoned Applications": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.kpi_seasoned_bad_rate_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI Seasoned Bad Rate Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Seasoned Bad Rate": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.kpi_seasoned_good_rate_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI Seasoned Good Rate Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Seasoned Good Rate": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.kpi_seasoned_recovery_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI Seasoned Recovery Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Seasoned Recovery Rate": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.seasoned_good_loan_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Seasoned Good Loan Rate"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Seasoned Good Loan Rate": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.seasoned_bad_loan_count": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Seasoned Bad Loan Count"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Bad Loans": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.average_dti": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Average DTI"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Average DTI": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.driver_importance": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Driver Importance"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Importance": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Driver Importance": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.rule_bad_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Rule Bad Rate"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Bad Rate": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.column36m_seasoned_bad_loan_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "36M Seasoned Bad Loan Rate"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.column60m_seasoned_bad_loan_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "60M Seasoned Bad Loan Rate"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "60M Seasoned Bad Loan Rate": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.rule_loans": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Rule Loans"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.rule_bad_loans": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Rule Bad Loans"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.rule_lift": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Rule Lift"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Rule Lift": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.model_auc": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Model AUC"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.high_risk_rule_lift": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "High Risk Rule Lift"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Evidence": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.high_risk_rule_seasoned_loans": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "High Risk Rule Seasoned Loans"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Evidence": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.term_risk_gap": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Term Risk Gap"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Evidence": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.kpi_model_auc_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI Model AUC Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Exploratory Model AUC": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.kpi_high_risk_rule_rate_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI High Risk Rule Rate Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "High-Risk Bad Rate": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.kpi_high_risk_lift_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI High Risk Lift Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "High-Risk Rule Lift": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.kpi_60m_bad_rate_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI 60M Bad Rate Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "60M Seasoned Bad Rate": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.high_risk_rule_seasoned_bad_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "High Risk Rule Seasoned Bad Rate"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "High Risk Rule Seasoned Bad Rate": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dimdate.year": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DimDate",
+			          "ConceptualProperty": "Year"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Year": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "riskdriverimportance.driver": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "RiskDriverImportance",
+			          "ConceptualProperty": "Driver"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Driver": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "riskrulesummary.rule": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "RiskRuleSummary",
+			          "ConceptualProperty": "Rule"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "riskrulesummary.rulesource": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "RiskRuleSummary",
+			          "ConceptualProperty": "RuleSource"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Rule source": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factloans.homeownership": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "HomeOwnership"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.average_delinquencies_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Average Delinquencies MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.public_record_rate_variance_pp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Public Record Rate Variance pp"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.average_dti_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Average DTI MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.kpi_average_delinquencies_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI Average Delinquencies Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Average Delinquency": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.kpi_public_record_rate_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI Public Record Rate Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Public Record Rate": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.kpi_average_dti_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI Average DTI Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Average DTI Ratio": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.average_delinquencies": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Average Delinquencies"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Average Delinquencies": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.public_record_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Public Record Rate"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Public Record Rate": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.term_60m_applications": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Term 60M Applications"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.top_8_purpose_seasoned_bad_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Top 8 Purpose Seasoned Bad Rate"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Bad Rate": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factloans.termmonths": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "TermMonths"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "dimgrade.grade": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DimGrade",
+			          "ConceptualProperty": "Grade"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Grade": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.seasoning_coverage_variance_pp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Seasoning Coverage Variance pp"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.kpi_seasoning_coverage_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI Seasoning Coverage Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Seasoning Coverage": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.seasoning_coverage": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Seasoning Coverage"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Seasoning Coverage": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.model_gini": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Model Gini"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Gini": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dimpurpose.purpose": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DimPurpose",
+			          "ConceptualProperty": "Purpose"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Purpose": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Purpose group": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dimloanlabel.loanlabel": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DimLoanLabel",
+			          "ConceptualProperty": "LoanLabel"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "LoanLabel": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Loan Quality": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Transaction type": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dimstate.state": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DimState",
+			          "ConceptualProperty": "State"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "State": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dimincomeband.incomeband": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DimIncomeBand",
+			          "ConceptualProperty": "IncomeBand"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Income Level": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Income Band": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dimhomeownership.homeownership": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DimHomeOwnership",
+			          "ConceptualProperty": "HomeOwnership"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Home ownership": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Home status": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dimterm.term": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DimTerm",
+			          "ConceptualProperty": "Term"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Loan term": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dimterm.termmonths": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DimTerm",
+			          "ConceptualProperty": "TermMonths"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "dimincomelevel.incomelevel": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DimIncomeLevel",
+			          "ConceptualProperty": "IncomeLevel"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Income Level": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.top_5_purpose_applications": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Top 5 Purpose Applications"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Applications": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.raw_default_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Raw Default Rate"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Default Rate": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Raw Default Rate": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.portfolio_roi": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Portfolio ROI"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Portfolio ROI": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.raw_default_rate_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Raw Default Rate MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.portfolio_roi_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Portfolio ROI MoM"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.kpi_raw_default_rate_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI Raw Default Rate Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Raw Default Rate": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.kpi_portfolio_roi_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI Portfolio ROI Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Payment ROI Proxy": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.good_loan_rate_variance_pp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Good Loan Rate Variance pp"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.kpi_good_loan_rate_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI Good Loan Rate Display"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "measure.good_loan_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Good Loan Rate"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "dimhomeownership.homeownershipgroup": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DimHomeOwnership",
+			          "ConceptualProperty": "HomeOwnershipGroup"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Home Ownership": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "riskdriverimportance.driverlabel": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "RiskDriverImportance",
+			          "ConceptualProperty": "DriverLabel"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Driver": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "riskrulesummary.rulelabel": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "RiskRuleSummary",
+			          "ConceptualProperty": "RuleLabel"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Rule": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factloans.loanstatus": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FactLoans",
+			          "ConceptualProperty": "LoanStatus"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "LoanStatus": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.kpi_mom_display_seasoned_loan_applications_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI MoM Display Seasoned Loan Applications MoM"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "MoM": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.kpi_mom_display_seasoned_bad_loan_rate_variance_pp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI MoM Display Seasoned Bad Loan Rate Variance pp"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "MoM": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.kpi_mom_display_seasoned_good_loan_rate_variance_pp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI MoM Display Seasoned Good Loan Rate Variance pp"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "MoM": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.kpi_mom_display_seasoned_recovery_rate_variance_pp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI MoM Display Seasoned Recovery Rate Variance pp"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "MoM": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.kpi_mom_display_seasoning_coverage_variance_pp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI MoM Display Seasoning Coverage Variance pp"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "MoM": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.kpi_mom_display_borrowers_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI MoM Display Borrowers MoM"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "MoM": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.kpi_mom_display_average_delinquencies_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI MoM Display Average Delinquencies MoM"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "MoM": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.kpi_mom_display_public_record_rate_variance_pp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI MoM Display Public Record Rate Variance pp"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "MoM": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.kpi_mom_display_avg_interest_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI MoM Display Avg Interest MoM"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "MoM": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.kpi_mom_display_average_dti_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI MoM Display Average DTI MoM"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "MoM": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.kpi_mom_display_avg_loan_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI MoM Display Avg Loan MoM"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "MoM": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.kpi_mom_display_income_verification_variance_pp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI MoM Display Income Verification Variance pp"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "MoM": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.kpi_mom_display_raw_default_rate_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI MoM Display Raw Default Rate MoM"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "MoM": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.kpi_mom_display_portfolio_roi_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI MoM Display Portfolio ROI MoM"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "MoM": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.kpi_mom_display_low_recovery_exposure_mom": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "KPI MoM Display Low Recovery Exposure MoM"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "MoM": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    }
+			  }
+			}
+		contentType: json
+

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "FinTech Credit Risk Analytics"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "67dc730a-2f4e-4be8-b30f-fae3a04fa9fa"
+  }
+}

@@ -1,0 +1,21 @@
+table DimTerm
+	lineageTag: 9ee2bd47-41b4-45ed-bf66-c99d3e64c701
+
+	column TermMonths
+		dataType: int64
+		isKey
+		formatString: 0
+		lineageTag: 9ee2bd47-41b4-45ed-bf66-c99d3e64c702
+		summarizeBy: none
+		sourceColumn: [TermMonths]
+
+	column Term = FORMAT ( DimTerm[TermMonths], "0" ) & " months"
+		dataType: string
+		lineageTag: 9ee2bd47-41b4-45ed-bf66-c99d3e64c703
+		summarizeBy: none
+		sortByColumn: TermMonths
+
+	partition DimTerm = calculated
+		mode: import
+		source = DISTINCT ( SELECTCOLUMNS ( FactLoans, "TermMonths", FactLoans[TermMonths] ) )
+

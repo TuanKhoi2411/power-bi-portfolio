@@ -1,0 +1,65 @@
+ref table 'Measure'
+
+	measure 'Bad Loan Count' =
+		CALCULATE(
+			[M_total_application],
+			KEEPFILTERS(loan_history[loan_label_new] = "Bad")
+		)
+		formatString: #,0
+		displayFolder: Risk Control
+
+	measure 'Bad Loan Rate' =
+		DIVIDE([Bad Loan Count], [M_total_application], 0)
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Risk Control
+
+	measure 'Seasoned Loan Count' =
+		CALCULATE(
+			[M_total_application],
+			KEEPFILTERS(loan_history[pct_loan_age] > 0.4)
+		)
+		formatString: #,0
+		displayFolder: Risk Control
+
+	measure 'Low Recovery Exposure' =
+		CALCULATE(
+			SUM(loan_history[outstanding_principal]),
+			KEEPFILTERS(loan_history[pct_loan_age] > 0.4),
+			KEEPFILTERS(loan_history[recovery_rate] < 0.4)
+		)
+		formatString: $#,0,,.0M;($#,0,,.0M);$0.0M
+		displayFolder: Risk Control
+
+	measure 'High Risk Rule Loans' =
+		CALCULATE(
+			[M_total_application],
+			KEEPFILTERS(loan_history[annual_income] < 30000),
+			KEEPFILTERS(loan_history[interest_rate_decimal] > 0.17),
+			KEEPFILTERS(loan_history[grade] IN {"E", "F", "G"})
+		)
+		formatString: #,0
+		displayFolder: Risk Control
+
+	measure 'High Risk Rule Rate' =
+		DIVIDE([High Risk Rule Loans], [M_total_application], 0)
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Risk Control
+
+	measure 'Recovery Target Gap' =
+		[avg_recovery_rate] - 0.7
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Recovery
+
+	measure 'Verification Bad Rate Gap' =
+		VAR VerifiedRate =
+			CALCULATE([Bad Loan Rate], KEEPFILTERS(loan_history[income_verification_status] = "Verified"))
+		VAR NotVerifiedRate =
+			CALCULATE([Bad Loan Rate], KEEPFILTERS(loan_history[income_verification_status] = "Not Verified"))
+		RETURN VerifiedRate - NotVerifiedRate
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Borrower Risk
+
+	measure '60M Bad Loan Rate' =
+		CALCULATE([Bad Loan Rate], KEEPFILTERS(loan_history[term_number] = 60))
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Borrower Risk

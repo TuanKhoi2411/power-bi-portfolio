@@ -1,0 +1,20 @@
+table DimChannel
+	lineageTag: 56342561-bf7c-4d7d-b799-45e3c5e4504b
+
+	column ChannelKey
+		dataType: string
+		isKey
+		lineageTag: 7b35a8ad-7c72-4214-9b31-d4c806bf02bb
+		summarizeBy: none
+		sourceColumn: [ChannelKey]
+
+	column ContactChannel
+		dataType: string
+		lineageTag: 69a03451-e2f1-4a13-977b-eaf5736c5022
+		summarizeBy: none
+		sourceColumn: [ContactChannel]
+
+	partition DimChannel = calculated
+		mode: import
+		source = DISTINCT ( SELECTCOLUMNS ( FactMarketing, "ChannelKey", FactMarketing[ChannelKey], "ContactChannel", FactMarketing[ContactChannel] ) )
+

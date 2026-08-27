@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "06b73d05900ad73cfe1e",
   "position": {
     "x": 465,
     "y": 455,
-    "z": 22000,
+    "z": 21000,
     "height": 235,
     "width": 260,
-    "tabOrder": 22000
+    "tabOrder": 21000
   },
   "visual": {
     "visualType": "lineChart",
@@ -20,16 +20,16 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "FactFinance"
+                      "Entity": "DimDate"
                     }
                   },
-                  "Property": "EndDate"
+                  "Property": "Date"
                 }
               },
-              "queryRef": "FactFinance.EndDate",
+              "queryRef": "DimDate.Date",
               "nativeQueryRef": "Reporting date",
-              "displayName": "Reporting date",
-              "active": true
+              "active": true,
+              "displayName": "Reporting date"
             }
           ]
         },
@@ -43,12 +43,12 @@
                       "Entity": "FactFinance"
                     }
                   },
-                  "Property": "Liabilities to Assets"
+                  "Property": "Net Asset Ratio"
                 }
               },
-              "queryRef": "FactFinance.Liabilities to Assets",
-              "nativeQueryRef": "Liabilities / Assets",
-              "displayName": "Liabilities / Assets"
+              "queryRef": "FactFinance.Net Asset Ratio",
+              "nativeQueryRef": "Net Asset / Assets",
+              "displayName": "Net Asset / Assets"
             },
             {
               "field": {
@@ -58,12 +58,12 @@
                       "Entity": "FactFinance"
                     }
                   },
-                  "Property": "Cash Coverage of Liabilities"
+                  "Property": "Cash to Assets"
                 }
               },
-              "queryRef": "FactFinance.Cash Coverage of Liabilities",
-              "nativeQueryRef": "Cash Coverage",
-              "displayName": "Cash Coverage"
+              "queryRef": "FactFinance.Cash to Assets",
+              "nativeQueryRef": "Cash / Assets",
+              "displayName": "Cash / Assets"
             }
           ]
         }
@@ -106,6 +106,46 @@
             }
           }
         }
+      ],
+      "categoryAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "visualContainerObjects": {
@@ -122,7 +162,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Leverage and Cash Coverage'"
+                  "Value": "'Capital Cushion vs Cash Mix'"
                 }
               }
             },
@@ -200,7 +240,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#D8E7E4'"
+                      "Value": "'#D8E5E2'"
                     }
                   }
                 }
@@ -209,7 +249,7 @@
             "radius": {
               "expr": {
                 "Literal": {
-                  "Value": "6D"
+                  "Value": "9D"
                 }
               }
             }
@@ -231,7 +271,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#829A97'"
+                      "Value": "'#6E8F88'"
                     }
                   }
                 }
@@ -240,21 +280,21 @@
             "transparency": {
               "expr": {
                 "Literal": {
-                  "Value": "82D"
+                  "Value": "88D"
                 }
               }
             },
             "shadowBlur": {
               "expr": {
                 "Literal": {
-                  "Value": "6D"
+                  "Value": "5D"
                 }
               }
             },
             "shadowDistance": {
               "expr": {
                 "Literal": {
-                  "Value": "2D"
+                  "Value": "1D"
                 }
               }
             },
@@ -262,6 +302,19 @@
               "expr": {
                 "Literal": {
                   "Value": "45D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Capital Cushion vs Cash Mix'"
                 }
               }
             }

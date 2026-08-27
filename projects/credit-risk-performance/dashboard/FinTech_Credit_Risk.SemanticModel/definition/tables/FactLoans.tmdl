@@ -1,0 +1,293 @@
+table FactLoans
+	lineageTag: 66eb000c-2ada-49ab-a7f4-5c81c74537c3
+
+	column LoanID
+		dataType: string
+		lineageTag: bf068a15-a47c-4493-9d71-8bcd33db56a7
+		summarizeBy: none
+		sourceColumn: LoanID
+
+	column CustomerID
+		dataType: string
+		lineageTag: 2143aad7-2cd0-446c-b764-1538f78c86fc
+		summarizeBy: none
+		sourceColumn: CustomerID
+
+	column LoanAmount
+		dataType: double
+		formatString: $#,0
+		lineageTag: b5891d60-bc2a-48ed-9a20-4f69747d73f1
+		summarizeBy: sum
+		sourceColumn: LoanAmount
+
+	column FundedAmount
+		dataType: double
+		formatString: $#,0
+		lineageTag: 6e8a5506-e859-4e0b-852a-5b66cde64321
+		summarizeBy: sum
+		sourceColumn: FundedAmount
+
+	column InvestorFunds
+		dataType: double
+		formatString: $#,0
+		lineageTag: 8cf54a0a-2d4d-4a9d-9312-a9ece61f3a49
+		summarizeBy: sum
+		sourceColumn: InvestorFunds
+
+	column TermMonths
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: ccf2d429-4537-40e5-97e2-1b84a503bf60
+		summarizeBy: none
+		sourceColumn: TermMonths
+
+	column InterestRate
+		dataType: double
+		formatString: 0.0%
+		lineageTag: b1f72e02-6b5c-4dce-a978-b2796ed774ed
+		summarizeBy: average
+		sourceColumn: InterestRate
+
+	column Installment
+		dataType: double
+		formatString: $#,0.00
+		lineageTag: ce58f97f-0f51-47e0-b171-26e7966781f6
+		summarizeBy: sum
+		sourceColumn: Installment
+
+	column Grade
+		dataType: string
+		isHidden
+		lineageTag: a3f599d3-3621-4438-ab5a-374c1bc3a9dd
+		summarizeBy: none
+		sourceColumn: Grade
+
+	column SubGrade
+		dataType: string
+		lineageTag: 2bb15654-5381-49b1-aead-5567134e1b0b
+		summarizeBy: none
+		sourceColumn: SubGrade
+
+	column HomeOwnership
+		dataType: string
+		isHidden
+		lineageTag: ac080978-3562-4313-b945-7bb4e6116377
+		summarizeBy: none
+		sourceColumn: HomeOwnership
+
+	column AnnualIncome
+		dataType: double
+		formatString: $#,0
+		lineageTag: d55feb83-d7f2-4e5e-b312-be295e7d900b
+		summarizeBy: average
+		sourceColumn: AnnualIncome
+
+	column IncomeVerification
+		dataType: string
+		lineageTag: 01a6c299-f3c6-496a-8f73-1c31f7a3d226
+		summarizeBy: none
+		sourceColumn: IncomeVerification
+
+	column LoanDate
+		dataType: dateTime
+		formatString: MMM yyyy
+		lineageTag: 523310f7-d84a-407a-946a-454c62ae81c1
+		summarizeBy: none
+		sourceColumn: LoanDate
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column LoanStatus
+		dataType: string
+		lineageTag: fc47679d-696f-4f3c-bfe6-fce119e07794
+		summarizeBy: none
+		sourceColumn: LoanStatus
+
+	column Purpose
+		dataType: string
+		isHidden
+		lineageTag: 436c6c52-c4f2-4acf-a772-569b482afff1
+		summarizeBy: none
+		sourceColumn: Purpose
+
+	column State
+		dataType: string
+		isHidden
+		lineageTag: 7416fe8f-34c9-48cc-aee8-d8075bc03942
+		summarizeBy: none
+		sourceColumn: State
+
+	column DTI
+		dataType: double
+		formatString: 0.0%
+		lineageTag: d3c8f5b9-55fb-4afa-bfb3-66fb143003ae
+		summarizeBy: average
+		sourceColumn: DTI
+
+	column Delinquencies
+		dataType: double
+		formatString: 0.00
+		lineageTag: c1c6e260-a91b-4197-9966-b0aca2cf92ec
+		summarizeBy: average
+		sourceColumn: Delinquencies
+
+	column PublicRecord
+		dataType: double
+		formatString: 0.00
+		lineageTag: c7d6fc77-3e47-45ba-a8f9-0f8067854fa1
+		summarizeBy: average
+		sourceColumn: PublicRecord
+
+	column OutstandingPrincipal
+		dataType: double
+		formatString: $#,0
+		lineageTag: 13505426-9db2-430d-9bac-e20daff0c911
+		summarizeBy: sum
+		sourceColumn: OutstandingPrincipal
+
+	column TotalPayments
+		dataType: double
+		formatString: $#,0
+		lineageTag: de8334b7-db2c-483e-88a9-9a4aac69de05
+		summarizeBy: sum
+		sourceColumn: TotalPayments
+
+	column ExpectedRepayment
+		dataType: double
+		formatString: $#,0
+		lineageTag: 8760d363-b1f1-4415-9940-bbb3a6171a83
+		summarizeBy: sum
+		sourceColumn: ExpectedRepayment
+
+	column RecoveryRate
+		dataType: double
+		formatString: 0.0%
+		lineageTag: b1a054e0-1d09-4d28-968b-bdde4f3baa59
+		summarizeBy: average
+		sourceColumn: RecoveryRate
+
+	column LoanAgeMonths
+		dataType: int64
+		formatString: 0
+		lineageTag: 9942fada-26e9-466b-a6ab-922833751427
+		summarizeBy: average
+		sourceColumn: LoanAgeMonths
+
+	column PctLoanAge
+		dataType: double
+		formatString: 0.0%
+		lineageTag: afadfad0-1481-4139-b3fd-74733a1cf651
+		summarizeBy: average
+		sourceColumn: PctLoanAge
+
+	column LoanLabel
+		dataType: string
+		isHidden
+		lineageTag: d27fa9cc-b03b-49db-b0b4-d8bb60959edb
+		summarizeBy: none
+		sourceColumn: LoanLabel
+
+	column IncomeBand
+		dataType: string
+		isHidden
+		lineageTag: 57d17903-5179-437c-9190-1b9cd7a7a6eb
+		summarizeBy: none
+		sourceColumn: IncomeBand
+
+	column RiskRule
+		dataType: string
+		lineageTag: 77e0be9a-62b6-4c16-99e4-89c3d7f0d1a1
+		summarizeBy: none
+		sourceColumn: RiskRule
+
+	column SeasoningStatus
+		dataType: string
+		lineageTag: 0a24ccad-5e49-4dc5-98c1-4dcb35f9e02a
+		summarizeBy: none
+		sourceColumn: SeasoningStatus
+
+	column SeasonedLoanLabel
+		dataType: string
+		lineageTag: b8f228ba-8fe8-47a8-b607-25f88b49420f
+		summarizeBy: none
+		sourceColumn: SeasonedLoanLabel
+
+	column GradeKey = UPPER ( TRIM ( FactLoans[Grade] ) )
+		dataType: string
+		isHidden
+		lineageTag: 75c8ce62-56a9-4a50-9d22-49e4fd03f401
+		summarizeBy: none
+
+	column PurposeKey = UPPER ( TRIM ( FactLoans[Purpose] ) )
+		dataType: string
+		isHidden
+		lineageTag: 75c8ce62-56a9-4a50-9d22-49e4fd03f402
+		summarizeBy: none
+
+	column StateKey = UPPER ( TRIM ( FactLoans[State] ) )
+		dataType: string
+		isHidden
+		lineageTag: 75c8ce62-56a9-4a50-9d22-49e4fd03f403
+		summarizeBy: none
+
+	column IncomeBandKey = UPPER ( TRIM ( FactLoans[IncomeBand] ) )
+		dataType: string
+		isHidden
+		lineageTag: 75c8ce62-56a9-4a50-9d22-49e4fd03f404
+		summarizeBy: none
+
+	column LoanLabelKey = UPPER ( TRIM ( FactLoans[LoanLabel] ) )
+		dataType: string
+		isHidden
+		lineageTag: 75c8ce62-56a9-4a50-9d22-49e4fd03f405
+		summarizeBy: none
+
+	column HomeOwnershipKey = UPPER ( TRIM ( FactLoans[HomeOwnership] ) )
+		dataType: string
+		isHidden
+		lineageTag: 75c8ce62-56a9-4a50-9d22-49e4fd03f406
+		summarizeBy: none
+
+	column IncomeLevel = SWITCH ( TRUE (), FactLoans[AnnualIncome] < 30000, "Low (<30K)", FactLoans[AnnualIncome] <= 90000, "Medium (30K-90K)", "High (>90K)" )
+		dataType: string
+		isHidden
+		lineageTag: 75c8ce62-56a9-4a50-9d22-49e4fd03f407
+		summarizeBy: none
+
+	column IncomeLevelKey = UPPER ( TRIM ( FactLoans[IncomeLevel] ) )
+		dataType: string
+		isHidden
+		lineageTag: 75c8ce62-56a9-4a50-9d22-49e4fd03f408
+		summarizeBy: none
+
+	partition FactLoans = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\PowerBI Dashboard - KhoiPort\04_FinTech_Credit_Risk\Data\CreditRisk_Data.csv"), [Delimiter=",", Columns=25, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Types = Table.TransformColumnTypes(Headers, {{"id", type text}, {"customer_id", type text}, {"loan_amount", type number}, {"funded_amount", type number}, {"investor_funds", type number}, {"term", type text}, {"interest_rate", type number}, {"installment", type number}, {"grade", type text}, {"sub_grade", type text}, {"home_ownership", type text}, {"annual_income", type number}, {"income_verification_status", type text}, {"loan_issue_date", type text}, {"loan_status", type text}, {"purpose", type text}, {"state", type text}, {"debt_to_income_ratio", type number}, {"delinquencies_2yrs", type number}, {"earliest_credit_line", type text}, {"public_record", type number}, {"outstanding_principal", type number}, {"total_pymnt", type number}, {"last_credit_pull_d", type text}, {"last_pymnt_d", type text}}, "en-US"),
+				    AddTerm = Table.AddColumn(Types, "TermMonths", each Number.FromText(Text.BeforeDelimiter(Text.Trim([term]), " ")), Int64.Type),
+				    AddDate = Table.AddColumn(AddTerm, "LoanDate", each Date.FromText([loan_issue_date] & "-01"), type date),
+				    AddRate = Table.AddColumn(AddDate, "InterestRate", each [interest_rate] / 100, type number),
+				    AddDTI = Table.AddColumn(AddRate, "DTI", each [debt_to_income_ratio] / 100, type number),
+				    AddExpected = Table.AddColumn(AddDTI, "ExpectedRepayment", each [installment] * [TermMonths], type number),
+				    AddRecovery = Table.AddColumn(AddExpected, "RecoveryRate", each if [ExpectedRepayment] = null or [ExpectedRepayment] = 0 then null else [total_pymnt] / [ExpectedRepayment], type number),
+				    AddAge = Table.AddColumn(AddRecovery, "LoanAgeMonths", each (2014 * 12 + 12) - (Date.Year([LoanDate]) * 12 + Date.Month([LoanDate])) + 1, Int64.Type),
+				    AddPctAge = Table.AddColumn(AddAge, "PctLoanAge", each if [TermMonths] = 0 then null else [LoanAgeMonths] / [TermMonths], type number),
+				    AddSeasoning = Table.AddColumn(AddPctAge, "SeasoningStatus", each if [PctLoanAge] > 0.40 then "Seasoned >40%" else "Early-stage <=40%", type text),
+				    AddLabel = Table.AddColumn(AddSeasoning, "LoanLabel", each if [loan_status] = "Fully Paid" then "Good" else if List.Contains({"Charged Off", "Default", "Late (31-120 days)", "Late (16-30 days)"}, [loan_status]) and [RecoveryRate] > 0.70 then "Good" else if [loan_status] = "Current" and [PctLoanAge] > 0.40 then "Good" else if List.Contains({"Charged Off", "Default", "Late (31-120 days)", "Late (16-30 days)"}, [loan_status]) and [RecoveryRate] < 0.40 then "Bad" else "Neutral", type text),
+				    AddSeasonedLabel = Table.AddColumn(AddLabel, "SeasonedLoanLabel", each if [SeasoningStatus] = "Seasoned >40%" then [LoanLabel] else "Early-stage", type text),
+				    AddIncomeBand = Table.AddColumn(AddSeasonedLabel, "IncomeBand", each if [annual_income] < 30000 then "<30K" else if [annual_income] < 60000 then "30K-60K" else if [annual_income] < 90000 then "60K-90K" else if [annual_income] < 120000 then "90K-120K" else "120K+", type text),
+				    AddPurpose = Table.AddColumn(AddIncomeBand, "PurposeClean", each Text.Proper(Text.Replace([purpose], "_", " ")), type text),
+				    AddRiskRule = Table.AddColumn(AddPurpose, "RiskRule", each if [annual_income] < 30000 and [InterestRate] > 0.17 and List.Contains({"E", "F", "G"}, [grade]) then "High Risk Rule" else "Standard", type text),
+				    Select = Table.SelectColumns(AddRiskRule, {"id", "customer_id", "loan_amount", "funded_amount", "investor_funds", "TermMonths", "InterestRate", "installment", "grade", "sub_grade", "home_ownership", "annual_income", "income_verification_status", "LoanDate", "loan_status", "PurposeClean", "state", "DTI", "delinquencies_2yrs", "public_record", "outstanding_principal", "total_pymnt", "ExpectedRepayment", "RecoveryRate", "LoanAgeMonths", "PctLoanAge", "SeasoningStatus", "LoanLabel", "SeasonedLoanLabel", "IncomeBand", "RiskRule"}),
+				    Rename = Table.RenameColumns(Select, {{"id", "LoanID"}, {"customer_id", "CustomerID"}, {"loan_amount", "LoanAmount"}, {"funded_amount", "FundedAmount"}, {"investor_funds", "InvestorFunds"}, {"installment", "Installment"}, {"grade", "Grade"}, {"sub_grade", "SubGrade"}, {"home_ownership", "HomeOwnership"}, {"annual_income", "AnnualIncome"}, {"income_verification_status", "IncomeVerification"}, {"loan_status", "LoanStatus"}, {"PurposeClean", "Purpose"}, {"state", "State"}, {"delinquencies_2yrs", "Delinquencies"}, {"public_record", "PublicRecord"}, {"outstanding_principal", "OutstandingPrincipal"}, {"total_pymnt", "TotalPayments"}})
+				in
+				    Rename
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

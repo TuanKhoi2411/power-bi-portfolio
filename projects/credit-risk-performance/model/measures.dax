@@ -1,0 +1,1048 @@
+-- Extracted from the current canonical KhoiPort PBIP on 2026-08-27.
+-- FinTech Credit Risk — Portfolio Performance
+
+Loan Applications =
+COUNTROWS ( FactLoans )
+		formatString: #,0
+		displayFolder: Portfolio\Core
+		lineageTag: 67c8931f-46f8-4d77-868b-99f8bcc8816d
+
+Borrowers =
+DISTINCTCOUNT ( FactLoans[CustomerID] )
+		formatString: #,0
+		displayFolder: Portfolio\Core
+		lineageTag: 59b5287d-1a44-4f2a-82df-e22b89ed745e
+
+Loan Amount =
+SUM ( FactLoans[LoanAmount] )
+		formatString: $#,0
+		displayFolder: Portfolio\Core
+		lineageTag: 7e548477-42da-4164-9f26-6d4ff275cd99
+
+Funded Amount =
+SUM ( FactLoans[FundedAmount] )
+		formatString: $#,0
+		displayFolder: Portfolio\Core
+		lineageTag: 24795cf4-5dbf-4316-b60e-9d7e288c7451
+
+Outstanding Principal =
+SUM ( FactLoans[OutstandingPrincipal] )
+		formatString: $#,0
+		displayFolder: Portfolio\Core
+		lineageTag: 90319cce-4add-47d3-a073-08cde3fd0ff2
+
+Total Payments =
+SUM ( FactLoans[TotalPayments] )
+		formatString: $#,0
+		displayFolder: Recovery\Core
+		lineageTag: 3db88de9-a93b-4b0e-892b-1dfe0150dfc9
+
+Expected Repayment =
+SUM ( FactLoans[ExpectedRepayment] )
+		formatString: $#,0
+		displayFolder: Recovery\Core
+		lineageTag: 52b172c7-440b-4afd-97f9-a64e17780017
+
+Recovery Rate =
+DIVIDE ( [Total Payments], [Expected Repayment], 0 )
+		formatString: 0.0%
+		displayFolder: Recovery\Core
+		lineageTag: 08a17d9b-b3d5-4f53-b21d-68eef6a538cb
+
+Good Loan Count =
+CALCULATE ( [Loan Applications], KEEPFILTERS ( FactLoans[LoanLabel] = "Good" ) )
+		formatString: #,0
+		displayFolder: Risk\Quality
+		lineageTag: 4257ff39-34e3-426d-9e03-94768808c8be
+
+Neutral Loan Count =
+CALCULATE ( [Loan Applications], KEEPFILTERS ( FactLoans[LoanLabel] = "Neutral" ) )
+		formatString: #,0
+		displayFolder: Risk\Quality
+		lineageTag: 569d3407-8a49-4ba5-aaa0-1ac5f07dd6fd
+
+Bad Loan Count =
+CALCULATE ( [Loan Applications], KEEPFILTERS ( FactLoans[LoanLabel] = "Bad" ) )
+		formatString: #,0
+		displayFolder: Risk\Quality
+		lineageTag: 9227e093-8cd3-4878-86f8-402c79881736
+
+Bad Loan Rate =
+DIVIDE ( [Bad Loan Count], [Loan Applications], 0 )
+		formatString: 0.0%
+		displayFolder: Risk\Quality
+		lineageTag: 4a85a976-7edb-4402-8744-1fbe2d2a8660
+
+Average Loan Amount =
+DIVIDE ( [Loan Amount], [Loan Applications], 0 )
+		formatString: $#,0
+		displayFolder: Portfolio\Efficiency
+		lineageTag: 9eb1344d-30ed-41b4-8840-0df137f17810
+
+Average Interest Rate =
+AVERAGE ( FactLoans[InterestRate] )
+		formatString: 0.0%
+		displayFolder: Borrower Risk
+		lineageTag: 7bc989d7-0fc7-4325-a61a-e1d6be6c527b
+
+Average DTI =
+AVERAGE ( FactLoans[DTI] )
+		formatString: 0.0%
+		displayFolder: Borrower Risk
+		lineageTag: 877a6445-7a22-45d8-9fba-a18d86cc661a
+
+Funding Rate =
+DIVIDE ( [Funded Amount], [Loan Amount], 0 )
+		formatString: 0.0%
+		displayFolder: Portfolio\Efficiency
+		lineageTag: 7182172d-8125-426c-8b80-5a1aa049428d
+
+Loans per Borrower =
+DIVIDE ( [Loan Applications], [Borrowers], 0 )
+		formatString: 0.00
+		displayFolder: Borrower Risk
+		lineageTag: 84906dc5-ee23-4f3f-ade1-7dff88f82500
+
+Income Verification Rate =
+DIVIDE ( CALCULATE ( [Loan Applications], FactLoans[IncomeVerification] <> "Not Verified" ), [Loan Applications], 0 )
+		formatString: 0.0%
+		displayFolder: Borrower Risk
+		lineageTag: 6ccbc552-5c75-44c7-924a-add64619f12b
+
+Verified Borrower Funded Amount =
+CALCULATE ( [Funded Amount], FactLoans[IncomeVerification] <> "Not Verified" )
+		formatString: $#,0
+		displayFolder: Borrower Risk
+		lineageTag: 603cb3da-b5d3-433d-8986-5abcb7831165
+
+Active Grades =
+DISTINCTCOUNT ( FactLoans[Grade] )
+		formatString: #,0
+		displayFolder: Risk\Drivers
+		lineageTag: dc27f089-8cb7-442c-b308-dd54b7e83fda
+
+Low Recovery Exposure =
+SUMX ( FILTER ( FactLoans, FactLoans[PctLoanAge] > 0.4 && FactLoans[RecoveryRate] < 0.4 ), VAR UnrecoveredFunding = FactLoans[FundedAmount] - FactLoans[TotalPayments] RETURN IF ( UnrecoveredFunding > 0, UnrecoveredFunding, 0 ) )
+		formatString: $#,0
+		displayFolder: Recovery\Exposure
+		lineageTag: 192dd97d-c255-446c-b0fe-77daa7d8bb5b
+
+High Risk Rule Loans =
+CALCULATE ( [Loan Applications], KEEPFILTERS ( FactLoans[RiskRule] = "High Risk Rule" ) )
+		formatString: #,0
+		displayFolder: Risk\Rules
+		lineageTag: b1213ddc-965d-49fd-857b-ca03fe3224c2
+
+High Risk Rule Rate =
+DIVIDE ( [High Risk Rule Loans], [Loan Applications], 0 )
+		formatString: 0.0%
+		displayFolder: Risk\Rules
+		lineageTag: e0b968e8-4c2f-43bc-b093-923abbfa68e5
+
+60M Bad Loan Rate =
+CALCULATE ( [Bad Loan Rate], KEEPFILTERS ( FactLoans[TermMonths] = 60 ) )
+		formatString: 0.0%
+		displayFolder: Risk\Rules
+		lineageTag: 2c231b10-44fc-4e9a-a1a5-1d3d95c9b76e
+
+Recovery Target Gap =
+[Recovery Rate] - 0.70
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Recovery\Variance
+		lineageTag: beceadd1-2c33-466c-a22c-eeeeec847f7e
+
+Verification Bad Rate Gap =
+VAR VerifiedRate = CALCULATE ( [Bad Loan Rate], KEEPFILTERS ( FactLoans[IncomeVerification] = "Verified" ) ) VAR NotVerifiedRate = CALCULATE ( [Bad Loan Rate], KEEPFILTERS ( FactLoans[IncomeVerification] = "Not Verified" ) ) RETURN VerifiedRate - NotVerifiedRate
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Borrower Risk
+		lineageTag: 0f46ee1c-e106-4493-8f6b-87dba47299d1
+
+Expected Loss =
+SUMX ( FILTER ( FactLoans, FactLoans[LoanLabel] = "Bad" ), VAR Unrecovered = FactLoans[FundedAmount] - FactLoans[TotalPayments] RETURN IF ( Unrecovered > 0, Unrecovered, 0 ) )
+		formatString: $#,0
+		displayFolder: Recovery\Exposure
+		lineageTag: 8400a71a-6d7b-4ec1-bcdf-b082bda762d4
+
+State Loan Rank =
+RANKX ( ALLSELECTED ( DimState[State] ), [Loan Amount],, DESC, DENSE )
+		formatString: #,0
+		isHidden
+		lineageTag: dd96c428-d1e1-440f-9dd0-8fbd7e678038
+
+Top 5 State Loan Amount =
+IF ( [State Loan Rank] <= 5, [Loan Amount] )
+		formatString: $#,0
+		displayFolder: Risk\Ranking
+		lineageTag: b8d79631-df97-4d9e-8c5f-bf5b6666ef43
+
+Purpose Loan Rank =
+RANKX ( ALLSELECTED ( DimPurpose[Purpose] ), [Loan Amount],, DESC, DENSE )
+		formatString: #,0
+		isHidden
+		lineageTag: ab70a963-128d-40c2-b9ce-26e2e8021174
+
+Top 5 Purpose Loan Amount =
+IF ( [Purpose Loan Rank] <= 5, [Loan Amount] )
+		formatString: $#,0
+		displayFolder: Risk\Ranking
+		lineageTag: 4641a715-5763-4ca1-9c66-28f888ea07b5
+
+Purpose Recovery Risk Rank =
+RANKX ( ALLSELECTED ( DimPurpose[Purpose] ), [Low Recovery Exposure],, DESC, DENSE )
+		formatString: #,0
+		isHidden
+		lineageTag: e2116cd8-f68a-4e25-808b-b6329dd7cdd3
+
+Top 5 Purpose Low Recovery Exposure =
+IF ( [Purpose Recovery Risk Rank] <= 5, [Low Recovery Exposure] )
+		formatString: $#,0
+		displayFolder: Recovery\Ranking
+		lineageTag: 3287ae4c-63cb-447d-8d30-ae3a34d48b94
+
+Loan Amount Previous Month =
+CALCULATE ( [Loan Amount], DATEADD ( DimDate[Date], -1, MONTH ) )
+		formatString: $#,0
+		isHidden
+		lineageTag: 4319a456-1579-4849-9a76-dc40eb3064be
+
+Loan Amount MoM =
+DIVIDE ( [Loan Amount] - [Loan Amount Previous Month], [Loan Amount Previous Month], 0 )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Movement
+		lineageTag: 9cdb4759-1513-4665-bf86-51fa27e188b0
+
+Loan Amount Previous Year =
+CALCULATE ( [Loan Amount], DATEADD ( DimDate[Date], -1, YEAR ) )
+		formatString: $#,0
+		displayFolder: Movement
+		lineageTag: c2d1ab35-a179-40f3-9f51-b4b2b06f1a52
+
+Loan Amount YoY =
+DIVIDE ( [Loan Amount] - [Loan Amount Previous Year], [Loan Amount Previous Year], 0 )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Movement
+		lineageTag: ebc99593-849f-4804-aeff-c534a6c5163a
+
+Funded Amount Previous Month =
+CALCULATE ( [Funded Amount], DATEADD ( DimDate[Date], -1, MONTH ) )
+		formatString: $#,0
+		isHidden
+		lineageTag: 8a55ea02-48d7-4b45-860d-c285a2b4cccb
+
+Funded Amount MoM =
+DIVIDE ( [Funded Amount] - [Funded Amount Previous Month], [Funded Amount Previous Month], 0 )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Movement
+		lineageTag: 6deea0b1-45f9-4c61-8d5e-460699122694
+
+Loan Applications Previous Month =
+CALCULATE ( [Loan Applications], DATEADD ( DimDate[Date], -1, MONTH ) )
+		formatString: #,0
+		isHidden
+		lineageTag: 9a2a5d65-4216-4124-be5d-cd2996ecd725
+
+Loan Applications MoM =
+DIVIDE ( [Loan Applications] - [Loan Applications Previous Month], [Loan Applications Previous Month], 0 )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Movement
+		lineageTag: 8219f983-7d07-4afd-a175-101b1a376eaa
+
+Outstanding Principal Previous Month =
+CALCULATE ( [Outstanding Principal], DATEADD ( DimDate[Date], -1, MONTH ) )
+		formatString: $#,0
+		isHidden
+		lineageTag: 267f0709-ea8a-4ac9-8bfc-44056b6dd982
+
+Outstanding Principal MoM =
+DIVIDE ( [Outstanding Principal] - [Outstanding Principal Previous Month], [Outstanding Principal Previous Month], 0 )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Movement
+		lineageTag: 4a477ea8-952e-41ba-ad46-b10851fe63c0
+
+Bad Loan Rate Previous Month =
+CALCULATE ( [Bad Loan Rate], DATEADD ( DimDate[Date], -1, MONTH ) )
+		formatString: 0.0%
+		isHidden
+		lineageTag: d9da536c-608f-43e1-b871-9c7e4aefe2ab
+
+Bad Loan Rate Variance pp =
+[Bad Loan Rate] - [Bad Loan Rate Previous Month]
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Movement
+		lineageTag: 7ddff6b2-1be4-4c63-a8d1-84e1a1127fda
+
+Borrowers Previous Month =
+CALCULATE ( [Borrowers], DATEADD ( DimDate[Date], -1, MONTH ) )
+		formatString: #,0
+		isHidden
+		lineageTag: 464fd60a-7088-401c-afae-1b21e239482d
+
+Borrowers MoM =
+VAR AnchorDate = MAXX ( ALLSELECTED ( DimDate[Date] ), DimDate[Date] ) VAR CurrentValue = CALCULATE ( [Borrowers], REMOVEFILTERS ( DimDate ), DATESBETWEEN ( DimDate[Date], EOMONTH ( AnchorDate, -1 ) + 1, EOMONTH ( AnchorDate, 0 ) ) ) VAR PreviousValue = CALCULATE ( [Borrowers], REMOVEFILTERS ( DimDate ), DATESBETWEEN ( DimDate[Date], EOMONTH ( AnchorDate, -2 ) + 1, EOMONTH ( AnchorDate, -1 ) ) ) RETURN DIVIDE ( CurrentValue - PreviousValue, PreviousValue )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Movement
+		lineageTag: a44ff455-4ef4-4690-80f7-20f53dc9cab2
+
+Verified Funding Previous Month =
+CALCULATE ( [Verified Borrower Funded Amount], DATEADD ( DimDate[Date], -1, MONTH ) )
+		formatString: $#,0
+		isHidden
+		lineageTag: 631f8cd6-c7d0-4501-97c5-790e48b1c4fd
+
+Verified Funding MoM =
+DIVIDE ( [Verified Borrower Funded Amount] - [Verified Funding Previous Month], [Verified Funding Previous Month], 0 )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Movement
+		lineageTag: 8f78ad42-195d-4c33-97b0-9efc0faa30b1
+
+Avg Loan Previous Month =
+CALCULATE ( [Average Loan Amount], DATEADD ( DimDate[Date], -1, MONTH ) )
+		formatString: $#,0
+		isHidden
+		lineageTag: 3d3a4eae-bf2b-4aa7-a27d-1bb9a702f996
+
+Avg Loan MoM =
+VAR AnchorDate = MAXX ( ALLSELECTED ( DimDate[Date] ), DimDate[Date] ) VAR CurrentValue = CALCULATE ( [Average Loan Amount], REMOVEFILTERS ( DimDate ), DATESBETWEEN ( DimDate[Date], EOMONTH ( AnchorDate, -1 ) + 1, EOMONTH ( AnchorDate, 0 ) ) ) VAR PreviousValue = CALCULATE ( [Average Loan Amount], REMOVEFILTERS ( DimDate ), DATESBETWEEN ( DimDate[Date], EOMONTH ( AnchorDate, -2 ) + 1, EOMONTH ( AnchorDate, -1 ) ) ) RETURN DIVIDE ( CurrentValue - PreviousValue, PreviousValue )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Movement
+		lineageTag: 87488880-1a42-4efe-9ae7-173eebfd5178
+
+Avg Interest Previous Month =
+CALCULATE ( [Average Interest Rate], DATEADD ( DimDate[Date], -1, MONTH ) )
+		formatString: 0.0%
+		isHidden
+		lineageTag: f950d9f0-0bed-4277-b2b1-128c597a52df
+
+Avg Interest MoM =
+VAR AnchorDate = MAXX ( ALLSELECTED ( DimDate[Date] ), DimDate[Date] ) VAR CurrentValue = CALCULATE ( [Average Interest Rate], REMOVEFILTERS ( DimDate ), DATESBETWEEN ( DimDate[Date], EOMONTH ( AnchorDate, -1 ) + 1, EOMONTH ( AnchorDate, 0 ) ) ) VAR PreviousValue = CALCULATE ( [Average Interest Rate], REMOVEFILTERS ( DimDate ), DATESBETWEEN ( DimDate[Date], EOMONTH ( AnchorDate, -2 ) + 1, EOMONTH ( AnchorDate, -1 ) ) ) RETURN CurrentValue - PreviousValue
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Movement
+		lineageTag: 2408345d-b761-445e-aeba-acb6118e4f3c
+
+Loans per Borrower Previous Month =
+CALCULATE ( [Loans per Borrower], DATEADD ( DimDate[Date], -1, MONTH ) )
+		formatString: 0.00
+		isHidden
+		lineageTag: b826d13a-0f02-4602-9526-92d7df58309c
+
+Loans per Borrower MoM =
+DIVIDE ( [Loans per Borrower] - [Loans per Borrower Previous Month], [Loans per Borrower Previous Month], 0 )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Movement
+		lineageTag: 37d24e06-941d-4cc2-a507-c005cb1c63d5
+
+Income Verification Previous Month =
+CALCULATE ( [Income Verification Rate], DATEADD ( DimDate[Date], -1, MONTH ) )
+		formatString: 0.0%
+		isHidden
+		lineageTag: 3b025d69-3333-42eb-8bec-c18affa18630
+
+Income Verification Variance pp =
+VAR AnchorDate = MAXX ( ALLSELECTED ( DimDate[Date] ), DimDate[Date] ) VAR CurrentValue = CALCULATE ( [Income Verification Rate], REMOVEFILTERS ( DimDate ), DATESBETWEEN ( DimDate[Date], EOMONTH ( AnchorDate, -1 ) + 1, EOMONTH ( AnchorDate, 0 ) ) ) VAR PreviousValue = CALCULATE ( [Income Verification Rate], REMOVEFILTERS ( DimDate ), DATESBETWEEN ( DimDate[Date], EOMONTH ( AnchorDate, -2 ) + 1, EOMONTH ( AnchorDate, -1 ) ) ) RETURN CurrentValue - PreviousValue
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Movement
+		lineageTag: c27ed573-0e41-4c20-ac58-e9d40a5e5ef1
+
+Active Grades Previous Month =
+CALCULATE ( [Active Grades], DATEADD ( DimDate[Date], -1, MONTH ) )
+		formatString: #,0
+		isHidden
+		lineageTag: 9a01fd8c-0cec-44b0-9d09-78c45fa38ffe
+
+Active Grades MoM =
+DIVIDE ( [Active Grades] - [Active Grades Previous Month], [Active Grades Previous Month], 0 )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Movement
+		lineageTag: 10a4b0d7-7a5c-4047-93b2-7ba10674f5a1
+
+Low Recovery Exposure Previous Month =
+CALCULATE ( [Low Recovery Exposure], DATEADD ( DimDate[Date], -1, MONTH ) )
+		formatString: $#,0
+		isHidden
+		lineageTag: 0ecf9296-e483-42c9-bbee-c0ae0da937ff
+
+Low Recovery Exposure MoM =
+VAR LastMonth = MAXX ( FILTER ( ALLSELECTED ( DimDate[MonthStart] ), CALCULATE ( [Low Recovery Exposure] ) > 0 ), DimDate[MonthStart] ) VAR CurrentValue = CALCULATE ( [Low Recovery Exposure], REMOVEFILTERS ( DimDate ), DATESBETWEEN ( DimDate[Date], LastMonth, EOMONTH ( LastMonth, 0 ) ) ) VAR PreviousValue = CALCULATE ( [Low Recovery Exposure], REMOVEFILTERS ( DimDate ), DATESBETWEEN ( DimDate[Date], EOMONTH ( LastMonth, -2 ) + 1, EOMONTH ( LastMonth, -1 ) ) ) RETURN DIVIDE ( CurrentValue - PreviousValue, PreviousValue )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Movement
+		lineageTag: 28acd276-b4bc-47a5-b275-be3ffb53d553
+
+Recovery Rate Previous Month =
+CALCULATE ( [Recovery Rate], DATEADD ( DimDate[Date], -1, MONTH ) )
+		formatString: 0.0%
+		isHidden
+		lineageTag: 19314940-8f9b-4c98-a5e2-5fe5f51b8d2d
+
+Recovery Rate Variance pp =
+[Recovery Rate] - [Recovery Rate Previous Month]
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Movement
+		lineageTag: 4724d5bb-5239-4fb5-bf1f-eab2d9a87460
+
+KPI Loan Amount Display =
+"$" & FORMAT ( DIVIDE ( [Loan Amount], 1000000000 ), "0.00" ) & "B"
+		displayFolder: Display
+		lineageTag: 19184cf9-6ce0-4f0d-93a9-ff9f1950ac03
+
+KPI Funded Amount Display =
+"$" & FORMAT ( DIVIDE ( [Funded Amount], 1000000000 ), "0.00" ) & "B"
+		displayFolder: Display
+		lineageTag: dd1869ca-beb6-4031-b42f-6927b6d57454
+
+KPI Loan Applications Display =
+FORMAT ( DIVIDE ( [Loan Applications], 1000 ), "0.0" ) & "K"
+		displayFolder: Display
+		lineageTag: af2af967-b1aa-4be9-9fde-6f1dca09e8e9
+
+KPI Outstanding Principal Display =
+"$" & FORMAT ( DIVIDE ( [Outstanding Principal], 1000000 ), "0.0" ) & "M"
+		displayFolder: Display
+		lineageTag: 07479363-2af0-44ea-8307-fc2f6a7fcd8a
+
+KPI Bad Loan Rate Display =
+FORMAT ( [Bad Loan Rate], "0.0%" )
+		displayFolder: Display
+		lineageTag: 1da4cc1e-b1bc-4bc3-af41-f84a4d8d9646
+
+KPI Borrowers Display =
+FORMAT ( DIVIDE ( [Borrowers], 1000 ), "0.0" ) & "K"
+		displayFolder: Display
+		lineageTag: 4971ede4-0c76-4075-88f4-5a906ba78df3
+
+KPI Loan Amount per Customer Display =
+"$" & FORMAT ( [Average Loan Amount], "#,0" )
+		displayFolder: Display
+		lineageTag: 9998686d-4f7b-4851-a577-15218b988b4c
+
+KPI Avg Loan Display =
+"$" & FORMAT ( [Average Loan Amount], "#,0" )
+		displayFolder: Display
+		lineageTag: bd6782e0-53cb-4499-b8bd-a7422c86a924
+
+KPI Loans per Borrower Display =
+FORMAT ( [Loans per Borrower], "0.00" ) & "x"
+		displayFolder: Display
+		lineageTag: 53bfb8a8-f97f-4270-a215-2a0ca43b8fc0
+
+KPI Income Verification Display =
+FORMAT ( [Income Verification Rate], "0.0%" )
+		displayFolder: Display
+		lineageTag: 6bc019ae-efd1-4302-b73f-25cf8161d41c
+
+KPI Grades Display =
+FORMAT ( [Active Grades], "#0" )
+		displayFolder: Display
+		lineageTag: e55de433-cfc8-4caa-bd5a-6ff74c8ec1a7
+
+KPI Recovery Rate Display =
+FORMAT ( [Recovery Rate], "0.0%" )
+		displayFolder: Display
+		lineageTag: 98e8fcdb-2295-4495-a454-b5086242bf6c
+
+KPI Low Recovery Exposure Display =
+"$" & FORMAT ( DIVIDE ( [Low Recovery Exposure], 1000000 ), "0.0" ) & "M"
+		displayFolder: Display
+		lineageTag: 24fed895-7e6d-42b8-a035-7d611079863d
+
+KPI Avg Interest Display =
+FORMAT ( [Average Interest Rate], "0.0%" )
+		displayFolder: Display
+		lineageTag: e0df47fd-68e7-4ed4-9648-11f9bfaeac2b
+
+Investor Funds =
+SUM ( FactLoans[InvestorFunds] )
+		formatString: $#,0
+		displayFolder: Loan Volume
+		lineageTag: 70027b8c-4e20-4540-aacd-7a0938159fa8
+
+Loan Received =
+[Total Payments]
+		formatString: $#,0
+		displayFolder: Performance Metrics
+		lineageTag: 862381e0-f0c7-439d-bd07-f35b61079fee
+
+Raw Default Count =
+CALCULATE ( [Loan Applications], KEEPFILTERS ( FactLoans[LoanStatus] = "Default" ) )
+		formatString: #,0
+		displayFolder: Risk Metrics
+		lineageTag: 054a26fc-6462-4dce-94a1-5c1fc816dcde
+
+Raw Default Rate =
+DIVIDE ( [Raw Default Count], [Loan Applications], 0 )
+		formatString: 0.0%
+		displayFolder: Risk Metrics
+		lineageTag: 6ac8eb99-5b91-4aaf-ac50-c71357480aa1
+
+Good Loan Rate =
+DIVIDE ( [Good Loan Count], [Loan Applications], 0 )
+		formatString: 0.0%
+		displayFolder: Risk Metrics
+		lineageTag: e91ffb7c-bb37-4d2a-bdd9-7fb596f3731a
+
+Bad Loan Funded Amount =
+CALCULATE ( [Funded Amount], KEEPFILTERS ( FactLoans[LoanLabel] = "Bad" ) )
+		formatString: $#,0
+		displayFolder: Risk Metrics
+		lineageTag: 675cce73-e541-4759-b3b4-f18800f492fa
+
+Portfolio ROI =
+DIVIDE ( [Total Payments] - [Funded Amount], [Funded Amount], 0 )
+		formatString: 0.0%
+		displayFolder: Performance Metrics
+		lineageTag: 5c5ba208-f7ae-432b-bb82-604fcec79ee0
+
+Term 36M Applications =
+CALCULATE ( [Loan Applications], KEEPFILTERS ( FactLoans[TermMonths] = 36 ) )
+		formatString: #,0
+		displayFolder: Term
+		lineageTag: b6a57d57-2a0a-4267-bda2-c92160fbdadf
+
+Term 60M Applications =
+CALCULATE ( [Loan Applications], KEEPFILTERS ( FactLoans[TermMonths] = 60 ) )
+		formatString: #,0
+		displayFolder: Term
+		lineageTag: dbb8b7e0-83de-4633-8b44-28eb1ea24a71
+
+Term 60M Share =
+DIVIDE ( [Term 60M Applications], [Loan Applications], 0 )
+		formatString: 0.0%
+		displayFolder: Term
+		lineageTag: 0ab6752f-0535-4816-a833-3bf5ad44b4ac
+
+Average Delinquencies =
+AVERAGE ( FactLoans[Delinquencies] )
+		formatString: 0.00
+		displayFolder: Customer Metrics
+		lineageTag: e05e90f6-be93-4ab6-86fd-1c1b0e1be5b7
+
+Public Record Rate =
+DIVIDE ( CALCULATE ( [Loan Applications], KEEPFILTERS ( FactLoans[PublicRecord] > 0 ) ), [Loan Applications], 0 )
+		formatString: 0.0%
+		displayFolder: Customer Metrics
+		lineageTag: c8c3748b-4139-4577-b0a7-bfb23bb5378b
+
+Portfolio ROI Previous Month =
+CALCULATE ( [Portfolio ROI], DATEADD ( DimDate[Date], -1, MONTH ) )
+		formatString: 0.0%
+		isHidden
+		lineageTag: 7bc63e6c-f31f-4dbb-8990-0caed63d3303
+
+Portfolio ROI MoM =
+VAR AnchorDate = MAXX ( ALLSELECTED ( DimDate[Date] ), DimDate[Date] ) VAR CurrentValue = CALCULATE ( [Portfolio ROI], REMOVEFILTERS ( DimDate ), DATESBETWEEN ( DimDate[Date], EOMONTH ( AnchorDate, -1 ) + 1, EOMONTH ( AnchorDate, 0 ) ) ) VAR PreviousValue = CALCULATE ( [Portfolio ROI], REMOVEFILTERS ( DimDate ), DATESBETWEEN ( DimDate[Date], EOMONTH ( AnchorDate, -2 ) + 1, EOMONTH ( AnchorDate, -1 ) ) ) RETURN CurrentValue - PreviousValue
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Performance Metrics
+		lineageTag: 8562afd2-ea76-45ce-b62d-cd5823d581d5
+
+Raw Default Rate Previous Month =
+CALCULATE ( [Raw Default Rate], DATEADD ( DimDate[Date], -1, MONTH ) )
+		formatString: 0.0%
+		isHidden
+		lineageTag: a842847f-a5ff-4f2d-b3c8-f26a041a9ff9
+
+Raw Default Rate MoM =
+VAR AnchorDate = MAXX ( ALLSELECTED ( DimDate[Date] ), DimDate[Date] ) VAR CurrentValue = CALCULATE ( [Raw Default Rate], REMOVEFILTERS ( DimDate ), DATESBETWEEN ( DimDate[Date], EOMONTH ( AnchorDate, -1 ) + 1, EOMONTH ( AnchorDate, 0 ) ) ) VAR PreviousValue = CALCULATE ( [Raw Default Rate], REMOVEFILTERS ( DimDate ), DATESBETWEEN ( DimDate[Date], EOMONTH ( AnchorDate, -2 ) + 1, EOMONTH ( AnchorDate, -1 ) ) ) RETURN CurrentValue - PreviousValue
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Risk Metrics
+		lineageTag: 58ab759e-7355-47ed-861d-82aa024133fd
+
+Average DTI Previous Month =
+CALCULATE ( [Average DTI], DATEADD ( DimDate[Date], -1, MONTH ) )
+		formatString: 0.0%
+		isHidden
+		lineageTag: 386e7cc1-efdb-46de-8204-c944d2a88210
+
+Average DTI MoM =
+VAR AnchorDate = MAXX ( ALLSELECTED ( DimDate[Date] ), DimDate[Date] ) VAR CurrentValue = CALCULATE ( [Average DTI], REMOVEFILTERS ( DimDate ), DATESBETWEEN ( DimDate[Date], EOMONTH ( AnchorDate, -1 ) + 1, EOMONTH ( AnchorDate, 0 ) ) ) VAR PreviousValue = CALCULATE ( [Average DTI], REMOVEFILTERS ( DimDate ), DATESBETWEEN ( DimDate[Date], EOMONTH ( AnchorDate, -2 ) + 1, EOMONTH ( AnchorDate, -1 ) ) ) RETURN CurrentValue - PreviousValue
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Customer Metrics
+		lineageTag: 750a5367-a8cd-431a-9a04-f72e8c0c466a
+
+Seasoned Loan Applications =
+CALCULATE ( [Loan Applications], KEEPFILTERS ( FactLoans[SeasoningStatus] = "Seasoned >40%" ) )
+		formatString: #,0
+		displayFolder: Risk\Seasoning
+		lineageTag: cfd15ad2-0ba1-4fc7-87c9-72215b702d85
+
+Early Stage Loan Applications =
+CALCULATE ( [Loan Applications], KEEPFILTERS ( FactLoans[SeasoningStatus] = "Early-stage <=40%" ) )
+		formatString: #,0
+		displayFolder: Risk\Seasoning
+		lineageTag: 2b62f188-a7e5-46e0-85b6-5a27e65f65f8
+
+Seasoning Coverage =
+DIVIDE ( [Seasoned Loan Applications], [Loan Applications], 0 )
+		formatString: 0.0%
+		displayFolder: Risk\Seasoning
+		lineageTag: 2d815a39-68ae-4185-a1db-4b3b436bb754
+
+Seasoned Bad Loan Count =
+CALCULATE ( [Bad Loan Count], KEEPFILTERS ( FactLoans[SeasoningStatus] = "Seasoned >40%" ) )
+		formatString: #,0
+		displayFolder: Risk\Seasoning
+		lineageTag: 73a25b25-87ba-4f62-9879-5529d4c29a3c
+
+Seasoned Bad Loan Rate =
+DIVIDE ( [Seasoned Bad Loan Count], [Seasoned Loan Applications], 0 )
+		formatString: 0.0%
+		displayFolder: Risk\Seasoning
+		lineageTag: 99587c13-b2fa-46f7-9564-d53e0813d057
+
+Seasoned Good Loan Count =
+CALCULATE ( [Good Loan Count], KEEPFILTERS ( FactLoans[SeasoningStatus] = "Seasoned >40%" ) )
+		formatString: #,0
+		displayFolder: Risk\Seasoning
+		lineageTag: 6847113c-823d-408c-a3bd-a844a75dc010
+
+Seasoned Good Loan Rate =
+DIVIDE ( [Seasoned Good Loan Count], [Seasoned Loan Applications], 0 )
+		formatString: 0.0%
+		displayFolder: Risk\Seasoning
+		lineageTag: 3410105b-f3a9-4050-ae6b-47672c62e265
+
+Seasoned Recovery Rate =
+CALCULATE ( [Recovery Rate], KEEPFILTERS ( FactLoans[SeasoningStatus] = "Seasoned >40%" ) )
+		formatString: 0.0%
+		displayFolder: Risk\Seasoning
+		lineageTag: 65e78887-b378-40ba-a171-bc5e8adfcfd6
+
+Seasoning Bad Rate Gap =
+[Bad Loan Rate] - [Seasoned Bad Loan Rate]
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Risk\Seasoning
+		lineageTag: 8de37d3b-1029-4b9d-a5a7-c5ba865f05aa
+
+36M Seasoned Bad Loan Rate =
+CALCULATE ( [Seasoned Bad Loan Rate], KEEPFILTERS ( FactLoans[TermMonths] = 36 ) )
+		formatString: 0.0%
+		displayFolder: Risk\Rules
+		lineageTag: c8dddb16-f31d-450a-a64a-17e7425c68cc
+
+60M Seasoned Bad Loan Rate =
+CALCULATE ( [Seasoned Bad Loan Rate], KEEPFILTERS ( FactLoans[TermMonths] = 60 ) )
+		formatString: 0.0%
+		displayFolder: Risk\Rules
+		lineageTag: ad658878-296b-4d84-8c58-6916d40f0e07
+
+Term Risk Gap =
+[60M Seasoned Bad Loan Rate] - [36M Seasoned Bad Loan Rate]
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Risk\Rules
+		lineageTag: 08752839-a701-4aab-807e-d616221619f6
+
+High Risk Rule Seasoned Loans =
+CALCULATE ( [Seasoned Loan Applications], KEEPFILTERS ( FactLoans[RiskRule] = "High Risk Rule" ) )
+		formatString: #,0
+		displayFolder: Risk\Rules
+		lineageTag: f3f613b0-b08e-466d-b1f0-43258ae945c2
+
+High Risk Rule Seasoned Bad Rate =
+CALCULATE ( [Seasoned Bad Loan Rate], KEEPFILTERS ( FactLoans[RiskRule] = "High Risk Rule" ) )
+		formatString: 0.0%
+		displayFolder: Risk\Rules
+		lineageTag: e99f33e7-c69a-4cc8-8c73-9997ce8eea53
+
+High Risk Rule Lift =
+DIVIDE ( [High Risk Rule Seasoned Bad Rate], [Seasoned Bad Loan Rate], 0 )
+		formatString: 0.00x
+		displayFolder: Risk\Rules
+		lineageTag: 89a456f7-c5f3-4987-a7fa-05da81502380
+
+Model AUC =
+MAX ( RiskDriverImportance[ModelAUC] )
+		formatString: 0.000
+		displayFolder: Risk\Model
+		lineageTag: 6b01505d-9513-46d7-b82e-acbed36a3a20
+
+Driver Importance =
+SUM ( RiskDriverImportance[Importance] )
+		formatString: 0.0%
+		displayFolder: Risk\Model
+		lineageTag: 53e75f25-0ceb-48d8-97ba-1fe5e4840fb4
+
+Rule Loans =
+SUM ( RiskRuleSummary[Loans] )
+		formatString: #,0
+		displayFolder: Risk\Model
+		lineageTag: 5ba65746-60b7-4143-9123-fde20100feee
+
+Rule Bad Loans =
+SUM ( RiskRuleSummary[BadLoans] )
+		formatString: #,0
+		displayFolder: Risk\Model
+		lineageTag: 415a4fd4-b4ec-4270-9c08-690ecb63f22b
+
+Rule Bad Rate =
+AVERAGE ( RiskRuleSummary[BadRate] )
+		formatString: 0.0%
+		displayFolder: Risk\Model
+		lineageTag: 9c2a20f5-e30c-4fc5-879e-2147890e94cf
+
+Rule Lift =
+AVERAGE ( RiskRuleSummary[LiftVsSeasonedPortfolio] )
+		formatString: 0.00x
+		displayFolder: Risk\Model
+		lineageTag: b719f076-6e3c-46ed-b9a7-b46a2db7bb2a
+
+Top Rule Bad Rate =
+MAX ( RiskRuleSummary[BadRate] )
+		formatString: 0.0%
+		displayFolder: Risk\Model
+		lineageTag: fdd967fa-e5c6-4f3a-b5f3-d3b9f0d1fb5d
+
+Seasoned Loan Applications Previous Month =
+CALCULATE ( [Seasoned Loan Applications], DATEADD ( DimDate[Date], -1, MONTH ) )
+		formatString: #,0
+		displayFolder: Time Intelligence\Seasoning
+		lineageTag: 73e8fd74-1dbc-4406-a268-7a44238d2a18
+
+Seasoned Loan Applications MoM =
+VAR LastMonth = MAXX ( FILTER ( ALLSELECTED ( DimDate[MonthStart] ), CALCULATE ( [Seasoned Loan Applications] ) > 0 ), DimDate[MonthStart] ) VAR CurrentValue = CALCULATE ( [Seasoned Loan Applications], REMOVEFILTERS ( DimDate ), DATESBETWEEN ( DimDate[Date], LastMonth, EOMONTH ( LastMonth, 0 ) ) ) VAR PreviousValue = CALCULATE ( [Seasoned Loan Applications], REMOVEFILTERS ( DimDate ), DATESBETWEEN ( DimDate[Date], EOMONTH ( LastMonth, -2 ) + 1, EOMONTH ( LastMonth, -1 ) ) ) RETURN DIVIDE ( CurrentValue - PreviousValue, PreviousValue )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Time Intelligence\Seasoning
+		lineageTag: af1e31f8-022d-41f9-a3dc-cd8d4e116286
+
+Seasoned Bad Loan Rate Previous Month =
+CALCULATE ( [Seasoned Bad Loan Rate], DATEADD ( DimDate[Date], -1, MONTH ) )
+		formatString: 0.0%
+		displayFolder: Time Intelligence\Seasoning
+		lineageTag: df3afdaa-af70-4fc1-a1ab-477ac8929e51
+
+Seasoned Bad Loan Rate Variance pp =
+VAR LastMonth = MAXX ( FILTER ( ALLSELECTED ( DimDate[MonthStart] ), CALCULATE ( [Seasoned Loan Applications] ) > 0 ), DimDate[MonthStart] ) VAR CurrentValue = CALCULATE ( [Seasoned Bad Loan Rate], REMOVEFILTERS ( DimDate ), DATESBETWEEN ( DimDate[Date], LastMonth, EOMONTH ( LastMonth, 0 ) ) ) VAR PreviousValue = CALCULATE ( [Seasoned Bad Loan Rate], REMOVEFILTERS ( DimDate ), DATESBETWEEN ( DimDate[Date], EOMONTH ( LastMonth, -2 ) + 1, EOMONTH ( LastMonth, -1 ) ) ) RETURN CurrentValue - PreviousValue
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Time Intelligence\Seasoning
+		lineageTag: bc92515b-5246-441f-883a-fb91cf305b1b
+
+Seasoned Good Loan Rate Previous Month =
+CALCULATE ( [Seasoned Good Loan Rate], DATEADD ( DimDate[Date], -1, MONTH ) )
+		formatString: 0.0%
+		displayFolder: Time Intelligence\Seasoning
+		lineageTag: 52e0953a-a174-4580-9517-0c6e2ca1cbce
+
+Seasoned Good Loan Rate Variance pp =
+VAR LastMonth = MAXX ( FILTER ( ALLSELECTED ( DimDate[MonthStart] ), CALCULATE ( [Seasoned Loan Applications] ) > 0 ), DimDate[MonthStart] ) VAR CurrentValue = CALCULATE ( [Seasoned Good Loan Rate], REMOVEFILTERS ( DimDate ), DATESBETWEEN ( DimDate[Date], LastMonth, EOMONTH ( LastMonth, 0 ) ) ) VAR PreviousValue = CALCULATE ( [Seasoned Good Loan Rate], REMOVEFILTERS ( DimDate ), DATESBETWEEN ( DimDate[Date], EOMONTH ( LastMonth, -2 ) + 1, EOMONTH ( LastMonth, -1 ) ) ) RETURN CurrentValue - PreviousValue
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Time Intelligence\Seasoning
+		lineageTag: 57ef319c-e995-4edf-9951-69a6579c658e
+
+Seasoned Recovery Rate Previous Month =
+CALCULATE ( [Seasoned Recovery Rate], DATEADD ( DimDate[Date], -1, MONTH ) )
+		formatString: 0.0%
+		displayFolder: Time Intelligence\Seasoning
+		lineageTag: 22468b2d-22d6-4c93-af14-4b46bb8f09f4
+
+Seasoned Recovery Rate Variance pp =
+VAR LastMonth = MAXX ( FILTER ( ALLSELECTED ( DimDate[MonthStart] ), CALCULATE ( [Seasoned Loan Applications] ) > 0 ), DimDate[MonthStart] ) VAR CurrentValue = CALCULATE ( [Seasoned Recovery Rate], REMOVEFILTERS ( DimDate ), DATESBETWEEN ( DimDate[Date], LastMonth, EOMONTH ( LastMonth, 0 ) ) ) VAR PreviousValue = CALCULATE ( [Seasoned Recovery Rate], REMOVEFILTERS ( DimDate ), DATESBETWEEN ( DimDate[Date], EOMONTH ( LastMonth, -2 ) + 1, EOMONTH ( LastMonth, -1 ) ) ) RETURN CurrentValue - PreviousValue
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Time Intelligence\Seasoning
+		lineageTag: 69e0993b-7bda-4372-afb8-9f00159eab21
+
+KPI Seasoned Applications Display =
+FORMAT ( [Seasoned Loan Applications], "#,0" )
+		displayFolder: Display\Seasoning
+		lineageTag: 13e12ecf-82df-470c-8e17-84f5b033c076
+
+KPI Seasoning Coverage Display =
+FORMAT ( [Seasoning Coverage], "0.0%" )
+		displayFolder: Display\Seasoning
+		lineageTag: 49468ed9-7e12-46b8-bbf3-64771953ffbc
+
+KPI Seasoned Bad Rate Display =
+FORMAT ( [Seasoned Bad Loan Rate], "0.0%" )
+		displayFolder: Display\Seasoning
+		lineageTag: 1d70d321-2247-47a1-b1ff-4745b454a3d1
+
+KPI Seasoned Good Rate Display =
+FORMAT ( [Seasoned Good Loan Rate], "0.0%" )
+		displayFolder: Display\Seasoning
+		lineageTag: 57ff7a85-0fab-4358-9240-34bfda552d1e
+
+KPI Seasoned Recovery Display =
+FORMAT ( [Seasoned Recovery Rate], "0.0%" )
+		displayFolder: Display\Seasoning
+		lineageTag: 590e6b57-b9c7-459f-8a39-b3ddd3c02f14
+
+KPI High Risk Rule Rate Display =
+FORMAT ( [High Risk Rule Seasoned Bad Rate], "0.0%" )
+		displayFolder: Display\Risk Rules
+		lineageTag: 6ed10e23-011f-4c2b-a1f1-84f3d547c1e5
+
+KPI High Risk Lift Display =
+FORMAT ( [High Risk Rule Lift], "0.00x" )
+		displayFolder: Display\Risk Rules
+		lineageTag: 298b31b6-4f8a-428b-a605-ff241ef303ef
+
+KPI 60M Bad Rate Display =
+FORMAT ( [60M Seasoned Bad Loan Rate], "0.0%" )
+		displayFolder: Display\Risk Rules
+		lineageTag: ab8d33bb-2877-454a-856a-40ab4bd3d94d
+
+KPI Model AUC Display =
+FORMAT ( [Model AUC], "0.000" )
+		displayFolder: Display\Risk Model
+		lineageTag: 965fe75d-8f50-4c5e-89d1-c29c351a7a66
+
+KPI Top Rule Bad Rate Display =
+FORMAT ( [Top Rule Bad Rate], "0.0%" )
+		displayFolder: Display\Risk Model
+		lineageTag: bbb9de9b-15b4-4cbe-97e2-569ad8e6b278
+
+Average Delinquencies Previous Month =
+CALCULATE ( [Average Delinquencies], DATEADD ( DimDate[Date], -1, MONTH ) )
+		formatString: 0.00
+		displayFolder: Time Intelligence\Customer
+		lineageTag: 6d0fcb83-f54a-458d-9b21-7b03b881fb5b
+
+Average Delinquencies MoM =
+VAR AnchorDate = MAXX ( ALLSELECTED ( DimDate[Date] ), DimDate[Date] ) VAR CurrentValue = CALCULATE ( [Average Delinquencies], REMOVEFILTERS ( DimDate ), DATESBETWEEN ( DimDate[Date], EOMONTH ( AnchorDate, -1 ) + 1, EOMONTH ( AnchorDate, 0 ) ) ) VAR PreviousValue = CALCULATE ( [Average Delinquencies], REMOVEFILTERS ( DimDate ), DATESBETWEEN ( DimDate[Date], EOMONTH ( AnchorDate, -2 ) + 1, EOMONTH ( AnchorDate, -1 ) ) ) RETURN CurrentValue - PreviousValue
+		formatString: +0.00;-0.00;0.00
+		displayFolder: Time Intelligence\Customer
+		lineageTag: ea9b75bb-ab18-4307-8bee-ce45ac381675
+
+Public Record Rate Previous Month =
+CALCULATE ( [Public Record Rate], DATEADD ( DimDate[Date], -1, MONTH ) )
+		formatString: 0.0%
+		displayFolder: Time Intelligence\Customer
+		lineageTag: 29eced3e-276e-46e6-83bf-839324801d1a
+
+Public Record Rate Variance pp =
+VAR AnchorDate = MAXX ( ALLSELECTED ( DimDate[Date] ), DimDate[Date] ) VAR CurrentValue = CALCULATE ( [Public Record Rate], REMOVEFILTERS ( DimDate ), DATESBETWEEN ( DimDate[Date], EOMONTH ( AnchorDate, -1 ) + 1, EOMONTH ( AnchorDate, 0 ) ) ) VAR PreviousValue = CALCULATE ( [Public Record Rate], REMOVEFILTERS ( DimDate ), DATESBETWEEN ( DimDate[Date], EOMONTH ( AnchorDate, -2 ) + 1, EOMONTH ( AnchorDate, -1 ) ) ) RETURN CurrentValue - PreviousValue
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Time Intelligence\Customer
+		lineageTag: 3ca72ffb-afab-4eaa-80b7-d790deae0b59
+
+KPI Average Delinquencies Display =
+FORMAT ( [Average Delinquencies], "0.00" )
+		displayFolder: Display\Customer
+		lineageTag: fa2826ab-c3b5-4de9-8e55-0cb6a9ecb7f0
+
+KPI Public Record Rate Display =
+FORMAT ( [Public Record Rate], "0.0%" )
+		displayFolder: Display\Customer
+		lineageTag: 9ee32262-fd07-44fd-a6f0-10f782fdf13f
+
+KPI Average DTI Display =
+FORMAT ( [Average DTI], "0.0%" )
+		displayFolder: Display\Customer
+		lineageTag: 35ef975d-98fb-4a58-a906-b1b51348878d
+
+Purpose Seasoned Bad Rate Rank =
+RANKX ( ALLSELECTED ( DimPurpose[Purpose] ), [Seasoned Bad Loan Rate],, DESC, DENSE )
+		formatString: #,0
+		isHidden
+		lineageTag: 32519e6e-ab37-4fe1-9884-1c00faf1a8f7
+
+Top 8 Purpose Seasoned Bad Rate =
+IF ( [Purpose Seasoned Bad Rate Rank] <= 8, [Seasoned Bad Loan Rate] )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Risk\Ranking
+		lineageTag: 81c10272-635d-4070-917b-b26157dfb33d
+
+Seasoning Coverage Previous Month =
+CALCULATE ( [Seasoning Coverage], DATEADD ( DimDate[Date], -1, MONTH ) )
+		formatString: 0.0%
+		isHidden
+		displayFolder: Risk\Seasoning
+		lineageTag: 2d815a39-68ae-4185-a1db-4b3b436bb755
+
+Seasoning Coverage Variance pp =
+VAR LastMonth = MAXX ( FILTER ( ALLSELECTED ( DimDate[MonthStart] ), CALCULATE ( [Seasoned Loan Applications] ) > 0 ), DimDate[MonthStart] ) VAR CurrentValue = CALCULATE ( [Seasoning Coverage], REMOVEFILTERS ( DimDate ), DATESBETWEEN ( DimDate[Date], LastMonth, EOMONTH ( LastMonth, 0 ) ) ) VAR PreviousValue = CALCULATE ( [Seasoning Coverage], REMOVEFILTERS ( DimDate ), DATESBETWEEN ( DimDate[Date], EOMONTH ( LastMonth, -2 ) + 1, EOMONTH ( LastMonth, -1 ) ) ) RETURN CurrentValue - PreviousValue
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Risk\Seasoning
+		lineageTag: 2d815a39-68ae-4185-a1db-4b3b436bb756
+
+Model Gini =
+2 * [Model AUC] - 1
+		formatString: 0.000
+		displayFolder: Risk\Model
+		lineageTag: 6b01505d-9513-46d7-b82e-acbed36a3a21
+
+Purpose Application Rank =
+RANKX ( ALLSELECTED ( DimPurpose[Purpose] ), [Loan Applications],, DESC, DENSE )
+		formatString: #,0
+		isHidden
+		lineageTag: 5f73c8fa-1229-4cc4-9ca1-bfa8353b2131
+
+Top 5 Purpose Applications =
+IF ( [Purpose Application Rank] <= 5, [Loan Applications] )
+		formatString: #,0
+		displayFolder: Customer Metrics
+		lineageTag: b27ab79d-d3b8-4e08-a616-44606e5719ee
+
+KPI Raw Default Rate Display =
+FORMAT ( [Raw Default Rate], "0.0%" )
+		displayFolder: Display
+		lineageTag: 9b1ae040-8fd3-44e4-8203-3610f941d12f
+
+KPI Portfolio ROI Display =
+FORMAT ( [Portfolio ROI], "0.0%" )
+		displayFolder: Display
+		lineageTag: 1464f224-fa62-4451-9702-25c6e17961c9
+
+KPI Good Loan Rate Display =
+FORMAT ( [Good Loan Rate], "0.0%" )
+		displayFolder: Display
+		lineageTag: 27466c35-ec9f-4a4d-baaf-7e6041d47c10
+
+Good Loan Rate Previous Month =
+CALCULATE ( [Good Loan Rate], DATEADD ( DimDate[Date], -1, MONTH ) )
+		formatString: 0.0%
+		isHidden
+		displayFolder: Time Intelligence\Quality
+		lineageTag: 036a7bd4-d677-4530-bf2d-7aea30e872a9
+
+Good Loan Rate Variance pp =
+[Good Loan Rate] - [Good Loan Rate Previous Month]
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Time Intelligence\Quality
+		lineageTag: 53ac8c9b-1654-4a8a-b1c7-450e0589588d
+
+KPI MoM Display Borrowers MoM =
+VAR V = [Borrowers MoM] RETURN IF ( ISBLANK ( V ), BLANK (), "MoM: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI MoM
+		lineageTag: f9af4f0d-809c-55fb-ad5d-dd5474b235f4
+
+KPI MoM Color Borrowers MoM =
+VAR V = [Borrowers MoM] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#D98324", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI MoM
+		lineageTag: 10551cc1-43f6-501c-9989-3befd0efdae8
+
+KPI MoM Display Avg Loan MoM =
+VAR V = [Avg Loan MoM] RETURN IF ( ISBLANK ( V ), BLANK (), "MoM: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI MoM
+		lineageTag: 80df3583-0fab-5be9-b788-b9fb4a739188
+
+KPI MoM Color Avg Loan MoM =
+VAR V = [Avg Loan MoM] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#D98324", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI MoM
+		lineageTag: 9ccabd57-1697-5ee5-855b-9b1a24ad7a52
+
+KPI MoM Display Seasoned Loan Applications MoM =
+VAR V = [Seasoned Loan Applications MoM] RETURN IF ( ISBLANK ( V ), BLANK (), "MoM: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI MoM
+		lineageTag: 2de6349f-3335-5246-8c1f-dc9f094be9c7
+
+KPI MoM Color Seasoned Loan Applications MoM =
+VAR V = [Seasoned Loan Applications MoM] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#D98324", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI MoM
+		lineageTag: 642d2ef7-2453-5a2c-8f8f-0355c1dbece1
+
+KPI MoM Display Average Delinquencies MoM =
+VAR V = [Average Delinquencies MoM] RETURN IF ( ISBLANK ( V ), BLANK (), "MoM: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.00" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.00" ), FORMAT ( 0, "0.00" ) ) )
+		displayFolder: Display\KPI MoM
+		lineageTag: 388f68d8-98db-569e-82e5-1d61a926daf6
+
+KPI MoM Color Average Delinquencies MoM =
+VAR V = [Average Delinquencies MoM] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#D98324", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI MoM
+		lineageTag: ca9d13d3-e0bc-5e94-ab84-0af9e04714b5
+
+KPI MoM Display Avg Interest MoM =
+VAR V = [Avg Interest MoM] RETURN IF ( ISBLANK ( V ), BLANK (), "MoM: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI MoM
+		lineageTag: 46f210b0-f3c9-5cca-b559-1099608dbe30
+
+KPI MoM Color Avg Interest MoM =
+VAR V = [Avg Interest MoM] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#D98324", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI MoM
+		lineageTag: 6b6ac910-eb0c-5c75-8b8e-65584809f02d
+
+KPI MoM Display Seasoned Bad Loan Rate Variance pp =
+VAR V = [Seasoned Bad Loan Rate Variance pp] RETURN IF ( ISBLANK ( V ), BLANK (), "MoM: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI MoM
+		lineageTag: 37569424-92de-5cc3-bc68-1451e7aa59e7
+
+KPI MoM Color Seasoned Bad Loan Rate Variance pp =
+VAR V = [Seasoned Bad Loan Rate Variance pp] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#D98324", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI MoM
+		lineageTag: ab9b5ab9-5b8b-5ab0-b0b4-1c4c0371f56c
+
+KPI MoM Display Public Record Rate Variance pp =
+VAR V = [Public Record Rate Variance pp] RETURN IF ( ISBLANK ( V ), BLANK (), "MoM: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI MoM
+		lineageTag: 9ad43b81-07d5-527f-aeba-c34cefe98c41
+
+KPI MoM Color Public Record Rate Variance pp =
+VAR V = [Public Record Rate Variance pp] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#D98324", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI MoM
+		lineageTag: 381321de-9804-50a9-a86e-2bd07c85a771
+
+KPI MoM Display Seasoned Good Loan Rate Variance pp =
+VAR V = [Seasoned Good Loan Rate Variance pp] RETURN IF ( ISBLANK ( V ), BLANK (), "MoM: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI MoM
+		lineageTag: 236e90e4-083d-5194-8cfa-40322632c284
+
+KPI MoM Color Seasoned Good Loan Rate Variance pp =
+VAR V = [Seasoned Good Loan Rate Variance pp] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#D98324", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI MoM
+		lineageTag: 73821fe2-0bb3-5e1c-877c-978a52d91525
+
+KPI MoM Display Income Verification Variance pp =
+VAR V = [Income Verification Variance pp] RETURN IF ( ISBLANK ( V ), BLANK (), "MoM: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI MoM
+		lineageTag: 4954e7bd-77f3-57c7-8ed0-d4f0ef862b9d
+
+KPI MoM Color Income Verification Variance pp =
+VAR V = [Income Verification Variance pp] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#D98324", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI MoM
+		lineageTag: ce370d05-13f8-5d8c-8d34-97ecb4c327d2
+
+KPI MoM Display Raw Default Rate MoM =
+VAR V = [Raw Default Rate MoM] RETURN IF ( ISBLANK ( V ), BLANK (), "MoM: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI MoM
+		lineageTag: 098b89cb-3ad2-5e36-9a8c-632a7d7a3409
+
+KPI MoM Color Raw Default Rate MoM =
+VAR V = [Raw Default Rate MoM] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#D98324", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI MoM
+		lineageTag: 7f025f25-524a-5c46-b812-78c7d83d8f2c
+
+KPI MoM Display Seasoned Recovery Rate Variance pp =
+VAR V = [Seasoned Recovery Rate Variance pp] RETURN IF ( ISBLANK ( V ), BLANK (), "MoM: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI MoM
+		lineageTag: e48a4bdc-b110-5c12-9479-772279374cbf
+
+KPI MoM Color Seasoned Recovery Rate Variance pp =
+VAR V = [Seasoned Recovery Rate Variance pp] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#D98324", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI MoM
+		lineageTag: 05ad5cab-40b4-561e-acb9-51eda744ee06
+
+KPI MoM Display Portfolio ROI MoM =
+VAR V = [Portfolio ROI MoM] RETURN IF ( ISBLANK ( V ), BLANK (), "MoM: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI MoM
+		lineageTag: 68118f76-4910-5ea0-aabf-237d332ab0fe
+
+KPI MoM Color Portfolio ROI MoM =
+VAR V = [Portfolio ROI MoM] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#D98324", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI MoM
+		lineageTag: cb662c0e-5361-5852-aecb-f99fde9c8b20
+
+KPI MoM Display Average DTI MoM =
+VAR V = [Average DTI MoM] RETURN IF ( ISBLANK ( V ), BLANK (), "MoM: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI MoM
+		lineageTag: ae656dba-6b2c-54a0-a206-4c5179056dd3
+
+KPI MoM Color Average DTI MoM =
+VAR V = [Average DTI MoM] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#D98324", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI MoM
+		lineageTag: 7abbd3fd-4df6-5abc-9689-71666a7a7ebe
+
+KPI MoM Display Low Recovery Exposure MoM =
+VAR V = [Low Recovery Exposure MoM] RETURN IF ( ISBLANK ( V ), BLANK (), "MoM: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI MoM
+		lineageTag: be6d3484-4919-5227-af32-dbae436d3f46
+
+KPI MoM Color Low Recovery Exposure MoM =
+VAR V = [Low Recovery Exposure MoM] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#D98324", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI MoM
+		lineageTag: c8627add-4736-5c8b-aaa8-eb8836e5e9f3
+
+KPI MoM Display Seasoning Coverage Variance pp =
+VAR V = [Seasoning Coverage Variance pp] RETURN IF ( ISBLANK ( V ), BLANK (), "MoM: " & SWITCH ( TRUE (), V > 0, UNICHAR ( 9650 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), V < 0, UNICHAR ( 9660 ) & " " & FORMAT ( ABS ( V ), "0.0%" ), FORMAT ( 0, "0.0%" ) ) )
+		displayFolder: Display\KPI MoM
+		lineageTag: 7074894b-146e-5d1e-8712-76973f60eb88
+
+KPI MoM Color Seasoning Coverage Variance pp =
+VAR V = [Seasoning Coverage Variance pp] RETURN SWITCH ( TRUE (), ISBLANK ( V ), "#777777", V > 0, "#D98324", V < 0, "#E05252", "#777777" )
+		displayFolder: Display\KPI MoM
+		lineageTag: 7d52d13a-0d6d-5087-a9f6-201cf4c8023d
