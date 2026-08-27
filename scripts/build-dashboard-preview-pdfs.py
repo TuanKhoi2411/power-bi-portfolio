@@ -29,7 +29,7 @@ PROJECTS = {
     },
     "credit-risk-performance": {
         "pdf": "FinTech_Credit_Risk_Dashboard.pdf",
-        "images": [SOURCE / "dashboard-backups/20260826_190500_before_theme_positive_colors/CreditRisk/portfolio_mix_preview.png", SOURCE / "dashboard-backups/20260826_190500_before_theme_positive_colors/CreditRisk/risk_drivers_preview.png", SOURCE / "dashboard-backups/20260826_190500_before_theme_positive_colors/CreditRisk/pricing_verification_preview.png", SOURCE / "dashboard-backups/20260826_190500_before_theme_positive_colors/CreditRisk/axis_cleanup_preview.png"],
+        "images": [SOURCE / "dashboard-backups/20260826_190500_before_theme_positive_colors/CreditRisk/axis_cleanup_portfolio_preview.png", SOURCE / "dashboard-backups/20260826_190500_before_theme_positive_colors/CreditRisk/risk_drivers_preview.png", SOURCE / "dashboard-backups/20260826_190500_before_theme_positive_colors/CreditRisk/pricing_verification_preview.png", SOURCE / "dashboard-backups/20260826_190500_before_theme_positive_colors/CreditRisk/axis_cleanup_preview.png"],
         "site": ["credit-overview.png", "credit-borrower-risk.png", "credit-pricing.png", "credit-risk-drivers.png"],
         "crop": (60, 271, 1171, 954),
     },
@@ -47,12 +47,23 @@ def clean_frame(path: Path, crop):
     image = Image.open(path).convert("RGB")
     if crop:
         image = image.crop(crop)
-    canvas = Image.new("RGB", (1600, 900), "#f3f4f6")
-    image.thumbnail((1560, 860), Image.Resampling.LANCZOS)
-    x = (1600 - image.width) // 2
-    y = (900 - image.height) // 2
-    canvas.paste(image, (x, y))
-    return canvas
+    # Fill the preview frame instead of placing a small dashboard inside a
+    # padded canvas. This keeps labels legible and removes the dead space that
+    # appeared around the former centered thumbnail.
+    target_ratio = 16 / 9
+    width, height = image.size
+    current_ratio = width / height
+    if current_ratio > target_ratio:
+        target_width = round(height * target_ratio)
+        left = (width - target_width) // 2
+        image = image.crop((left, 0, left + target_width, height))
+    elif current_ratio < target_ratio:
+        target_height = round(width / target_ratio)
+        # Power BI captures carry the report header at the top and page chrome
+        # at the bottom. Anchor the crop to the top so the dashboard title is
+        # never cut off while the lower Desktop chrome falls away.
+        image = image.crop((0, 0, width, target_height))
+    return image.resize((1600, 900), Image.Resampling.LANCZOS)
 
 for slug, config in PROJECTS.items():
     preview = REPO / "projects" / slug / "preview"
