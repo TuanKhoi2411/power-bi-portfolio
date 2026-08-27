@@ -58,7 +58,7 @@ Start with each project’s `BI_Dashboard_Creation_Prompt.md`. The DAX export an
 | UK Online Retail | Yes | Yes | 3 pages | Yes |
 | Portuguese Bank | Yes | Yes | 3 pages | Yes |
 | Apple Inc. | Yes | Yes | 3 pages | Yes |
-| FinTech Credit Risk | Yes | Yes | 3-page portfolio preview; 4 report pages in PBIP | Yes |
+| FinTech Credit Risk | Yes | Yes | 4 pages | Yes |
 | Sports & Health Enterprise | Yes | Not published | 4 pages | Existing-PBIX workflow |
 
 ## Quality standard
