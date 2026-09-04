@@ -21,6 +21,7 @@
 | Artifact | Purpose |
 |---|---|
 | [`Portuguese_Bank_Marketing_Performance_Dashboard.pbix`](./Portuguese_Bank_Marketing_Performance_Dashboard.pbix) | Review-ready packaged dashboard. |
+| [`Portuguese_Bank_Marketing_Performance_Interactive.html`](./Portuguese_Bank_Marketing_Performance_Interactive.html) | Standalone interactive management story; download and open in a browser. |
 | [`dashboard/Portuguese_Bank_Marketing.pbip`](./dashboard/Portuguese_Bank_Marketing.pbip) | Source-controlled PBIP entry point. |
 | [`preview/`](./preview/) | Dashboard-only PDF and readable page images used by the portfolio. |
 | [`BI_Dashboard_Creation_Prompt.md`](./BI_Dashboard_Creation_Prompt.md) | Full agent brief for rebuilding or extending the product. |

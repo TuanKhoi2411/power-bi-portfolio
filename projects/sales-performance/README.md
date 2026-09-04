@@ -21,6 +21,7 @@
 | Artifact | Purpose |
 |---|---|
 | [`UK_Online_Retail_Sales_Performance_Dashboard.pbix`](./UK_Online_Retail_Sales_Performance_Dashboard.pbix) | Review-ready packaged dashboard. |
+| [`UK_Online_Retail_Sales_Performance_Interactive.html`](./UK_Online_Retail_Sales_Performance_Interactive.html) | Standalone interactive management story; download and open in a browser. |
 | [`dashboard/UK_Online_Retail_Sales.pbip`](./dashboard/UK_Online_Retail_Sales.pbip) | Source-controlled PBIP entry point. |
 | [`preview/`](./preview/) | Dashboard-only PDF and readable page images used by the portfolio. |
 | [`BI_Dashboard_Creation_Prompt.md`](./BI_Dashboard_Creation_Prompt.md) | Full agent brief for rebuilding or extending the product. |

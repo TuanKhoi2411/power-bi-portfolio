@@ -22,6 +22,7 @@
 | Artifact | Purpose |
 |---|---|
 | [`FinTech_Credit_Risk_Dashboard.pbix`](./FinTech_Credit_Risk_Dashboard.pbix) | Review-ready packaged dashboard. |
+| [`FinTech_Credit_Risk_Performance_Interactive.html`](./FinTech_Credit_Risk_Performance_Interactive.html) | Standalone interactive management story; download and open in a browser. |
 | [`dashboard/FinTech_Credit_Risk.pbip`](./dashboard/FinTech_Credit_Risk.pbip) | Source-controlled PBIP entry point. |
 | [`preview/`](./preview/) | Dashboard-only PDF and readable page images used by the portfolio. |
 | [`BI_Dashboard_Creation_Prompt.md`](./BI_Dashboard_Creation_Prompt.md) | Full agent brief for rebuilding or extending the product. |

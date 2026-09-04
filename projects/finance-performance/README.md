@@ -21,6 +21,7 @@
 | Artifact | Purpose |
 |---|---|
 | [`Apple_Inc_Financial_Performance_Dashboard.pbix`](./Apple_Inc_Financial_Performance_Dashboard.pbix) | Review-ready packaged dashboard. |
+| [`Apple_Inc_Financial_Performance_Interactive.html`](./Apple_Inc_Financial_Performance_Interactive.html) | Standalone interactive management story; download and open in a browser. |
 | [`dashboard/Apple_Finance.pbip`](./dashboard/Apple_Finance.pbip) | Source-controlled PBIP entry point. |
 | [`preview/`](./preview/) | Dashboard-only PDF and readable page images used by the portfolio. |
 | [`BI_Dashboard_Creation_Prompt.md`](./BI_Dashboard_Creation_Prompt.md) | Full agent brief for rebuilding or extending the product. |
