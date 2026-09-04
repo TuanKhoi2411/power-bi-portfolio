@@ -15,10 +15,10 @@ This repository packages each dashboard as a reviewable product: the latest PBIX
 
 | Dashboard product | Decision supported | Deliverables |
 |---|---|---|
-| [UK Online Retail — Sales Performance](./projects/sales-performance/README.md) | Where is growth coming from, which customers/products matter, and how do returns affect quality? | PBIX · PBIP · data · DAX · PDF |
-| [Portuguese Bank — Marketing Performance](./projects/marketing-performance/README.md) | Which audiences and campaign conditions are associated with conversion? | PBIX · PBIP · data · DAX · PDF |
-| [Apple Inc. — Financial Performance](./projects/finance-performance/README.md) | Are growth, margins, liquidity, and cost structure moving sustainably? | PBIX · PBIP · SEC data · DAX · PDF |
-| [FinTech Credit Risk — Portfolio Performance](./projects/credit-risk-performance/README.md) | Where is risk concentrated, how should pricing respond, and which segments require action? | PBIX · PBIP · data · DAX · PDF |
+| [UK Online Retail — Sales Performance](./projects/sales-performance/README.md) | Where is growth coming from, which customers/products matter, and how do returns affect quality? | PBIX · PBIP · data · DAX · HTML · PDF |
+| [Portuguese Bank — Marketing Performance](./projects/marketing-performance/README.md) | Which audiences and campaign conditions are associated with conversion? | PBIX · PBIP · data · DAX · HTML · PDF |
+| [Apple Inc. — Financial Performance](./projects/finance-performance/README.md) | Are growth, margins, liquidity, and cost structure moving sustainably? | PBIX · PBIP · SEC data · DAX · HTML · PDF |
+| [FinTech Credit Risk — Portfolio Performance](./projects/credit-risk-performance/README.md) | Where is risk concentrated, how should pricing respond, and which segments require action? | PBIX · PBIP · data · DAX · HTML · PDF |
 | [Sports & Health Enterprise — Financial Performance](./projects/financial-performance-dashboard/README.md) | How can management move from headline P&L into margin, cost, segment, and break-even drivers? | PBIX · HTML story · PDF |
 
 ## Recruiter review path

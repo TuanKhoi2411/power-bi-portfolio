@@ -6,7 +6,7 @@
 |---|---|
 | Management question | Where is credit risk concentrated, how should pricing respond, and which borrower segments require action? |
 | What I built | A 4-page Power BI dashboard, source-controlled PBIP, packaged PBIX, and PDF dashboard preview. |
-| Source | Lending Club public loan data at loan application grain. |
+| Source | Portfolio training dataset with Lending Club-style loan fields, published in this repository at loan-application grain. |
 | Model | 13 tables and 184 authored measures in the current canonical PBIP. |
 | Status | Synchronized from KhoiPort and repackaged on 27 August 2026. |
 

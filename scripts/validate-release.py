@@ -4,7 +4,7 @@ import hashlib, re, sys
 
 BASE=Path(__file__).resolve().parents[2]
 REPO=BASE/'power-bi-portfolio-repo'
-SITE=BASE/'github-pages-portfolio'
+SITE=BASE/'portfolio-release-20260904'
 PAIRS=[
  (Path(r'C:\PowerBI Dashboard - KhoiPort\01_UK_Online_Retail_Sales\PowerBI_Project\UK_Online_Retail_Sales - pbix.pbix'),REPO/'projects/sales-performance/UK_Online_Retail_Sales_Performance_Dashboard.pbix'),
  (Path(r'C:\PowerBI Dashboard - KhoiPort\02_Apple_Finance\PowerBI_Project\Apple_Finance - pbix.pbix'),REPO/'projects/finance-performance/Apple_Inc_Financial_Performance_Dashboard.pbix'),
@@ -21,7 +21,9 @@ for source,target in PAIRS:
     print('PBIX',target.name,match,target.stat().st_size if target.exists() else 0); ok &= match
 for page in ['sales-performance','marketing-performance','finance-performance','credit-risk-performance','sports-health-performance']:
     html=SITE/'power-bi/cases'/page/'preview.html'
-    sources=re.findall(r'src="([^"]+)',html.read_text(encoding='utf-8'))
-    exists=all((SITE/src.lstrip('/')).exists() for src in sources)
-    print('PREVIEW',page,len(sources),exists); ok &= exists and len(sources)>=3
+    markup=html.read_text(encoding='utf-8')
+    sources=re.findall(r'(?:src|data-image)="([^"]+)',markup)
+    local_sources={src.split('?',1)[0] for src in sources if src.startswith('/')}
+    exists=all((SITE/src.lstrip('/')).exists() for src in local_sources)
+    print('PREVIEW',page,len(local_sources),exists); ok &= exists and len(local_sources)>=3
 if not ok: sys.exit(1)

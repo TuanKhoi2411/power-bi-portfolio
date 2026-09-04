@@ -1,6 +1,6 @@
 # Repository agent instructions
 
-This repository contains four independent Power BI portfolio products. Treat each project as a separate analytical product; never merge Sales, Marketing, Apple Finance, and Sports & Health into one semantic model.
+This repository contains five independent Power BI portfolio products. Treat each project as a separate analytical product; never merge Sales, Marketing, Apple Finance, Credit Risk, and Sports & Health into one semantic model.
 
 ## Required reading order
 
@@ -28,6 +28,7 @@ This repository contains four independent Power BI portfolio products. Treat eac
 | `sales-performance` | Full rebuild / enhancement | `dashboard/UK_Online_Retail_Sales_Performance_Dashboard.pbip` |
 | `marketing-performance` | Full rebuild / enhancement | `dashboard/Portuguese_Bank_Marketing_Performance_Dashboard.pbip` |
 | `finance-performance` | Full rebuild / enhancement | `dashboard/Apple_Inc_Financial_Performance_Dashboard.pbip` |
+| `credit-risk-performance` | Full rebuild / enhancement | `dashboard/FinTech_Credit_Risk.pbip` |
 | `financial-performance-dashboard` | In-place PBIX enhancement only | `Sports_Health_Enterprise_Financial_Performance_Dashboard.pbix` |
 
 See `docs/AGENT_WORKFLOW.md` for the standard execution and handoff process.
